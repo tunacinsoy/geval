@@ -10,5 +10,5 @@ source venv/bin/activate
 # Install the dependencies that is listed in requirements file
 pip install -r requirements.txt
 
-deepeval test run test_coherence.py
+deepeval test run test_coherence.py > <SCENARIO>-<LLM_MODEL>.md
 ```
