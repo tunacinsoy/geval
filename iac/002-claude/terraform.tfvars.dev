@@ -1,0 +1,23 @@
+# Development environment configuration for HR Document Storage (optional, future use)
+
+aws_region                       = "eu-west-1"
+aws_region_replica              = "eu-central-1"
+environment                      = "dev"
+bucket_name                      = "org-hr-documents-dev"
+bucket_name_replica              = "org-hr-documents-dev-replica"
+versioning_enabled               = true
+mfa_delete_enabled               = false
+cross_region_replication_enabled = false
+enable_cloudtrail_logging        = true
+kms_key_rotation_enabled         = false
+lifecycle_transition_days        = 90
+lifecycle_expiration_years       = 7
+backup_retention_days            = 7
+
+tags = {
+  DataClassification = "Confidential"
+  Department         = "HR"
+  Environment        = "dev"
+  Project            = "HR-Document-Storage"
+  Owner              = "Infrastructure"
+}

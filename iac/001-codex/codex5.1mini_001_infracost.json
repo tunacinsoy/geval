@@ -1,0 +1,1280 @@
+{
+  "version": "0.2",
+  "metadata": {
+    "infracostCommand": "breakdown",
+    "vcsBranch": "001-launch-flower-site",
+    "vcsCommitSha": "15c923bbae771af090376a4242f1b65a4fe5a716",
+    "vcsCommitAuthorName": "tuna",
+    "vcsCommitAuthorEmail": "tunacinsoy@gmail.com",
+    "vcsCommitTimestamp": "2026-03-04T20:09:02Z",
+    "vcsCommitMessage": "Initial commit from Specify template"
+  },
+  "currency": "USD",
+  "projects": [
+    {
+      "name": ".",
+      "displayName": "main",
+      "metadata": {
+        "path": ".",
+        "type": "terraform_dir",
+        "vcsSubPath": "iac",
+        "providers": [
+          {
+            "name": "aws",
+            "filename": "provider.tf",
+            "startLine": 10,
+            "endLine": 13
+          }
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [
+          {
+            "name": "aws_cloudwatch_metric_alarm.cloudfront_errors",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:10",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.cloudfront_errors",
+                  "endLine": 26,
+                  "filename": "logging.tf",
+                  "startLine": 11
+                }
+              ],
+              "checksum": "b3c433431f31e2c54b3b695eeb96a4d86096a56a37952fe1d35aa13d64e2dc5b",
+              "endLine": 26,
+              "filename": "logging.tf",
+              "startLine": 11
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudfront_distribution.site",
+            "resourceType": "aws_cloudfront_distribution",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:10",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudfront_distribution.site",
+                  "endLine": 116,
+                  "filename": "cloudfront.tf",
+                  "startLine": 65
+                }
+              ],
+              "checksum": "c8ca479a6689a1788122258a3659eba37e57c69a8efee38f94ae90d994303589",
+              "endLine": 116,
+              "filename": "cloudfront.tf",
+              "startLine": 65
+            },
+            "costComponents": [
+              {
+                "name": "Real-time log requests",
+                "unit": "1M lines",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.01",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Invalidation requests (first 1k)",
+                "unit": "paths",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "subresources": [
+              {
+                "name": "US, Mexico, Canada",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Data transfer out to internet (first 10TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.085",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer out to origin",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.02",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "HTTP requests",
+                    "unit": "10k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0075",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "HTTPS requests",
+                    "unit": "10k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.01",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_route53_record.cert_validation",
+            "resourceType": "aws_route53_record",
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:10",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_route53_record.cert_validation",
+                  "endLine": 19,
+                  "filename": "cloudfront.tf",
+                  "startLine": 11
+                }
+              ],
+              "checksum": "816da995ec1a6de8a43dcd3a88c8e7ec3c89b8f9fc2f813201d660adf8b04de2",
+              "endLine": 19,
+              "filename": "cloudfront.tf",
+              "startLine": 11
+            },
+            "costComponents": [
+              {
+                "name": "Standard queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.4",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Latency based routing queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.6",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Geo DNS queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.7",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.assets",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "Environment": "main",
+              "Service": "flower-shop-website"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:10",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.assets",
+                  "endLine": 42,
+                  "filename": "storage.tf",
+                  "startLine": 8
+                }
+              ],
+              "checksum": "b48a7bd8d979c8145cd898d7d8dcbb5bda2847121175cce4a9075c0b8a2290d5",
+              "endLine": 42,
+              "filename": "storage.tf",
+              "startLine": 8
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              },
+              {
+                "name": "Intelligent tiering",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage (frequent access)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Storage (infrequent access)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0125",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Storage (archive access)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0036",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Storage (deep archive access)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.00099",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Monitoring and automation",
+                    "unit": "1k objects",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0025",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Lifecycle transition",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.01",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Early delete (within 30 days)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.logs",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "Environment": "main",
+              "Service": "flower-shop-logging"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:10",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.logs",
+                  "endLine": 74,
+                  "filename": "storage.tf",
+                  "startLine": 53
+                }
+              ],
+              "checksum": "59b107bac2a21411c7d9de6556447d812723f7c898ae92423c878d3a5328999f",
+              "endLine": 74,
+              "filename": "storage.tf",
+              "startLine": 53
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_sns_topic.alerts",
+            "resourceType": "aws_sns_topic",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:10",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_sns_topic.alerts",
+                  "endLine": 3,
+                  "filename": "logging.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "endLine": 3,
+              "filename": "logging.tf",
+              "startLine": 1
+            },
+            "costComponents": [
+              {
+                "name": "API requests (over 1M)",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "HTTP/HTTPS notifications (over 100k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.06",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Email/Email-JSON notifications (over 1k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Kinesis Firehose notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.19",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Mobile Push notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "MacOS notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "SMS notifications (over 100)",
+                "unit": "100 notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": true
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.00013698630136986",
+        "totalMonthlyCost": "0.1",
+        "totalMonthlyUsageCost": "0"
+      },
+      "breakdown": {
+        "resources": [
+          {
+            "name": "aws_cloudwatch_metric_alarm.cloudfront_errors",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:10",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.cloudfront_errors",
+                  "endLine": 26,
+                  "filename": "logging.tf",
+                  "startLine": 11
+                }
+              ],
+              "checksum": "b3c433431f31e2c54b3b695eeb96a4d86096a56a37952fe1d35aa13d64e2dc5b",
+              "endLine": 26,
+              "filename": "logging.tf",
+              "startLine": 11
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudfront_distribution.site",
+            "resourceType": "aws_cloudfront_distribution",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:10",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudfront_distribution.site",
+                  "endLine": 116,
+                  "filename": "cloudfront.tf",
+                  "startLine": 65
+                }
+              ],
+              "checksum": "c8ca479a6689a1788122258a3659eba37e57c69a8efee38f94ae90d994303589",
+              "endLine": 116,
+              "filename": "cloudfront.tf",
+              "startLine": 65
+            },
+            "costComponents": [
+              {
+                "name": "Real-time log requests",
+                "unit": "1M lines",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.01",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Invalidation requests (first 1k)",
+                "unit": "paths",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "subresources": [
+              {
+                "name": "US, Mexico, Canada",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Data transfer out to internet (first 10TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.085",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer out to origin",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.02",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "HTTP requests",
+                    "unit": "10k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0075",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "HTTPS requests",
+                    "unit": "10k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.01",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_route53_record.cert_validation",
+            "resourceType": "aws_route53_record",
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:10",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_route53_record.cert_validation",
+                  "endLine": 19,
+                  "filename": "cloudfront.tf",
+                  "startLine": 11
+                }
+              ],
+              "checksum": "816da995ec1a6de8a43dcd3a88c8e7ec3c89b8f9fc2f813201d660adf8b04de2",
+              "endLine": 19,
+              "filename": "cloudfront.tf",
+              "startLine": 11
+            },
+            "costComponents": [
+              {
+                "name": "Standard queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.4",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Latency based routing queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.6",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Geo DNS queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.7",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.assets",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "Environment": "main",
+              "Service": "flower-shop-website"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:10",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.assets",
+                  "endLine": 42,
+                  "filename": "storage.tf",
+                  "startLine": 8
+                }
+              ],
+              "checksum": "b48a7bd8d979c8145cd898d7d8dcbb5bda2847121175cce4a9075c0b8a2290d5",
+              "endLine": 42,
+              "filename": "storage.tf",
+              "startLine": 8
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              },
+              {
+                "name": "Intelligent tiering",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage (frequent access)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Storage (infrequent access)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0125",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Storage (archive access)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0036",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Storage (deep archive access)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.00099",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Monitoring and automation",
+                    "unit": "1k objects",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0025",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Lifecycle transition",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.01",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Early delete (within 30 days)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.logs",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "Environment": "main",
+              "Service": "flower-shop-logging"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:10",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.logs",
+                  "endLine": 74,
+                  "filename": "storage.tf",
+                  "startLine": 53
+                }
+              ],
+              "checksum": "59b107bac2a21411c7d9de6556447d812723f7c898ae92423c878d3a5328999f",
+              "endLine": 74,
+              "filename": "storage.tf",
+              "startLine": 53
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_sns_topic.alerts",
+            "resourceType": "aws_sns_topic",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:10",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_sns_topic.alerts",
+                  "endLine": 3,
+                  "filename": "logging.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "endLine": 3,
+              "filename": "logging.tf",
+              "startLine": 1
+            },
+            "costComponents": [
+              {
+                "name": "API requests (over 1M)",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "HTTP/HTTPS notifications (over 100k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.06",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Email/Email-JSON notifications (over 1k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Kinesis Firehose notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.19",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Mobile Push notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "MacOS notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "SMS notifications (over 100)",
+                "unit": "100 notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": true
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.00013698630136986",
+        "totalMonthlyCost": "0.1",
+        "totalMonthlyUsageCost": "0"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 19,
+        "totalSupportedResources": 6,
+        "totalUnsupportedResources": 0,
+        "totalUsageBasedResources": 5,
+        "totalNoPriceResources": 13,
+        "unsupportedResourceCounts": {},
+        "noPriceResourceCounts": {
+          "aws_acm_certificate": 1,
+          "aws_acm_certificate_validation": 1,
+          "aws_cloudfront_origin_access_control": 1,
+          "aws_cloudfront_response_headers_policy": 1,
+          "aws_iam_policy": 1,
+          "aws_iam_role": 1,
+          "aws_iam_role_policy_attachment": 1,
+          "aws_route53_record": 2,
+          "aws_s3_bucket_policy": 1,
+          "aws_s3_bucket_public_access_block": 2,
+          "aws_sns_topic_subscription": 1
+        }
+      }
+    }
+  ],
+  "totalHourlyCost": "0.00013698630136986",
+  "totalMonthlyCost": "0.1",
+  "totalMonthlyUsageCost": "0",
+  "pastTotalHourlyCost": "0.00013698630136986",
+  "pastTotalMonthlyCost": "0.1",
+  "pastTotalMonthlyUsageCost": "0",
+  "diffTotalHourlyCost": "0",
+  "diffTotalMonthlyCost": "0",
+  "diffTotalMonthlyUsageCost": "0",
+  "timeGenerated": "2026-03-04T20:40:21.986802022Z",
+  "summary": {
+    "totalDetectedResources": 19,
+    "totalSupportedResources": 6,
+    "totalUnsupportedResources": 0,
+    "totalUsageBasedResources": 5,
+    "totalNoPriceResources": 13,
+    "unsupportedResourceCounts": {},
+    "noPriceResourceCounts": {
+      "aws_acm_certificate": 1,
+      "aws_acm_certificate_validation": 1,
+      "aws_cloudfront_origin_access_control": 1,
+      "aws_cloudfront_response_headers_policy": 1,
+      "aws_iam_policy": 1,
+      "aws_iam_role": 1,
+      "aws_iam_role_policy_attachment": 1,
+      "aws_route53_record": 2,
+      "aws_s3_bucket_policy": 1,
+      "aws_s3_bucket_public_access_block": 2,
+      "aws_sns_topic_subscription": 1
+    }
+  }
+}

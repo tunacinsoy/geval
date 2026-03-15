@@ -1,0 +1,1696 @@
+{
+  "version": "0.2",
+  "metadata": {
+    "infracostCommand": "breakdown",
+    "vcsBranch": "001-static-website",
+    "vcsCommitSha": "eae7c7d9455f2fd08c77d99f20873c4b1c4d118b",
+    "vcsCommitAuthorName": "tunacinsoy",
+    "vcsCommitAuthorEmail": "tunacinsoy@gmail.com",
+    "vcsCommitTimestamp": "2026-01-20T20:52:31Z",
+    "vcsCommitMessage": "feat: main, default",
+    "vcsRepositoryUrl": "https://github.com/tunacinsoy/pw-sdd-iac-claude-001.git"
+  },
+  "currency": "USD",
+  "projects": [
+    {
+      "name": "tunacinsoy/pw-sdd-iac-claude-001/terraform",
+      "displayName": "main",
+      "metadata": {
+        "path": ".",
+        "type": "terraform_dir",
+        "vcsSubPath": "terraform",
+        "vcsCodeChanged": true,
+        "providers": [
+          {
+            "name": "aws",
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "filename": "provider.tf",
+            "startLine": 1,
+            "endLine": 12
+          }
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [
+          {
+            "name": "aws_cloudwatch_dashboard.website[0]",
+            "resourceType": "aws_cloudwatch_dashboard",
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_dashboard.website",
+                  "endLine": 403,
+                  "filename": "main.tf",
+                  "startLine": 368
+                }
+              ],
+              "checksum": "7e50c810c1c0f57608790b07b60416391e81c294af704f2c818ec5f2ce931df2",
+              "endLine": 403,
+              "filename": "main.tf",
+              "startLine": 368
+            },
+            "hourlyCost": "0.0041095890410958",
+            "monthlyCost": "3",
+            "costComponents": [
+              {
+                "name": "Dashboard",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "3",
+                "hourlyCost": "0.0041095890410958",
+                "monthlyCost": "3",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_route53_zone.website",
+            "resourceType": "aws_route53_zone",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Name": "Website Hosted Zone",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_route53_zone.website",
+                  "endLine": 293,
+                  "filename": "main.tf",
+                  "startLine": 287
+                }
+              ],
+              "checksum": "4e00b3d95ae37e5e72e8738bd02280e5e60e2a79a457f7c403ba1d6a4ec80de5",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 293,
+              "filename": "main.tf",
+              "startLine": 287
+            },
+            "hourlyCost": "0.0006849315068493",
+            "monthlyCost": "0.5",
+            "costComponents": [
+              {
+                "name": "Hosted zone",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.5",
+                "hourlyCost": "0.0006849315068493",
+                "monthlyCost": "0.5",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.cloudfront_4xx_errors[0]",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.cloudfront_4xx_errors",
+                  "endLine": 442,
+                  "filename": "main.tf",
+                  "startLine": 425
+                }
+              ],
+              "checksum": "a9e8fe5e6122d5be8c0858a0408192790338f3a05fe0f84fd9cd74e1c08a059c",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 442,
+              "filename": "main.tf",
+              "startLine": 425
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.cloudfront_5xx_errors[0]",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.cloudfront_5xx_errors",
+                  "endLine": 423,
+                  "filename": "main.tf",
+                  "startLine": 406
+                }
+              ],
+              "checksum": "d0e5d18944d55172f97e417c03ded4a8d61cbb910056c326d8dee8dc0843ec9b",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 423,
+              "filename": "main.tf",
+              "startLine": 406
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.cloudfront_5xx_errors_with_sns[0]",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.cloudfront_5xx_errors_with_sns",
+                  "endLine": 503,
+                  "filename": "main.tf",
+                  "startLine": 485
+                }
+              ],
+              "checksum": "460ffbf9b596bf863c5a8b835f698ed53b98f1bcc3712386ea404107c4a1d015",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 503,
+              "filename": "main.tf",
+              "startLine": 485
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.cloudfront_cache_hit_rate[0]",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.cloudfront_cache_hit_rate",
+                  "endLine": 461,
+                  "filename": "main.tf",
+                  "startLine": 444
+                }
+              ],
+              "checksum": "a7a0ff9dd7b04b2dd2558bd5187d85befb6fe73ed31e3035b087847888462466",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 461,
+              "filename": "main.tf",
+              "startLine": 444
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudfront_distribution.website",
+            "resourceType": "aws_cloudfront_distribution",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Name": "Website CloudFront Distribution",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudfront_distribution.website",
+                  "endLine": 276,
+                  "filename": "main.tf",
+                  "startLine": 165
+                }
+              ],
+              "checksum": "a899c5cade4a79890652f8b7c6ddea8ff586d2ddf8117f65d1e2cea7e687d0be",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 276,
+              "filename": "main.tf",
+              "startLine": 165
+            },
+            "costComponents": [
+              {
+                "name": "Real-time log requests",
+                "unit": "1M lines",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.01",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Invalidation requests (first 1k)",
+                "unit": "paths",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "subresources": [
+              {
+                "name": "US, Mexico, Canada",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Data transfer out to internet (first 10TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.085",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer out to origin",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.02",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "HTTP requests",
+                    "unit": "10k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0075",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "HTTPS requests",
+                    "unit": "10k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.01",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudfront_function.index_redirect",
+            "resourceType": "aws_cloudfront_function",
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudfront_function.index_redirect",
+                  "endLine": 284,
+                  "filename": "main.tf",
+                  "startLine": 279
+                }
+              ],
+              "checksum": "4eee438eb4e23b7b449ee710842d568ecb4435a010996fdcff1a687734e49a7f",
+              "endLine": 284,
+              "filename": "main.tf",
+              "startLine": 279
+            },
+            "costComponents": [
+              {
+                "name": "Total number of invocations",
+                "unit": "1M invocations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_route53_record.acm_validation",
+            "resourceType": "aws_route53_record",
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_route53_record.acm_validation",
+                  "endLine": 351,
+                  "filename": "main.tf",
+                  "startLine": 336
+                }
+              ],
+              "checksum": "027e8b88e2b28ae9d254d756d884662e62755a94a6b13cb827ca9f651fa190ce",
+              "endLine": 351,
+              "filename": "main.tf",
+              "startLine": 336
+            },
+            "costComponents": [
+              {
+                "name": "Standard queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.4",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Latency based routing queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.6",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Geo DNS queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.7",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.logging",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Name": "Access Logs Bucket",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.logging",
+                  "endLine": 23,
+                  "filename": "main.tf",
+                  "startLine": 17
+                }
+              ],
+              "checksum": "a2604d94e82fe20861ba9347eb8cf2b16e6b38ca660a3eafe41b8e8aa144493c",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 23,
+              "filename": "main.tf",
+              "startLine": 17
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.website",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Name": "Website Content Bucket",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.website",
+                  "endLine": 14,
+                  "filename": "main.tf",
+                  "startLine": 8
+                }
+              ],
+              "checksum": "b00c748b45c805a1aa4504f52d36cc0d7db77a7881661176063d5493395ab8e1",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 14,
+              "filename": "main.tf",
+              "startLine": 8
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_sns_topic.website_alerts[0]",
+            "resourceType": "aws_sns_topic",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Name": "Website Alerts",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_sns_topic.website_alerts",
+                  "endLine": 472,
+                  "filename": "main.tf",
+                  "startLine": 464
+                }
+              ],
+              "checksum": "fbb38b3395c62f907dacddebaeda6a0629933f74407cd6d2150638e432be5cad",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 472,
+              "filename": "main.tf",
+              "startLine": 464
+            },
+            "costComponents": [
+              {
+                "name": "API requests (over 1M)",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "HTTP/HTTPS notifications (over 100k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.06",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Email/Email-JSON notifications (over 1k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Kinesis Firehose notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.19",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Mobile Push notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "MacOS notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "SMS notifications (over 100)",
+                "unit": "100 notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": true
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.00534246575342454",
+        "totalMonthlyCost": "3.9",
+        "totalMonthlyUsageCost": "0"
+      },
+      "breakdown": {
+        "resources": [
+          {
+            "name": "aws_cloudwatch_dashboard.website[0]",
+            "resourceType": "aws_cloudwatch_dashboard",
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_dashboard.website",
+                  "endLine": 403,
+                  "filename": "main.tf",
+                  "startLine": 368
+                }
+              ],
+              "checksum": "7e50c810c1c0f57608790b07b60416391e81c294af704f2c818ec5f2ce931df2",
+              "endLine": 403,
+              "filename": "main.tf",
+              "startLine": 368
+            },
+            "hourlyCost": "0.0041095890410958",
+            "monthlyCost": "3",
+            "costComponents": [
+              {
+                "name": "Dashboard",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "3",
+                "hourlyCost": "0.0041095890410958",
+                "monthlyCost": "3",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_route53_zone.website",
+            "resourceType": "aws_route53_zone",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Name": "Website Hosted Zone",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_route53_zone.website",
+                  "endLine": 293,
+                  "filename": "main.tf",
+                  "startLine": 287
+                }
+              ],
+              "checksum": "4e00b3d95ae37e5e72e8738bd02280e5e60e2a79a457f7c403ba1d6a4ec80de5",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 293,
+              "filename": "main.tf",
+              "startLine": 287
+            },
+            "hourlyCost": "0.0006849315068493",
+            "monthlyCost": "0.5",
+            "costComponents": [
+              {
+                "name": "Hosted zone",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.5",
+                "hourlyCost": "0.0006849315068493",
+                "monthlyCost": "0.5",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.cloudfront_4xx_errors[0]",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.cloudfront_4xx_errors",
+                  "endLine": 442,
+                  "filename": "main.tf",
+                  "startLine": 425
+                }
+              ],
+              "checksum": "a9e8fe5e6122d5be8c0858a0408192790338f3a05fe0f84fd9cd74e1c08a059c",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 442,
+              "filename": "main.tf",
+              "startLine": 425
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.cloudfront_5xx_errors[0]",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.cloudfront_5xx_errors",
+                  "endLine": 423,
+                  "filename": "main.tf",
+                  "startLine": 406
+                }
+              ],
+              "checksum": "d0e5d18944d55172f97e417c03ded4a8d61cbb910056c326d8dee8dc0843ec9b",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 423,
+              "filename": "main.tf",
+              "startLine": 406
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.cloudfront_5xx_errors_with_sns[0]",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.cloudfront_5xx_errors_with_sns",
+                  "endLine": 503,
+                  "filename": "main.tf",
+                  "startLine": 485
+                }
+              ],
+              "checksum": "460ffbf9b596bf863c5a8b835f698ed53b98f1bcc3712386ea404107c4a1d015",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 503,
+              "filename": "main.tf",
+              "startLine": 485
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.cloudfront_cache_hit_rate[0]",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.cloudfront_cache_hit_rate",
+                  "endLine": 461,
+                  "filename": "main.tf",
+                  "startLine": 444
+                }
+              ],
+              "checksum": "a7a0ff9dd7b04b2dd2558bd5187d85befb6fe73ed31e3035b087847888462466",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 461,
+              "filename": "main.tf",
+              "startLine": 444
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudfront_distribution.website",
+            "resourceType": "aws_cloudfront_distribution",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Name": "Website CloudFront Distribution",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudfront_distribution.website",
+                  "endLine": 276,
+                  "filename": "main.tf",
+                  "startLine": 165
+                }
+              ],
+              "checksum": "a899c5cade4a79890652f8b7c6ddea8ff586d2ddf8117f65d1e2cea7e687d0be",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 276,
+              "filename": "main.tf",
+              "startLine": 165
+            },
+            "costComponents": [
+              {
+                "name": "Real-time log requests",
+                "unit": "1M lines",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.01",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Invalidation requests (first 1k)",
+                "unit": "paths",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "subresources": [
+              {
+                "name": "US, Mexico, Canada",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Data transfer out to internet (first 10TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.085",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer out to origin",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.02",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "HTTP requests",
+                    "unit": "10k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0075",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "HTTPS requests",
+                    "unit": "10k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.01",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudfront_function.index_redirect",
+            "resourceType": "aws_cloudfront_function",
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudfront_function.index_redirect",
+                  "endLine": 284,
+                  "filename": "main.tf",
+                  "startLine": 279
+                }
+              ],
+              "checksum": "4eee438eb4e23b7b449ee710842d568ecb4435a010996fdcff1a687734e49a7f",
+              "endLine": 284,
+              "filename": "main.tf",
+              "startLine": 279
+            },
+            "costComponents": [
+              {
+                "name": "Total number of invocations",
+                "unit": "1M invocations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_route53_record.acm_validation",
+            "resourceType": "aws_route53_record",
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_route53_record.acm_validation",
+                  "endLine": 351,
+                  "filename": "main.tf",
+                  "startLine": 336
+                }
+              ],
+              "checksum": "027e8b88e2b28ae9d254d756d884662e62755a94a6b13cb827ca9f651fa190ce",
+              "endLine": 351,
+              "filename": "main.tf",
+              "startLine": 336
+            },
+            "costComponents": [
+              {
+                "name": "Standard queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.4",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Latency based routing queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.6",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Geo DNS queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.7",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.logging",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Name": "Access Logs Bucket",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.logging",
+                  "endLine": 23,
+                  "filename": "main.tf",
+                  "startLine": 17
+                }
+              ],
+              "checksum": "a2604d94e82fe20861ba9347eb8cf2b16e6b38ca660a3eafe41b8e8aa144493c",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 23,
+              "filename": "main.tf",
+              "startLine": 17
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.website",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Name": "Website Content Bucket",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.website",
+                  "endLine": 14,
+                  "filename": "main.tf",
+                  "startLine": 8
+                }
+              ],
+              "checksum": "b00c748b45c805a1aa4504f52d36cc0d7db77a7881661176063d5493395ab8e1",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 14,
+              "filename": "main.tf",
+              "startLine": 8
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_sns_topic.website_alerts[0]",
+            "resourceType": "aws_sns_topic",
+            "tags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Name": "Website Alerts",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Project": "flower-shop-website",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_sns_topic.website_alerts",
+                  "endLine": 472,
+                  "filename": "main.tf",
+                  "startLine": 464
+                }
+              ],
+              "checksum": "fbb38b3395c62f907dacddebaeda6a0629933f74407cd6d2150638e432be5cad",
+              "defaultTagsChecksum": "894c90c7986ae011c448f17bc3bc08618b406733ef934ba91016043b5db4ebcc",
+              "endLine": 472,
+              "filename": "main.tf",
+              "startLine": 464
+            },
+            "costComponents": [
+              {
+                "name": "API requests (over 1M)",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "HTTP/HTTPS notifications (over 100k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.06",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Email/Email-JSON notifications (over 1k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Kinesis Firehose notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.19",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Mobile Push notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "MacOS notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "SMS notifications (over 100)",
+                "unit": "100 notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": true
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.00534246575342454",
+        "totalMonthlyCost": "3.9",
+        "totalMonthlyUsageCost": "0"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 27,
+        "totalSupportedResources": 12,
+        "totalUnsupportedResources": 0,
+        "totalUsageBasedResources": 5,
+        "totalNoPriceResources": 15,
+        "unsupportedResourceCounts": {},
+        "noPriceResourceCounts": {
+          "aws_acm_certificate": 1,
+          "aws_acm_certificate_validation": 1,
+          "aws_cloudfront_origin_access_identity": 1,
+          "aws_route53_record": 2,
+          "aws_s3_bucket_lifecycle_configuration": 2,
+          "aws_s3_bucket_logging": 1,
+          "aws_s3_bucket_policy": 1,
+          "aws_s3_bucket_public_access_block": 2,
+          "aws_s3_bucket_server_side_encryption_configuration": 2,
+          "aws_s3_bucket_versioning": 2
+        }
+      }
+    }
+  ],
+  "totalHourlyCost": "0.00534246575342454",
+  "totalMonthlyCost": "3.9",
+  "totalMonthlyUsageCost": "0",
+  "pastTotalHourlyCost": "0.00534246575342454",
+  "pastTotalMonthlyCost": "3.9",
+  "pastTotalMonthlyUsageCost": "0",
+  "diffTotalHourlyCost": "0",
+  "diffTotalMonthlyCost": "0",
+  "diffTotalMonthlyUsageCost": "0",
+  "timeGenerated": "2026-02-12T15:29:11.10035482Z",
+  "summary": {
+    "totalDetectedResources": 27,
+    "totalSupportedResources": 12,
+    "totalUnsupportedResources": 0,
+    "totalUsageBasedResources": 5,
+    "totalNoPriceResources": 15,
+    "unsupportedResourceCounts": {},
+    "noPriceResourceCounts": {
+      "aws_acm_certificate": 1,
+      "aws_acm_certificate_validation": 1,
+      "aws_cloudfront_origin_access_identity": 1,
+      "aws_route53_record": 2,
+      "aws_s3_bucket_lifecycle_configuration": 2,
+      "aws_s3_bucket_logging": 1,
+      "aws_s3_bucket_policy": 1,
+      "aws_s3_bucket_public_access_block": 2,
+      "aws_s3_bucket_server_side_encryption_configuration": 2,
+      "aws_s3_bucket_versioning": 2
+    }
+  }
+}

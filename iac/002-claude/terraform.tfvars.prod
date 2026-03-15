@@ -1,0 +1,23 @@
+# Production environment configuration for HR Document Storage
+
+aws_region                       = "eu-west-1"
+aws_region_replica              = "eu-central-1"
+environment                      = "prod"
+bucket_name                      = "org-hr-documents-prod"
+bucket_name_replica              = "org-hr-documents-replica"
+versioning_enabled               = true
+mfa_delete_enabled               = true
+cross_region_replication_enabled = true
+enable_cloudtrail_logging        = true
+kms_key_rotation_enabled         = true
+lifecycle_transition_days        = 90
+lifecycle_expiration_years       = 7
+backup_retention_days            = 30
+
+tags = {
+  DataClassification = "Confidential"
+  Department         = "HR"
+  Environment        = "prod"
+  Project            = "HR-Document-Storage"
+  Owner              = "Infrastructure"
+}

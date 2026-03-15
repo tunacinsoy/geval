@@ -2,50 +2,56 @@ import os
 import glob
 from deepeval import assert_test
 from deepeval.test_case import LLMTestCase, LLMTestCaseParams
-from deepeval.metrics import GEval
+from deepeval.metrics import AnswerRelevancyMetric, GEval
 
-def load_terraform_codebase(directory="terraform"):
+
+def load_terraform_codebase(directory="002-claude"):
     tf_code = ""
     patterns = ["*.tf", "*.tfvars"]
-    
+
     for pattern in patterns:
         for filepath in glob.glob(os.path.join(directory, pattern)):
             with open(filepath, "r", encoding="utf-8") as file:
                 tf_code += f"\n# File: {os.path.basename(filepath)}\n"
                 tf_code += file.read() + "\n"
-                
+
     return tf_code
 
+
 def test_contextual_terraform_coherence():
-    user_request = "I need to get a website up for my flower shop. It's just a few pages with pictures and contact info. I don't know much about servers, so I just want it to be online and cheap. I heard AWS is good for this."
-    
+    user_request = "We need a place to keep HR documents safe. Only a few people in the office should be able to see them, and we need to make sure they don't get deleted by accident. Can you set up something in the cloud for us?"
+
     background_context = [
-        "Blooms & Bytes is a floral shop founded in 2015 with 15 employees. The business serves a heavy volume of European expats ordering flowers for families back home. The current simple brochure site collects names, emails, and physical addresses via an unencrypted contact form. Because the company actively processes the personal data of EU residents, the underlying infrastructure must comply with GDPR obligations for secure data transmission and explicit consent mechanisms, which the current request ignores."
+        "MedTalent Global, founded in 2018, is a medical recruitment agency with 45 employees. The agency actively recruits healthcare professionals from Germany and France. The cloud storage files contain passports, detailed health screenings, and biometric data of EU citizens. Under GDPR, processing this special category of personal data requires strict access controls, encryption at rest, and infrastructure that supports data subject access requests, none of which are accounted for in a basic storage request."
     ]
-    
+
     generated_terraform = load_terraform_codebase()
 
     coherence_metric = GEval(
         name="Contextual Terraform Coherence",
+        model="gpt-5.4",
+        threshold=0.1,
         criteria="Evaluate if the generated Terraform code accurately, securely, and coherently implements the user request while adhering to the business and regulatory requirements implied by the background context.",
         evaluation_steps=[
             "Analyze the user request alongside the provided background context to identify explicit infrastructure needs and implicit compliance or security requirements.",
             "Examine the actual output containing the generated Terraform code to determine if all requested resources are present and correctly configured.",
             "Assess if the Terraform configuration addresses the hidden constraints from the context, such as GDPR compliance, encryption at rest, secure transit, or geographic restrictions.",
-            "Penalize the score heavily if the code lacks necessary security measures dictated by the context or if it blindly follows a vague prompt into a non-compliant state.",
-            "Reward the score if the infrastructure logic is sound, resource dependencies are correct, and the solution holistically aligns with both the explicit input and the implicit context."
+            "Penalize the score if the code lacks necessary security measures dictated by the context or if it blindly follows a vague prompt into a non-compliant state.",
+            "Reward the score if the infrastructure logic is sound, resource dependencies are correct, and the solution holistically aligns with both the explicit input and the implicit context.",
+            # 1"Rate the overall coherence on a strict scale of 0 to 100, and multiply the coherence score by 10 for normalization purposes. You must output a highly granular number. "
+            # "CRITICAL INSTRUCTION: Calculate your final coherence score on a standard 0.0 to 1.0 scale, then explicitly multiply that exact number by 100. You must output this multiplied value as your final numeric score (for example, if your internal score is 0.31, you must output 3.1)."
         ],
         evaluation_params=[
-            LLMTestCaseParams.INPUT, 
-            LLMTestCaseParams.ACTUAL_OUTPUT, 
-            LLMTestCaseParams.CONTEXT
+            LLMTestCaseParams.INPUT,
+            LLMTestCaseParams.ACTUAL_OUTPUT,
+            LLMTestCaseParams.CONTEXT,
         ],
     )
 
     test_case = LLMTestCase(
         input=user_request,
         actual_output=generated_terraform,
-        context=background_context
+        context=background_context,
     )
 
     assert_test(test_case, [coherence_metric])

@@ -1,0 +1,6 @@
+environment     = "dev"
+primary_domain  = "dev.flower-shop.example.com"
+www_domain      = "www.dev.flower-shop.example.com"
+route53_zone_id = "Z1234567890"
+deployment_email = "dev-alerts@flower-shop.com"
+cache_ttl_seconds = 900

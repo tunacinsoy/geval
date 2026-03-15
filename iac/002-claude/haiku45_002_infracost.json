@@ -1,0 +1,2810 @@
+{
+  "version": "0.2",
+  "metadata": {
+    "infracostCommand": "breakdown",
+    "vcsBranch": "001-secure-document-storage",
+    "vcsCommitSha": "70ebc61109df0f40c12eb9b7de7e445c4ea87454",
+    "vcsCommitAuthorName": "tuna",
+    "vcsCommitAuthorEmail": "tunacinsoy@gmail.com",
+    "vcsCommitTimestamp": "2026-03-09T18:50:13Z",
+    "vcsCommitMessage": "feat: implement secure HR document storage infrastructure\n\nImplement production-grade AWS infrastructure for secure HR document storage:\n\n- S3 bucket (eu-west-1) with AES-256 encryption and versioning\n- Cross-region replication to eu-central-1 for disaster recovery\n- Three-tier IAM role structure (Admin/Manager/Staff) with MFA protection\n- KMS customer-managed encryption keys with annual rotation\n- CloudTrail API logging (2-year retention) for audit trail\n- S3 access logging for comprehensive access tracking\n- CloudWatch dashboards and 6 alarms for operational visibility\n- SNS topic for infrastructure alerts\n\nCompliance:\n- GDPR Article 32: Encryption, access control, audit logging, key rotation\n- SOC 2 Type II: Comprehensive audit trail, monitoring, access controls\n- Data residency: EU-only (Ireland + Frankfurt)\n\nGenerated files:\n- 13 Terraform infrastructure files (.tf)\n- 2 environment configuration files (.tfvars)\n- 4 comprehensive documentation files (README, DEPLOYMENT, CHECKLIST)\n\nAll 94 implementation tasks completed. Infrastructure ready for deployment.\n\nCo-Authored-By: Claude Haiku 4.5 \u003cnoreply@anthropic.com\u003e",
+    "vcsRepositoryUrl": "https://github.com/tunacinsoy/pw-sdd-iac-claude-001"
+  },
+  "currency": "USD",
+  "projects": [
+    {
+      "name": "tunacinsoy/pw-sdd-iac-claude-001/iac",
+      "displayName": "main",
+      "metadata": {
+        "path": ".",
+        "type": "terraform_dir",
+        "vcsSubPath": "iac",
+        "vcsCodeChanged": true,
+        "providers": [
+          {
+            "name": "aws",
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "filename": "provider.tf",
+            "startLine": 5,
+            "endLine": 18
+          },
+          {
+            "name": "aws.replica",
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "filename": "s3-replication.tf",
+            "startLine": 167,
+            "endLine": 181
+          }
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [
+          {
+            "name": "aws_cloudwatch_dashboard.hr_documents",
+            "resourceType": "aws_cloudwatch_dashboard",
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_dashboard.hr_documents",
+                  "endLine": 115,
+                  "filename": "monitoring.tf",
+                  "startLine": 35
+                }
+              ],
+              "checksum": "df9982dc9a0f976e37d4dbe97c5da71e13f63c4912607fe7bb7c12944e8606ba",
+              "endLine": 115,
+              "filename": "monitoring.tf",
+              "startLine": 35
+            },
+            "hourlyCost": "0.0041095890410958",
+            "monthlyCost": "3",
+            "costComponents": [
+              {
+                "name": "Dashboard",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "3",
+                "hourlyCost": "0.0041095890410958",
+                "monthlyCost": "3",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_kms_key.s3_key",
+            "resourceType": "aws_kms_key",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "s3-documents-key-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_kms_key.s3_key",
+                  "endLine": 15,
+                  "filename": "kms.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "de4635cce90f6ae19745d3ee4356d5d5f41eb3e63afb1c7958c6b0edbfd1ac33",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 15,
+              "filename": "kms.tf",
+              "startLine": 4
+            },
+            "hourlyCost": "0.0013698630136986",
+            "monthlyCost": "1",
+            "costComponents": [
+              {
+                "name": "Customer master key",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "1",
+                "hourlyCost": "0.0013698630136986",
+                "monthlyCost": "1",
+                "priceNotFound": false
+              },
+              {
+                "name": "Requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "ECC GenerateDataKeyPair requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "RSA GenerateDataKeyPair requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_kms_key.s3_key_replica",
+            "resourceType": "aws_kms_key",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "s3-documents-replica-key-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "s3-replication.tf:167",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_kms_key.s3_key_replica",
+                  "endLine": 16,
+                  "filename": "s3-replication.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "4fec37f209642f07af9a30432772746f268d413108db86ef414adfb402bc7f60",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 16,
+              "filename": "s3-replication.tf",
+              "startLine": 4
+            },
+            "hourlyCost": "0.0013698630136986",
+            "monthlyCost": "1",
+            "costComponents": [
+              {
+                "name": "Customer master key",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "1",
+                "hourlyCost": "0.0013698630136986",
+                "monthlyCost": "1",
+                "priceNotFound": false
+              },
+              {
+                "name": "Requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "ECC GenerateDataKeyPair requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "RSA GenerateDataKeyPair requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_kms_key.terraform_state_key",
+            "resourceType": "aws_kms_key",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "terraform-state-key-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_kms_key.terraform_state_key",
+                  "endLine": 95,
+                  "filename": "kms.tf",
+                  "startLine": 84
+                }
+              ],
+              "checksum": "2ab5dcaf1afaa1e4db69a3741ae5c0f0ab8eee6ec2ea8dee510d66b3f029bebf",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 95,
+              "filename": "kms.tf",
+              "startLine": 84
+            },
+            "hourlyCost": "0.0013698630136986",
+            "monthlyCost": "1",
+            "costComponents": [
+              {
+                "name": "Customer master key",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "1",
+                "hourlyCost": "0.0013698630136986",
+                "monthlyCost": "1",
+                "priceNotFound": false
+              },
+              {
+                "name": "Requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "ECC GenerateDataKeyPair requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "RSA GenerateDataKeyPair requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.bucket_size_quota",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "bucket-quota-alarm-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.bucket_size_quota",
+                  "endLine": 162,
+                  "filename": "monitoring.tf",
+                  "startLine": 140
+                }
+              ],
+              "checksum": "0a0492c3565490bc16c29a6fd39bb3a02c8209d82292ae7f75a4d97415c29dbf",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 162,
+              "filename": "monitoring.tf",
+              "startLine": 140
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.object_deletions[0]",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "object-deletion-alarm-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.object_deletions",
+                  "endLine": 264,
+                  "filename": "monitoring.tf",
+                  "startLine": 244
+                }
+              ],
+              "checksum": "4440b98ab1c7decfff31a98d281397c6ff6df9791a8fb3e0c6fb36e6106dec1e",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 264,
+              "filename": "monitoring.tf",
+              "startLine": 244
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.replication_failures[0]",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "replication-alarm-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.replication_failures",
+                  "endLine": 191,
+                  "filename": "monitoring.tf",
+                  "startLine": 165
+                }
+              ],
+              "checksum": "5d088f501ef806ea4108befd361964b384ff5c16e7d7afdd7caa6ea06919f773",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 191,
+              "filename": "monitoring.tf",
+              "startLine": 165
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.s3_4xx_errors",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "s3-4xx-errors-alarm-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.s3_4xx_errors",
+                  "endLine": 216,
+                  "filename": "monitoring.tf",
+                  "startLine": 194
+                }
+              ],
+              "checksum": "6deedd015c019fca2c9bb438e3c94996fe1986140712a5950ae14a8f1d30af83",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 216,
+              "filename": "monitoring.tf",
+              "startLine": 194
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.s3_5xx_errors",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "s3-5xx-errors-alarm-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.s3_5xx_errors",
+                  "endLine": 241,
+                  "filename": "monitoring.tf",
+                  "startLine": 219
+                }
+              ],
+              "checksum": "fd10f3887e4f223f812cf0dae4d7b2ee9250bbc7f33a8a5afeb49d30f02676be",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 241,
+              "filename": "monitoring.tf",
+              "startLine": 219
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.unauthorized_access[0]",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "unauthorized-access-alarm-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.unauthorized_access",
+                  "endLine": 137,
+                  "filename": "monitoring.tf",
+                  "startLine": 118
+                }
+              ],
+              "checksum": "1cc5e49ce7e462d2a7912664484a19961dd638099aeae092c8ab129d876963b2",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 137,
+              "filename": "monitoring.tf",
+              "startLine": 118
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudtrail.documents[0]",
+            "resourceType": "aws_cloudtrail",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "hr-documents-cloudtrail-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudtrail.documents",
+                  "endLine": 19,
+                  "filename": "cloudtrail.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "d6e3371541a3f955d329eab1a1aff7922535194ad502ff034d73c31057f911bb",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 19,
+              "filename": "cloudtrail.tf",
+              "startLine": 4
+            },
+            "costComponents": [
+              {
+                "name": "Management events (additional copies)",
+                "unit": "100k events",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Data events",
+                "unit": "100k events",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.cloudtrail[0]",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "cloudtrail-logs-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.cloudtrail",
+                  "endLine": 70,
+                  "filename": "cloudtrail.tf",
+                  "startLine": 59
+                }
+              ],
+              "checksum": "1c6a4c10e9c1028020b0a06529f16098bd23d4a71a80d3faeca48aaa69b914e4",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 70,
+              "filename": "cloudtrail.tf",
+              "startLine": 59
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.57",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0057",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.kms_audit",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "kms-audit-logs-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.kms_audit",
+                  "endLine": 113,
+                  "filename": "kms.tf",
+                  "startLine": 103
+                }
+              ],
+              "checksum": "a16aa5a168a77a22dcef810a2df2f5d2dd132b58e0945a7c6a9813803ca44750",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 113,
+              "filename": "kms.tf",
+              "startLine": 103
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.57",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0057",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.cloudtrail_logs",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "cloudtrail-logs-bucket-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage",
+              "Purpose": "CloudTrail API audit logging"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.cloudtrail_logs",
+                  "endLine": 123,
+                  "filename": "s3-logging.tf",
+                  "startLine": 113
+                }
+              ],
+              "checksum": "270b0486ab250b0d141c001092eac291768afcc02e75d79229947d16a5730b50",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 123,
+              "filename": "s3-logging.tf",
+              "startLine": 113
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.documents",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "org-hr-documents-prod",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.documents",
+                  "endLine": 13,
+                  "filename": "s3.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "dfd004b0d7bd522ea50a94c54e1e169dcf71b1c097d9fb973eb45be6e4bebb51",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 13,
+              "filename": "s3.tf",
+              "startLine": 4
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.documents_replica",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "org-hr-documents-replica",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage",
+              "Purpose": "Disaster recovery replica of HR documents bucket"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "s3-replication.tf:167",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.documents_replica",
+                  "endLine": 36,
+                  "filename": "s3-replication.tf",
+                  "startLine": 25
+                }
+              ],
+              "checksum": "f34c355b8d32c9ce4e1cbfd5077d4364b7ff95b795d3dc713c38a1494c148d1c",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 36,
+              "filename": "s3-replication.tf",
+              "startLine": 25
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0245",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0054",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.00043",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.00225",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0008",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.logs",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "s3-access-logs-bucket-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage",
+              "Purpose": "Access logging for HR documents bucket"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.logs",
+                  "endLine": 14,
+                  "filename": "s3-logging.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "a48660793d6412610e2a9c19a976193830d3dc6498c34205a4614b855b1d4797",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 14,
+              "filename": "s3-logging.tf",
+              "startLine": 4
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_sns_topic.infrastructure_alerts",
+            "resourceType": "aws_sns_topic",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "hr-documents-alerts-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_sns_topic.infrastructure_alerts",
+                  "endLine": 13,
+                  "filename": "monitoring.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "d21380613d737069c6a820f318d59a541c45b8e4da1bea01d88a80b486d2a1a2",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 13,
+              "filename": "monitoring.tf",
+              "startLine": 4
+            },
+            "costComponents": [
+              {
+                "name": "API requests (over 1M)",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "HTTP/HTTPS notifications (over 100k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.06",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Email/Email-JSON notifications (over 1k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Kinesis Firehose notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.19",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Mobile Push notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "MacOS notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "SMS notifications (over 100)",
+                "unit": "100 notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": true
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.00904109589041076",
+        "totalMonthlyCost": "6.6",
+        "totalMonthlyUsageCost": "0"
+      },
+      "breakdown": {
+        "resources": [
+          {
+            "name": "aws_cloudwatch_dashboard.hr_documents",
+            "resourceType": "aws_cloudwatch_dashboard",
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_dashboard.hr_documents",
+                  "endLine": 115,
+                  "filename": "monitoring.tf",
+                  "startLine": 35
+                }
+              ],
+              "checksum": "df9982dc9a0f976e37d4dbe97c5da71e13f63c4912607fe7bb7c12944e8606ba",
+              "endLine": 115,
+              "filename": "monitoring.tf",
+              "startLine": 35
+            },
+            "hourlyCost": "0.0041095890410958",
+            "monthlyCost": "3",
+            "costComponents": [
+              {
+                "name": "Dashboard",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "3",
+                "hourlyCost": "0.0041095890410958",
+                "monthlyCost": "3",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_kms_key.s3_key",
+            "resourceType": "aws_kms_key",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "s3-documents-key-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_kms_key.s3_key",
+                  "endLine": 15,
+                  "filename": "kms.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "de4635cce90f6ae19745d3ee4356d5d5f41eb3e63afb1c7958c6b0edbfd1ac33",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 15,
+              "filename": "kms.tf",
+              "startLine": 4
+            },
+            "hourlyCost": "0.0013698630136986",
+            "monthlyCost": "1",
+            "costComponents": [
+              {
+                "name": "Customer master key",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "1",
+                "hourlyCost": "0.0013698630136986",
+                "monthlyCost": "1",
+                "priceNotFound": false
+              },
+              {
+                "name": "Requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "ECC GenerateDataKeyPair requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "RSA GenerateDataKeyPair requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_kms_key.s3_key_replica",
+            "resourceType": "aws_kms_key",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "s3-documents-replica-key-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "s3-replication.tf:167",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_kms_key.s3_key_replica",
+                  "endLine": 16,
+                  "filename": "s3-replication.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "4fec37f209642f07af9a30432772746f268d413108db86ef414adfb402bc7f60",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 16,
+              "filename": "s3-replication.tf",
+              "startLine": 4
+            },
+            "hourlyCost": "0.0013698630136986",
+            "monthlyCost": "1",
+            "costComponents": [
+              {
+                "name": "Customer master key",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "1",
+                "hourlyCost": "0.0013698630136986",
+                "monthlyCost": "1",
+                "priceNotFound": false
+              },
+              {
+                "name": "Requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "ECC GenerateDataKeyPair requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "RSA GenerateDataKeyPair requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_kms_key.terraform_state_key",
+            "resourceType": "aws_kms_key",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "terraform-state-key-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_kms_key.terraform_state_key",
+                  "endLine": 95,
+                  "filename": "kms.tf",
+                  "startLine": 84
+                }
+              ],
+              "checksum": "2ab5dcaf1afaa1e4db69a3741ae5c0f0ab8eee6ec2ea8dee510d66b3f029bebf",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 95,
+              "filename": "kms.tf",
+              "startLine": 84
+            },
+            "hourlyCost": "0.0013698630136986",
+            "monthlyCost": "1",
+            "costComponents": [
+              {
+                "name": "Customer master key",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "1",
+                "hourlyCost": "0.0013698630136986",
+                "monthlyCost": "1",
+                "priceNotFound": false
+              },
+              {
+                "name": "Requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "ECC GenerateDataKeyPair requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "RSA GenerateDataKeyPair requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.bucket_size_quota",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "bucket-quota-alarm-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.bucket_size_quota",
+                  "endLine": 162,
+                  "filename": "monitoring.tf",
+                  "startLine": 140
+                }
+              ],
+              "checksum": "0a0492c3565490bc16c29a6fd39bb3a02c8209d82292ae7f75a4d97415c29dbf",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 162,
+              "filename": "monitoring.tf",
+              "startLine": 140
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.object_deletions[0]",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "object-deletion-alarm-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.object_deletions",
+                  "endLine": 264,
+                  "filename": "monitoring.tf",
+                  "startLine": 244
+                }
+              ],
+              "checksum": "4440b98ab1c7decfff31a98d281397c6ff6df9791a8fb3e0c6fb36e6106dec1e",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 264,
+              "filename": "monitoring.tf",
+              "startLine": 244
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.replication_failures[0]",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "replication-alarm-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.replication_failures",
+                  "endLine": 191,
+                  "filename": "monitoring.tf",
+                  "startLine": 165
+                }
+              ],
+              "checksum": "5d088f501ef806ea4108befd361964b384ff5c16e7d7afdd7caa6ea06919f773",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 191,
+              "filename": "monitoring.tf",
+              "startLine": 165
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.s3_4xx_errors",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "s3-4xx-errors-alarm-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.s3_4xx_errors",
+                  "endLine": 216,
+                  "filename": "monitoring.tf",
+                  "startLine": 194
+                }
+              ],
+              "checksum": "6deedd015c019fca2c9bb438e3c94996fe1986140712a5950ae14a8f1d30af83",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 216,
+              "filename": "monitoring.tf",
+              "startLine": 194
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.s3_5xx_errors",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "s3-5xx-errors-alarm-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.s3_5xx_errors",
+                  "endLine": 241,
+                  "filename": "monitoring.tf",
+                  "startLine": 219
+                }
+              ],
+              "checksum": "fd10f3887e4f223f812cf0dae4d7b2ee9250bbc7f33a8a5afeb49d30f02676be",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 241,
+              "filename": "monitoring.tf",
+              "startLine": 219
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.unauthorized_access[0]",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "unauthorized-access-alarm-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.unauthorized_access",
+                  "endLine": 137,
+                  "filename": "monitoring.tf",
+                  "startLine": 118
+                }
+              ],
+              "checksum": "1cc5e49ce7e462d2a7912664484a19961dd638099aeae092c8ab129d876963b2",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 137,
+              "filename": "monitoring.tf",
+              "startLine": 118
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudtrail.documents[0]",
+            "resourceType": "aws_cloudtrail",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "hr-documents-cloudtrail-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudtrail.documents",
+                  "endLine": 19,
+                  "filename": "cloudtrail.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "d6e3371541a3f955d329eab1a1aff7922535194ad502ff034d73c31057f911bb",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 19,
+              "filename": "cloudtrail.tf",
+              "startLine": 4
+            },
+            "costComponents": [
+              {
+                "name": "Management events (additional copies)",
+                "unit": "100k events",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Data events",
+                "unit": "100k events",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.cloudtrail[0]",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "cloudtrail-logs-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.cloudtrail",
+                  "endLine": 70,
+                  "filename": "cloudtrail.tf",
+                  "startLine": 59
+                }
+              ],
+              "checksum": "1c6a4c10e9c1028020b0a06529f16098bd23d4a71a80d3faeca48aaa69b914e4",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 70,
+              "filename": "cloudtrail.tf",
+              "startLine": 59
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.57",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0057",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.kms_audit",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "kms-audit-logs-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.kms_audit",
+                  "endLine": 113,
+                  "filename": "kms.tf",
+                  "startLine": 103
+                }
+              ],
+              "checksum": "a16aa5a168a77a22dcef810a2df2f5d2dd132b58e0945a7c6a9813803ca44750",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 113,
+              "filename": "kms.tf",
+              "startLine": 103
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.57",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0057",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.cloudtrail_logs",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "cloudtrail-logs-bucket-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage",
+              "Purpose": "CloudTrail API audit logging"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.cloudtrail_logs",
+                  "endLine": 123,
+                  "filename": "s3-logging.tf",
+                  "startLine": 113
+                }
+              ],
+              "checksum": "270b0486ab250b0d141c001092eac291768afcc02e75d79229947d16a5730b50",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 123,
+              "filename": "s3-logging.tf",
+              "startLine": 113
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.documents",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "org-hr-documents-prod",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.documents",
+                  "endLine": 13,
+                  "filename": "s3.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "dfd004b0d7bd522ea50a94c54e1e169dcf71b1c097d9fb973eb45be6e4bebb51",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 13,
+              "filename": "s3.tf",
+              "startLine": 4
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.documents_replica",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "org-hr-documents-replica",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage",
+              "Purpose": "Disaster recovery replica of HR documents bucket"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "s3-replication.tf:167",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.documents_replica",
+                  "endLine": 36,
+                  "filename": "s3-replication.tf",
+                  "startLine": 25
+                }
+              ],
+              "checksum": "f34c355b8d32c9ce4e1cbfd5077d4364b7ff95b795d3dc713c38a1494c148d1c",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 36,
+              "filename": "s3-replication.tf",
+              "startLine": 25
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0245",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0054",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.00043",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.00225",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0008",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.logs",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "s3-access-logs-bucket-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage",
+              "Purpose": "Access logging for HR documents bucket"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.logs",
+                  "endLine": 14,
+                  "filename": "s3-logging.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "a48660793d6412610e2a9c19a976193830d3dc6498c34205a4614b855b1d4797",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 14,
+              "filename": "s3-logging.tf",
+              "startLine": 4
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_sns_topic.infrastructure_alerts",
+            "resourceType": "aws_sns_topic",
+            "tags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Name": "hr-documents-alerts-main",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "defaultTags": {
+              "DataClassification": "Confidential",
+              "Department": "HR",
+              "Environment": "main",
+              "ManagedBy": "Terraform",
+              "Owner": "Infrastructure",
+              "Project": "HR-Document-Storage"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_sns_topic.infrastructure_alerts",
+                  "endLine": 13,
+                  "filename": "monitoring.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "d21380613d737069c6a820f318d59a541c45b8e4da1bea01d88a80b486d2a1a2",
+              "defaultTagsChecksum": "c570844fe236e64a6f2a9a7b6a8e99bf4511a623ab9be66f2f363cdf02d2c7a9",
+              "endLine": 13,
+              "filename": "monitoring.tf",
+              "startLine": 4
+            },
+            "costComponents": [
+              {
+                "name": "API requests (over 1M)",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "HTTP/HTTPS notifications (over 100k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.06",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Email/Email-JSON notifications (over 1k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Kinesis Firehose notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.19",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Mobile Push notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "MacOS notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "SMS notifications (over 100)",
+                "unit": "100 notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": true
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.00904109589041076",
+        "totalMonthlyCost": "6.6",
+        "totalMonthlyUsageCost": "0"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 66,
+        "totalSupportedResources": 18,
+        "totalUnsupportedResources": 7,
+        "totalUsageBasedResources": 8,
+        "totalNoPriceResources": 41,
+        "unsupportedResourceCounts": {
+          "aws_cloudtrail_data_event_selector": 1,
+          "aws_cloudtrail_event_selector": 1,
+          "aws_cloudwatch_log_group_metric_filter": 4,
+          "aws_s3_bucket_tagging": 1
+        },
+        "noPriceResourceCounts": {
+          "aws_cloudwatch_log_resource_policy": 1,
+          "aws_iam_policy": 4,
+          "aws_iam_role": 5,
+          "aws_iam_role_policy": 1,
+          "aws_iam_role_policy_attachment": 4,
+          "aws_kms_alias": 3,
+          "aws_kms_key_policy": 1,
+          "aws_s3_bucket_lifecycle_configuration": 4,
+          "aws_s3_bucket_logging": 1,
+          "aws_s3_bucket_policy": 3,
+          "aws_s3_bucket_public_access_block": 4,
+          "aws_s3_bucket_replication_configuration": 1,
+          "aws_s3_bucket_server_side_encryption_configuration": 4,
+          "aws_s3_bucket_versioning": 4,
+          "aws_sns_topic_policy": 1
+        }
+      }
+    }
+  ],
+  "totalHourlyCost": "0.00904109589041076",
+  "totalMonthlyCost": "6.6",
+  "totalMonthlyUsageCost": "0",
+  "pastTotalHourlyCost": "0.00904109589041076",
+  "pastTotalMonthlyCost": "6.6",
+  "pastTotalMonthlyUsageCost": "0",
+  "diffTotalHourlyCost": "0",
+  "diffTotalMonthlyCost": "0",
+  "diffTotalMonthlyUsageCost": "0",
+  "timeGenerated": "2026-03-09T18:51:31.725321996Z",
+  "summary": {
+    "totalDetectedResources": 66,
+    "totalSupportedResources": 18,
+    "totalUnsupportedResources": 7,
+    "totalUsageBasedResources": 8,
+    "totalNoPriceResources": 41,
+    "unsupportedResourceCounts": {
+      "aws_cloudtrail_data_event_selector": 1,
+      "aws_cloudtrail_event_selector": 1,
+      "aws_cloudwatch_log_group_metric_filter": 4,
+      "aws_s3_bucket_tagging": 1
+    },
+    "noPriceResourceCounts": {
+      "aws_cloudwatch_log_resource_policy": 1,
+      "aws_iam_policy": 4,
+      "aws_iam_role": 5,
+      "aws_iam_role_policy": 1,
+      "aws_iam_role_policy_attachment": 4,
+      "aws_kms_alias": 3,
+      "aws_kms_key_policy": 1,
+      "aws_s3_bucket_lifecycle_configuration": 4,
+      "aws_s3_bucket_logging": 1,
+      "aws_s3_bucket_policy": 3,
+      "aws_s3_bucket_public_access_block": 4,
+      "aws_s3_bucket_replication_configuration": 1,
+      "aws_s3_bucket_server_side_encryption_configuration": 4,
+      "aws_s3_bucket_versioning": 4,
+      "aws_sns_topic_policy": 1
+    }
+  }
+}

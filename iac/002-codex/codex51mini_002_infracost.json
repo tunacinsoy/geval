@@ -1,0 +1,2664 @@
+{
+  "version": "0.2",
+  "metadata": {
+    "infracostCommand": "breakdown",
+    "vcsBranch": "001-secure-hr-docs",
+    "vcsCommitSha": "4f0e0dc028e72e748e13a2d17c3882d01e25f88e",
+    "vcsCommitAuthorName": "tuna",
+    "vcsCommitAuthorEmail": "tunacinsoy@gmail.com",
+    "vcsCommitTimestamp": "2026-03-04T21:30:46Z",
+    "vcsCommitMessage": "feat: revert main to original",
+    "vcsRepositoryUrl": "https://github.com/tunacinsoy/pw-sdd-iac-codex-001.git"
+  },
+  "currency": "USD",
+  "projects": [
+    {
+      "name": "tunacinsoy/pw-sdd-iac-codex-001/iac",
+      "displayName": "main",
+      "metadata": {
+        "path": ".",
+        "type": "terraform_dir",
+        "vcsSubPath": "iac",
+        "vcsCodeChanged": true,
+        "providers": [
+          {
+            "name": "aws",
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "filename": "provider.tf",
+            "startLine": 1,
+            "endLine": 10
+          },
+          {
+            "name": "aws.replica",
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "filename": "provider.tf",
+            "startLine": 12,
+            "endLine": 22
+          }
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [
+          {
+            "name": "aws_ecs_service.hr_service",
+            "resourceType": "aws_ecs_service",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "tagPropagation": {
+              "to": "task",
+              "from": "",
+              "attribute": "propagate_tags",
+              "hasRequiredAttributes": true
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_ecs_service.hr_service",
+                  "endLine": 61,
+                  "filename": "compute.tf",
+                  "startLine": 42
+                }
+              ],
+              "checksum": "7306314458aafb752ff5c6c78eb8822958dad4bb674c2305ce37b6c260ef26ab",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 61,
+              "filename": "compute.tf",
+              "startLine": 42
+            },
+            "hourlyCost": "0.04937",
+            "monthlyCost": "36.0401",
+            "costComponents": [
+              {
+                "name": "Per GB per hour",
+                "unit": "GB",
+                "hourlyQuantity": "0.0027397260273973",
+                "monthlyQuantity": "2",
+                "price": "3.24485",
+                "hourlyCost": "0.00889",
+                "monthlyCost": "6.4897",
+                "priceNotFound": false
+              },
+              {
+                "name": "Per vCPU per hour",
+                "unit": "CPU",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "29.5504",
+                "hourlyCost": "0.04048",
+                "monthlyCost": "29.5504",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_nat_gateway.nat",
+            "resourceType": "aws_nat_gateway",
+            "tags": {
+              "Environment": "main",
+              "Name": "hr-nat",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_nat_gateway.nat",
+                  "endLine": 59,
+                  "filename": "networking.tf",
+                  "startLine": 53
+                }
+              ],
+              "checksum": "f67fa0424406c3a46dce7215f093de91ff2bea351ff93312821ff40c1c76885e",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 59,
+              "filename": "networking.tf",
+              "startLine": 53
+            },
+            "hourlyCost": "0.045",
+            "monthlyCost": "32.85",
+            "costComponents": [
+              {
+                "name": "NAT gateway",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.045",
+                "hourlyCost": "0.045",
+                "monthlyCost": "32.85",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.045",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_lb.hr_alb",
+            "resourceType": "aws_lb",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_lb.hr_alb",
+                  "endLine": 12,
+                  "filename": "loadbalancer.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "15cdb7da3c0d05fcde068b5c87d520202267d8fd321d22b589bebddb1cdf2923",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 12,
+              "filename": "loadbalancer.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.0225",
+            "monthlyCost": "16.425",
+            "costComponents": [
+              {
+                "name": "Application load balancer",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.0225",
+                "hourlyCost": "0.0225",
+                "monthlyCost": "16.425",
+                "priceNotFound": false
+              },
+              {
+                "name": "Load balancer capacity units",
+                "unit": "LCU",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "5.84",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_dashboard.hr",
+            "resourceType": "aws_cloudwatch_dashboard",
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_dashboard.hr",
+                  "endLine": 24,
+                  "filename": "monitoring.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "cc2d16eb02be32c3eb52c475de069d6a14be9db4fd04511dcb63095a4d906b1f",
+              "endLine": 24,
+              "filename": "monitoring.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.0041095890410958",
+            "monthlyCost": "3",
+            "costComponents": [
+              {
+                "name": "Dashboard",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "3",
+                "hourlyCost": "0.0041095890410958",
+                "monthlyCost": "3",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_kms_key.documents",
+            "resourceType": "aws_kms_key",
+            "tags": {
+              "Environment": "main",
+              "Name": "hr-documents-key",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_kms_key.documents",
+                  "endLine": 8,
+                  "filename": "storage.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "901404e73fca07734b5fcfceb2d34dcb12926be896dbdef5f35382d7b795fb78",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 8,
+              "filename": "storage.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.0013698630136986",
+            "monthlyCost": "1",
+            "costComponents": [
+              {
+                "name": "Customer master key",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "1",
+                "hourlyCost": "0.0013698630136986",
+                "monthlyCost": "1",
+                "priceNotFound": false
+              },
+              {
+                "name": "Requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "ECC GenerateDataKeyPair requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "RSA GenerateDataKeyPair requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_route53_zone.hr_private",
+            "resourceType": "aws_route53_zone",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_route53_zone.hr_private",
+                  "endLine": 9,
+                  "filename": "dns.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "ee0d12c28e1e093ad4308da92c54016fe29288173da022d338a0fa070f64c6fe",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 9,
+              "filename": "dns.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.0006849315068493",
+            "monthlyCost": "0.5",
+            "costComponents": [
+              {
+                "name": "Hosted zone",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.5",
+                "hourlyCost": "0.0006849315068493",
+                "monthlyCost": "0.5",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_secretsmanager_secret.audit",
+            "resourceType": "aws_secretsmanager_secret",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_secretsmanager_secret.audit",
+                  "endLine": 21,
+                  "filename": "secrets.tf",
+                  "startLine": 17
+                }
+              ],
+              "checksum": "e07fcc5a63f10004f695e63f22f9c176507e2ef65e4be843a5a6a4232cc964d1",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 21,
+              "filename": "secrets.tf",
+              "startLine": 17
+            },
+            "hourlyCost": "0.00054794520547944",
+            "monthlyCost": "0.4",
+            "costComponents": [
+              {
+                "name": "Secret",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.4",
+                "hourlyCost": "0.00054794520547944",
+                "monthlyCost": "0.4",
+                "priceNotFound": false
+              },
+              {
+                "name": "API requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.05",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_secretsmanager_secret.tls",
+            "resourceType": "aws_secretsmanager_secret",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_secretsmanager_secret.tls",
+                  "endLine": 8,
+                  "filename": "secrets.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "fa109893a7c0f93cb981e258b44089a856a8df5c17776845f77ae8cc8b28a0d1",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 8,
+              "filename": "secrets.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.00054794520547944",
+            "monthlyCost": "0.4",
+            "costComponents": [
+              {
+                "name": "Secret",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.4",
+                "hourlyCost": "0.00054794520547944",
+                "monthlyCost": "0.4",
+                "priceNotFound": false
+              },
+              {
+                "name": "API requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.05",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.latency",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.latency",
+                  "endLine": 43,
+                  "filename": "monitoring.tf",
+                  "startLine": 30
+                }
+              ],
+              "checksum": "b55e6488f91c47654fd290cbef7305865e4224a392d6585269fbe0dc7ef2ecb3",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 43,
+              "filename": "monitoring.tf",
+              "startLine": 30
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.server_errors",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.server_errors",
+                  "endLine": 58,
+                  "filename": "monitoring.tf",
+                  "startLine": 45
+                }
+              ],
+              "checksum": "48fde33aefc52decad5383a37830ae2f4b38920ff7dbfc22bc88bf8715b8e146",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 58,
+              "filename": "monitoring.tf",
+              "startLine": 45
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_appautoscaling_target.service",
+            "resourceType": "aws_appautoscaling_target",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_appautoscaling_target.service",
+                  "endLine": 69,
+                  "filename": "compute.tf",
+                  "startLine": 63
+                }
+              ],
+              "checksum": "ae78becf8b8e351d08e8870129b2fe9c06252e500a4352a25ec19009008db31b",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 69,
+              "filename": "compute.tf",
+              "startLine": 63
+            }
+          },
+          {
+            "name": "aws_cloudtrail.hr_trail",
+            "resourceType": "aws_cloudtrail",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudtrail.hr_trail",
+                  "endLine": 15,
+                  "filename": "logging.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "acc756420a6f1b06bcc201bb3f1671d86cf07e9de3416d1eec989c2df580f4c2",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 15,
+              "filename": "logging.tf",
+              "startLine": 1
+            },
+            "costComponents": [
+              {
+                "name": "Management events (additional copies)",
+                "unit": "100k events",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Data events",
+                "unit": "100k events",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.audit",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.audit",
+                  "endLine": 28,
+                  "filename": "logging.tf",
+                  "startLine": 25
+                }
+              ],
+              "checksum": "cfba1075fa456a52b3995a7ffdba387ffb23ecd01a4bd7747016d1428b60f98c",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 28,
+              "filename": "logging.tf",
+              "startLine": 25
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.hr_app",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.hr_app",
+                  "endLine": 23,
+                  "filename": "logging.tf",
+                  "startLine": 17
+                }
+              ],
+              "checksum": "b89e1e02e1f145e39c31d553b5954338177450c6fd8344318511f2b8e337731d",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 23,
+              "filename": "logging.tf",
+              "startLine": 17
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_config_configuration_recorder.main",
+            "resourceType": "aws_config_configuration_recorder",
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_config_configuration_recorder.main",
+                  "endLine": 77,
+                  "filename": "security.tf",
+                  "startLine": 74
+                }
+              ],
+              "checksum": "5e112b07d8670399a48be691527729dbab1691fe8dccf70179dc9ee7dc24320f",
+              "endLine": 77,
+              "filename": "security.tf",
+              "startLine": 74
+            },
+            "costComponents": [
+              {
+                "name": "Config items",
+                "unit": "records",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.003",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Custom config items",
+                "unit": "records",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.003",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_route53_record.portal",
+            "resourceType": "aws_route53_record",
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_route53_record.portal",
+                  "endLine": 17,
+                  "filename": "dns.tf",
+                  "startLine": 11
+                }
+              ],
+              "checksum": "29c4a384009f1e4294b7e0782a60e2ef246631b8c70b4ac05c4702a74c1da2d1",
+              "endLine": 17,
+              "filename": "dns.tf",
+              "startLine": 11
+            },
+            "costComponents": [
+              {
+                "name": "Standard queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.4",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Latency based routing queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.6",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Geo DNS queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.7",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.audit_logs",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.audit_logs",
+                  "endLine": 190,
+                  "filename": "storage.tf",
+                  "startLine": 170
+                }
+              ],
+              "checksum": "f8f80b27f2870def886075f22474c7e00a9ca0bb75de1be2a950e1d810f5ea46",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 190,
+              "filename": "storage.tf",
+              "startLine": 170
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.hr_documents",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.hr_documents",
+                  "endLine": 65,
+                  "filename": "storage.tf",
+                  "startLine": 15
+                }
+              ],
+              "checksum": "e3b472bf50debcf12dd246a255c30afe501a476dad09167d193b74a05d5be2c4",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 65,
+              "filename": "storage.tf",
+              "startLine": 15
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.hr_documents_replica",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:12",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.hr_documents_replica",
+                  "endLine": 94,
+                  "filename": "storage.tf",
+                  "startLine": 75
+                }
+              ],
+              "checksum": "0d6d47206060bbb314fdb186c5d70e2c733321c9eabe7f85222fc0b92f63af14",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 94,
+              "filename": "storage.tf",
+              "startLine": 75
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_sns_topic.alerts",
+            "resourceType": "aws_sns_topic",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_sns_topic.alerts",
+                  "endLine": 28,
+                  "filename": "monitoring.tf",
+                  "startLine": 26
+                }
+              ],
+              "checksum": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 28,
+              "filename": "monitoring.tf",
+              "startLine": 26
+            },
+            "costComponents": [
+              {
+                "name": "API requests (over 1M)",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "HTTP/HTTPS notifications (over 100k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.06",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Email/Email-JSON notifications (over 1k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Kinesis Firehose notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.19",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Mobile Push notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "MacOS notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "SMS notifications (over 100)",
+                "unit": "100 notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": true
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.1244042465753423",
+        "totalMonthlyCost": "90.8151",
+        "totalMonthlyUsageCost": "0"
+      },
+      "breakdown": {
+        "resources": [
+          {
+            "name": "aws_ecs_service.hr_service",
+            "resourceType": "aws_ecs_service",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "tagPropagation": {
+              "to": "task",
+              "from": "",
+              "attribute": "propagate_tags",
+              "hasRequiredAttributes": true
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_ecs_service.hr_service",
+                  "endLine": 61,
+                  "filename": "compute.tf",
+                  "startLine": 42
+                }
+              ],
+              "checksum": "7306314458aafb752ff5c6c78eb8822958dad4bb674c2305ce37b6c260ef26ab",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 61,
+              "filename": "compute.tf",
+              "startLine": 42
+            },
+            "hourlyCost": "0.04937",
+            "monthlyCost": "36.0401",
+            "costComponents": [
+              {
+                "name": "Per GB per hour",
+                "unit": "GB",
+                "hourlyQuantity": "0.0027397260273973",
+                "monthlyQuantity": "2",
+                "price": "3.24485",
+                "hourlyCost": "0.00889",
+                "monthlyCost": "6.4897",
+                "priceNotFound": false
+              },
+              {
+                "name": "Per vCPU per hour",
+                "unit": "CPU",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "29.5504",
+                "hourlyCost": "0.04048",
+                "monthlyCost": "29.5504",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_nat_gateway.nat",
+            "resourceType": "aws_nat_gateway",
+            "tags": {
+              "Environment": "main",
+              "Name": "hr-nat",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_nat_gateway.nat",
+                  "endLine": 59,
+                  "filename": "networking.tf",
+                  "startLine": 53
+                }
+              ],
+              "checksum": "f67fa0424406c3a46dce7215f093de91ff2bea351ff93312821ff40c1c76885e",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 59,
+              "filename": "networking.tf",
+              "startLine": 53
+            },
+            "hourlyCost": "0.045",
+            "monthlyCost": "32.85",
+            "costComponents": [
+              {
+                "name": "NAT gateway",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.045",
+                "hourlyCost": "0.045",
+                "monthlyCost": "32.85",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.045",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_lb.hr_alb",
+            "resourceType": "aws_lb",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_lb.hr_alb",
+                  "endLine": 12,
+                  "filename": "loadbalancer.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "15cdb7da3c0d05fcde068b5c87d520202267d8fd321d22b589bebddb1cdf2923",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 12,
+              "filename": "loadbalancer.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.0225",
+            "monthlyCost": "16.425",
+            "costComponents": [
+              {
+                "name": "Application load balancer",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.0225",
+                "hourlyCost": "0.0225",
+                "monthlyCost": "16.425",
+                "priceNotFound": false
+              },
+              {
+                "name": "Load balancer capacity units",
+                "unit": "LCU",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "5.84",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_dashboard.hr",
+            "resourceType": "aws_cloudwatch_dashboard",
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_dashboard.hr",
+                  "endLine": 24,
+                  "filename": "monitoring.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "cc2d16eb02be32c3eb52c475de069d6a14be9db4fd04511dcb63095a4d906b1f",
+              "endLine": 24,
+              "filename": "monitoring.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.0041095890410958",
+            "monthlyCost": "3",
+            "costComponents": [
+              {
+                "name": "Dashboard",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "3",
+                "hourlyCost": "0.0041095890410958",
+                "monthlyCost": "3",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_kms_key.documents",
+            "resourceType": "aws_kms_key",
+            "tags": {
+              "Environment": "main",
+              "Name": "hr-documents-key",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_kms_key.documents",
+                  "endLine": 8,
+                  "filename": "storage.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "901404e73fca07734b5fcfceb2d34dcb12926be896dbdef5f35382d7b795fb78",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 8,
+              "filename": "storage.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.0013698630136986",
+            "monthlyCost": "1",
+            "costComponents": [
+              {
+                "name": "Customer master key",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "1",
+                "hourlyCost": "0.0013698630136986",
+                "monthlyCost": "1",
+                "priceNotFound": false
+              },
+              {
+                "name": "Requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "ECC GenerateDataKeyPair requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "RSA GenerateDataKeyPair requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_route53_zone.hr_private",
+            "resourceType": "aws_route53_zone",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_route53_zone.hr_private",
+                  "endLine": 9,
+                  "filename": "dns.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "ee0d12c28e1e093ad4308da92c54016fe29288173da022d338a0fa070f64c6fe",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 9,
+              "filename": "dns.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.0006849315068493",
+            "monthlyCost": "0.5",
+            "costComponents": [
+              {
+                "name": "Hosted zone",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.5",
+                "hourlyCost": "0.0006849315068493",
+                "monthlyCost": "0.5",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_secretsmanager_secret.audit",
+            "resourceType": "aws_secretsmanager_secret",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_secretsmanager_secret.audit",
+                  "endLine": 21,
+                  "filename": "secrets.tf",
+                  "startLine": 17
+                }
+              ],
+              "checksum": "e07fcc5a63f10004f695e63f22f9c176507e2ef65e4be843a5a6a4232cc964d1",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 21,
+              "filename": "secrets.tf",
+              "startLine": 17
+            },
+            "hourlyCost": "0.00054794520547944",
+            "monthlyCost": "0.4",
+            "costComponents": [
+              {
+                "name": "Secret",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.4",
+                "hourlyCost": "0.00054794520547944",
+                "monthlyCost": "0.4",
+                "priceNotFound": false
+              },
+              {
+                "name": "API requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.05",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_secretsmanager_secret.tls",
+            "resourceType": "aws_secretsmanager_secret",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_secretsmanager_secret.tls",
+                  "endLine": 8,
+                  "filename": "secrets.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "fa109893a7c0f93cb981e258b44089a856a8df5c17776845f77ae8cc8b28a0d1",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 8,
+              "filename": "secrets.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.00054794520547944",
+            "monthlyCost": "0.4",
+            "costComponents": [
+              {
+                "name": "Secret",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.4",
+                "hourlyCost": "0.00054794520547944",
+                "monthlyCost": "0.4",
+                "priceNotFound": false
+              },
+              {
+                "name": "API requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.05",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.latency",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.latency",
+                  "endLine": 43,
+                  "filename": "monitoring.tf",
+                  "startLine": 30
+                }
+              ],
+              "checksum": "b55e6488f91c47654fd290cbef7305865e4224a392d6585269fbe0dc7ef2ecb3",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 43,
+              "filename": "monitoring.tf",
+              "startLine": 30
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.server_errors",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.server_errors",
+                  "endLine": 58,
+                  "filename": "monitoring.tf",
+                  "startLine": 45
+                }
+              ],
+              "checksum": "48fde33aefc52decad5383a37830ae2f4b38920ff7dbfc22bc88bf8715b8e146",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 58,
+              "filename": "monitoring.tf",
+              "startLine": 45
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_appautoscaling_target.service",
+            "resourceType": "aws_appautoscaling_target",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_appautoscaling_target.service",
+                  "endLine": 69,
+                  "filename": "compute.tf",
+                  "startLine": 63
+                }
+              ],
+              "checksum": "ae78becf8b8e351d08e8870129b2fe9c06252e500a4352a25ec19009008db31b",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 69,
+              "filename": "compute.tf",
+              "startLine": 63
+            }
+          },
+          {
+            "name": "aws_cloudtrail.hr_trail",
+            "resourceType": "aws_cloudtrail",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudtrail.hr_trail",
+                  "endLine": 15,
+                  "filename": "logging.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "acc756420a6f1b06bcc201bb3f1671d86cf07e9de3416d1eec989c2df580f4c2",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 15,
+              "filename": "logging.tf",
+              "startLine": 1
+            },
+            "costComponents": [
+              {
+                "name": "Management events (additional copies)",
+                "unit": "100k events",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Data events",
+                "unit": "100k events",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.audit",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.audit",
+                  "endLine": 28,
+                  "filename": "logging.tf",
+                  "startLine": 25
+                }
+              ],
+              "checksum": "cfba1075fa456a52b3995a7ffdba387ffb23ecd01a4bd7747016d1428b60f98c",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 28,
+              "filename": "logging.tf",
+              "startLine": 25
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.hr_app",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.hr_app",
+                  "endLine": 23,
+                  "filename": "logging.tf",
+                  "startLine": 17
+                }
+              ],
+              "checksum": "b89e1e02e1f145e39c31d553b5954338177450c6fd8344318511f2b8e337731d",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 23,
+              "filename": "logging.tf",
+              "startLine": 17
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_config_configuration_recorder.main",
+            "resourceType": "aws_config_configuration_recorder",
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_config_configuration_recorder.main",
+                  "endLine": 77,
+                  "filename": "security.tf",
+                  "startLine": 74
+                }
+              ],
+              "checksum": "5e112b07d8670399a48be691527729dbab1691fe8dccf70179dc9ee7dc24320f",
+              "endLine": 77,
+              "filename": "security.tf",
+              "startLine": 74
+            },
+            "costComponents": [
+              {
+                "name": "Config items",
+                "unit": "records",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.003",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Custom config items",
+                "unit": "records",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.003",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_route53_record.portal",
+            "resourceType": "aws_route53_record",
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_route53_record.portal",
+                  "endLine": 17,
+                  "filename": "dns.tf",
+                  "startLine": 11
+                }
+              ],
+              "checksum": "29c4a384009f1e4294b7e0782a60e2ef246631b8c70b4ac05c4702a74c1da2d1",
+              "endLine": 17,
+              "filename": "dns.tf",
+              "startLine": 11
+            },
+            "costComponents": [
+              {
+                "name": "Standard queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.4",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Latency based routing queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.6",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Geo DNS queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.7",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.audit_logs",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.audit_logs",
+                  "endLine": 190,
+                  "filename": "storage.tf",
+                  "startLine": 170
+                }
+              ],
+              "checksum": "f8f80b27f2870def886075f22474c7e00a9ca0bb75de1be2a950e1d810f5ea46",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 190,
+              "filename": "storage.tf",
+              "startLine": 170
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.hr_documents",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.hr_documents",
+                  "endLine": 65,
+                  "filename": "storage.tf",
+                  "startLine": 15
+                }
+              ],
+              "checksum": "e3b472bf50debcf12dd246a255c30afe501a476dad09167d193b74a05d5be2c4",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 65,
+              "filename": "storage.tf",
+              "startLine": 15
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.hr_documents_replica",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:12",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.hr_documents_replica",
+                  "endLine": 94,
+                  "filename": "storage.tf",
+                  "startLine": 75
+                }
+              ],
+              "checksum": "0d6d47206060bbb314fdb186c5d70e2c733321c9eabe7f85222fc0b92f63af14",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 94,
+              "filename": "storage.tf",
+              "startLine": 75
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_sns_topic.alerts",
+            "resourceType": "aws_sns_topic",
+            "tags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "defaultTags": {
+              "Environment": "main",
+              "Owner": "hr-operations",
+              "Project": "SecureHRDocs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_sns_topic.alerts",
+                  "endLine": 28,
+                  "filename": "monitoring.tf",
+                  "startLine": 26
+                }
+              ],
+              "checksum": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "defaultTagsChecksum": "73873bb8fc765313766a010b42448db78514c0ffd28c507e982b7217570dcf07",
+              "endLine": 28,
+              "filename": "monitoring.tf",
+              "startLine": 26
+            },
+            "costComponents": [
+              {
+                "name": "API requests (over 1M)",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "HTTP/HTTPS notifications (over 100k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.06",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Email/Email-JSON notifications (over 1k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Kinesis Firehose notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.19",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Mobile Push notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "MacOS notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "SMS notifications (over 100)",
+                "unit": "100 notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": true
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.1244042465753423",
+        "totalMonthlyCost": "90.8151",
+        "totalMonthlyUsageCost": "0"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 68,
+        "totalSupportedResources": 20,
+        "totalUnsupportedResources": 2,
+        "totalUsageBasedResources": 13,
+        "totalNoPriceResources": 46,
+        "unsupportedResourceCounts": {
+          "aws_guardduty_detector": 1,
+          "aws_securityhub_account": 1
+        },
+        "noPriceResourceCounts": {
+          "aws_appautoscaling_policy": 1,
+          "aws_config_delivery_channel": 1,
+          "aws_ecs_cluster": 1,
+          "aws_ecs_task_definition": 1,
+          "aws_eip": 1,
+          "aws_flow_log": 1,
+          "aws_iam_policy": 5,
+          "aws_iam_policy_attachment": 2,
+          "aws_iam_role": 5,
+          "aws_iam_role_policy_attachment": 3,
+          "aws_internet_gateway": 1,
+          "aws_kms_alias": 1,
+          "aws_lb_listener": 1,
+          "aws_lb_target_group": 1,
+          "aws_route_table": 2,
+          "aws_route_table_association": 4,
+          "aws_s3_bucket_public_access_block": 2,
+          "aws_s3_bucket_replication_configuration": 1,
+          "aws_secretsmanager_secret_version": 2,
+          "aws_security_group": 3,
+          "aws_subnet": 4,
+          "aws_vpc": 1,
+          "aws_vpc_endpoint": 1,
+          "aws_vpc_endpoint_service": 1
+        }
+      }
+    }
+  ],
+  "totalHourlyCost": "0.1244042465753423",
+  "totalMonthlyCost": "90.8151",
+  "totalMonthlyUsageCost": "0",
+  "pastTotalHourlyCost": "0.1244042465753423",
+  "pastTotalMonthlyCost": "90.8151",
+  "pastTotalMonthlyUsageCost": "0",
+  "diffTotalHourlyCost": "0",
+  "diffTotalMonthlyCost": "0",
+  "diffTotalMonthlyUsageCost": "0",
+  "timeGenerated": "2026-03-04T22:02:54.759913938Z",
+  "summary": {
+    "totalDetectedResources": 68,
+    "totalSupportedResources": 20,
+    "totalUnsupportedResources": 2,
+    "totalUsageBasedResources": 13,
+    "totalNoPriceResources": 46,
+    "unsupportedResourceCounts": {
+      "aws_guardduty_detector": 1,
+      "aws_securityhub_account": 1
+    },
+    "noPriceResourceCounts": {
+      "aws_appautoscaling_policy": 1,
+      "aws_config_delivery_channel": 1,
+      "aws_ecs_cluster": 1,
+      "aws_ecs_task_definition": 1,
+      "aws_eip": 1,
+      "aws_flow_log": 1,
+      "aws_iam_policy": 5,
+      "aws_iam_policy_attachment": 2,
+      "aws_iam_role": 5,
+      "aws_iam_role_policy_attachment": 3,
+      "aws_internet_gateway": 1,
+      "aws_kms_alias": 1,
+      "aws_lb_listener": 1,
+      "aws_lb_target_group": 1,
+      "aws_route_table": 2,
+      "aws_route_table_association": 4,
+      "aws_s3_bucket_public_access_block": 2,
+      "aws_s3_bucket_replication_configuration": 1,
+      "aws_secretsmanager_secret_version": 2,
+      "aws_security_group": 3,
+      "aws_subnet": 4,
+      "aws_vpc": 1,
+      "aws_vpc_endpoint": 1,
+      "aws_vpc_endpoint_service": 1
+    }
+  }
+}

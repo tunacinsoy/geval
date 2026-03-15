@@ -1,0 +1,5 @@
+environment     = "prod"
+primary_domain  = "flower-shop.example.com"
+www_domain      = "www.flower-shop.example.com"
+route53_zone_id = "Z1234567890"
+deployment_email = "owner@flower-shop.com"

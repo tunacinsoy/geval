@@ -1,0 +1,6 @@
+environment     = "staging"
+primary_domain  = "staging.flower-shop.example.com"
+www_domain      = "www.staging.flower-shop.example.com"
+route53_zone_id = "Z1234567890"
+deployment_email = "staging-alerts@flower-shop.com"
+cache_ttl_seconds = 1800

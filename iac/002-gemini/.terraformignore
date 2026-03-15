@@ -1,0 +1,3 @@
+# This is a .terraformignore file.
+# For this project, there are no specific files to ignore for Terraform.
+# The .gitignore file already covers the necessary patterns.
