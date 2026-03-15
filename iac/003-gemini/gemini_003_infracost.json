@@ -1,0 +1,374 @@
+{
+  "version": "0.2",
+  "metadata": {
+    "infracostCommand": "breakdown",
+    "vcsBranch": "001-feature-playground",
+    "vcsCommitSha": "d445412d8bb116d3ed823bd34fce521f00898b67",
+    "vcsCommitAuthorName": "tunacinsoy",
+    "vcsCommitAuthorEmail": "tunacinsoy@gmail.com",
+    "vcsCommitTimestamp": "2026-02-12T15:48:58Z",
+    "vcsCommitMessage": "feat: init",
+    "vcsRepositoryUrl": "https://github.com/tunacinsoy/pw-sdd-iac-gemini-001.git"
+  },
+  "currency": "USD",
+  "projects": [
+    {
+      "name": "tunacinsoy/pw-sdd-iac-gemini-001/iac",
+      "displayName": "main",
+      "metadata": {
+        "path": "/home/tuna/git-repos/pw-sdd-iac-gemini-001/iac",
+        "type": "terraform_dir",
+        "vcsSubPath": "iac",
+        "vcsCodeChanged": true,
+        "providers": [
+          {
+            "name": "aws",
+            "filename": "provider.tf",
+            "startLine": 1,
+            "endLine": 3
+          }
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [
+          {
+            "name": "aws_db_instance.default",
+            "resourceType": "aws_db_instance",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_db_instance.default",
+                  "endLine": 11,
+                  "filename": "rds.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "104dc743de5cefc3ce11b4d1f43580aded32ec757fe5facb23d1c268295a18f8",
+              "endLine": 11,
+              "filename": "rds.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.0195753424657534245",
+            "monthlyCost": "14.29",
+            "costComponents": [
+              {
+                "name": "Database instance (on-demand, Single-AZ, db.t3.micro)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.018",
+                "hourlyCost": "0.018",
+                "monthlyCost": "13.14",
+                "priceNotFound": false
+              },
+              {
+                "name": "Storage (general purpose SSD, gp2)",
+                "unit": "GB",
+                "hourlyQuantity": "0.0136986301369863",
+                "monthlyQuantity": "10",
+                "price": "0.115",
+                "hourlyCost": "0.0015753424657534245",
+                "monthlyCost": "1.15",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_apigatewayv2_api.http_api",
+            "resourceType": "aws_apigatewayv2_api",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_apigatewayv2_api.http_api",
+                  "endLine": 4,
+                  "filename": "apigateway.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "0fd87decc529b24823fe4fe617244ff1ca5ceecc9cc28f047e7a68f3e7f40d5c",
+              "endLine": 4,
+              "filename": "apigateway.tf",
+              "startLine": 1
+            },
+            "costComponents": [
+              {
+                "name": "Requests (first 300M)",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_lambda_function.default",
+            "resourceType": "aws_lambda_function",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_lambda_function.default",
+                  "endLine": 16,
+                  "filename": "lambda.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "e8c0af5238dda39ecc96d084043a04457793e3935f2de2bdb7bb0fea60a18fd2",
+              "endLine": 16,
+              "filename": "lambda.tf",
+              "startLine": 1
+            },
+            "costComponents": [
+              {
+                "name": "Requests",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Ephemeral storage",
+                "unit": "GB-seconds",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0000000309",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "Duration (first 6B)",
+                "unit": "GB-seconds",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0000166667",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.0195753424657534245",
+        "totalMonthlyCost": "14.29",
+        "totalMonthlyUsageCost": "0"
+      },
+      "breakdown": {
+        "resources": [
+          {
+            "name": "aws_db_instance.default",
+            "resourceType": "aws_db_instance",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_db_instance.default",
+                  "endLine": 11,
+                  "filename": "rds.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "104dc743de5cefc3ce11b4d1f43580aded32ec757fe5facb23d1c268295a18f8",
+              "endLine": 11,
+              "filename": "rds.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.0195753424657534245",
+            "monthlyCost": "14.29",
+            "costComponents": [
+              {
+                "name": "Database instance (on-demand, Single-AZ, db.t3.micro)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.018",
+                "hourlyCost": "0.018",
+                "monthlyCost": "13.14",
+                "priceNotFound": false
+              },
+              {
+                "name": "Storage (general purpose SSD, gp2)",
+                "unit": "GB",
+                "hourlyQuantity": "0.0136986301369863",
+                "monthlyQuantity": "10",
+                "price": "0.115",
+                "hourlyCost": "0.0015753424657534245",
+                "monthlyCost": "1.15",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_apigatewayv2_api.http_api",
+            "resourceType": "aws_apigatewayv2_api",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_apigatewayv2_api.http_api",
+                  "endLine": 4,
+                  "filename": "apigateway.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "0fd87decc529b24823fe4fe617244ff1ca5ceecc9cc28f047e7a68f3e7f40d5c",
+              "endLine": 4,
+              "filename": "apigateway.tf",
+              "startLine": 1
+            },
+            "costComponents": [
+              {
+                "name": "Requests (first 300M)",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_lambda_function.default",
+            "resourceType": "aws_lambda_function",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_lambda_function.default",
+                  "endLine": 16,
+                  "filename": "lambda.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "e8c0af5238dda39ecc96d084043a04457793e3935f2de2bdb7bb0fea60a18fd2",
+              "endLine": 16,
+              "filename": "lambda.tf",
+              "startLine": 1
+            },
+            "costComponents": [
+              {
+                "name": "Requests",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Ephemeral storage",
+                "unit": "GB-seconds",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0000000309",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "Duration (first 6B)",
+                "unit": "GB-seconds",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0000166667",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.0195753424657534245",
+        "totalMonthlyCost": "14.29",
+        "totalMonthlyUsageCost": "0"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 16,
+        "totalSupportedResources": 3,
+        "totalUnsupportedResources": 0,
+        "totalUsageBasedResources": 3,
+        "totalNoPriceResources": 13,
+        "unsupportedResourceCounts": {},
+        "noPriceResourceCounts": {
+          "aws_api_gateway_api_key": 1,
+          "aws_api_gateway_usage_plan": 1,
+          "aws_api_gateway_usage_plan_key": 1,
+          "aws_apigatewayv2_integration": 1,
+          "aws_apigatewayv2_route": 1,
+          "aws_apigatewayv2_stage": 1,
+          "aws_db_subnet_group": 1,
+          "aws_iam_role": 1,
+          "aws_security_group": 2,
+          "aws_subnet": 2,
+          "aws_vpc": 1
+        }
+      }
+    }
+  ],
+  "totalHourlyCost": "0.0195753424657534245",
+  "totalMonthlyCost": "14.29",
+  "totalMonthlyUsageCost": "0",
+  "pastTotalHourlyCost": "0.0195753424657534245",
+  "pastTotalMonthlyCost": "14.29",
+  "pastTotalMonthlyUsageCost": "0",
+  "diffTotalHourlyCost": "0",
+  "diffTotalMonthlyCost": "0",
+  "diffTotalMonthlyUsageCost": "0",
+  "timeGenerated": "2026-03-15T12:56:43.267083809Z",
+  "summary": {
+    "totalDetectedResources": 16,
+    "totalSupportedResources": 3,
+    "totalUnsupportedResources": 0,
+    "totalUsageBasedResources": 3,
+    "totalNoPriceResources": 13,
+    "unsupportedResourceCounts": {},
+    "noPriceResourceCounts": {
+      "aws_api_gateway_api_key": 1,
+      "aws_api_gateway_usage_plan": 1,
+      "aws_api_gateway_usage_plan_key": 1,
+      "aws_apigatewayv2_integration": 1,
+      "aws_apigatewayv2_route": 1,
+      "aws_apigatewayv2_stage": 1,
+      "aws_db_subnet_group": 1,
+      "aws_iam_role": 1,
+      "aws_security_group": 2,
+      "aws_subnet": 2,
+      "aws_vpc": 1
+    }
+  }
+}

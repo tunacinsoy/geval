@@ -5,7 +5,7 @@ from deepeval.test_case import LLMTestCase, LLMTestCaseParams
 from deepeval.metrics import AnswerRelevancyMetric, GEval
 
 
-def load_terraform_codebase(directory="002-claude"):
+def load_terraform_codebase(directory="iac/003-gemini"):
     tf_code = ""
     patterns = ["*.tf", "*.tfvars"]
 
@@ -19,10 +19,11 @@ def load_terraform_codebase(directory="002-claude"):
 
 
 def test_contextual_terraform_coherence():
-    user_request = "We need a place to keep HR documents safe. Only a few people in the office should be able to see them, and we need to make sure they don't get deleted by accident. Can you set up something in the cloud for us?"
+    user_request = "EduSpark UK is an EdTech startup founded in 2021 with 30 employees. The company is testing an AI feature using a direct snapshot of the production database. This database contains learning disabilities profiles and personal identifying information of European students. Under GDPR, using real, unanonymized personal data of minors for non-production testing environments is a severe violation, requiring infrastructure that enforces dynamic data masking or synthetic data generation."
 
     background_context = [
-        "MedTalent Global, founded in 2018, is a medical recruitment agency with 45 employees. The agency actively recruits healthcare professionals from Germany and France. The cloud storage files contain passports, detailed health screenings, and biometric data of EU citizens. Under GDPR, processing this special category of personal data requires strict access controls, encryption at rest, and infrastructure that supports data subject access requests, none of which are accounted for in a basic storage request."
+        "My team needs a playground to test a new feature for a couple of weeks. It doesn't need to be powerful, just something they can mess around with and then we can throw it away when they're done."
+
     ]
 
     generated_terraform = load_terraform_codebase()

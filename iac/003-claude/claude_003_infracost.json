@@ -1,0 +1,1804 @@
+{
+  "version": "0.2",
+  "metadata": {
+    "infracostCommand": "breakdown",
+    "vcsBranch": "003-test-playground",
+    "vcsCommitSha": "eae7c7d9455f2fd08c77d99f20873c4b1c4d118b",
+    "vcsCommitAuthorName": "tunacinsoy",
+    "vcsCommitAuthorEmail": "tunacinsoy@gmail.com",
+    "vcsCommitTimestamp": "2026-01-20T20:52:31Z",
+    "vcsCommitMessage": "feat: main, default",
+    "vcsRepositoryUrl": "https://github.com/tunacinsoy/pw-sdd-iac-claude-001"
+  },
+  "currency": "USD",
+  "projects": [
+    {
+      "name": "tunacinsoy/pw-sdd-iac-claude-001/iac",
+      "displayName": "main",
+      "metadata": {
+        "path": ".",
+        "type": "terraform_dir",
+        "vcsSubPath": "iac",
+        "vcsCodeChanged": true,
+        "providers": [
+          {
+            "name": "aws",
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "filename": "provider.tf",
+            "startLine": 1,
+            "endLine": 14
+          }
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [
+          {
+            "name": "aws_nat_gateway.main",
+            "resourceType": "aws_nat_gateway",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "test-feature-testing-nat",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_nat_gateway.main",
+                  "endLine": 86,
+                  "filename": "vpc.tf",
+                  "startLine": 74
+                }
+              ],
+              "checksum": "91792bf157021f9ce8c2b2741216121e53cc62f214acb619f02da9304b47277f",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 86,
+              "filename": "vpc.tf",
+              "startLine": 74
+            },
+            "hourlyCost": "0.045",
+            "monthlyCost": "32.85",
+            "costComponents": [
+              {
+                "name": "NAT gateway",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.045",
+                "hourlyCost": "0.045",
+                "monthlyCost": "32.85",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.045",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_db_instance.main",
+            "resourceType": "aws_db_instance",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "test-feature-testing-postgres",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_db_instance.main",
+                  "endLine": 71,
+                  "filename": "rds.tf",
+                  "startLine": 15
+                }
+              ],
+              "checksum": "0d40e11fa09a4e86ca2c8b7707cff5aa7a23b0b24ec9c5d79c40af9b8f9d42a9",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 71,
+              "filename": "rds.tf",
+              "startLine": 15
+            },
+            "hourlyCost": "0.021150684931506849",
+            "monthlyCost": "15.44",
+            "costComponents": [
+              {
+                "name": "Database instance (on-demand, Single-AZ, db.t3.micro)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.018",
+                "hourlyCost": "0.018",
+                "monthlyCost": "13.14",
+                "priceNotFound": false
+              },
+              {
+                "name": "Storage (general purpose SSD, gp3)",
+                "unit": "GB",
+                "hourlyQuantity": "0.0273972602739726",
+                "monthlyQuantity": "20",
+                "price": "0.115",
+                "hourlyCost": "0.003150684931506849",
+                "monthlyCost": "2.3",
+                "priceNotFound": false
+              },
+              {
+                "name": "Additional backup storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.095",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_db_instance.replica",
+            "resourceType": "aws_db_instance",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "test-feature-testing-postgres-replica",
+              "Project": "feature-testing",
+              "Role": "Standby",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_db_instance.replica",
+                  "endLine": 93,
+                  "filename": "rds.tf",
+                  "startLine": 74
+                }
+              ],
+              "checksum": "ee8013137ff93035d96200855a38d3e2ad591e8a2e850ee072d7f50331983d67",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 93,
+              "filename": "rds.tf",
+              "startLine": 74
+            },
+            "hourlyCost": "0.021150684931506849",
+            "monthlyCost": "15.44",
+            "costComponents": [
+              {
+                "name": "Database instance (on-demand, Single-AZ, db.t3.micro)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.018",
+                "hourlyCost": "0.018",
+                "monthlyCost": "13.14",
+                "priceNotFound": false
+              },
+              {
+                "name": "Storage (general purpose SSD, gp2)",
+                "unit": "GB",
+                "hourlyQuantity": "0.0273972602739726",
+                "monthlyQuantity": "20",
+                "price": "0.115",
+                "hourlyCost": "0.003150684931506849",
+                "monthlyCost": "2.3",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_instance.app[0]",
+            "resourceType": "aws_instance",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "test-feature-testing-instance",
+              "Project": "feature-testing",
+              "Role": "AppServer",
+              "Terraform": "true",
+              "root_block_device.CreatedDate": "2026-03-15",
+              "root_block_device.Environment": "test",
+              "root_block_device.ExpirationDate": "2026-04-15",
+              "root_block_device.ManagedBy": "Terraform",
+              "root_block_device.Project": "feature-testing",
+              "root_block_device.Terraform": "true",
+              "volume_tags.AutoShutdown": "false",
+              "volume_tags.CostCenter": "engineering",
+              "volume_tags.CreatedDate": "2026-03-15",
+              "volume_tags.Environment": "test",
+              "volume_tags.ExpirationDate": "2026-04-15",
+              "volume_tags.Name": "test-feature-testing-volume",
+              "volume_tags.Project": "feature-testing"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_instance.app",
+                  "endLine": 116,
+                  "filename": "compute.tf",
+                  "startLine": 91
+                }
+              ],
+              "checksum": "70ff810d9ca42539fe31bcca03591259a878a9e8f724f7bab6f877a0c7ddac74",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 116,
+              "filename": "compute.tf",
+              "startLine": 91
+            },
+            "hourlyCost": "0.013687671232876708",
+            "monthlyCost": "9.992",
+            "costComponents": [
+              {
+                "name": "Instance usage (Linux/UNIX, on-demand, t3.micro)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.0104",
+                "hourlyCost": "0.0104",
+                "monthlyCost": "7.592",
+                "priceNotFound": false
+              },
+              {
+                "name": "CPU credits",
+                "unit": "vCPU-hours",
+                "hourlyQuantity": "0",
+                "monthlyQuantity": "0",
+                "price": "0.05",
+                "hourlyCost": "0",
+                "monthlyCost": "0",
+                "priceNotFound": false
+              }
+            ],
+            "subresources": [
+              {
+                "name": "root_block_device",
+                "metadata": {},
+                "hourlyCost": "0.0010958904109589",
+                "monthlyCost": "0.8",
+                "costComponents": [
+                  {
+                    "name": "Storage (general purpose SSD, gp2)",
+                    "unit": "GB",
+                    "hourlyQuantity": "0.010958904109589",
+                    "monthlyQuantity": "8",
+                    "price": "0.1",
+                    "hourlyCost": "0.0010958904109589",
+                    "monthlyCost": "0.8",
+                    "priceNotFound": false
+                  }
+                ]
+              },
+              {
+                "name": "ebs_block_device[0]",
+                "metadata": {},
+                "hourlyCost": "0.002191780821917808",
+                "monthlyCost": "1.6",
+                "costComponents": [
+                  {
+                    "name": "Storage (general purpose SSD, gp3)",
+                    "unit": "GB",
+                    "hourlyQuantity": "0.0273972602739726",
+                    "monthlyQuantity": "20",
+                    "price": "0.08",
+                    "hourlyCost": "0.002191780821917808",
+                    "monthlyCost": "1.6",
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_instance.app[1]",
+            "resourceType": "aws_instance",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "test-feature-testing-instance",
+              "Project": "feature-testing",
+              "Role": "AppServer",
+              "Terraform": "true",
+              "root_block_device.CreatedDate": "2026-03-15",
+              "root_block_device.Environment": "test",
+              "root_block_device.ExpirationDate": "2026-04-15",
+              "root_block_device.ManagedBy": "Terraform",
+              "root_block_device.Project": "feature-testing",
+              "root_block_device.Terraform": "true",
+              "volume_tags.AutoShutdown": "false",
+              "volume_tags.CostCenter": "engineering",
+              "volume_tags.CreatedDate": "2026-03-15",
+              "volume_tags.Environment": "test",
+              "volume_tags.ExpirationDate": "2026-04-15",
+              "volume_tags.Name": "test-feature-testing-volume",
+              "volume_tags.Project": "feature-testing"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_instance.app",
+                  "endLine": 116,
+                  "filename": "compute.tf",
+                  "startLine": 91
+                }
+              ],
+              "checksum": "5f37d1bca6809730417477c03f113171e42686d02b5e29bb3f21198945887425",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 116,
+              "filename": "compute.tf",
+              "startLine": 91
+            },
+            "hourlyCost": "0.013687671232876708",
+            "monthlyCost": "9.992",
+            "costComponents": [
+              {
+                "name": "Instance usage (Linux/UNIX, on-demand, t3.micro)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.0104",
+                "hourlyCost": "0.0104",
+                "monthlyCost": "7.592",
+                "priceNotFound": false
+              },
+              {
+                "name": "CPU credits",
+                "unit": "vCPU-hours",
+                "hourlyQuantity": "0",
+                "monthlyQuantity": "0",
+                "price": "0.05",
+                "hourlyCost": "0",
+                "monthlyCost": "0",
+                "priceNotFound": false
+              }
+            ],
+            "subresources": [
+              {
+                "name": "root_block_device",
+                "metadata": {},
+                "hourlyCost": "0.0010958904109589",
+                "monthlyCost": "0.8",
+                "costComponents": [
+                  {
+                    "name": "Storage (general purpose SSD, gp2)",
+                    "unit": "GB",
+                    "hourlyQuantity": "0.010958904109589",
+                    "monthlyQuantity": "8",
+                    "price": "0.1",
+                    "hourlyCost": "0.0010958904109589",
+                    "monthlyCost": "0.8",
+                    "priceNotFound": false
+                  }
+                ]
+              },
+              {
+                "name": "ebs_block_device[0]",
+                "metadata": {},
+                "hourlyCost": "0.002191780821917808",
+                "monthlyCost": "1.6",
+                "costComponents": [
+                  {
+                    "name": "Storage (general purpose SSD, gp3)",
+                    "unit": "GB",
+                    "hourlyQuantity": "0.0273972602739726",
+                    "monthlyQuantity": "20",
+                    "price": "0.08",
+                    "hourlyCost": "0.002191780821917808",
+                    "monthlyCost": "1.6",
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.app",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "/test-playground/app",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.app",
+                  "endLine": 12,
+                  "filename": "monitoring.tf",
+                  "startLine": 2
+                }
+              ],
+              "checksum": "13e8ae572fb993f6125856df85b685346b7a52bc199d890316ea99c23e11bff2",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 12,
+              "filename": "monitoring.tf",
+              "startLine": 2
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.docker",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "/test-playground/docker",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.docker",
+                  "endLine": 51,
+                  "filename": "monitoring.tf",
+                  "startLine": 41
+                }
+              ],
+              "checksum": "bfd841cb5a4a83543b00fbd39ce5df19a51630b3fa8134b15512978223cbc4ec",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 51,
+              "filename": "monitoring.tf",
+              "startLine": 41
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.rds",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "/test-playground/rds",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.rds",
+                  "endLine": 25,
+                  "filename": "monitoring.tf",
+                  "startLine": 15
+                }
+              ],
+              "checksum": "f21af41662f48ca36a5638723e0b21060c439b0f6a73eaa0feeded4f2d29b1a3",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 25,
+              "filename": "monitoring.tf",
+              "startLine": 15
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.system",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "/test-playground/system",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.system",
+                  "endLine": 38,
+                  "filename": "monitoring.tf",
+                  "startLine": 28
+                }
+              ],
+              "checksum": "120db53043607249780f4f900f447f21c6d9b1dcfe1c2e64b681b03b2c3581cb",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 38,
+              "filename": "monitoring.tf",
+              "startLine": 28
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.test_artifacts",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "test-feature-testing-test-artifacts-s3_bucket_name-infracost-mock-44956be29f34",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.test_artifacts",
+                  "endLine": 11,
+                  "filename": "storage.tf",
+                  "startLine": 2
+                }
+              ],
+              "checksum": "47c7fdb4b629624b01859c47d772bd0e8f98c5afe6ddb6a5c16478c1e246e635",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 11,
+              "filename": "storage.tf",
+              "startLine": 2
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.114676712328767114",
+        "totalMonthlyCost": "83.714",
+        "totalMonthlyUsageCost": "0"
+      },
+      "breakdown": {
+        "resources": [
+          {
+            "name": "aws_nat_gateway.main",
+            "resourceType": "aws_nat_gateway",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "test-feature-testing-nat",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_nat_gateway.main",
+                  "endLine": 86,
+                  "filename": "vpc.tf",
+                  "startLine": 74
+                }
+              ],
+              "checksum": "91792bf157021f9ce8c2b2741216121e53cc62f214acb619f02da9304b47277f",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 86,
+              "filename": "vpc.tf",
+              "startLine": 74
+            },
+            "hourlyCost": "0.045",
+            "monthlyCost": "32.85",
+            "costComponents": [
+              {
+                "name": "NAT gateway",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.045",
+                "hourlyCost": "0.045",
+                "monthlyCost": "32.85",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.045",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_db_instance.main",
+            "resourceType": "aws_db_instance",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "test-feature-testing-postgres",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_db_instance.main",
+                  "endLine": 71,
+                  "filename": "rds.tf",
+                  "startLine": 15
+                }
+              ],
+              "checksum": "0d40e11fa09a4e86ca2c8b7707cff5aa7a23b0b24ec9c5d79c40af9b8f9d42a9",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 71,
+              "filename": "rds.tf",
+              "startLine": 15
+            },
+            "hourlyCost": "0.021150684931506849",
+            "monthlyCost": "15.44",
+            "costComponents": [
+              {
+                "name": "Database instance (on-demand, Single-AZ, db.t3.micro)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.018",
+                "hourlyCost": "0.018",
+                "monthlyCost": "13.14",
+                "priceNotFound": false
+              },
+              {
+                "name": "Storage (general purpose SSD, gp3)",
+                "unit": "GB",
+                "hourlyQuantity": "0.0273972602739726",
+                "monthlyQuantity": "20",
+                "price": "0.115",
+                "hourlyCost": "0.003150684931506849",
+                "monthlyCost": "2.3",
+                "priceNotFound": false
+              },
+              {
+                "name": "Additional backup storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.095",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_db_instance.replica",
+            "resourceType": "aws_db_instance",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "test-feature-testing-postgres-replica",
+              "Project": "feature-testing",
+              "Role": "Standby",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_db_instance.replica",
+                  "endLine": 93,
+                  "filename": "rds.tf",
+                  "startLine": 74
+                }
+              ],
+              "checksum": "ee8013137ff93035d96200855a38d3e2ad591e8a2e850ee072d7f50331983d67",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 93,
+              "filename": "rds.tf",
+              "startLine": 74
+            },
+            "hourlyCost": "0.021150684931506849",
+            "monthlyCost": "15.44",
+            "costComponents": [
+              {
+                "name": "Database instance (on-demand, Single-AZ, db.t3.micro)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.018",
+                "hourlyCost": "0.018",
+                "monthlyCost": "13.14",
+                "priceNotFound": false
+              },
+              {
+                "name": "Storage (general purpose SSD, gp2)",
+                "unit": "GB",
+                "hourlyQuantity": "0.0273972602739726",
+                "monthlyQuantity": "20",
+                "price": "0.115",
+                "hourlyCost": "0.003150684931506849",
+                "monthlyCost": "2.3",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_instance.app[0]",
+            "resourceType": "aws_instance",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "test-feature-testing-instance",
+              "Project": "feature-testing",
+              "Role": "AppServer",
+              "Terraform": "true",
+              "root_block_device.CreatedDate": "2026-03-15",
+              "root_block_device.Environment": "test",
+              "root_block_device.ExpirationDate": "2026-04-15",
+              "root_block_device.ManagedBy": "Terraform",
+              "root_block_device.Project": "feature-testing",
+              "root_block_device.Terraform": "true",
+              "volume_tags.AutoShutdown": "false",
+              "volume_tags.CostCenter": "engineering",
+              "volume_tags.CreatedDate": "2026-03-15",
+              "volume_tags.Environment": "test",
+              "volume_tags.ExpirationDate": "2026-04-15",
+              "volume_tags.Name": "test-feature-testing-volume",
+              "volume_tags.Project": "feature-testing"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_instance.app",
+                  "endLine": 116,
+                  "filename": "compute.tf",
+                  "startLine": 91
+                }
+              ],
+              "checksum": "70ff810d9ca42539fe31bcca03591259a878a9e8f724f7bab6f877a0c7ddac74",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 116,
+              "filename": "compute.tf",
+              "startLine": 91
+            },
+            "hourlyCost": "0.013687671232876708",
+            "monthlyCost": "9.992",
+            "costComponents": [
+              {
+                "name": "Instance usage (Linux/UNIX, on-demand, t3.micro)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.0104",
+                "hourlyCost": "0.0104",
+                "monthlyCost": "7.592",
+                "priceNotFound": false
+              },
+              {
+                "name": "CPU credits",
+                "unit": "vCPU-hours",
+                "hourlyQuantity": "0",
+                "monthlyQuantity": "0",
+                "price": "0.05",
+                "hourlyCost": "0",
+                "monthlyCost": "0",
+                "priceNotFound": false
+              }
+            ],
+            "subresources": [
+              {
+                "name": "root_block_device",
+                "metadata": {},
+                "hourlyCost": "0.0010958904109589",
+                "monthlyCost": "0.8",
+                "costComponents": [
+                  {
+                    "name": "Storage (general purpose SSD, gp2)",
+                    "unit": "GB",
+                    "hourlyQuantity": "0.010958904109589",
+                    "monthlyQuantity": "8",
+                    "price": "0.1",
+                    "hourlyCost": "0.0010958904109589",
+                    "monthlyCost": "0.8",
+                    "priceNotFound": false
+                  }
+                ]
+              },
+              {
+                "name": "ebs_block_device[0]",
+                "metadata": {},
+                "hourlyCost": "0.002191780821917808",
+                "monthlyCost": "1.6",
+                "costComponents": [
+                  {
+                    "name": "Storage (general purpose SSD, gp3)",
+                    "unit": "GB",
+                    "hourlyQuantity": "0.0273972602739726",
+                    "monthlyQuantity": "20",
+                    "price": "0.08",
+                    "hourlyCost": "0.002191780821917808",
+                    "monthlyCost": "1.6",
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_instance.app[1]",
+            "resourceType": "aws_instance",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "test-feature-testing-instance",
+              "Project": "feature-testing",
+              "Role": "AppServer",
+              "Terraform": "true",
+              "root_block_device.CreatedDate": "2026-03-15",
+              "root_block_device.Environment": "test",
+              "root_block_device.ExpirationDate": "2026-04-15",
+              "root_block_device.ManagedBy": "Terraform",
+              "root_block_device.Project": "feature-testing",
+              "root_block_device.Terraform": "true",
+              "volume_tags.AutoShutdown": "false",
+              "volume_tags.CostCenter": "engineering",
+              "volume_tags.CreatedDate": "2026-03-15",
+              "volume_tags.Environment": "test",
+              "volume_tags.ExpirationDate": "2026-04-15",
+              "volume_tags.Name": "test-feature-testing-volume",
+              "volume_tags.Project": "feature-testing"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_instance.app",
+                  "endLine": 116,
+                  "filename": "compute.tf",
+                  "startLine": 91
+                }
+              ],
+              "checksum": "5f37d1bca6809730417477c03f113171e42686d02b5e29bb3f21198945887425",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 116,
+              "filename": "compute.tf",
+              "startLine": 91
+            },
+            "hourlyCost": "0.013687671232876708",
+            "monthlyCost": "9.992",
+            "costComponents": [
+              {
+                "name": "Instance usage (Linux/UNIX, on-demand, t3.micro)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.0104",
+                "hourlyCost": "0.0104",
+                "monthlyCost": "7.592",
+                "priceNotFound": false
+              },
+              {
+                "name": "CPU credits",
+                "unit": "vCPU-hours",
+                "hourlyQuantity": "0",
+                "monthlyQuantity": "0",
+                "price": "0.05",
+                "hourlyCost": "0",
+                "monthlyCost": "0",
+                "priceNotFound": false
+              }
+            ],
+            "subresources": [
+              {
+                "name": "root_block_device",
+                "metadata": {},
+                "hourlyCost": "0.0010958904109589",
+                "monthlyCost": "0.8",
+                "costComponents": [
+                  {
+                    "name": "Storage (general purpose SSD, gp2)",
+                    "unit": "GB",
+                    "hourlyQuantity": "0.010958904109589",
+                    "monthlyQuantity": "8",
+                    "price": "0.1",
+                    "hourlyCost": "0.0010958904109589",
+                    "monthlyCost": "0.8",
+                    "priceNotFound": false
+                  }
+                ]
+              },
+              {
+                "name": "ebs_block_device[0]",
+                "metadata": {},
+                "hourlyCost": "0.002191780821917808",
+                "monthlyCost": "1.6",
+                "costComponents": [
+                  {
+                    "name": "Storage (general purpose SSD, gp3)",
+                    "unit": "GB",
+                    "hourlyQuantity": "0.0273972602739726",
+                    "monthlyQuantity": "20",
+                    "price": "0.08",
+                    "hourlyCost": "0.002191780821917808",
+                    "monthlyCost": "1.6",
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.app",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "/test-playground/app",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.app",
+                  "endLine": 12,
+                  "filename": "monitoring.tf",
+                  "startLine": 2
+                }
+              ],
+              "checksum": "13e8ae572fb993f6125856df85b685346b7a52bc199d890316ea99c23e11bff2",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 12,
+              "filename": "monitoring.tf",
+              "startLine": 2
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.docker",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "/test-playground/docker",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.docker",
+                  "endLine": 51,
+                  "filename": "monitoring.tf",
+                  "startLine": 41
+                }
+              ],
+              "checksum": "bfd841cb5a4a83543b00fbd39ce5df19a51630b3fa8134b15512978223cbc4ec",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 51,
+              "filename": "monitoring.tf",
+              "startLine": 41
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.rds",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "/test-playground/rds",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.rds",
+                  "endLine": 25,
+                  "filename": "monitoring.tf",
+                  "startLine": 15
+                }
+              ],
+              "checksum": "f21af41662f48ca36a5638723e0b21060c439b0f6a73eaa0feeded4f2d29b1a3",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 25,
+              "filename": "monitoring.tf",
+              "startLine": 15
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.system",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "/test-playground/system",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.system",
+                  "endLine": 38,
+                  "filename": "monitoring.tf",
+                  "startLine": 28
+                }
+              ],
+              "checksum": "120db53043607249780f4f900f447f21c6d9b1dcfe1c2e64b681b03b2c3581cb",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 38,
+              "filename": "monitoring.tf",
+              "startLine": 28
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.test_artifacts",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "AutoShutdown": "false",
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Name": "test-feature-testing-test-artifacts-s3_bucket_name-infracost-mock-44956be29f34",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-15",
+              "Environment": "test",
+              "ExpirationDate": "2026-04-15",
+              "ManagedBy": "Terraform",
+              "Project": "feature-testing",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.test_artifacts",
+                  "endLine": 11,
+                  "filename": "storage.tf",
+                  "startLine": 2
+                }
+              ],
+              "checksum": "47c7fdb4b629624b01859c47d772bd0e8f98c5afe6ddb6a5c16478c1e246e635",
+              "defaultTagsChecksum": "72adce510a7b341764884a2af78e6cde2e8ba4c766b251be1953f32b823c10dc",
+              "endLine": 11,
+              "filename": "storage.tf",
+              "startLine": 2
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.114676712328767114",
+        "totalMonthlyCost": "83.714",
+        "totalMonthlyUsageCost": "0"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 33,
+        "totalSupportedResources": 10,
+        "totalUnsupportedResources": 0,
+        "totalUsageBasedResources": 10,
+        "totalNoPriceResources": 23,
+        "unsupportedResourceCounts": {},
+        "noPriceResourceCounts": {
+          "aws_db_subnet_group": 1,
+          "aws_eip": 1,
+          "aws_iam_instance_profile": 1,
+          "aws_iam_role": 1,
+          "aws_iam_role_policy": 4,
+          "aws_internet_gateway": 1,
+          "aws_launch_template": 1,
+          "aws_route_table": 2,
+          "aws_route_table_association": 2,
+          "aws_s3_bucket_policy": 1,
+          "aws_s3_bucket_public_access_block": 1,
+          "aws_s3_bucket_server_side_encryption_configuration": 1,
+          "aws_s3_bucket_versioning": 1,
+          "aws_security_group": 2,
+          "aws_subnet": 2,
+          "aws_vpc": 1
+        }
+      }
+    }
+  ],
+  "totalHourlyCost": "0.114676712328767114",
+  "totalMonthlyCost": "83.714",
+  "totalMonthlyUsageCost": "0",
+  "pastTotalHourlyCost": "0.114676712328767114",
+  "pastTotalMonthlyCost": "83.714",
+  "pastTotalMonthlyUsageCost": "0",
+  "diffTotalHourlyCost": "0",
+  "diffTotalMonthlyCost": "0",
+  "diffTotalMonthlyUsageCost": "0",
+  "timeGenerated": "2026-03-15T13:56:54.026672982Z",
+  "summary": {
+    "totalDetectedResources": 33,
+    "totalSupportedResources": 10,
+    "totalUnsupportedResources": 0,
+    "totalUsageBasedResources": 10,
+    "totalNoPriceResources": 23,
+    "unsupportedResourceCounts": {},
+    "noPriceResourceCounts": {
+      "aws_db_subnet_group": 1,
+      "aws_eip": 1,
+      "aws_iam_instance_profile": 1,
+      "aws_iam_role": 1,
+      "aws_iam_role_policy": 4,
+      "aws_internet_gateway": 1,
+      "aws_launch_template": 1,
+      "aws_route_table": 2,
+      "aws_route_table_association": 2,
+      "aws_s3_bucket_policy": 1,
+      "aws_s3_bucket_public_access_block": 1,
+      "aws_s3_bucket_server_side_encryption_configuration": 1,
+      "aws_s3_bucket_versioning": 1,
+      "aws_security_group": 2,
+      "aws_subnet": 2,
+      "aws_vpc": 1
+    }
+  }
+}
