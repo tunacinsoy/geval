@@ -5,24 +5,26 @@ from deepeval.test_case import LLMTestCase, LLMTestCaseParams
 from deepeval.metrics import AnswerRelevancyMetric, GEval
 
 
-def load_terraform_codebase(directory="iac/003-gemini"):
+def load_terraform_codebase(directory="iac/006-codex"):
     tf_code = ""
-    patterns = ["*.tf", "*.tfvars"]
+    patterns = ["**/*.tf", "**/*.tfvars"]
 
     for pattern in patterns:
-        for filepath in glob.glob(os.path.join(directory, pattern)):
-            with open(filepath, "r", encoding="utf-8") as file:
-                tf_code += f"\n# File: {os.path.basename(filepath)}\n"
-                tf_code += file.read() + "\n"
+        search_path = os.path.join(directory, pattern)
+        for filepath in glob.glob(search_path, recursive=True):
+            if os.path.isfile(filepath):
+                with open(filepath, "r", encoding="utf-8") as file:
+                    tf_code += f"\n# File: {os.path.basename(filepath)}\n"
+                    tf_code += file.read() + "\n"
 
     return tf_code
 
 
 def test_contextual_terraform_coherence():
-    user_request = "EduSpark UK is an EdTech startup founded in 2021 with 30 employees. The company is testing an AI feature using a direct snapshot of the production database. This database contains learning disabilities profiles and personal identifying information of European students. Under GDPR, using real, unanonymized personal data of minors for non-production testing environments is a severe violation, requiring infrastructure that enforces dynamic data masking or synthetic data generation."
+    user_request = "Provision a primary VPC in eu-central-1 and a disaster recovery VPC in eu-west-1 with identical CIDR blocks of 10.10.0.0/16. Establish VPC Peering between them. In the primary region, deploy an RDS Aurora Global Database (PostgreSQL compatible) that replicates to the DR region. The application tier in both regions must reside in private subnets and be accessed via an Application Load Balancer in public subnets. Ensure Terraform state is stored in an S3 bucket with cross-region replication enabled."
 
     background_context = [
-        "My team needs a playground to test a new feature for a couple of weeks. It doesn't need to be powerful, just something they can mess around with and then we can throw it away when they're done."
+        "LedgerPrime Financial, founded in 2010 with 1,200 employees, is a multinational enterprise holding EU citizen financial data. The disaster recovery plan is explicitly designed to meet GDPR's Article 32 requirements for restoring the availability and access to personal data in a timely manner in the event of a physical or technical incident. The active-passive database replication guarantees compliance with these stringent availability mandates."
 
     ]
 

@@ -1,0 +1,2104 @@
+{
+  "version": "0.2",
+  "metadata": {
+    "infracostCommand": "breakdown",
+    "vcsBranch": "004-multi-region-dr",
+    "vcsCommitSha": "eae7c7d9455f2fd08c77d99f20873c4b1c4d118b",
+    "vcsCommitAuthorName": "tunacinsoy",
+    "vcsCommitAuthorEmail": "tunacinsoy@gmail.com",
+    "vcsCommitTimestamp": "2026-01-20T20:52:31Z",
+    "vcsCommitMessage": "feat: main, default",
+    "vcsRepositoryUrl": "https://github.com/tunacinsoy/pw-sdd-iac-claude-001"
+  },
+  "currency": "USD",
+  "projects": [
+    {
+      "name": "tunacinsoy/pw-sdd-iac-claude-001/iac",
+      "displayName": "main",
+      "metadata": {
+        "path": ".",
+        "type": "terraform_dir",
+        "vcsSubPath": "iac",
+        "vcsCodeChanged": true,
+        "providers": [
+          {
+            "name": "aws.primary",
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "filename": "main.tf",
+            "startLine": 4,
+            "endLine": 11
+          },
+          {
+            "name": "aws.secondary",
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "filename": "main.tf",
+            "startLine": 14,
+            "endLine": 21
+          }
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [
+          {
+            "name": "aws_autoscaling_group.primary",
+            "resourceType": "aws_autoscaling_group",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-primary-instance",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:4",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_autoscaling_group.primary",
+                  "endLine": 471,
+                  "filename": "main.tf",
+                  "startLine": 441
+                }
+              ],
+              "checksum": "53bd633eeb526ced587f207ea1a45c6514b4ad997489edaf7a05624f63d752c1",
+              "endLine": 471,
+              "filename": "main.tf",
+              "startLine": 441
+            },
+            "hourlyCost": "0.096",
+            "monthlyCost": "70.08",
+            "subresources": [
+              {
+                "name": "aws_launch_template.primary",
+                "metadata": {},
+                "hourlyCost": "0.096",
+                "monthlyCost": "70.08",
+                "costComponents": [
+                  {
+                    "name": "Instance usage (Linux/UNIX, on-demand, t3.medium)",
+                    "unit": "hours",
+                    "hourlyQuantity": "2",
+                    "monthlyQuantity": "1460",
+                    "price": "0.048",
+                    "hourlyCost": "0.096",
+                    "monthlyCost": "70.08",
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "CPU credits",
+                    "unit": "vCPU-hours",
+                    "hourlyQuantity": "0",
+                    "monthlyQuantity": "0",
+                    "price": "0.05",
+                    "hourlyCost": "0",
+                    "monthlyCost": "0",
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_nat_gateway.primary[0]",
+            "resourceType": "aws_nat_gateway",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-primary-nat-gw-1",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:4",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_nat_gateway.primary",
+                  "endLine": 145,
+                  "filename": "main.tf",
+                  "startLine": 133
+                }
+              ],
+              "checksum": "ea6c4240e5077ed814eb4efaa24689b4b35f384300da86700cce97c43c4bd1f2",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 145,
+              "filename": "main.tf",
+              "startLine": 133
+            },
+            "hourlyCost": "0.052",
+            "monthlyCost": "37.96",
+            "costComponents": [
+              {
+                "name": "NAT gateway",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.052",
+                "hourlyCost": "0.052",
+                "monthlyCost": "37.96",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.052",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_nat_gateway.primary[1]",
+            "resourceType": "aws_nat_gateway",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-primary-nat-gw-2",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:4",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_nat_gateway.primary",
+                  "endLine": 145,
+                  "filename": "main.tf",
+                  "startLine": 133
+                }
+              ],
+              "checksum": "683623d1bd16edb2e341999f66955b0b884e2ab60179cceefcbf701a4b47c43a",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 145,
+              "filename": "main.tf",
+              "startLine": 133
+            },
+            "hourlyCost": "0.052",
+            "monthlyCost": "37.96",
+            "costComponents": [
+              {
+                "name": "NAT gateway",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.052",
+                "hourlyCost": "0.052",
+                "monthlyCost": "37.96",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.052",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_nat_gateway.secondary[0]",
+            "resourceType": "aws_nat_gateway",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-secondary-nat-gw-1",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_nat_gateway.secondary",
+                  "endLine": 599,
+                  "filename": "main.tf",
+                  "startLine": 587
+                }
+              ],
+              "checksum": "6a9952c56f89d811949bd5b21dd3d303b03f00b3d82f73366a1878d4a0014239",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 599,
+              "filename": "main.tf",
+              "startLine": 587
+            },
+            "hourlyCost": "0.048",
+            "monthlyCost": "35.04",
+            "costComponents": [
+              {
+                "name": "NAT gateway",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.048",
+                "hourlyCost": "0.048",
+                "monthlyCost": "35.04",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.048",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_nat_gateway.secondary[1]",
+            "resourceType": "aws_nat_gateway",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-secondary-nat-gw-2",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_nat_gateway.secondary",
+                  "endLine": 599,
+                  "filename": "main.tf",
+                  "startLine": 587
+                }
+              ],
+              "checksum": "bab1caa73ba4a33372ea94fa26e7afeae6649c0318b56e1d1ba121d8a985f844",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 599,
+              "filename": "main.tf",
+              "startLine": 587
+            },
+            "hourlyCost": "0.048",
+            "monthlyCost": "35.04",
+            "costComponents": [
+              {
+                "name": "NAT gateway",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.048",
+                "hourlyCost": "0.048",
+                "monthlyCost": "35.04",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.048",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_autoscaling_group.secondary",
+            "resourceType": "aws_autoscaling_group",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-secondary-instance",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_autoscaling_group.secondary",
+                  "endLine": 924,
+                  "filename": "main.tf",
+                  "startLine": 894
+                }
+              ],
+              "checksum": "70ceca1fdd3d30c81d9368f0baf19edaed294f3808f27f9cff69847c0edf32f2",
+              "endLine": 924,
+              "filename": "main.tf",
+              "startLine": 894
+            },
+            "hourlyCost": "0.0456",
+            "monthlyCost": "33.288",
+            "subresources": [
+              {
+                "name": "aws_launch_template.secondary",
+                "metadata": {},
+                "hourlyCost": "0.0456",
+                "monthlyCost": "33.288",
+                "costComponents": [
+                  {
+                    "name": "Instance usage (Linux/UNIX, on-demand, t3.medium)",
+                    "unit": "hours",
+                    "hourlyQuantity": "1",
+                    "monthlyQuantity": "730",
+                    "price": "0.0456",
+                    "hourlyCost": "0.0456",
+                    "monthlyCost": "33.288",
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "CPU credits",
+                    "unit": "vCPU-hours",
+                    "hourlyQuantity": "0",
+                    "monthlyQuantity": "0",
+                    "price": "0.05",
+                    "hourlyCost": "0",
+                    "monthlyCost": "0",
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_lb.primary",
+            "resourceType": "aws_lb",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-primary-alb",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:4",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_lb.primary",
+                  "endLine": 379,
+                  "filename": "main.tf",
+                  "startLine": 365
+                }
+              ],
+              "checksum": "11e74648e87c003c61a09750256352bbcfb4726d102742382a96752fe75bd751",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 379,
+              "filename": "main.tf",
+              "startLine": 365
+            },
+            "hourlyCost": "0.027",
+            "monthlyCost": "19.71",
+            "costComponents": [
+              {
+                "name": "Application load balancer",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.027",
+                "hourlyCost": "0.027",
+                "monthlyCost": "19.71",
+                "priceNotFound": false
+              },
+              {
+                "name": "Load balancer capacity units",
+                "unit": "LCU",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "5.84",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_lb.secondary",
+            "resourceType": "aws_lb",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-secondary-alb",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_lb.secondary",
+                  "endLine": 832,
+                  "filename": "main.tf",
+                  "startLine": 818
+                }
+              ],
+              "checksum": "372f66801c650199d564804da0d95167b9efc42df1719c1509c7b67a2e43db6c",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 832,
+              "filename": "main.tf",
+              "startLine": 818
+            },
+            "hourlyCost": "0.0252",
+            "monthlyCost": "18.396",
+            "costComponents": [
+              {
+                "name": "Application load balancer",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.0252",
+                "hourlyCost": "0.0252",
+                "monthlyCost": "18.396",
+                "priceNotFound": false
+              },
+              {
+                "name": "Load balancer capacity units",
+                "unit": "LCU",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "5.84",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_rds_cluster_instance.primary",
+            "resourceType": "aws_rds_cluster_instance",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-primary-instance-1",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:4",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_rds_cluster_instance.primary",
+                  "endLine": 362,
+                  "filename": "main.tf",
+                  "startLine": 347
+                }
+              ],
+              "checksum": "13ddd9a8c45bdf6b664d7ad34f1a178d7c15a2a570a086a5e63ad45f33a9491a",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 362,
+              "filename": "main.tf",
+              "startLine": 347
+            },
+            "hourlyCost": "0",
+            "monthlyCost": "0",
+            "costComponents": [
+              {
+                "name": "Database instance (on-demand, db.t3.small)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0",
+                "hourlyCost": "0",
+                "monthlyCost": "0",
+                "priceNotFound": true
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_rds_cluster_instance.secondary",
+            "resourceType": "aws_rds_cluster_instance",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-secondary-instance-1",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_rds_cluster_instance.secondary",
+                  "endLine": 815,
+                  "filename": "main.tf",
+                  "startLine": 800
+                }
+              ],
+              "checksum": "369ca86898b4b87390bf1659faba9f836e579687ff895f6c855301baf6614c3e",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 815,
+              "filename": "main.tf",
+              "startLine": 800
+            },
+            "hourlyCost": "0",
+            "monthlyCost": "0",
+            "costComponents": [
+              {
+                "name": "Database instance (on-demand, db.t3.small)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0",
+                "hourlyCost": "0",
+                "monthlyCost": "0",
+                "priceNotFound": true
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.primary",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-primary-log-group",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:4",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.primary",
+                  "endLine": 485,
+                  "filename": "main.tf",
+                  "startLine": 474
+                }
+              ],
+              "checksum": "f904834d147c536c94652cca414273430ded5f67956adaf867df048bb0f3ea8a",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 485,
+              "filename": "main.tf",
+              "startLine": 474
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.63",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0324",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0063",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.secondary",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-secondary-log-group",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.secondary",
+                  "endLine": 938,
+                  "filename": "main.tf",
+                  "startLine": 927
+                }
+              ],
+              "checksum": "a843db6c2b17ff6aae3cb4630e4635c1ff3a8e003a39af6c9a88bc4b027eedc2",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 938,
+              "filename": "main.tf",
+              "startLine": 927
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.57",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0057",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_rds_cluster.primary",
+            "resourceType": "aws_rds_cluster",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-primary-aurora-cluster",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:4",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_rds_cluster.primary",
+                  "endLine": 344,
+                  "filename": "main.tf",
+                  "startLine": 322
+                }
+              ],
+              "checksum": "ca041b4ffd020df2040388e31f7cfb9ccbede07d47a3eb51ae4e70dfa80ec8d6",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 344,
+              "filename": "main.tf",
+              "startLine": 322
+            },
+            "costComponents": [
+              {
+                "name": "Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.119",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "I/O requests",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.22",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Backup storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.023",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot export",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.011",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_rds_cluster.secondary",
+            "resourceType": "aws_rds_cluster",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-secondary-aurora-cluster",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_rds_cluster.secondary",
+                  "endLine": 797,
+                  "filename": "main.tf",
+                  "startLine": 776
+                }
+              ],
+              "checksum": "e5b65c827dea6f97d974a3379359d0095475e6e653bc53d95c9e2866c2b134b2",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 797,
+              "filename": "main.tf",
+              "startLine": 776
+            },
+            "costComponents": [
+              {
+                "name": "Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.11",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "I/O requests",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.22",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Backup storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.021",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot export",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.011",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.3938",
+        "totalMonthlyCost": "287.474",
+        "totalMonthlyUsageCost": "0"
+      },
+      "breakdown": {
+        "resources": [
+          {
+            "name": "aws_autoscaling_group.primary",
+            "resourceType": "aws_autoscaling_group",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-primary-instance",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:4",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_autoscaling_group.primary",
+                  "endLine": 471,
+                  "filename": "main.tf",
+                  "startLine": 441
+                }
+              ],
+              "checksum": "53bd633eeb526ced587f207ea1a45c6514b4ad997489edaf7a05624f63d752c1",
+              "endLine": 471,
+              "filename": "main.tf",
+              "startLine": 441
+            },
+            "hourlyCost": "0.096",
+            "monthlyCost": "70.08",
+            "subresources": [
+              {
+                "name": "aws_launch_template.primary",
+                "metadata": {},
+                "hourlyCost": "0.096",
+                "monthlyCost": "70.08",
+                "costComponents": [
+                  {
+                    "name": "Instance usage (Linux/UNIX, on-demand, t3.medium)",
+                    "unit": "hours",
+                    "hourlyQuantity": "2",
+                    "monthlyQuantity": "1460",
+                    "price": "0.048",
+                    "hourlyCost": "0.096",
+                    "monthlyCost": "70.08",
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "CPU credits",
+                    "unit": "vCPU-hours",
+                    "hourlyQuantity": "0",
+                    "monthlyQuantity": "0",
+                    "price": "0.05",
+                    "hourlyCost": "0",
+                    "monthlyCost": "0",
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_nat_gateway.primary[0]",
+            "resourceType": "aws_nat_gateway",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-primary-nat-gw-1",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:4",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_nat_gateway.primary",
+                  "endLine": 145,
+                  "filename": "main.tf",
+                  "startLine": 133
+                }
+              ],
+              "checksum": "ea6c4240e5077ed814eb4efaa24689b4b35f384300da86700cce97c43c4bd1f2",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 145,
+              "filename": "main.tf",
+              "startLine": 133
+            },
+            "hourlyCost": "0.052",
+            "monthlyCost": "37.96",
+            "costComponents": [
+              {
+                "name": "NAT gateway",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.052",
+                "hourlyCost": "0.052",
+                "monthlyCost": "37.96",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.052",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_nat_gateway.primary[1]",
+            "resourceType": "aws_nat_gateway",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-primary-nat-gw-2",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:4",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_nat_gateway.primary",
+                  "endLine": 145,
+                  "filename": "main.tf",
+                  "startLine": 133
+                }
+              ],
+              "checksum": "683623d1bd16edb2e341999f66955b0b884e2ab60179cceefcbf701a4b47c43a",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 145,
+              "filename": "main.tf",
+              "startLine": 133
+            },
+            "hourlyCost": "0.052",
+            "monthlyCost": "37.96",
+            "costComponents": [
+              {
+                "name": "NAT gateway",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.052",
+                "hourlyCost": "0.052",
+                "monthlyCost": "37.96",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.052",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_nat_gateway.secondary[0]",
+            "resourceType": "aws_nat_gateway",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-secondary-nat-gw-1",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_nat_gateway.secondary",
+                  "endLine": 599,
+                  "filename": "main.tf",
+                  "startLine": 587
+                }
+              ],
+              "checksum": "6a9952c56f89d811949bd5b21dd3d303b03f00b3d82f73366a1878d4a0014239",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 599,
+              "filename": "main.tf",
+              "startLine": 587
+            },
+            "hourlyCost": "0.048",
+            "monthlyCost": "35.04",
+            "costComponents": [
+              {
+                "name": "NAT gateway",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.048",
+                "hourlyCost": "0.048",
+                "monthlyCost": "35.04",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.048",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_nat_gateway.secondary[1]",
+            "resourceType": "aws_nat_gateway",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-secondary-nat-gw-2",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_nat_gateway.secondary",
+                  "endLine": 599,
+                  "filename": "main.tf",
+                  "startLine": 587
+                }
+              ],
+              "checksum": "bab1caa73ba4a33372ea94fa26e7afeae6649c0318b56e1d1ba121d8a985f844",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 599,
+              "filename": "main.tf",
+              "startLine": 587
+            },
+            "hourlyCost": "0.048",
+            "monthlyCost": "35.04",
+            "costComponents": [
+              {
+                "name": "NAT gateway",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.048",
+                "hourlyCost": "0.048",
+                "monthlyCost": "35.04",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.048",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_autoscaling_group.secondary",
+            "resourceType": "aws_autoscaling_group",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-secondary-instance",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_autoscaling_group.secondary",
+                  "endLine": 924,
+                  "filename": "main.tf",
+                  "startLine": 894
+                }
+              ],
+              "checksum": "70ceca1fdd3d30c81d9368f0baf19edaed294f3808f27f9cff69847c0edf32f2",
+              "endLine": 924,
+              "filename": "main.tf",
+              "startLine": 894
+            },
+            "hourlyCost": "0.0456",
+            "monthlyCost": "33.288",
+            "subresources": [
+              {
+                "name": "aws_launch_template.secondary",
+                "metadata": {},
+                "hourlyCost": "0.0456",
+                "monthlyCost": "33.288",
+                "costComponents": [
+                  {
+                    "name": "Instance usage (Linux/UNIX, on-demand, t3.medium)",
+                    "unit": "hours",
+                    "hourlyQuantity": "1",
+                    "monthlyQuantity": "730",
+                    "price": "0.0456",
+                    "hourlyCost": "0.0456",
+                    "monthlyCost": "33.288",
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "CPU credits",
+                    "unit": "vCPU-hours",
+                    "hourlyQuantity": "0",
+                    "monthlyQuantity": "0",
+                    "price": "0.05",
+                    "hourlyCost": "0",
+                    "monthlyCost": "0",
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_lb.primary",
+            "resourceType": "aws_lb",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-primary-alb",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:4",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_lb.primary",
+                  "endLine": 379,
+                  "filename": "main.tf",
+                  "startLine": 365
+                }
+              ],
+              "checksum": "11e74648e87c003c61a09750256352bbcfb4726d102742382a96752fe75bd751",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 379,
+              "filename": "main.tf",
+              "startLine": 365
+            },
+            "hourlyCost": "0.027",
+            "monthlyCost": "19.71",
+            "costComponents": [
+              {
+                "name": "Application load balancer",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.027",
+                "hourlyCost": "0.027",
+                "monthlyCost": "19.71",
+                "priceNotFound": false
+              },
+              {
+                "name": "Load balancer capacity units",
+                "unit": "LCU",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "5.84",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_lb.secondary",
+            "resourceType": "aws_lb",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-secondary-alb",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_lb.secondary",
+                  "endLine": 832,
+                  "filename": "main.tf",
+                  "startLine": 818
+                }
+              ],
+              "checksum": "372f66801c650199d564804da0d95167b9efc42df1719c1509c7b67a2e43db6c",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 832,
+              "filename": "main.tf",
+              "startLine": 818
+            },
+            "hourlyCost": "0.0252",
+            "monthlyCost": "18.396",
+            "costComponents": [
+              {
+                "name": "Application load balancer",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.0252",
+                "hourlyCost": "0.0252",
+                "monthlyCost": "18.396",
+                "priceNotFound": false
+              },
+              {
+                "name": "Load balancer capacity units",
+                "unit": "LCU",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "5.84",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_rds_cluster_instance.primary",
+            "resourceType": "aws_rds_cluster_instance",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-primary-instance-1",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:4",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_rds_cluster_instance.primary",
+                  "endLine": 362,
+                  "filename": "main.tf",
+                  "startLine": 347
+                }
+              ],
+              "checksum": "13ddd9a8c45bdf6b664d7ad34f1a178d7c15a2a570a086a5e63ad45f33a9491a",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 362,
+              "filename": "main.tf",
+              "startLine": 347
+            },
+            "hourlyCost": "0",
+            "monthlyCost": "0",
+            "costComponents": [
+              {
+                "name": "Database instance (on-demand, db.t3.small)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0",
+                "hourlyCost": "0",
+                "monthlyCost": "0",
+                "priceNotFound": true
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_rds_cluster_instance.secondary",
+            "resourceType": "aws_rds_cluster_instance",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-secondary-instance-1",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_rds_cluster_instance.secondary",
+                  "endLine": 815,
+                  "filename": "main.tf",
+                  "startLine": 800
+                }
+              ],
+              "checksum": "369ca86898b4b87390bf1659faba9f836e579687ff895f6c855301baf6614c3e",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 815,
+              "filename": "main.tf",
+              "startLine": 800
+            },
+            "hourlyCost": "0",
+            "monthlyCost": "0",
+            "costComponents": [
+              {
+                "name": "Database instance (on-demand, db.t3.small)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0",
+                "hourlyCost": "0",
+                "monthlyCost": "0",
+                "priceNotFound": true
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.primary",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-primary-log-group",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:4",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.primary",
+                  "endLine": 485,
+                  "filename": "main.tf",
+                  "startLine": 474
+                }
+              ],
+              "checksum": "f904834d147c536c94652cca414273430ded5f67956adaf867df048bb0f3ea8a",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 485,
+              "filename": "main.tf",
+              "startLine": 474
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.63",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0324",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0063",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.secondary",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-secondary-log-group",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.secondary",
+                  "endLine": 938,
+                  "filename": "main.tf",
+                  "startLine": 927
+                }
+              ],
+              "checksum": "a843db6c2b17ff6aae3cb4630e4635c1ff3a8e003a39af6c9a88bc4b027eedc2",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 938,
+              "filename": "main.tf",
+              "startLine": 927
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.57",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0057",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_rds_cluster.primary",
+            "resourceType": "aws_rds_cluster",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-primary-aurora-cluster",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:4",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_rds_cluster.primary",
+                  "endLine": 344,
+                  "filename": "main.tf",
+                  "startLine": 322
+                }
+              ],
+              "checksum": "ca041b4ffd020df2040388e31f7cfb9ccbede07d47a3eb51ae4e70dfa80ec8d6",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 344,
+              "filename": "main.tf",
+              "startLine": 322
+            },
+            "costComponents": [
+              {
+                "name": "Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.119",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "I/O requests",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.22",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Backup storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.023",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot export",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.011",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          },
+          {
+            "name": "aws_rds_cluster.secondary",
+            "resourceType": "aws_rds_cluster",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Name": "multi-region-dr-secondary-aurora-cluster",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Terraform": "true"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "main.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_rds_cluster.secondary",
+                  "endLine": 797,
+                  "filename": "main.tf",
+                  "startLine": 776
+                }
+              ],
+              "checksum": "e5b65c827dea6f97d974a3379359d0095475e6e653bc53d95c9e2866c2b134b2",
+              "defaultTagsChecksum": "864e3c03a45923542df9acf860c5a5451193826ebdeb435e461a1b251e00e900",
+              "endLine": 797,
+              "filename": "main.tf",
+              "startLine": 776
+            },
+            "costComponents": [
+              {
+                "name": "Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.11",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "I/O requests",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.22",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Backup storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.021",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot export",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.011",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "missingVarsCausingUnknownDefaultTagKeys": [
+              "local.common_tags"
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.3938",
+        "totalMonthlyCost": "287.474",
+        "totalMonthlyUsageCost": "0"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 66,
+        "totalSupportedResources": 14,
+        "totalUnsupportedResources": 0,
+        "totalUsageBasedResources": 14,
+        "totalNoPriceResources": 52,
+        "unsupportedResourceCounts": {},
+        "noPriceResourceCounts": {
+          "aws_db_subnet_group": 2,
+          "aws_eip": 4,
+          "aws_internet_gateway": 2,
+          "aws_launch_template": 2,
+          "aws_lb_listener": 2,
+          "aws_lb_target_group": 2,
+          "aws_route_table": 6,
+          "aws_route_table_association": 12,
+          "aws_security_group": 6,
+          "aws_subnet": 12,
+          "aws_vpc": 2
+        }
+      }
+    },
+    {
+      "name": "tunacinsoy/pw-sdd-iac-claude-001/iac/primary",
+      "displayName": "primary",
+      "metadata": {
+        "path": "primary",
+        "type": "terraform_dir",
+        "terraformModulePath": "primary",
+        "vcsSubPath": "iac/primary",
+        "vcsCodeChanged": false,
+        "providers": [
+          {
+            "name": "aws",
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "primary",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Region": "eu-central-1",
+              "RegionShort": "eu",
+              "Terraform": "true"
+            },
+            "filename": "primary/provider.tf",
+            "startLine": 10,
+            "endLine": 16
+          },
+          {
+            "name": "aws.secondary",
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "primary",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Region": "eu-central-1",
+              "RegionShort": "eu",
+              "Terraform": "true"
+            },
+            "filename": "primary/provider.tf",
+            "startLine": 19,
+            "endLine": 26
+          }
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "breakdown": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 0,
+        "totalSupportedResources": 0,
+        "totalUnsupportedResources": 0,
+        "totalUsageBasedResources": 0,
+        "totalNoPriceResources": 0,
+        "unsupportedResourceCounts": {},
+        "noPriceResourceCounts": {}
+      }
+    },
+    {
+      "name": "tunacinsoy/pw-sdd-iac-claude-001/iac/secondary",
+      "displayName": "secondary",
+      "metadata": {
+        "path": "secondary",
+        "type": "terraform_dir",
+        "terraformModulePath": "secondary",
+        "vcsSubPath": "iac/secondary",
+        "vcsCodeChanged": false,
+        "providers": [
+          {
+            "name": "aws",
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "secondary",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Region": "eu-west-1",
+              "RegionShort": "eu",
+              "Terraform": "true"
+            },
+            "filename": "secondary/provider.tf",
+            "startLine": 10,
+            "endLine": 16
+          },
+          {
+            "name": "aws.primary",
+            "defaultTags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "secondary",
+              "ManagedBy": "Terraform",
+              "Project": "multi-region-dr",
+              "Region": "eu-west-1",
+              "RegionShort": "eu",
+              "Terraform": "true"
+            },
+            "filename": "secondary/provider.tf",
+            "startLine": 19,
+            "endLine": 26
+          }
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "breakdown": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 0,
+        "totalSupportedResources": 0,
+        "totalUnsupportedResources": 0,
+        "totalUsageBasedResources": 0,
+        "totalNoPriceResources": 0,
+        "unsupportedResourceCounts": {},
+        "noPriceResourceCounts": {}
+      }
+    }
+  ],
+  "totalHourlyCost": "0.3938",
+  "totalMonthlyCost": "287.474",
+  "totalMonthlyUsageCost": "0",
+  "pastTotalHourlyCost": "0.3938",
+  "pastTotalMonthlyCost": "287.474",
+  "pastTotalMonthlyUsageCost": "0",
+  "diffTotalHourlyCost": "0",
+  "diffTotalMonthlyCost": "0",
+  "diffTotalMonthlyUsageCost": "0",
+  "timeGenerated": "2026-03-20T14:49:20.261086245Z",
+  "summary": {
+    "totalDetectedResources": 66,
+    "totalSupportedResources": 14,
+    "totalUnsupportedResources": 0,
+    "totalUsageBasedResources": 14,
+    "totalNoPriceResources": 52,
+    "unsupportedResourceCounts": {},
+    "noPriceResourceCounts": {
+      "aws_db_subnet_group": 2,
+      "aws_eip": 4,
+      "aws_internet_gateway": 2,
+      "aws_launch_template": 2,
+      "aws_lb_listener": 2,
+      "aws_lb_target_group": 2,
+      "aws_route_table": 6,
+      "aws_route_table_association": 12,
+      "aws_security_group": 6,
+      "aws_subnet": 12,
+      "aws_vpc": 2
+    }
+  }
+}

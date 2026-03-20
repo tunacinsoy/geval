@@ -1,0 +1,7 @@
+primary_region = "eu-central-1"
+dr_region      = "eu-west-1"
+
+app_instance_type = "t3.small"
+db_instance_type  = "db.t3.medium"
+min_app_instances = 1
+max_app_instances = 2

@@ -1,0 +1,3 @@
+environment = "staging"
+application_desired_capacity = 2
+enable_nat_instances = false

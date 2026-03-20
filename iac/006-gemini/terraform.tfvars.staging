@@ -1,0 +1,7 @@
+primary_region = "eu-central-1"
+dr_region      = "eu-west-1"
+
+app_instance_type = "c5.large"
+db_instance_type  = "db.r5.large"
+min_app_instances = 2
+max_app_instances = 4

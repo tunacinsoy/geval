@@ -1,0 +1,963 @@
+{
+  "version": "0.2",
+  "metadata": {
+    "infracostCommand": "breakdown",
+    "vcsBranch": "001-multi-region-dr",
+    "vcsCommitSha": "5de4171718571cd803d45e218c02b7df16812e5b",
+    "vcsCommitAuthorName": "tuna",
+    "vcsCommitAuthorEmail": "tunacinsoy@gmail.com",
+    "vcsCommitTimestamp": "2026-03-20T13:38:19Z",
+    "vcsCommitMessage": "feat(iac): implement infrastructure as code\n\nGenerates the Terraform code for the multi-region disaster recovery\ninfrastructure.\n\nThis includes:\n- Backend, provider, and version configuration\n- VPC, subnets, and security groups\n- RDS Aurora Global Database\n- Application Load Balancers\n- Auto Scaling groups\n- Monitoring resources\n- Outputs and documentation\n\nNote: Terraform validation and formatting tasks were skipped because\nTerraform is not installed in the environment.",
+    "vcsRepositoryUrl": "https://github.com/tunacinsoy/pw-sdd-iac-gemini-001.git"
+  },
+  "currency": "USD",
+  "projects": [
+    {
+      "name": "tunacinsoy/pw-sdd-iac-gemini-001/iac",
+      "displayName": "main",
+      "metadata": {
+        "path": "/home/tuna/git-repos/pw-sdd-iac-gemini-001/iac",
+        "type": "terraform_dir",
+        "vcsSubPath": "iac",
+        "vcsCodeChanged": true,
+        "warnings": [
+          {
+            "code": 105,
+            "message": "Missing Terraform vars",
+            "data": [
+              "variable.primary_region",
+              "variable.dr_region",
+              "variable.app_instance_type",
+              "variable.db_instance_type",
+              "variable.min_app_instances",
+              "variable.max_app_instances"
+            ],
+            "isError": false
+          }
+        ],
+        "providers": [
+          {
+            "name": "aws",
+            "filename": "provider.tf",
+            "startLine": 1,
+            "endLine": 3
+          },
+          {
+            "name": "aws.dr",
+            "filename": "provider.tf",
+            "startLine": 5,
+            "endLine": 8
+          }
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [
+          {
+            "name": "aws_lb.dr",
+            "resourceType": "aws_lb",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_lb.dr",
+                  "endLine": 17,
+                  "filename": "loadbalancer.tf",
+                  "startLine": 10
+                }
+              ],
+              "checksum": "59637fbb340557223c2416cdf3dc906c82297558bdb39210bac8ac496b7b7202",
+              "endLine": 17,
+              "filename": "loadbalancer.tf",
+              "startLine": 10
+            },
+            "hourlyCost": "0.0225",
+            "monthlyCost": "16.425",
+            "costComponents": [
+              {
+                "name": "Application load balancer",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.0225",
+                "hourlyCost": "0.0225",
+                "monthlyCost": "16.425",
+                "priceNotFound": false
+              },
+              {
+                "name": "Load balancer capacity units",
+                "unit": "LCU",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "5.84",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_lb.primary",
+            "resourceType": "aws_lb",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_lb.primary",
+                  "endLine": 8,
+                  "filename": "loadbalancer.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "c9597117ff4219dba7b0f3f36fa458be21b4fccca315b98c02fc84cf81ffa7e7",
+              "endLine": 8,
+              "filename": "loadbalancer.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.0225",
+            "monthlyCost": "16.425",
+            "costComponents": [
+              {
+                "name": "Application load balancer",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.0225",
+                "hourlyCost": "0.0225",
+                "monthlyCost": "16.425",
+                "priceNotFound": false
+              },
+              {
+                "name": "Load balancer capacity units",
+                "unit": "LCU",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "5.84",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_dashboard.main",
+            "resourceType": "aws_cloudwatch_dashboard",
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_dashboard.main",
+                  "endLine": 9,
+                  "filename": "monitoring.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "bad4f55bea7de45394ea5c98f687d5b378ab55bdabdc988d491e5986c20f7699",
+              "endLine": 9,
+              "filename": "monitoring.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.0041095890410958",
+            "monthlyCost": "3",
+            "costComponents": [
+              {
+                "name": "Dashboard",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "3",
+                "hourlyCost": "0.0041095890410958",
+                "monthlyCost": "3",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_autoscaling_group.dr",
+            "resourceType": "aws_autoscaling_group",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_autoscaling_group.dr",
+                  "endLine": 35,
+                  "filename": "compute.tf",
+                  "startLine": 27
+                }
+              ],
+              "checksum": "a8a0e0b199a26f86f11061585b52b4ba029756bace9562b6ae43a14c3d691ce0",
+              "endLine": 35,
+              "filename": "compute.tf",
+              "startLine": 27
+            },
+            "hourlyCost": "0.00397260273972602",
+            "monthlyCost": "2.9",
+            "subresources": [
+              {
+                "name": "aws_launch_configuration.dr",
+                "metadata": {},
+                "hourlyCost": "0.00397260273972602",
+                "monthlyCost": "2.9",
+                "costComponents": [
+                  {
+                    "name": "Instance usage (Linux/UNIX, on-demand, instance_type-infracost-mock-44956be29f34)",
+                    "unit": "hours",
+                    "hourlyQuantity": "1",
+                    "monthlyQuantity": "730",
+                    "price": "0",
+                    "hourlyCost": "0",
+                    "monthlyCost": "0",
+                    "priceNotFound": true
+                  },
+                  {
+                    "name": "EC2 detailed monitoring",
+                    "unit": "metrics",
+                    "hourlyQuantity": "0.0095890410958904",
+                    "monthlyQuantity": "7",
+                    "price": "0.3",
+                    "hourlyCost": "0.00287671232876712",
+                    "monthlyCost": "2.1",
+                    "priceNotFound": false
+                  }
+                ],
+                "subresources": [
+                  {
+                    "name": "root_block_device",
+                    "metadata": {},
+                    "hourlyCost": "0.0010958904109589",
+                    "monthlyCost": "0.8",
+                    "costComponents": [
+                      {
+                        "name": "Storage (general purpose SSD, gp2)",
+                        "unit": "GB",
+                        "hourlyQuantity": "0.010958904109589",
+                        "monthlyQuantity": "8",
+                        "price": "0.1",
+                        "hourlyCost": "0.0010958904109589",
+                        "monthlyCost": "0.8",
+                        "priceNotFound": false
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_autoscaling_group.primary",
+            "resourceType": "aws_autoscaling_group",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_autoscaling_group.primary",
+                  "endLine": 17,
+                  "filename": "compute.tf",
+                  "startLine": 9
+                }
+              ],
+              "checksum": "b228663ef6e4c1536be5d4c55a11ab95c420740bdc2f2ce2034d3af1e9452dee",
+              "endLine": 17,
+              "filename": "compute.tf",
+              "startLine": 9
+            },
+            "hourlyCost": "0.00397260273972602",
+            "monthlyCost": "2.9",
+            "subresources": [
+              {
+                "name": "aws_launch_configuration.primary",
+                "metadata": {},
+                "hourlyCost": "0.00397260273972602",
+                "monthlyCost": "2.9",
+                "costComponents": [
+                  {
+                    "name": "Instance usage (Linux/UNIX, on-demand, instance_type-infracost-mock-44956be29f34)",
+                    "unit": "hours",
+                    "hourlyQuantity": "1",
+                    "monthlyQuantity": "730",
+                    "price": "0",
+                    "hourlyCost": "0",
+                    "monthlyCost": "0",
+                    "priceNotFound": true
+                  },
+                  {
+                    "name": "EC2 detailed monitoring",
+                    "unit": "metrics",
+                    "hourlyQuantity": "0.0095890410958904",
+                    "monthlyQuantity": "7",
+                    "price": "0.3",
+                    "hourlyCost": "0.00287671232876712",
+                    "monthlyCost": "2.1",
+                    "priceNotFound": false
+                  }
+                ],
+                "subresources": [
+                  {
+                    "name": "root_block_device",
+                    "metadata": {},
+                    "hourlyCost": "0.0010958904109589",
+                    "monthlyCost": "0.8",
+                    "costComponents": [
+                      {
+                        "name": "Storage (general purpose SSD, gp2)",
+                        "unit": "GB",
+                        "hourlyQuantity": "0.010958904109589",
+                        "monthlyQuantity": "8",
+                        "price": "0.1",
+                        "hourlyCost": "0.0010958904109589",
+                        "monthlyCost": "0.8",
+                        "priceNotFound": false
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.high_cpu",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.high_cpu",
+                  "endLine": 25,
+                  "filename": "monitoring.tf",
+                  "startLine": 11
+                }
+              ],
+              "checksum": "3573183867d2232c5b09b6df694fbe41d0fbe3c20d5c85de041d85a856608eb8",
+              "endLine": 25,
+              "filename": "monitoring.tf",
+              "startLine": 11
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_rds_cluster.dr",
+            "resourceType": "aws_rds_cluster",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_rds_cluster.dr",
+                  "endLine": 30,
+                  "filename": "data.tf",
+                  "startLine": 20
+                }
+              ],
+              "checksum": "93f31b6a385d1dae13d2246c532f3dad4bc712c58e9f06dd18961c83fa14f97e",
+              "endLine": 30,
+              "filename": "data.tf",
+              "startLine": 20
+            },
+            "costComponents": [
+              {
+                "name": "Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "I/O requests",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot export",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.01",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_rds_cluster.primary",
+            "resourceType": "aws_rds_cluster",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_rds_cluster.primary",
+                  "endLine": 18,
+                  "filename": "data.tf",
+                  "startLine": 8
+                }
+              ],
+              "checksum": "205e9e761d0d3271c3165a031ec60254286084f82fda7961cdfe915e70534cf4",
+              "endLine": 18,
+              "filename": "data.tf",
+              "startLine": 8
+            },
+            "costComponents": [
+              {
+                "name": "Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "I/O requests",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot export",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.01",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.0571917808219177",
+        "totalMonthlyCost": "41.75",
+        "totalMonthlyUsageCost": "0"
+      },
+      "breakdown": {
+        "resources": [
+          {
+            "name": "aws_lb.dr",
+            "resourceType": "aws_lb",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_lb.dr",
+                  "endLine": 17,
+                  "filename": "loadbalancer.tf",
+                  "startLine": 10
+                }
+              ],
+              "checksum": "59637fbb340557223c2416cdf3dc906c82297558bdb39210bac8ac496b7b7202",
+              "endLine": 17,
+              "filename": "loadbalancer.tf",
+              "startLine": 10
+            },
+            "hourlyCost": "0.0225",
+            "monthlyCost": "16.425",
+            "costComponents": [
+              {
+                "name": "Application load balancer",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.0225",
+                "hourlyCost": "0.0225",
+                "monthlyCost": "16.425",
+                "priceNotFound": false
+              },
+              {
+                "name": "Load balancer capacity units",
+                "unit": "LCU",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "5.84",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_lb.primary",
+            "resourceType": "aws_lb",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_lb.primary",
+                  "endLine": 8,
+                  "filename": "loadbalancer.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "c9597117ff4219dba7b0f3f36fa458be21b4fccca315b98c02fc84cf81ffa7e7",
+              "endLine": 8,
+              "filename": "loadbalancer.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.0225",
+            "monthlyCost": "16.425",
+            "costComponents": [
+              {
+                "name": "Application load balancer",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.0225",
+                "hourlyCost": "0.0225",
+                "monthlyCost": "16.425",
+                "priceNotFound": false
+              },
+              {
+                "name": "Load balancer capacity units",
+                "unit": "LCU",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "5.84",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_dashboard.main",
+            "resourceType": "aws_cloudwatch_dashboard",
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_dashboard.main",
+                  "endLine": 9,
+                  "filename": "monitoring.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "bad4f55bea7de45394ea5c98f687d5b378ab55bdabdc988d491e5986c20f7699",
+              "endLine": 9,
+              "filename": "monitoring.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.0041095890410958",
+            "monthlyCost": "3",
+            "costComponents": [
+              {
+                "name": "Dashboard",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "3",
+                "hourlyCost": "0.0041095890410958",
+                "monthlyCost": "3",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_autoscaling_group.dr",
+            "resourceType": "aws_autoscaling_group",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_autoscaling_group.dr",
+                  "endLine": 35,
+                  "filename": "compute.tf",
+                  "startLine": 27
+                }
+              ],
+              "checksum": "a8a0e0b199a26f86f11061585b52b4ba029756bace9562b6ae43a14c3d691ce0",
+              "endLine": 35,
+              "filename": "compute.tf",
+              "startLine": 27
+            },
+            "hourlyCost": "0.00397260273972602",
+            "monthlyCost": "2.9",
+            "subresources": [
+              {
+                "name": "aws_launch_configuration.dr",
+                "metadata": {},
+                "hourlyCost": "0.00397260273972602",
+                "monthlyCost": "2.9",
+                "costComponents": [
+                  {
+                    "name": "Instance usage (Linux/UNIX, on-demand, instance_type-infracost-mock-44956be29f34)",
+                    "unit": "hours",
+                    "hourlyQuantity": "1",
+                    "monthlyQuantity": "730",
+                    "price": "0",
+                    "hourlyCost": "0",
+                    "monthlyCost": "0",
+                    "priceNotFound": true
+                  },
+                  {
+                    "name": "EC2 detailed monitoring",
+                    "unit": "metrics",
+                    "hourlyQuantity": "0.0095890410958904",
+                    "monthlyQuantity": "7",
+                    "price": "0.3",
+                    "hourlyCost": "0.00287671232876712",
+                    "monthlyCost": "2.1",
+                    "priceNotFound": false
+                  }
+                ],
+                "subresources": [
+                  {
+                    "name": "root_block_device",
+                    "metadata": {},
+                    "hourlyCost": "0.0010958904109589",
+                    "monthlyCost": "0.8",
+                    "costComponents": [
+                      {
+                        "name": "Storage (general purpose SSD, gp2)",
+                        "unit": "GB",
+                        "hourlyQuantity": "0.010958904109589",
+                        "monthlyQuantity": "8",
+                        "price": "0.1",
+                        "hourlyCost": "0.0010958904109589",
+                        "monthlyCost": "0.8",
+                        "priceNotFound": false
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_autoscaling_group.primary",
+            "resourceType": "aws_autoscaling_group",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_autoscaling_group.primary",
+                  "endLine": 17,
+                  "filename": "compute.tf",
+                  "startLine": 9
+                }
+              ],
+              "checksum": "b228663ef6e4c1536be5d4c55a11ab95c420740bdc2f2ce2034d3af1e9452dee",
+              "endLine": 17,
+              "filename": "compute.tf",
+              "startLine": 9
+            },
+            "hourlyCost": "0.00397260273972602",
+            "monthlyCost": "2.9",
+            "subresources": [
+              {
+                "name": "aws_launch_configuration.primary",
+                "metadata": {},
+                "hourlyCost": "0.00397260273972602",
+                "monthlyCost": "2.9",
+                "costComponents": [
+                  {
+                    "name": "Instance usage (Linux/UNIX, on-demand, instance_type-infracost-mock-44956be29f34)",
+                    "unit": "hours",
+                    "hourlyQuantity": "1",
+                    "monthlyQuantity": "730",
+                    "price": "0",
+                    "hourlyCost": "0",
+                    "monthlyCost": "0",
+                    "priceNotFound": true
+                  },
+                  {
+                    "name": "EC2 detailed monitoring",
+                    "unit": "metrics",
+                    "hourlyQuantity": "0.0095890410958904",
+                    "monthlyQuantity": "7",
+                    "price": "0.3",
+                    "hourlyCost": "0.00287671232876712",
+                    "monthlyCost": "2.1",
+                    "priceNotFound": false
+                  }
+                ],
+                "subresources": [
+                  {
+                    "name": "root_block_device",
+                    "metadata": {},
+                    "hourlyCost": "0.0010958904109589",
+                    "monthlyCost": "0.8",
+                    "costComponents": [
+                      {
+                        "name": "Storage (general purpose SSD, gp2)",
+                        "unit": "GB",
+                        "hourlyQuantity": "0.010958904109589",
+                        "monthlyQuantity": "8",
+                        "price": "0.1",
+                        "hourlyCost": "0.0010958904109589",
+                        "monthlyCost": "0.8",
+                        "priceNotFound": false
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.high_cpu",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.high_cpu",
+                  "endLine": 25,
+                  "filename": "monitoring.tf",
+                  "startLine": 11
+                }
+              ],
+              "checksum": "3573183867d2232c5b09b6df694fbe41d0fbe3c20d5c85de041d85a856608eb8",
+              "endLine": 25,
+              "filename": "monitoring.tf",
+              "startLine": 11
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_rds_cluster.dr",
+            "resourceType": "aws_rds_cluster",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:5",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_rds_cluster.dr",
+                  "endLine": 30,
+                  "filename": "data.tf",
+                  "startLine": 20
+                }
+              ],
+              "checksum": "93f31b6a385d1dae13d2246c532f3dad4bc712c58e9f06dd18961c83fa14f97e",
+              "endLine": 30,
+              "filename": "data.tf",
+              "startLine": 20
+            },
+            "costComponents": [
+              {
+                "name": "Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "I/O requests",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot export",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.01",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_rds_cluster.primary",
+            "resourceType": "aws_rds_cluster",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_rds_cluster.primary",
+                  "endLine": 18,
+                  "filename": "data.tf",
+                  "startLine": 8
+                }
+              ],
+              "checksum": "205e9e761d0d3271c3165a031ec60254286084f82fda7961cdfe915e70534cf4",
+              "endLine": 18,
+              "filename": "data.tf",
+              "startLine": 8
+            },
+            "costComponents": [
+              {
+                "name": "Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "I/O requests",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot export",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.01",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.0571917808219177",
+        "totalMonthlyCost": "41.75",
+        "totalMonthlyUsageCost": "0"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 30,
+        "totalSupportedResources": 8,
+        "totalUnsupportedResources": 1,
+        "totalUsageBasedResources": 6,
+        "totalNoPriceResources": 21,
+        "unsupportedResourceCounts": {
+          "aws_rds_global_cluster": 1
+        },
+        "noPriceResourceCounts": {
+          "aws_db_subnet_group": 2,
+          "aws_launch_configuration": 2,
+          "aws_lb_listener": 2,
+          "aws_lb_target_group": 2,
+          "aws_security_group": 6,
+          "aws_subnet": 4,
+          "aws_vpc": 2,
+          "aws_vpc_peering_connection": 1
+        }
+      }
+    }
+  ],
+  "totalHourlyCost": "0.0571917808219177",
+  "totalMonthlyCost": "41.75",
+  "totalMonthlyUsageCost": "0",
+  "pastTotalHourlyCost": "0.0571917808219177",
+  "pastTotalMonthlyCost": "41.75",
+  "pastTotalMonthlyUsageCost": "0",
+  "diffTotalHourlyCost": "0",
+  "diffTotalMonthlyCost": "0",
+  "diffTotalMonthlyUsageCost": "0",
+  "timeGenerated": "2026-03-20T13:39:33.022927451Z",
+  "summary": {
+    "totalDetectedResources": 30,
+    "totalSupportedResources": 8,
+    "totalUnsupportedResources": 1,
+    "totalUsageBasedResources": 6,
+    "totalNoPriceResources": 21,
+    "unsupportedResourceCounts": {
+      "aws_rds_global_cluster": 1
+    },
+    "noPriceResourceCounts": {
+      "aws_db_subnet_group": 2,
+      "aws_launch_configuration": 2,
+      "aws_lb_listener": 2,
+      "aws_lb_target_group": 2,
+      "aws_security_group": 6,
+      "aws_subnet": 4,
+      "aws_vpc": 2,
+      "aws_vpc_peering_connection": 1
+    }
+  }
+}

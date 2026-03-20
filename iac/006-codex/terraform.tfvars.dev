@@ -1,0 +1,3 @@
+environment = "dev"
+application_desired_capacity = 1
+enable_nat_instances = true
