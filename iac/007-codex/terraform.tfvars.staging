@@ -1,0 +1,4 @@
+environment = "staging"
+node_count = 2
+node_pool_max = 3
+log_retention_days = 60

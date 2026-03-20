@@ -1,0 +1,4 @@
+environment = "dev"
+node_count = 1
+node_pool_max = 2
+log_retention_days = 30

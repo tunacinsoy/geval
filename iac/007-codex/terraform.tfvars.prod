@@ -1,0 +1,3 @@
+environment = "prod"
+node_count = 3
+node_pool_max = 6

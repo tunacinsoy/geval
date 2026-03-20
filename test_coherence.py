@@ -5,7 +5,7 @@ from deepeval.test_case import LLMTestCase, LLMTestCaseParams
 from deepeval.metrics import AnswerRelevancyMetric, GEval
 
 
-def load_terraform_codebase(directory="iac/006-codex"):
+def load_terraform_codebase(directory="iac/007-codex"):
     tf_code = ""
     patterns = ["**/*.tf", "**/*.tfvars"]
 
@@ -21,10 +21,10 @@ def load_terraform_codebase(directory="iac/006-codex"):
 
 
 def test_contextual_terraform_coherence():
-    user_request = "Provision a primary VPC in eu-central-1 and a disaster recovery VPC in eu-west-1 with identical CIDR blocks of 10.10.0.0/16. Establish VPC Peering between them. In the primary region, deploy an RDS Aurora Global Database (PostgreSQL compatible) that replicates to the DR region. The application tier in both regions must reside in private subnets and be accessed via an Application Load Balancer in public subnets. Ensure Terraform state is stored in an S3 bucket with cross-region replication enabled."
+    user_request = "Deploy a private Azure Kubernetes Service cluster (v1.28+) with Azure CNI Overlay networking. The cluster must not have a public IP. All egress traffic must be routed through an Azure Firewall using a user-defined route (UDR) on the node subnet. Configure the firewall with application rules to allow traffic only to *.docker.io and *.ubuntu.com. The node pool should consist of 3 Standard_D4s_v5 instances, distributed across availability zones 1, 2, and 3."
 
     background_context = [
-        "LedgerPrime Financial, founded in 2010 with 1,200 employees, is a multinational enterprise holding EU citizen financial data. The disaster recovery plan is explicitly designed to meet GDPR's Article 32 requirements for restoring the availability and access to personal data in a timely manner in the event of a physical or technical incident. The active-passive database replication guarantees compliance with these stringent availability mandates."
+        "Aegis Defense Tech, founded in 2005 with 850 employees, is a defense contractor whose containerized workloads process data of European civilian contractors. The zero-trust network isolation explicitly satisfies GDPR's requirement for data protection by design and by default. The strict egress control prevents any possibility of unauthorized cross-border data exfiltration from the containerized workloads."
 
     ]
 
