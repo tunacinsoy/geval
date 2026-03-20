@@ -1,0 +1,52 @@
+# Production Environment Variables for Private AKS Cluster
+
+environment           = "prod"
+location              = "eastus"
+location_short        = "eus"
+resource_group_name   = "rg-001-private-aks-prod"
+naming_prefix         = "001"
+project_name          = "private-aks"
+
+# Networking
+vnet_cidr                   = "10.0.0.0/16"
+control_plane_subnet_cidr   = "10.0.1.0/25"
+node_subnet_cidr            = "10.0.10.0/22"
+firewall_subnet_cidr        = "10.0.20.0/26"
+private_endpoint_subnet_cidr = "10.0.30.0/27"
+
+# Availability Zones (3-zone distribution)
+availability_zones = ["1", "2", "3"]
+
+# Firewall Configuration
+firewall_sku_tier        = "Premium"
+firewall_enable_dns_proxy = true
+
+# Kubernetes Cluster Configuration
+kubernetes_version         = "1.28"
+aks_node_count             = 3
+aks_vm_size                = "Standard_D4s_v5"
+aks_os_disk_size_gb        = 128
+aks_enable_auto_scaling    = false
+aks_max_pods_per_node      = 30
+
+# Monitoring & Compliance (GDPR: 90-day retention minimum)
+log_analytics_retention_days = 90
+firewall_logs_retention_days = 90
+
+# Alerts
+enable_alerts = true
+alert_email_receivers = [
+  # Add notification email addresses here
+  # "ops-team@example.com"
+]
+
+# Tags
+common_tags = {
+  Environment  = "prod"
+  Project      = "001-private-aks"
+  ManagedBy    = "Terraform"
+  CreatedDate  = "2026-03-20"
+  CostCenter   = "infrastructure"
+  Owner        = "platform-team"
+  Compliance   = "GDPR"
+}

@@ -1,0 +1,1720 @@
+{
+  "version": "0.2",
+  "metadata": {
+    "infracostCommand": "breakdown",
+    "vcsBranch": "001-private-aks",
+    "vcsCommitSha": "eae7c7d9455f2fd08c77d99f20873c4b1c4d118b",
+    "vcsCommitAuthorName": "tunacinsoy",
+    "vcsCommitAuthorEmail": "tunacinsoy@gmail.com",
+    "vcsCommitTimestamp": "2026-01-20T20:52:31Z",
+    "vcsCommitMessage": "feat: main, default",
+    "vcsRepositoryUrl": "https://github.com/tunacinsoy/pw-sdd-iac-claude-001"
+  },
+  "currency": "USD",
+  "projects": [
+    {
+      "name": "tunacinsoy/pw-sdd-iac-claude-001/iac",
+      "displayName": "main",
+      "metadata": {
+        "path": ".",
+        "type": "terraform_dir",
+        "vcsSubPath": "iac",
+        "vcsCodeChanged": true,
+        "providers": [
+          {
+            "name": "azurerm",
+            "filename": "provider.tf",
+            "startLine": 1,
+            "endLine": 12
+          }
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [
+          {
+            "name": "azurerm_firewall.primary",
+            "resourceType": "azurerm_firewall",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_firewall.primary",
+                  "endLine": 45,
+                  "filename": "firewall.tf",
+                  "startLine": 23
+                }
+              ],
+              "checksum": "44cea0098977ffc7e51421c16b0c8a4a421ca4bf8dffb49637606a7b10641082",
+              "endLine": 45,
+              "filename": "firewall.tf",
+              "startLine": 23
+            },
+            "hourlyCost": "1.75",
+            "monthlyCost": "1277.5",
+            "costComponents": [
+              {
+                "name": "Deployment (Premium)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "1.75",
+                "hourlyCost": "1.75",
+                "monthlyCost": "1277.5",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.016",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_firewall.secondary",
+            "resourceType": "azurerm_firewall",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_firewall.secondary",
+                  "endLine": 71,
+                  "filename": "firewall.tf",
+                  "startLine": 48
+                }
+              ],
+              "checksum": "e2b54d5c688c2dc9177c7e22c844ae5d5de1deafcb60ce8498e24dbc446e3977",
+              "endLine": 71,
+              "filename": "firewall.tf",
+              "startLine": 48
+            },
+            "hourlyCost": "1.75",
+            "monthlyCost": "1277.5",
+            "costComponents": [
+              {
+                "name": "Deployment (Premium)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "1.75",
+                "hourlyCost": "1.75",
+                "monthlyCost": "1277.5",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.016",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_kubernetes_cluster.aks",
+            "resourceType": "azurerm_kubernetes_cluster",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_kubernetes_cluster.aks",
+                  "endLine": 117,
+                  "filename": "aks.tf",
+                  "startLine": 2
+                }
+              ],
+              "checksum": "5247ba92b483920d5f5908a45579a7bc810a7a54c2b78bb32faeb9546dd0cf6b",
+              "endLine": 117,
+              "filename": "aks.tf",
+              "startLine": 2
+            },
+            "hourlyCost": "0.576",
+            "monthlyCost": "420.48",
+            "subresources": [
+              {
+                "name": "default_node_pool",
+                "metadata": {},
+                "hourlyCost": "0.576",
+                "monthlyCost": "420.48",
+                "costComponents": [
+                  {
+                    "name": "Instance usage (Linux, pay as you go, Standard_D4s_v5)",
+                    "unit": "hours",
+                    "hourlyQuantity": "3",
+                    "monthlyQuantity": "2190",
+                    "price": "0.192",
+                    "hourlyCost": "0.576",
+                    "monthlyCost": "420.48",
+                    "priceNotFound": false
+                  }
+                ]
+              },
+              {
+                "name": "Load Balancer",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Data processed",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "azurerm_private_endpoint.aks_control_plane",
+            "resourceType": "azurerm_private_endpoint",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_private_endpoint.aks_control_plane",
+                  "endLine": 267,
+                  "filename": "vpc.tf",
+                  "startLine": 246
+                }
+              ],
+              "checksum": "c63d5e5f5ee6b22c92a63b2b5f32544b6d52cbd6d4fb0504969ba4cfbcb48a46",
+              "endLine": 267,
+              "filename": "vpc.tf",
+              "startLine": 246
+            },
+            "hourlyCost": "0.01",
+            "monthlyCost": "7.3",
+            "costComponents": [
+              {
+                "name": "Private endpoint",
+                "unit": "hour",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.01",
+                "hourlyCost": "0.01",
+                "monthlyCost": "7.3",
+                "priceNotFound": false
+              },
+              {
+                "name": "Inbound data processed (first 1PB)",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.01",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "Outbound data processed (first 1PB)",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.01",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_public_ip.firewall_primary",
+            "resourceType": "azurerm_public_ip",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_public_ip.firewall_primary",
+                  "endLine": 10,
+                  "filename": "firewall.tf",
+                  "startLine": 2
+                }
+              ],
+              "checksum": "4bd8337ddf59fe9d6042c1255c2123420bd4e06fbcd6b55a6ac27150c3ab4a3a",
+              "endLine": 10,
+              "filename": "firewall.tf",
+              "startLine": 2
+            },
+            "hourlyCost": "0.005",
+            "monthlyCost": "3.65",
+            "costComponents": [
+              {
+                "name": "IP address (static, regional)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.005",
+                "hourlyCost": "0.005",
+                "monthlyCost": "3.65",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_public_ip.firewall_secondary",
+            "resourceType": "azurerm_public_ip",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_public_ip.firewall_secondary",
+                  "endLine": 20,
+                  "filename": "firewall.tf",
+                  "startLine": 12
+                }
+              ],
+              "checksum": "4bd8337ddf59fe9d6042c1255c2123420bd4e06fbcd6b55a6ac27150c3ab4a3a",
+              "endLine": 20,
+              "filename": "firewall.tf",
+              "startLine": 12
+            },
+            "hourlyCost": "0.005",
+            "monthlyCost": "3.65",
+            "costComponents": [
+              {
+                "name": "IP address (static, regional)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.005",
+                "hourlyCost": "0.005",
+                "monthlyCost": "3.65",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_monitor_scheduled_query_rules_alert.api_server_health[0]",
+            "resourceType": "azurerm_monitor_scheduled_query_rules_alert",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_scheduled_query_rules_alert.api_server_health",
+                  "endLine": 193,
+                  "filename": "monitoring.tf",
+                  "startLine": 159
+                }
+              ],
+              "checksum": "fcb9f6face7e3f9e02519710cadc5f3b8fd049da16921270c20d83ec4b8d6a9c",
+              "endLine": 193,
+              "filename": "monitoring.tf",
+              "startLine": 159
+            },
+            "hourlyCost": "0.0020547945205479",
+            "monthlyCost": "1.5",
+            "costComponents": [
+              {
+                "name": "Log alerts monitoring (5 minute frequency)",
+                "unit": "rule",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "1.5",
+                "hourlyCost": "0.0020547945205479",
+                "monthlyCost": "1.5",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_private_dns_zone.aks",
+            "resourceType": "azurerm_private_dns_zone",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_private_dns_zone.aks",
+                  "endLine": 275,
+                  "filename": "vpc.tf",
+                  "startLine": 270
+                }
+              ],
+              "checksum": "a5e9b6d13c258dc426de68aec900400e391938183914b4c1945275473e4db7bf",
+              "endLine": 275,
+              "filename": "vpc.tf",
+              "startLine": 270
+            },
+            "hourlyCost": "0.0006849315068493",
+            "monthlyCost": "0.5",
+            "costComponents": [
+              {
+                "name": "Hosted zone",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.5",
+                "hourlyCost": "0.0006849315068493",
+                "monthlyCost": "0.5",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_log_analytics_workspace.oms",
+            "resourceType": "azurerm_log_analytics_workspace",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_log_analytics_workspace.oms",
+                  "endLine": 10,
+                  "filename": "monitoring.tf",
+                  "startLine": 2
+                }
+              ],
+              "checksum": "6d37781249f92e69dc3fb05188ba9e9aaf9be48faeba633403bb6dc7f73d2c15",
+              "endLine": 10,
+              "filename": "monitoring.tf",
+              "startLine": 2
+            },
+            "costComponents": [
+              {
+                "name": "Log data ingestion",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2.3",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Log data retention",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Log data export",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Basic log data ingestion",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Basic log search queries",
+                "unit": "GB searched",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archive data",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.02",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archive data restored",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archive data searched",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_monitor_action_group.aks_alerts",
+            "resourceType": "azurerm_monitor_action_group",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_action_group.aks_alerts",
+                  "endLine": 61,
+                  "filename": "monitoring.tf",
+                  "startLine": 55
+                }
+              ],
+              "checksum": "e1a85c79f100545b4d54e1afd32f119de9ec728b9db2d4c68aaa13ba63e9f3e8",
+              "endLine": 61,
+              "filename": "monitoring.tf",
+              "startLine": 55
+            }
+          },
+          {
+            "name": "azurerm_monitor_diagnostic_setting.aks",
+            "resourceType": "azurerm_monitor_diagnostic_setting",
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_diagnostic_setting.aks",
+                  "endLine": 156,
+                  "filename": "aks.tf",
+                  "startLine": 120
+                }
+              ],
+              "checksum": "ca2ba5807c6ec2e6c297d855126946c6ca1f827d9ab0c33f4808d85159bf9926",
+              "endLine": 156,
+              "filename": "aks.tf",
+              "startLine": 120
+            }
+          },
+          {
+            "name": "azurerm_monitor_diagnostic_setting.firewall_primary",
+            "resourceType": "azurerm_monitor_diagnostic_setting",
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_diagnostic_setting.firewall_primary",
+                  "endLine": 210,
+                  "filename": "firewall.tf",
+                  "startLine": 187
+                }
+              ],
+              "checksum": "17266ecc6c6d4ff34d19e9edc23d17b7871f9ecb32fc9e976040fa6aabe1de02",
+              "endLine": 210,
+              "filename": "firewall.tf",
+              "startLine": 187
+            },
+            "costComponents": [
+              {
+                "name": "Platform logs processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.25",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_monitor_diagnostic_setting.firewall_secondary",
+            "resourceType": "azurerm_monitor_diagnostic_setting",
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_diagnostic_setting.firewall_secondary",
+                  "endLine": 235,
+                  "filename": "firewall.tf",
+                  "startLine": 212
+                }
+              ],
+              "checksum": "5ea4c1c87b7a38afc4acbba9fda8487e5cc8f2220777eca7d894284bbcfce636",
+              "endLine": 235,
+              "filename": "firewall.tf",
+              "startLine": 212
+            },
+            "costComponents": [
+              {
+                "name": "Platform logs processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.25",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_monitor_diagnostic_setting.kube_metrics",
+            "resourceType": "azurerm_monitor_diagnostic_setting",
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_diagnostic_setting.kube_metrics",
+                  "endLine": 156,
+                  "filename": "monitoring.tf",
+                  "startLine": 145
+                }
+              ],
+              "checksum": "a959277ca28f29cae0f6794dc2b3c51f5ad63a4d776b17581816e9eaa3159d49",
+              "endLine": 156,
+              "filename": "monitoring.tf",
+              "startLine": 145
+            }
+          },
+          {
+            "name": "azurerm_monitor_metric_alert.firewall_health[0]",
+            "resourceType": "azurerm_monitor_metric_alert",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_metric_alert.firewall_health",
+                  "endLine": 142,
+                  "filename": "monitoring.tf",
+                  "startLine": 118
+                }
+              ],
+              "checksum": "2d3f8c0507fc0b23cee84091ab086a382773ddc035be7886590596e9dfe03b00",
+              "endLine": 142,
+              "filename": "monitoring.tf",
+              "startLine": 118
+            }
+          },
+          {
+            "name": "azurerm_monitor_metric_alert.node_cpu_utilization[0]",
+            "resourceType": "azurerm_monitor_metric_alert",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_metric_alert.node_cpu_utilization",
+                  "endLine": 88,
+                  "filename": "monitoring.tf",
+                  "startLine": 64
+                }
+              ],
+              "checksum": "20d20a98dd7d0a4652cac00bd310e42e7ce48b1619144856b08ada51d740d05e",
+              "endLine": 88,
+              "filename": "monitoring.tf",
+              "startLine": 64
+            }
+          },
+          {
+            "name": "azurerm_monitor_metric_alert.node_memory_utilization[0]",
+            "resourceType": "azurerm_monitor_metric_alert",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_metric_alert.node_memory_utilization",
+                  "endLine": 115,
+                  "filename": "monitoring.tf",
+                  "startLine": 91
+                }
+              ],
+              "checksum": "0a1e8e949b7174b8568b62c2e0d82bbca86988e7b0a413ed78bdaec7ee655602",
+              "endLine": 115,
+              "filename": "monitoring.tf",
+              "startLine": 91
+            }
+          },
+          {
+            "name": "azurerm_storage_account.firewall_logs",
+            "resourceType": "azurerm_storage_account",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_storage_account.firewall_logs",
+                  "endLine": 24,
+                  "filename": "monitoring.tf",
+                  "startLine": 13
+                }
+              ],
+              "checksum": "b476e8c86aeefe0a1501135d2e5d296a6a71677fe2c72cb428a02b002df4c4ab",
+              "endLine": 24,
+              "filename": "monitoring.tf",
+              "startLine": 13
+            },
+            "costComponents": [
+              {
+                "name": "Capacity",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0208",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Write operations",
+                "unit": "10k operations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.05",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "List and create container operations",
+                "unit": "10k operations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.05",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Read operations",
+                "unit": "10k operations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.004",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "All other operations",
+                "unit": "10k operations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.004",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Blob index",
+                "unit": "10k tags",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "4.0987397260273972",
+        "totalMonthlyCost": "2992.08",
+        "totalMonthlyUsageCost": "0"
+      },
+      "breakdown": {
+        "resources": [
+          {
+            "name": "azurerm_firewall.primary",
+            "resourceType": "azurerm_firewall",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_firewall.primary",
+                  "endLine": 45,
+                  "filename": "firewall.tf",
+                  "startLine": 23
+                }
+              ],
+              "checksum": "44cea0098977ffc7e51421c16b0c8a4a421ca4bf8dffb49637606a7b10641082",
+              "endLine": 45,
+              "filename": "firewall.tf",
+              "startLine": 23
+            },
+            "hourlyCost": "1.75",
+            "monthlyCost": "1277.5",
+            "costComponents": [
+              {
+                "name": "Deployment (Premium)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "1.75",
+                "hourlyCost": "1.75",
+                "monthlyCost": "1277.5",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.016",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_firewall.secondary",
+            "resourceType": "azurerm_firewall",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_firewall.secondary",
+                  "endLine": 71,
+                  "filename": "firewall.tf",
+                  "startLine": 48
+                }
+              ],
+              "checksum": "e2b54d5c688c2dc9177c7e22c844ae5d5de1deafcb60ce8498e24dbc446e3977",
+              "endLine": 71,
+              "filename": "firewall.tf",
+              "startLine": 48
+            },
+            "hourlyCost": "1.75",
+            "monthlyCost": "1277.5",
+            "costComponents": [
+              {
+                "name": "Deployment (Premium)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "1.75",
+                "hourlyCost": "1.75",
+                "monthlyCost": "1277.5",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.016",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_kubernetes_cluster.aks",
+            "resourceType": "azurerm_kubernetes_cluster",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_kubernetes_cluster.aks",
+                  "endLine": 117,
+                  "filename": "aks.tf",
+                  "startLine": 2
+                }
+              ],
+              "checksum": "5247ba92b483920d5f5908a45579a7bc810a7a54c2b78bb32faeb9546dd0cf6b",
+              "endLine": 117,
+              "filename": "aks.tf",
+              "startLine": 2
+            },
+            "hourlyCost": "0.576",
+            "monthlyCost": "420.48",
+            "subresources": [
+              {
+                "name": "default_node_pool",
+                "metadata": {},
+                "hourlyCost": "0.576",
+                "monthlyCost": "420.48",
+                "costComponents": [
+                  {
+                    "name": "Instance usage (Linux, pay as you go, Standard_D4s_v5)",
+                    "unit": "hours",
+                    "hourlyQuantity": "3",
+                    "monthlyQuantity": "2190",
+                    "price": "0.192",
+                    "hourlyCost": "0.576",
+                    "monthlyCost": "420.48",
+                    "priceNotFound": false
+                  }
+                ]
+              },
+              {
+                "name": "Load Balancer",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Data processed",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "azurerm_private_endpoint.aks_control_plane",
+            "resourceType": "azurerm_private_endpoint",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_private_endpoint.aks_control_plane",
+                  "endLine": 267,
+                  "filename": "vpc.tf",
+                  "startLine": 246
+                }
+              ],
+              "checksum": "c63d5e5f5ee6b22c92a63b2b5f32544b6d52cbd6d4fb0504969ba4cfbcb48a46",
+              "endLine": 267,
+              "filename": "vpc.tf",
+              "startLine": 246
+            },
+            "hourlyCost": "0.01",
+            "monthlyCost": "7.3",
+            "costComponents": [
+              {
+                "name": "Private endpoint",
+                "unit": "hour",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.01",
+                "hourlyCost": "0.01",
+                "monthlyCost": "7.3",
+                "priceNotFound": false
+              },
+              {
+                "name": "Inbound data processed (first 1PB)",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.01",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "Outbound data processed (first 1PB)",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.01",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_public_ip.firewall_primary",
+            "resourceType": "azurerm_public_ip",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_public_ip.firewall_primary",
+                  "endLine": 10,
+                  "filename": "firewall.tf",
+                  "startLine": 2
+                }
+              ],
+              "checksum": "4bd8337ddf59fe9d6042c1255c2123420bd4e06fbcd6b55a6ac27150c3ab4a3a",
+              "endLine": 10,
+              "filename": "firewall.tf",
+              "startLine": 2
+            },
+            "hourlyCost": "0.005",
+            "monthlyCost": "3.65",
+            "costComponents": [
+              {
+                "name": "IP address (static, regional)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.005",
+                "hourlyCost": "0.005",
+                "monthlyCost": "3.65",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_public_ip.firewall_secondary",
+            "resourceType": "azurerm_public_ip",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_public_ip.firewall_secondary",
+                  "endLine": 20,
+                  "filename": "firewall.tf",
+                  "startLine": 12
+                }
+              ],
+              "checksum": "4bd8337ddf59fe9d6042c1255c2123420bd4e06fbcd6b55a6ac27150c3ab4a3a",
+              "endLine": 20,
+              "filename": "firewall.tf",
+              "startLine": 12
+            },
+            "hourlyCost": "0.005",
+            "monthlyCost": "3.65",
+            "costComponents": [
+              {
+                "name": "IP address (static, regional)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.005",
+                "hourlyCost": "0.005",
+                "monthlyCost": "3.65",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_monitor_scheduled_query_rules_alert.api_server_health[0]",
+            "resourceType": "azurerm_monitor_scheduled_query_rules_alert",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_scheduled_query_rules_alert.api_server_health",
+                  "endLine": 193,
+                  "filename": "monitoring.tf",
+                  "startLine": 159
+                }
+              ],
+              "checksum": "fcb9f6face7e3f9e02519710cadc5f3b8fd049da16921270c20d83ec4b8d6a9c",
+              "endLine": 193,
+              "filename": "monitoring.tf",
+              "startLine": 159
+            },
+            "hourlyCost": "0.0020547945205479",
+            "monthlyCost": "1.5",
+            "costComponents": [
+              {
+                "name": "Log alerts monitoring (5 minute frequency)",
+                "unit": "rule",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "1.5",
+                "hourlyCost": "0.0020547945205479",
+                "monthlyCost": "1.5",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_private_dns_zone.aks",
+            "resourceType": "azurerm_private_dns_zone",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_private_dns_zone.aks",
+                  "endLine": 275,
+                  "filename": "vpc.tf",
+                  "startLine": 270
+                }
+              ],
+              "checksum": "a5e9b6d13c258dc426de68aec900400e391938183914b4c1945275473e4db7bf",
+              "endLine": 275,
+              "filename": "vpc.tf",
+              "startLine": 270
+            },
+            "hourlyCost": "0.0006849315068493",
+            "monthlyCost": "0.5",
+            "costComponents": [
+              {
+                "name": "Hosted zone",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.5",
+                "hourlyCost": "0.0006849315068493",
+                "monthlyCost": "0.5",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_log_analytics_workspace.oms",
+            "resourceType": "azurerm_log_analytics_workspace",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_log_analytics_workspace.oms",
+                  "endLine": 10,
+                  "filename": "monitoring.tf",
+                  "startLine": 2
+                }
+              ],
+              "checksum": "6d37781249f92e69dc3fb05188ba9e9aaf9be48faeba633403bb6dc7f73d2c15",
+              "endLine": 10,
+              "filename": "monitoring.tf",
+              "startLine": 2
+            },
+            "costComponents": [
+              {
+                "name": "Log data ingestion",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2.3",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Log data retention",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Log data export",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Basic log data ingestion",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Basic log search queries",
+                "unit": "GB searched",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archive data",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.02",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archive data restored",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archive data searched",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_monitor_action_group.aks_alerts",
+            "resourceType": "azurerm_monitor_action_group",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_action_group.aks_alerts",
+                  "endLine": 61,
+                  "filename": "monitoring.tf",
+                  "startLine": 55
+                }
+              ],
+              "checksum": "e1a85c79f100545b4d54e1afd32f119de9ec728b9db2d4c68aaa13ba63e9f3e8",
+              "endLine": 61,
+              "filename": "monitoring.tf",
+              "startLine": 55
+            }
+          },
+          {
+            "name": "azurerm_monitor_diagnostic_setting.aks",
+            "resourceType": "azurerm_monitor_diagnostic_setting",
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_diagnostic_setting.aks",
+                  "endLine": 156,
+                  "filename": "aks.tf",
+                  "startLine": 120
+                }
+              ],
+              "checksum": "ca2ba5807c6ec2e6c297d855126946c6ca1f827d9ab0c33f4808d85159bf9926",
+              "endLine": 156,
+              "filename": "aks.tf",
+              "startLine": 120
+            }
+          },
+          {
+            "name": "azurerm_monitor_diagnostic_setting.firewall_primary",
+            "resourceType": "azurerm_monitor_diagnostic_setting",
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_diagnostic_setting.firewall_primary",
+                  "endLine": 210,
+                  "filename": "firewall.tf",
+                  "startLine": 187
+                }
+              ],
+              "checksum": "17266ecc6c6d4ff34d19e9edc23d17b7871f9ecb32fc9e976040fa6aabe1de02",
+              "endLine": 210,
+              "filename": "firewall.tf",
+              "startLine": 187
+            },
+            "costComponents": [
+              {
+                "name": "Platform logs processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.25",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_monitor_diagnostic_setting.firewall_secondary",
+            "resourceType": "azurerm_monitor_diagnostic_setting",
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_diagnostic_setting.firewall_secondary",
+                  "endLine": 235,
+                  "filename": "firewall.tf",
+                  "startLine": 212
+                }
+              ],
+              "checksum": "5ea4c1c87b7a38afc4acbba9fda8487e5cc8f2220777eca7d894284bbcfce636",
+              "endLine": 235,
+              "filename": "firewall.tf",
+              "startLine": 212
+            },
+            "costComponents": [
+              {
+                "name": "Platform logs processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.25",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_monitor_diagnostic_setting.kube_metrics",
+            "resourceType": "azurerm_monitor_diagnostic_setting",
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_diagnostic_setting.kube_metrics",
+                  "endLine": 156,
+                  "filename": "monitoring.tf",
+                  "startLine": 145
+                }
+              ],
+              "checksum": "a959277ca28f29cae0f6794dc2b3c51f5ad63a4d776b17581816e9eaa3159d49",
+              "endLine": 156,
+              "filename": "monitoring.tf",
+              "startLine": 145
+            }
+          },
+          {
+            "name": "azurerm_monitor_metric_alert.firewall_health[0]",
+            "resourceType": "azurerm_monitor_metric_alert",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_metric_alert.firewall_health",
+                  "endLine": 142,
+                  "filename": "monitoring.tf",
+                  "startLine": 118
+                }
+              ],
+              "checksum": "2d3f8c0507fc0b23cee84091ab086a382773ddc035be7886590596e9dfe03b00",
+              "endLine": 142,
+              "filename": "monitoring.tf",
+              "startLine": 118
+            }
+          },
+          {
+            "name": "azurerm_monitor_metric_alert.node_cpu_utilization[0]",
+            "resourceType": "azurerm_monitor_metric_alert",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_metric_alert.node_cpu_utilization",
+                  "endLine": 88,
+                  "filename": "monitoring.tf",
+                  "startLine": 64
+                }
+              ],
+              "checksum": "20d20a98dd7d0a4652cac00bd310e42e7ce48b1619144856b08ada51d740d05e",
+              "endLine": 88,
+              "filename": "monitoring.tf",
+              "startLine": 64
+            }
+          },
+          {
+            "name": "azurerm_monitor_metric_alert.node_memory_utilization[0]",
+            "resourceType": "azurerm_monitor_metric_alert",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_monitor_metric_alert.node_memory_utilization",
+                  "endLine": 115,
+                  "filename": "monitoring.tf",
+                  "startLine": 91
+                }
+              ],
+              "checksum": "0a1e8e949b7174b8568b62c2e0d82bbca86988e7b0a413ed78bdaec7ee655602",
+              "endLine": 115,
+              "filename": "monitoring.tf",
+              "startLine": 91
+            }
+          },
+          {
+            "name": "azurerm_storage_account.firewall_logs",
+            "resourceType": "azurerm_storage_account",
+            "tags": {
+              "CreatedDate": "2026-03-20",
+              "Environment": "main",
+              "Location": "eastus",
+              "ManagedBy": "Terraform",
+              "Project": "001-private-aks"
+            },
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_storage_account.firewall_logs",
+                  "endLine": 24,
+                  "filename": "monitoring.tf",
+                  "startLine": 13
+                }
+              ],
+              "checksum": "b476e8c86aeefe0a1501135d2e5d296a6a71677fe2c72cb428a02b002df4c4ab",
+              "endLine": 24,
+              "filename": "monitoring.tf",
+              "startLine": 13
+            },
+            "costComponents": [
+              {
+                "name": "Capacity",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0208",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Write operations",
+                "unit": "10k operations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.05",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "List and create container operations",
+                "unit": "10k operations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.05",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Read operations",
+                "unit": "10k operations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.004",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "All other operations",
+                "unit": "10k operations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.004",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Blob index",
+                "unit": "10k tags",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "4.0987397260273972",
+        "totalMonthlyCost": "2992.08",
+        "totalMonthlyUsageCost": "0"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 44,
+        "totalSupportedResources": 18,
+        "totalUnsupportedResources": 0,
+        "totalUsageBasedResources": 11,
+        "totalNoPriceResources": 26,
+        "unsupportedResourceCounts": {},
+        "noPriceResourceCounts": {
+          "azurerm_firewall_policy": 1,
+          "azurerm_firewall_policy_rule_collection_group": 1,
+          "azurerm_key_vault": 1,
+          "azurerm_key_vault_access_policy": 1,
+          "azurerm_monitor_scheduled_query_rules_log": 1,
+          "azurerm_network_security_group": 3,
+          "azurerm_private_dns_zone_virtual_network_link": 1,
+          "azurerm_role_assignment": 3,
+          "azurerm_route": 1,
+          "azurerm_route_table": 1,
+          "azurerm_storage_container": 1,
+          "azurerm_storage_management_policy": 1,
+          "azurerm_subnet": 4,
+          "azurerm_subnet_network_security_group_association": 3,
+          "azurerm_subnet_route_table_association": 1,
+          "azurerm_user_assigned_identity": 1,
+          "azurerm_virtual_network": 1
+        }
+      }
+    }
+  ],
+  "totalHourlyCost": "4.0987397260273972",
+  "totalMonthlyCost": "2992.08",
+  "totalMonthlyUsageCost": "0",
+  "pastTotalHourlyCost": "4.0987397260273972",
+  "pastTotalMonthlyCost": "2992.08",
+  "pastTotalMonthlyUsageCost": "0",
+  "diffTotalHourlyCost": "0",
+  "diffTotalMonthlyCost": "0",
+  "diffTotalMonthlyUsageCost": "0",
+  "timeGenerated": "2026-03-20T18:50:17.16730302Z",
+  "summary": {
+    "totalDetectedResources": 44,
+    "totalSupportedResources": 18,
+    "totalUnsupportedResources": 0,
+    "totalUsageBasedResources": 11,
+    "totalNoPriceResources": 26,
+    "unsupportedResourceCounts": {},
+    "noPriceResourceCounts": {
+      "azurerm_firewall_policy": 1,
+      "azurerm_firewall_policy_rule_collection_group": 1,
+      "azurerm_key_vault": 1,
+      "azurerm_key_vault_access_policy": 1,
+      "azurerm_monitor_scheduled_query_rules_log": 1,
+      "azurerm_network_security_group": 3,
+      "azurerm_private_dns_zone_virtual_network_link": 1,
+      "azurerm_role_assignment": 3,
+      "azurerm_route": 1,
+      "azurerm_route_table": 1,
+      "azurerm_storage_container": 1,
+      "azurerm_storage_management_policy": 1,
+      "azurerm_subnet": 4,
+      "azurerm_subnet_network_security_group_association": 3,
+      "azurerm_subnet_route_table_association": 1,
+      "azurerm_user_assigned_identity": 1,
+      "azurerm_virtual_network": 1
+    }
+  }
+}
