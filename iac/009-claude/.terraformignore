@@ -1,0 +1,77 @@
+# Terraform Ignore File
+# Files and directories listed here will be ignored by Terraform
+
+# Version control
+.git/
+.gitignore
+.gitattributes
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.iml
+*.sublime-*
+.DS_Store
+
+# IDE directories
+.vscode/
+.idea/
+.eclipse/
+.classpath
+.project
+.settings/
+
+# Backup and temporary files
+*.bak
+*.backup
+*.tmp
+*.temp
+*~
+*.log
+
+# OS-specific files
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Documentation
+*.md
+*.txt
+!README.md
+
+# State files (should not be processed)
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# Other Terraform files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Node.js artifacts
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Environment files
+.env
+.env.local
+.env.*.local

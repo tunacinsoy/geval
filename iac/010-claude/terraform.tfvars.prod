@@ -1,0 +1,29 @@
+# Production Environment - Full HA, compliance, and cost control
+
+environment = "prod"
+region      = "us-east-1"
+project_name = "ami-hardening"
+
+# Compute - Production scale (5-500 per requirements)
+asg_instance_type      = "t3.medium"
+asg_min_size           = 5
+asg_max_size           = 50
+asg_desired_capacity   = 10
+
+# Image Builder
+build_timeout_minutes = 30
+image_retention_days  = 90
+
+# Health & Refresh
+canary_deployment_percentage = 15 # Deploy to 15% first, monitor 10 min
+
+# Monitoring
+log_retention_days = 1095 # 3 years for GDPR compliance
+enable_alb         = true # Multi-AZ ALB with TLS
+
+# Cost optimization
+cost_optimization_enabled  = true  # Off-peak scale-down
+enable_compliance_scanning = true  # MANDATORY CIS + GDPR validation
+
+# Admin access - restricted to bastion/VPN
+admin_ssh_cidr = "10.0.0.0/8" # Restrict to VPC/bastion access only

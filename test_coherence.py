@@ -5,7 +5,7 @@ from deepeval.test_case import LLMTestCase, LLMTestCaseParams
 from deepeval.metrics import AnswerRelevancyMetric, GEval
 
 
-def load_terraform_codebase(directory="iac/008-codex"):
+def load_terraform_codebase(directory="iac/010-claude"):
     tf_code = ""
     patterns = ["**/*.tf", "**/*.tfvars"]
 
@@ -21,12 +21,10 @@ def load_terraform_codebase(directory="iac/008-codex"):
 
 
 def test_contextual_terraform_coherence():
-    user_request = "Implement a Pub/Sub topic named order-events with a schema validation enforcement using Avro. Create two subscriptions: one push subscription triggering a Cloud Run service (Min instances: 0, Max: 10) for order processing, and one pull subscription for an analytics archival service. The Cloud Run service must be deployed with a dedicated Service Account that has the roles/pubsub.subscriber and roles/cloudsql.client permissions, connecting to a Cloud SQL instance via Cloud SQL Auth Proxy."
+    user_request = "Define an EC2 Image Builder pipeline to generate a hardened AMI based on Amazon Linux 2023. The pipeline must execute an Ansible playbook component to apply CIS Level 1 benchmarks before finalizing the image. Once built, the AMI ID should be dynamically referenced in an Auto Scaling Group launch template. The ASG must be configured with a strict instance_refresh policy that replaces instances primarily by launching new ones before terminating old ones to ensure zero downtime during patching cycles."
 
     background_context = [
-        "OmniRetail Analytics, founded in 2012 with 400 employees, processes point-of-sale transactions from its European branches. The strict schema validation and tightly scoped service accounts ensure that personally identifiable information is stripped at the ingestion layer. This architecture adheres strictly to GDPR's data minimization principles before the raw data ever enters the machine learning data lake."
-
-
+        "CarePlus Health, founded in 1998 with 2,100 employees, processes health records for international patients, including EU residents. The immutable infrastructure model, which forces instances to be replaced rather than patched, ensures a completely tamper-proof environment. This provides regulators with an unalterable audit trail that proves continuous compliance with GDPR's security of processing mandates."
     ]
 
     generated_terraform = load_terraform_codebase()

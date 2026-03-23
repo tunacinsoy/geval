@@ -1,0 +1,12 @@
+aws_region  = "us-east-1"
+environment = "prod"
+cost_center = "infrastructure"
+
+vpc_cidr                           = "10.0.0.0/16"
+inbound_endpoint_subnet_cidr       = "10.0.10.0/24"
+outbound_endpoint_subnet_cidr      = "10.0.11.0/24"
+on_premises_cidr                   = "192.168.0.0/16"
+on_premises_dns_servers            = ["192.168.10.5", "192.168.10.6"]
+transit_gateway_attachment_id      = "" # Set this to your Transit Gateway attachment ID
+dns_query_log_retention            = 90  # Prod: 90 days (compliance)
+create_cloudwatch_alarms           = true

@@ -1,0 +1,234 @@
+---
+# CIS Level 1 Benchmarks for Amazon Linux 2023
+# This playbook applies CIS Level 1 hardening standards to the image
+
+- name: Apply CIS Level 1 Benchmarks
+  hosts: all
+  become: yes
+  gather_facts: yes
+
+  vars:
+    environment: "{{ environment | default('dev') }}"
+
+  tasks:
+    # =========================================================================
+    # Filesystem Configuration
+    # =========================================================================
+
+    - name: Ensure /tmp is configured with nodev,nosuid,noexec
+      lineinfile:
+        path: /etc/fstab
+        regexp: '^\s*/tmp\s+'
+        line: '/dev/mapper/root-tmp   /tmp   ext4   defaults,rw,nosuid,nodev,noexec,relatime   0   0'
+      register: fstab_tmp
+
+    - name: Remount /tmp with restrictive options
+      mount:
+        path: /tmp
+        state: remounted
+        opts: rw,nosuid,nodev,noexec,relatime
+      when: fstab_tmp.changed
+
+    # =========================================================================
+    # SELinux Configuration
+    # =========================================================================
+
+    - name: Install SELinux
+      yum:
+        name: selinux-policy
+        state: present
+
+    - name: Set SELinux to enforcing
+      lineinfile:
+        path: /etc/selinux/config
+        regexp: '^SELINUX='
+        line: 'SELINUX=enforcing'
+
+    - name: Set SELinux policy
+      lineinfile:
+        path: /etc/selinux/config
+        regexp: '^SELINUXTYPE='
+        line: 'SELINUXTYPE=targeted'
+
+    # =========================================================================
+    # Firewall Configuration
+    # =========================================================================
+
+    - name: Enable and start firewalld
+      systemd:
+        name: firewalld
+        enabled: yes
+        state: started
+
+    - name: Configure firewall rules
+      firewalld:
+        service: "{{ item }}"
+        permanent: yes
+        state: enabled
+      loop:
+        - ssh
+        - http
+        - https
+      notify: Reload firewall
+
+    # =========================================================================
+    # SSH Hardening
+    # =========================================================================
+
+    - name: Disable SSH root login
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#?PermitRootLogin'
+        line: 'PermitRootLogin no'
+      notify: Restart sshd
+
+    - name: Set SSH LogLevel to VERBOSE
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#?LogLevel'
+        line: 'LogLevel VERBOSE'
+      notify: Restart sshd
+
+    - name: Set SSH X11Forwarding to no
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#?X11Forwarding'
+        line: 'X11Forwarding no'
+      notify: Restart sshd
+
+    - name: Set SSH MaxAuthTries to 4
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#?MaxAuthTries'
+        line: 'MaxAuthTries 4'
+      notify: Restart sshd
+
+    # =========================================================================
+    # PAM Configuration
+    # =========================================================================
+
+    - name: Install password quality tools
+      yum:
+        name:
+          - libpwquality
+          - pam
+        state: present
+
+    - name: Configure password policy
+      lineinfile:
+        path: /etc/pam.d/system-auth
+        line: 'password    requisite     pam_pwquality.so try_first_pass retry=3 minlen=14 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1'
+        insertafter: 'password.*pam_unix'
+      when: ansible_os_family == 'RedHat'
+
+    # =========================================================================
+    # Audit Logging
+    # =========================================================================
+
+    - name: Install auditd
+      yum:
+        name: audit
+        state: present
+
+    - name: Enable and start auditd
+      systemd:
+        name: auditd
+        enabled: yes
+        state: started
+
+    - name: Configure audit rules
+      copy:
+        dest: /etc/audit/rules.d/cis.rules
+        content: |
+          # Remove any existing rules
+          -D
+
+          # Buffer Size
+          -b 8192
+
+          # Failure Mode
+          -f 2
+
+          # Audit system calls
+          -a exit,always -F arch=b64 -S adjtimex -S settimeofday -k time-change
+          -a exit,always -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change
+          -a exit,always -F arch=b64 -S clock_settime -k time-change
+          -a exit,always -F arch=b32 -S clock_settime -k time-change
+
+          # Audit user/group modifications
+          -w /etc/group -p wa -k identity
+          -w /etc/passwd -p wa -k identity
+          -w /etc/gshadow -p wa -k identity
+          -w /etc/shadow -p wa -k identity
+          -w /etc/security/opasswd -p wa -k identity
+
+          # Audit system calls
+          -a exit,always -F arch=b64 -S sethostname -S setdomainname -k network_modifications
+          -a exit,always -F arch=b32 -S sethostname -S setdomainname -k network_modifications
+
+          # Audit sudo usage
+          -w /etc/sudoers -p wa -k sudoers
+          -w /etc/sudoers.d/ -p wa -k sudoers
+
+          # Make rules immutable
+          -e 2
+      notify: Restart auditd
+
+    # =========================================================================
+    # Kernel Hardening
+    # =========================================================================
+
+    - name: Configure kernel parameters
+      sysctl:
+        name: "{{ item.key }}"
+        value: "{{ item.value }}"
+        state: present
+        sysctl_set: yes
+      loop:
+        - { key: 'kernel.panic', value: '10' }
+        - { key: 'kernel.panic_on_oops', value: '1' }
+        - { key: 'net.ipv4.ip_forward', value: '0' }
+        - { key: 'net.ipv4.conf.all.send_redirects', value: '0' }
+        - { key: 'net.ipv4.conf.default.send_redirects', value: '0' }
+        - { key: 'net.ipv4.conf.all.accept_source_route', value: '0' }
+        - { key: 'net.ipv4.conf.default.accept_source_route', value: '0' }
+        - { key: 'net.ipv4.icmp_echo_ignore_broadcasts', value: '1' }
+        - { key: 'net.ipv4.icmp_ignore_bogus_error_responses', value: '1' }
+        - { key: 'net.ipv4.conf.all.log_martians', value: '1' }
+        - { key: 'net.ipv4.conf.default.log_martians', value: '1' }
+
+    # =========================================================================
+    # Package Updates
+    # =========================================================================
+
+    - name: Update all packages
+      yum:
+        name: '*'
+        state: latest
+      when: environment == 'prod' or environment == 'staging'
+
+    # =========================================================================
+    # CIS Validation
+    # =========================================================================
+
+    - name: Log hardening completion
+      lineinfile:
+        path: /var/log/cis-hardening.log
+        line: "CIS Level 1 hardening applied at {{ ansible_date_time.iso8601 }}"
+        create: yes
+
+  handlers:
+    - name: Restart sshd
+      systemd:
+        name: sshd
+        state: restarted
+
+    - name: Restart auditd
+      systemd:
+        name: auditd
+        state: restarted
+
+    - name: Reload firewall
+      systemd:
+        name: firewalld
+        state: reloaded
