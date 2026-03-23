@@ -1,0 +1,3 @@
+project_id             = "your-prod-project-id"
+gcs_bucket_for_tfstate = "your-prod-tfstate-bucket"
+cloud_run_image        = "gcr.io/your-prod-project-id/order-processor:latest"

@@ -1,0 +1,28 @@
+{
+  "type": "record",
+  "name": "OrderEvent",
+  "namespace": "com.example.events",
+  "fields": [
+    {"name": "order_id", "type": "string"},
+    {"name": "customer_id", "type": "string"},
+    {"name": "total_amount", "type": "double"},
+    {"name": "currency", "type": "string"},
+    {"name": "created_at", "type": {"type": "long", "logicalType": "timestamp-millis"}},
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "OrderItem",
+          "fields": [
+            {"name": "sku", "type": "string"},
+            {"name": "quantity", "type": "int"},
+            {"name": "unit_price", "type": "double"}
+          ]
+        }
+      }
+    },
+    {"name": "status", "type": {"type": "enum", "name": "OrderStatus", "symbols": ["PENDING", "CONFIRMED", "SHIPPED", "CANCELLED"]}}
+  ]
+}

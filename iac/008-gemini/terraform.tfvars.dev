@@ -1,0 +1,3 @@
+project_id             = "bbcc-22"
+gcs_bucket_for_tfstate = "bv-v-22"
+cloud_run_image        = "gcr.io/myproject/bb:v0.1.1"

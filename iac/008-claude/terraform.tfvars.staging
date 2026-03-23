@@ -1,0 +1,11 @@
+# Staging Environment Configuration
+environment                = "staging"
+cloud_run_min_instances    = 0
+cloud_run_max_instances    = 5
+cloud_sql_tier             = "db-n1-standard-1"
+cloud_sql_storage_gb       = 50
+enable_ha                  = false
+enable_vpc                 = false
+log_retention_days         = 30
+log_level                  = "INFO"
+pubsub_message_retention_days = 7

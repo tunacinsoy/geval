@@ -5,7 +5,7 @@ from deepeval.test_case import LLMTestCase, LLMTestCaseParams
 from deepeval.metrics import AnswerRelevancyMetric, GEval
 
 
-def load_terraform_codebase(directory="iac/007-gemini"):
+def load_terraform_codebase(directory="iac/008-codex"):
     tf_code = ""
     patterns = ["**/*.tf", "**/*.tfvars"]
 
@@ -21,10 +21,11 @@ def load_terraform_codebase(directory="iac/007-gemini"):
 
 
 def test_contextual_terraform_coherence():
-    user_request = "Deploy a private Azure Kubernetes Service cluster (v1.28+) with Azure CNI Overlay networking. The cluster must not have a public IP. All egress traffic must be routed through an Azure Firewall using a user-defined route (UDR) on the node subnet. Configure the firewall with application rules to allow traffic only to *.docker.io and *.ubuntu.com. The node pool should consist of 3 Standard_D4s_v5 instances, distributed across availability zones 1, 2, and 3."
+    user_request = "Implement a Pub/Sub topic named order-events with a schema validation enforcement using Avro. Create two subscriptions: one push subscription triggering a Cloud Run service (Min instances: 0, Max: 10) for order processing, and one pull subscription for an analytics archival service. The Cloud Run service must be deployed with a dedicated Service Account that has the roles/pubsub.subscriber and roles/cloudsql.client permissions, connecting to a Cloud SQL instance via Cloud SQL Auth Proxy."
 
     background_context = [
-        "Aegis Defense Tech, founded in 2005 with 850 employees, is a defense contractor whose containerized workloads process data of European civilian contractors. The zero-trust network isolation explicitly satisfies GDPR's requirement for data protection by design and by default. The strict egress control prevents any possibility of unauthorized cross-border data exfiltration from the containerized workloads."
+        "OmniRetail Analytics, founded in 2012 with 400 employees, processes point-of-sale transactions from its European branches. The strict schema validation and tightly scoped service accounts ensure that personally identifiable information is stripped at the ingestion layer. This architecture adheres strictly to GDPR's data minimization principles before the raw data ever enters the machine learning data lake."
+
 
     ]
 

@@ -1,0 +1,771 @@
+{
+  "version": "0.2",
+  "metadata": {
+    "infracostCommand": "breakdown",
+    "vcsBranch": "001-pubsub-order-events",
+    "vcsCommitSha": "d445412d8bb116d3ed823bd34fce521f00898b67",
+    "vcsCommitAuthorName": "tunacinsoy",
+    "vcsCommitAuthorEmail": "tunacinsoy@gmail.com",
+    "vcsCommitTimestamp": "2026-02-12T15:48:58Z",
+    "vcsCommitMessage": "feat: init",
+    "vcsRepositoryUrl": "https://github.com/tunacinsoy/pw-sdd-iac-gemini-001.git"
+  },
+  "currency": "USD",
+  "projects": [
+    {
+      "name": "tunacinsoy/pw-sdd-iac-gemini-001/iac",
+      "displayName": "main",
+      "metadata": {
+        "path": "/home/tuna/git-repos/pw-sdd-iac-gemini-001/iac",
+        "type": "terraform_dir",
+        "vcsSubPath": "iac",
+        "vcsCodeChanged": true,
+        "warnings": [
+          {
+            "code": 105,
+            "message": "Missing Terraform vars",
+            "data": [
+              "variable.project_id",
+              "variable.gcs_bucket_for_tfstate"
+            ],
+            "isError": false
+          }
+        ],
+        "providers": [
+          {
+            "name": "google",
+            "filename": "provider.tf",
+            "startLine": 1,
+            "endLine": 4
+          }
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [
+          {
+            "name": "google_cloud_run_v2_service.order_processing_service",
+            "resourceType": "google_cloud_run_v2_service",
+            "tags": {},
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_cloud_run_v2_service.order_processing_service",
+                  "endLine": 20,
+                  "filename": "cloud-run.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "4202abeb1314cc543194fe36948c784fe4fc14022408249271c1733a176c6622",
+              "endLine": 20,
+              "filename": "cloud-run.tf",
+              "startLine": 1
+            },
+            "costComponents": [
+              {
+                "name": "CPU allocation Time",
+                "unit": "vCPU-seconds",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.000018",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "Memory allocation time",
+                "unit": "GiB-seconds",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.000002",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "Number of requests",
+                "unit": "requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0000004",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_pubsub_subscription.analytics_pull_sub",
+            "resourceType": "google_pubsub_subscription",
+            "tags": {},
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_pubsub_subscription.analytics_pull_sub",
+                  "endLine": 90,
+                  "filename": "pubsub.tf",
+                  "startLine": 84
+                }
+              ],
+              "checksum": "67282a89e400661a99667194d2135062a04d978d386dbb19ee34ee34863f607c",
+              "endLine": 90,
+              "filename": "pubsub.tf",
+              "startLine": 84
+            },
+            "costComponents": [
+              {
+                "name": "Message delivery data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Retained acknowledged message storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot message backlog storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_pubsub_subscription.order_events_dlq_sub",
+            "resourceType": "google_pubsub_subscription",
+            "tags": {},
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_pubsub_subscription.order_events_dlq_sub",
+                  "endLine": 59,
+                  "filename": "pubsub.tf",
+                  "startLine": 55
+                }
+              ],
+              "checksum": "cf0d9e866547f430a20ee8315ad9374cfc319d3de14a7d4f1200b577c16e9605",
+              "endLine": 59,
+              "filename": "pubsub.tf",
+              "startLine": 55
+            },
+            "costComponents": [
+              {
+                "name": "Message delivery data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Retained acknowledged message storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot message backlog storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_pubsub_subscription.order_processing_push_sub",
+            "resourceType": "google_pubsub_subscription",
+            "tags": {},
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_pubsub_subscription.order_processing_push_sub",
+                  "endLine": 81,
+                  "filename": "pubsub.tf",
+                  "startLine": 62
+                }
+              ],
+              "checksum": "0d0b9943df13e71b17983a889b6f6b753e31456e5f0b7b20f6d7cad42ed164ed",
+              "endLine": 81,
+              "filename": "pubsub.tf",
+              "startLine": 62
+            },
+            "costComponents": [
+              {
+                "name": "Message delivery data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Retained acknowledged message storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot message backlog storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_pubsub_topic.order_events",
+            "resourceType": "google_pubsub_topic",
+            "tags": {
+              "environment": ""
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_pubsub_topic.order_events",
+                  "endLine": 9,
+                  "filename": "pubsub.tf",
+                  "startLine": 2
+                }
+              ],
+              "checksum": "47cddaa548666d1887fe8caa2d09b53bdad04bbd6c45c9205f0b71230afbc882",
+              "endLine": 9,
+              "filename": "pubsub.tf",
+              "startLine": 2
+            },
+            "costComponents": [
+              {
+                "name": "Message ingestion data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_pubsub_topic.order_events_dlq",
+            "resourceType": "google_pubsub_topic",
+            "tags": {},
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_pubsub_topic.order_events_dlq",
+                  "endLine": 52,
+                  "filename": "pubsub.tf",
+                  "startLine": 49
+                }
+              ],
+              "checksum": "cb91a2db7ac98b6b46e8cae85d40200c5138cc37b4123755223f4e03d9629f52",
+              "endLine": 52,
+              "filename": "pubsub.tf",
+              "startLine": 49
+            },
+            "costComponents": [
+              {
+                "name": "Message ingestion data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_pubsub_topic.order_events_schema_attachment",
+            "resourceType": "google_pubsub_topic",
+            "tags": {},
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_pubsub_topic.order_events_schema_attachment",
+                  "endLine": 45,
+                  "filename": "pubsub.tf",
+                  "startLine": 37
+                }
+              ],
+              "checksum": "1de897a914076ed39e101867db4c98968e607ecbb6e967fd436ce0244bd239fd",
+              "endLine": 45,
+              "filename": "pubsub.tf",
+              "startLine": 37
+            },
+            "costComponents": [
+              {
+                "name": "Message ingestion data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "breakdown": {
+        "resources": [
+          {
+            "name": "google_cloud_run_v2_service.order_processing_service",
+            "resourceType": "google_cloud_run_v2_service",
+            "tags": {},
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_cloud_run_v2_service.order_processing_service",
+                  "endLine": 20,
+                  "filename": "cloud-run.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "4202abeb1314cc543194fe36948c784fe4fc14022408249271c1733a176c6622",
+              "endLine": 20,
+              "filename": "cloud-run.tf",
+              "startLine": 1
+            },
+            "costComponents": [
+              {
+                "name": "CPU allocation Time",
+                "unit": "vCPU-seconds",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.000018",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "Memory allocation time",
+                "unit": "GiB-seconds",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.000002",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "Number of requests",
+                "unit": "requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0000004",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_pubsub_subscription.analytics_pull_sub",
+            "resourceType": "google_pubsub_subscription",
+            "tags": {},
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_pubsub_subscription.analytics_pull_sub",
+                  "endLine": 90,
+                  "filename": "pubsub.tf",
+                  "startLine": 84
+                }
+              ],
+              "checksum": "67282a89e400661a99667194d2135062a04d978d386dbb19ee34ee34863f607c",
+              "endLine": 90,
+              "filename": "pubsub.tf",
+              "startLine": 84
+            },
+            "costComponents": [
+              {
+                "name": "Message delivery data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Retained acknowledged message storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot message backlog storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_pubsub_subscription.order_events_dlq_sub",
+            "resourceType": "google_pubsub_subscription",
+            "tags": {},
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_pubsub_subscription.order_events_dlq_sub",
+                  "endLine": 59,
+                  "filename": "pubsub.tf",
+                  "startLine": 55
+                }
+              ],
+              "checksum": "cf0d9e866547f430a20ee8315ad9374cfc319d3de14a7d4f1200b577c16e9605",
+              "endLine": 59,
+              "filename": "pubsub.tf",
+              "startLine": 55
+            },
+            "costComponents": [
+              {
+                "name": "Message delivery data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Retained acknowledged message storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot message backlog storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_pubsub_subscription.order_processing_push_sub",
+            "resourceType": "google_pubsub_subscription",
+            "tags": {},
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_pubsub_subscription.order_processing_push_sub",
+                  "endLine": 81,
+                  "filename": "pubsub.tf",
+                  "startLine": 62
+                }
+              ],
+              "checksum": "0d0b9943df13e71b17983a889b6f6b753e31456e5f0b7b20f6d7cad42ed164ed",
+              "endLine": 81,
+              "filename": "pubsub.tf",
+              "startLine": 62
+            },
+            "costComponents": [
+              {
+                "name": "Message delivery data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Retained acknowledged message storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot message backlog storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_pubsub_topic.order_events",
+            "resourceType": "google_pubsub_topic",
+            "tags": {
+              "environment": ""
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_pubsub_topic.order_events",
+                  "endLine": 9,
+                  "filename": "pubsub.tf",
+                  "startLine": 2
+                }
+              ],
+              "checksum": "47cddaa548666d1887fe8caa2d09b53bdad04bbd6c45c9205f0b71230afbc882",
+              "endLine": 9,
+              "filename": "pubsub.tf",
+              "startLine": 2
+            },
+            "costComponents": [
+              {
+                "name": "Message ingestion data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_pubsub_topic.order_events_dlq",
+            "resourceType": "google_pubsub_topic",
+            "tags": {},
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_pubsub_topic.order_events_dlq",
+                  "endLine": 52,
+                  "filename": "pubsub.tf",
+                  "startLine": 49
+                }
+              ],
+              "checksum": "cb91a2db7ac98b6b46e8cae85d40200c5138cc37b4123755223f4e03d9629f52",
+              "endLine": 52,
+              "filename": "pubsub.tf",
+              "startLine": 49
+            },
+            "costComponents": [
+              {
+                "name": "Message ingestion data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_pubsub_topic.order_events_schema_attachment",
+            "resourceType": "google_pubsub_topic",
+            "tags": {},
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_pubsub_topic.order_events_schema_attachment",
+                  "endLine": 45,
+                  "filename": "pubsub.tf",
+                  "startLine": 37
+                }
+              ],
+              "checksum": "1de897a914076ed39e101867db4c98968e607ecbb6e967fd436ce0244bd239fd",
+              "endLine": 45,
+              "filename": "pubsub.tf",
+              "startLine": 37
+            },
+            "costComponents": [
+              {
+                "name": "Message ingestion data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 14,
+        "totalSupportedResources": 7,
+        "totalUnsupportedResources": 1,
+        "totalUsageBasedResources": 7,
+        "totalNoPriceResources": 6,
+        "unsupportedResourceCounts": {
+          "google_pubsub_schema": 1
+        },
+        "noPriceResourceCounts": {
+          "google_cloud_run_service_iam_member": 1,
+          "google_monitoring_alert_policy": 2,
+          "google_project_iam_member": 2,
+          "google_service_account": 1
+        }
+      }
+    }
+  ],
+  "totalHourlyCost": "0",
+  "totalMonthlyCost": "0",
+  "totalMonthlyUsageCost": "0",
+  "pastTotalHourlyCost": "0",
+  "pastTotalMonthlyCost": "0",
+  "pastTotalMonthlyUsageCost": "0",
+  "diffTotalHourlyCost": "0",
+  "diffTotalMonthlyCost": "0",
+  "diffTotalMonthlyUsageCost": "0",
+  "timeGenerated": "2026-03-23T12:31:59.37251129Z",
+  "summary": {
+    "totalDetectedResources": 14,
+    "totalSupportedResources": 7,
+    "totalUnsupportedResources": 1,
+    "totalUsageBasedResources": 7,
+    "totalNoPriceResources": 6,
+    "unsupportedResourceCounts": {
+      "google_pubsub_schema": 1
+    },
+    "noPriceResourceCounts": {
+      "google_cloud_run_service_iam_member": 1,
+      "google_monitoring_alert_policy": 2,
+      "google_project_iam_member": 2,
+      "google_service_account": 1
+    }
+  }
+}

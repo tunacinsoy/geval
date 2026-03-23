@@ -1,0 +1,1920 @@
+{
+  "version": "0.2",
+  "metadata": {
+    "infracostCommand": "breakdown",
+    "vcsBranch": "008-pubsub-order-processing",
+    "vcsCommitSha": "f159027b10a81858117aec8d6044937c9bc0011c",
+    "vcsCommitAuthorName": "tuna",
+    "vcsCommitAuthorEmail": "tunacinsoy@gmail.com",
+    "vcsCommitTimestamp": "2026-03-23T12:19:55Z",
+    "vcsCommitMessage": "feat(iac/implement): generate Terraform infrastructure-as-code for order processing platform\n\nGenerate complete Terraform implementation for event-driven order processing\ninfrastructure on Google Cloud Platform. Includes all core infrastructure\ncomponents, security configuration, monitoring, and multi-environment support.\n\nGenerated Files (16 total):\n\nPhase 1: Setup (Foundation)\n- backend.tf: GCS state backend with versioning and object locking\n- provider.tf: Google Cloud provider configuration with default labels\n- versions.tf: Terraform \u003e= 1.7 and Google Provider \u003e= 5.40 constraints\n- variables.tf: 20+ input variables with validation for all environments\n- outputs.tf: 15+ output declarations for resource information\n- locals.tf: Naming conventions, environment configs, Avro schema definition\n\nPhase 2: IAM \u0026 Security\n- service_accounts.tf: Cloud Run, Analytics, and Terraform service accounts\n  * Cloud Run SA: pubsub.subscriber, cloudsql.client, logging, monitoring\n  * Analytics SA: pubsub.subscriber, storage.objectViewer\n  * IAM policy bindings with least-privilege principle\n- secrets.tf: Secret Manager for Cloud SQL password, auto-generated (32 char)\n\nPhase 3: Messaging (Cloud Pub/Sub)\n- pubsub.tf: Topic, subscriptions, schema, and DLQ\n  * Topic: order-events with Avro schema validation\n  * Push subscription: Cloud Run service (automatic retries, 3 attempts)\n  * Pull subscription: Analytics/archival (per-customer message ordering)\n  * Dead-letter queue: Failed messages routing\n  * Schema: 8 required fields (order_id, customer_id, items, addresses, etc.)\n\nPhase 4: Storage\n- cloud_sql.tf: PostgreSQL 15.x with environment-specific tiers\n  * Dev: db-f1-micro (0.6 GB), no HA\n  * Staging: db-n1-standard-1 (3.75 GB), no HA\n  * Prod: db-n1-standard-4 (15 GB) with HA replica\n  * Automated daily backups (7-35 day retention), point-in-time recovery\n  * Private IP, encrypted at-rest/in-transit\n  * Connection pooling configured (PgBouncer)\n- Cloud Storage buckets:\n  * Terraform state: versioning, object locking, 30-day retention\n  * Archive: message archival with 90-day lifecycle, auto-transition to Nearline\n\nPhase 5: Compute\n- cloud_run.tf: Serverless Cloud Run service\n  * Image: placeholder (user must provide)\n  * Memory: 512MB, CPU: 0.5 vCPU (configurable)\n  * Auto-scaling: 0-10 instances (dev/staging/prod adjusted)\n  * Concurrency: 200 per instance (2,000 total)\n  * Timeout: 60 seconds (order processing window)\n  * Environment variables: Cloud SQL connection, Pub/Sub topic, secrets\n  * Service account: cloud-run-sa with required permissions\n\nPhase 6: Monitoring \u0026 Logging\n- monitoring.tf: Comprehensive observability\n  * Cloud Logging sinks for Pub/Sub, Cloud Run, Cloud SQL\n  * Cloud Monitoring dashboard with 6 key metrics:\n    - Pub/Sub publish rate, subscription backlog\n    - Cloud Run request count, error rate, instance count\n    - Cloud SQL active connections\n  * Alert policies:\n    - DLQ message arrival (failure detection)\n    - Cloud Run error rate \u003e 10 errors/5min\n    - Cloud SQL connection pool \u003e 80%\n\nConfiguration Files:\n- terraform.tfvars: Shared variables (project_id, region, versions)\n- terraform.tfvars.dev: Dev environment (min resources, cost-optimized)\n- terraform.tfvars.staging: Staging environment (test-like config)\n- terraform.tfvars.prod: Production environment (full capacity, HA)\n\nDocumentation:\n- README.md: Provisioning guide, troubleshooting, monitoring, cleanup\n- .gitignore: Terraform state, credentials, temporary files\n- .terraformignore: Build artifacts and unnecessary files\n\nCode Quality:\n- ✓ terraform fmt applied (consistent formatting)\n- ✓ All .tf files follow HCL style guide\n- ✓ Resource naming consistent with conventions\n- ✓ Comments explain key configuration sections\n- ✓ Module versions pinned (terraform-google-modules 5.1, 15.0, 10.2)\n- ✓ Labels applied to all resources for cost tracking\n- ✓ Sensitive values marked (passwords, API keys)\n\nModule Dependencies:\n- terraform-google-modules/pubsub/google ~\u003e 5.1\n- terraform-google-modules/sql-db/google ~\u003e 15.0\n- terraform-google-modules/cloud-run/google ~\u003e 10.2\n\nSecurity Features:\n- Service accounts with least-privilege IAM roles\n- Secrets Manager for credential storage\n- Encryption at-rest (AES-256) and in-transit (TLS 1.2+)\n- Cloud SQL Auth Proxy for secure database access\n- No hardcoded credentials or sensitive data\n- Audit logging via Cloud Audit Logs\n\nMulti-Environment Support:\n- Terraform workspaces (dev/staging/prod)\n- Environment-specific .tfvars files\n- Parameterized scaling (min/max instances)\n- Cost-optimized tiers per environment\n- Progressive enhancement from dev → prod\n\nNext Steps:\n1. Update terraform.tfvars with your GCP project_id\n2. Run: terraform init\n3. Run: terraform plan -var-file=terraform.tfvars.dev\n4. Review plan output and adjust as needed\n5. Run: terraform apply -var-file=terraform.tfvars.dev\n\nImplementation Complete:\n✓ 70 implementation tasks defined in tasks.md\n✓ 16 Terraform .tf files generated\n✓ 4 environment-specific configuration files\n✓ Code formatting and structure validated\n✓ Security and compliance built-in\n✓ Monitoring and observability configured\n✓ Documentation and troubleshooting guide provided\n\nCo-Authored-By: Claude Haiku 4.5 \u003cnoreply@anthropic.com\u003e",
+    "vcsRepositoryUrl": "https://github.com/tunacinsoy/pw-sdd-iac-claude-001"
+  },
+  "currency": "USD",
+  "projects": [
+    {
+      "name": "tunacinsoy/pw-sdd-iac-claude-001/iac",
+      "displayName": "main",
+      "metadata": {
+        "path": ".",
+        "type": "terraform_dir",
+        "vcsSubPath": "iac",
+        "vcsCodeChanged": true,
+        "warnings": [
+          {
+            "code": 105,
+            "message": "Missing Terraform vars",
+            "data": [
+              "variable.project_id",
+              "variable.cloud_run_min_instances",
+              "variable.cloud_run_max_instances",
+              "variable.cloud_sql_tier"
+            ],
+            "isError": false
+          }
+        ],
+        "providers": [
+          {
+            "name": "google",
+            "filename": "provider.tf",
+            "startLine": 14,
+            "endLine": 24
+          },
+          {
+            "name": "google-beta",
+            "filename": "provider.tf",
+            "startLine": 26,
+            "endLine": 29
+          }
+        ],
+        "remoteModuleCalls": [
+          "https://github.com/terraform-google-modules/terraform-google-sql-db"
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [
+          {
+            "name": "module.cloud_sql.google_sql_database_instance.default",
+            "resourceType": "google_sql_database_instance",
+            "tags": {},
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:26",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.cloud_sql",
+                  "endLine": 85,
+                  "filename": "cloud_sql.tf",
+                  "startLine": 5
+                },
+                {
+                  "blockName": "google_sql_database_instance.default",
+                  "endLine": 175,
+                  "filename": ".infracost/terraform_modules/d27ce90c80703ec1b9a386897ecfe029/modules/postgresql/main.tf",
+                  "startLine": 50
+                }
+              ],
+              "checksum": "03032d0c28d9ee53361e715d5272067c9000031deaa3a66b2bdd9a21508496fd",
+              "endLine": 175,
+              "filename": ".infracost/terraform_modules/d27ce90c80703ec1b9a386897ecfe029/modules/postgresql/main.tf",
+              "moduleFilename": "https://github.com/terraform-google-modules/terraform-google-sql-db/blob/HEAD/modules/postgresql/main.tf",
+              "startLine": 50
+            },
+            "hourlyCost": "0.012328767123287671",
+            "monthlyCost": "9",
+            "costComponents": [
+              {
+                "name": "Storage (SSD, zonal)",
+                "unit": "GB",
+                "hourlyQuantity": "0.0136986301369863",
+                "monthlyQuantity": "10",
+                "price": "0.17",
+                "hourlyCost": "0.002328767123287671",
+                "monthlyCost": "1.7",
+                "priceNotFound": false
+              },
+              {
+                "name": "Backups",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.08",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "IP address (if unused)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.01",
+                "hourlyCost": "0.01",
+                "monthlyCost": "7.3",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_secret_manager_secret_version.cloud_sql_password",
+            "resourceType": "google_secret_manager_secret_version",
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_secret_manager_secret_version.cloud_sql_password",
+                  "endLine": 22,
+                  "filename": "secrets.tf",
+                  "startLine": 19
+                }
+              ],
+              "checksum": "1332f4bb7d997212c19ce13cfc9387f396efc099b273be8cfa400f9659891213",
+              "endLine": 22,
+              "filename": "secrets.tf",
+              "startLine": 19
+            },
+            "hourlyCost": "0.000082191780821916",
+            "monthlyCost": "0.06",
+            "costComponents": [
+              {
+                "name": "Active secret versions",
+                "unit": "versions",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.06",
+                "hourlyCost": "0.000082191780821916",
+                "monthlyCost": "0.06",
+                "priceNotFound": false
+              },
+              {
+                "name": "Access operations",
+                "unit": "10K requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_cloud_run_service.order_processor",
+            "resourceType": "google_cloud_run_service",
+            "tags": {
+              "component": "order-processing",
+              "environment": "main",
+              "managed_by": "terraform",
+              "service-type": "order-processor"
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_cloud_run_service.order_processor",
+                  "endLine": 96,
+                  "filename": "cloud_run.tf",
+                  "startLine": 5
+                }
+              ],
+              "checksum": "cd5139a1894c68d61e2a20d14068f2ba19d2dbdc89b348bb23356c05464ef02b",
+              "endLine": 96,
+              "filename": "cloud_run.tf",
+              "startLine": 5
+            },
+            "costComponents": [
+              {
+                "name": "CPU allocation Time",
+                "unit": "vCPU-seconds",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.000018",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "Memory allocation time",
+                "unit": "GiB-seconds",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.000002",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "Number of requests",
+                "unit": "requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0000004",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_logging_project_sink.cloud_run_sink",
+            "resourceType": "google_logging_project_sink",
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_logging_project_sink.cloud_run_sink",
+                  "endLine": 19,
+                  "filename": "monitoring.tf",
+                  "startLine": 13
+                }
+              ],
+              "checksum": "b2f4a1bcc2573d07ef53d05ee4567f0b1e060369dc5f9781821da83290e76a06",
+              "endLine": 19,
+              "filename": "monitoring.tf",
+              "startLine": 13
+            },
+            "costComponents": [
+              {
+                "name": "Logging data",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_logging_project_sink.cloud_sql_sink",
+            "resourceType": "google_logging_project_sink",
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_logging_project_sink.cloud_sql_sink",
+                  "endLine": 27,
+                  "filename": "monitoring.tf",
+                  "startLine": 21
+                }
+              ],
+              "checksum": "325a0a4beabe5adfe98e26439ba32af6a229d069ed918083d11bd5ee23df18b8",
+              "endLine": 27,
+              "filename": "monitoring.tf",
+              "startLine": 21
+            },
+            "costComponents": [
+              {
+                "name": "Logging data",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_logging_project_sink.pubsub_sink",
+            "resourceType": "google_logging_project_sink",
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_logging_project_sink.pubsub_sink",
+                  "endLine": 11,
+                  "filename": "monitoring.tf",
+                  "startLine": 5
+                }
+              ],
+              "checksum": "9720df70ecdd549dce9f19dbc7997484fe912f9da97537ba07dc3d9e78edd039",
+              "endLine": 11,
+              "filename": "monitoring.tf",
+              "startLine": 5
+            },
+            "costComponents": [
+              {
+                "name": "Logging data",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_logging_project_sink.retention_sink",
+            "resourceType": "google_logging_project_sink",
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_logging_project_sink.retention_sink",
+                  "endLine": 41,
+                  "filename": "monitoring.tf",
+                  "startLine": 33
+                }
+              ],
+              "checksum": "ce42f555b9a92d2b12eac42d967be97acf6745596a88a9756c88123dba93d038",
+              "endLine": 41,
+              "filename": "monitoring.tf",
+              "startLine": 33
+            },
+            "costComponents": [
+              {
+                "name": "Logging data",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_monitoring_metric_descriptor.cloud_run_request_latency",
+            "resourceType": "google_monitoring_metric_descriptor",
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_monitoring_metric_descriptor.cloud_run_request_latency",
+                  "endLine": 140,
+                  "filename": "cloud_run.tf",
+                  "startLine": 125
+                }
+              ],
+              "checksum": "0a51929e887026cb8f4d862b2ea56c0208b644b312b9185065d4ea1abcf2b73b",
+              "endLine": 140,
+              "filename": "cloud_run.tf",
+              "startLine": 125
+            },
+            "costComponents": [
+              {
+                "name": "Monitoring data (first 100K)",
+                "unit": "MB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.258",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "API calls",
+                "unit": "1k calls",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.01",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_pubsub_subscription.pull_subscription",
+            "resourceType": "google_pubsub_subscription",
+            "tags": {
+              "component": "order-processing",
+              "environment": "main",
+              "managed_by": "terraform",
+              "subscription-type": "pull",
+              "target": "analytics"
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "attributesWithUnknownKeys": [
+                {
+                  "attribute": "topic",
+                  "missingVariables": [
+                    "module.pubsub_topic.topic"
+                  ]
+                }
+              ],
+              "calls": [
+                {
+                  "blockName": "google_pubsub_subscription.pull_subscription",
+                  "endLine": 99,
+                  "filename": "pubsub.tf",
+                  "startLine": 80
+                }
+              ],
+              "checksum": "df1e86d2b0bccb4f041c29c930a6a3a824ac428e47fd99f3226d130ec5427dc7",
+              "endLine": 99,
+              "filename": "pubsub.tf",
+              "startLine": 80
+            },
+            "costComponents": [
+              {
+                "name": "Message delivery data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Retained acknowledged message storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot message backlog storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_pubsub_subscription.push_subscription",
+            "resourceType": "google_pubsub_subscription",
+            "tags": {
+              "component": "order-processing",
+              "environment": "main",
+              "managed_by": "terraform",
+              "subscription-type": "push",
+              "target": "cloud-run"
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "attributesWithUnknownKeys": [
+                {
+                  "attribute": "topic",
+                  "missingVariables": [
+                    "module.pubsub_topic.topic"
+                  ]
+                }
+              ],
+              "calls": [
+                {
+                  "blockName": "google_pubsub_subscription.push_subscription",
+                  "endLine": 74,
+                  "filename": "pubsub.tf",
+                  "startLine": 42
+                }
+              ],
+              "checksum": "7134c212a53353ba735433a9fb439a1d9d72e009185c917b3e1ff438478aee08",
+              "endLine": 74,
+              "filename": "pubsub.tf",
+              "startLine": 42
+            },
+            "costComponents": [
+              {
+                "name": "Message delivery data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Retained acknowledged message storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot message backlog storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_secret_manager_secret.cloud_sql_password",
+            "resourceType": "google_secret_manager_secret",
+            "tags": {
+              "component": "order-processing",
+              "environment": "main",
+              "managed_by": "terraform",
+              "secret-type": "database-password"
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_secret_manager_secret.cloud_sql_password",
+                  "endLine": 15,
+                  "filename": "secrets.tf",
+                  "startLine": 2
+                }
+              ],
+              "checksum": "41bf2ad0a7a056344d5eb780832d13b30e7e762628fd9b55f48cbe25e485f3d5",
+              "endLine": 15,
+              "filename": "secrets.tf",
+              "startLine": 2
+            },
+            "costComponents": [
+              {
+                "name": "Active secret versions",
+                "unit": "versions",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.06",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Access operations",
+                "unit": "10K requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Rotation notifications",
+                "unit": "rotations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.05",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_storage_bucket.archive",
+            "resourceType": "google_storage_bucket",
+            "tags": {
+              "bucket-type": "message-archive",
+              "component": "order-processing",
+              "environment": "main",
+              "managed_by": "terraform"
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_storage_bucket.archive",
+                  "endLine": 180,
+                  "filename": "cloud_sql.tf",
+                  "startLine": 138
+                }
+              ],
+              "checksum": "85f6bb46b53d70849e817f82fdcb0b936bf1a2871484647a30d1e331462ae619",
+              "endLine": 180,
+              "filename": "cloud_sql.tf",
+              "startLine": 138
+            },
+            "costComponents": [
+              {
+                "name": "Storage (standard)",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.02",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Object adds, bucket/object list (class A)",
+                "unit": "10k operations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.05",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Object gets, retrieve bucket/object metadata (class B)",
+                "unit": "10k operations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.004",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "subresources": [
+              {
+                "name": "Network egress",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Data transfer in same continent",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.02",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer to worldwide excluding Asia, Australia (first 1TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.12",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer to Asia excluding China, but including Hong Kong (first 1TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.12",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer to China excluding Hong Kong (first 1TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.23",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer to Australia (first 1TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.19",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "google_storage_bucket.terraform_state",
+            "resourceType": "google_storage_bucket",
+            "tags": {
+              "bucket-type": "terraform-state",
+              "component": "order-processing",
+              "environment": "main",
+              "managed_by": "terraform"
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_storage_bucket.terraform_state",
+                  "endLine": 128,
+                  "filename": "cloud_sql.tf",
+                  "startLine": 103
+                }
+              ],
+              "checksum": "113c3479b82c623a452c4493775ba84b4f184d31445c0621815b5e3dfac1f660",
+              "endLine": 128,
+              "filename": "cloud_sql.tf",
+              "startLine": 103
+            },
+            "costComponents": [
+              {
+                "name": "Storage (standard)",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.02",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Object adds, bucket/object list (class A)",
+                "unit": "10k operations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.05",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Object gets, retrieve bucket/object metadata (class B)",
+                "unit": "10k operations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.004",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "subresources": [
+              {
+                "name": "Network egress",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Data transfer in same continent",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.02",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer to worldwide excluding Asia, Australia (first 1TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.12",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer to Asia excluding China, but including Hong Kong (first 1TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.12",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer to China excluding Hong Kong (first 1TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.23",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer to Australia (first 1TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.19",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "module.pubsub_dlq_topic.google_pubsub_topic.topic[0]",
+            "resourceType": "google_pubsub_topic",
+            "tags": {
+              "component": "dead-letter-queue",
+              "environment": "main",
+              "managed_by": "terraform"
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.pubsub_dlq_topic",
+                  "endLine": 120,
+                  "filename": "pubsub.tf",
+                  "startLine": 105
+                },
+                {
+                  "blockName": "google_pubsub_topic.topic",
+                  "endLine": 168,
+                  "filename": ".infracost/terraform_modules/f867f173493324f71dea162dd2fb5844/main.tf",
+                  "startLine": 145
+                }
+              ],
+              "checksum": "95725e37bc1f4dbdd293bd9d537a789922cd4d1c260932b87b17edc3d00fc188",
+              "endLine": 168,
+              "filename": ".infracost/terraform_modules/f867f173493324f71dea162dd2fb5844/main.tf",
+              "moduleFilename": "https://github.com/terraform-google-modules/terraform-google-pubsub/blob/HEAD/main.tf",
+              "startLine": 145
+            },
+            "costComponents": [
+              {
+                "name": "Message ingestion data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "module.pubsub_topic.google_pubsub_topic.topic[0]",
+            "resourceType": "google_pubsub_topic",
+            "tags": {
+              "component": "order-events-topic",
+              "environment": "main",
+              "managed_by": "terraform"
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.pubsub_topic",
+                  "endLine": 25,
+                  "filename": "pubsub.tf",
+                  "startLine": 5
+                },
+                {
+                  "blockName": "google_pubsub_topic.topic",
+                  "endLine": 168,
+                  "filename": ".infracost/terraform_modules/f867f173493324f71dea162dd2fb5844/main.tf",
+                  "startLine": 145
+                }
+              ],
+              "checksum": "d819db0d25de10b7389d9328b08ade38e09d6e2653e6e8f17be8fe33a4f88642",
+              "endLine": 168,
+              "filename": ".infracost/terraform_modules/f867f173493324f71dea162dd2fb5844/main.tf",
+              "moduleFilename": "https://github.com/terraform-google-modules/terraform-google-pubsub/blob/HEAD/main.tf",
+              "startLine": 145
+            },
+            "costComponents": [
+              {
+                "name": "Message ingestion data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.012410958904109587",
+        "totalMonthlyCost": "9.06",
+        "totalMonthlyUsageCost": "0"
+      },
+      "breakdown": {
+        "resources": [
+          {
+            "name": "module.cloud_sql.google_sql_database_instance.default",
+            "resourceType": "google_sql_database_instance",
+            "tags": {},
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:26",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.cloud_sql",
+                  "endLine": 85,
+                  "filename": "cloud_sql.tf",
+                  "startLine": 5
+                },
+                {
+                  "blockName": "google_sql_database_instance.default",
+                  "endLine": 175,
+                  "filename": ".infracost/terraform_modules/d27ce90c80703ec1b9a386897ecfe029/modules/postgresql/main.tf",
+                  "startLine": 50
+                }
+              ],
+              "checksum": "03032d0c28d9ee53361e715d5272067c9000031deaa3a66b2bdd9a21508496fd",
+              "endLine": 175,
+              "filename": ".infracost/terraform_modules/d27ce90c80703ec1b9a386897ecfe029/modules/postgresql/main.tf",
+              "moduleFilename": "https://github.com/terraform-google-modules/terraform-google-sql-db/blob/HEAD/modules/postgresql/main.tf",
+              "startLine": 50
+            },
+            "hourlyCost": "0.012328767123287671",
+            "monthlyCost": "9",
+            "costComponents": [
+              {
+                "name": "Storage (SSD, zonal)",
+                "unit": "GB",
+                "hourlyQuantity": "0.0136986301369863",
+                "monthlyQuantity": "10",
+                "price": "0.17",
+                "hourlyCost": "0.002328767123287671",
+                "monthlyCost": "1.7",
+                "priceNotFound": false
+              },
+              {
+                "name": "Backups",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.08",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "IP address (if unused)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.01",
+                "hourlyCost": "0.01",
+                "monthlyCost": "7.3",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_secret_manager_secret_version.cloud_sql_password",
+            "resourceType": "google_secret_manager_secret_version",
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_secret_manager_secret_version.cloud_sql_password",
+                  "endLine": 22,
+                  "filename": "secrets.tf",
+                  "startLine": 19
+                }
+              ],
+              "checksum": "1332f4bb7d997212c19ce13cfc9387f396efc099b273be8cfa400f9659891213",
+              "endLine": 22,
+              "filename": "secrets.tf",
+              "startLine": 19
+            },
+            "hourlyCost": "0.000082191780821916",
+            "monthlyCost": "0.06",
+            "costComponents": [
+              {
+                "name": "Active secret versions",
+                "unit": "versions",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.06",
+                "hourlyCost": "0.000082191780821916",
+                "monthlyCost": "0.06",
+                "priceNotFound": false
+              },
+              {
+                "name": "Access operations",
+                "unit": "10K requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_cloud_run_service.order_processor",
+            "resourceType": "google_cloud_run_service",
+            "tags": {
+              "component": "order-processing",
+              "environment": "main",
+              "managed_by": "terraform",
+              "service-type": "order-processor"
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_cloud_run_service.order_processor",
+                  "endLine": 96,
+                  "filename": "cloud_run.tf",
+                  "startLine": 5
+                }
+              ],
+              "checksum": "cd5139a1894c68d61e2a20d14068f2ba19d2dbdc89b348bb23356c05464ef02b",
+              "endLine": 96,
+              "filename": "cloud_run.tf",
+              "startLine": 5
+            },
+            "costComponents": [
+              {
+                "name": "CPU allocation Time",
+                "unit": "vCPU-seconds",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.000018",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "Memory allocation time",
+                "unit": "GiB-seconds",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.000002",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              },
+              {
+                "name": "Number of requests",
+                "unit": "requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0000004",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_logging_project_sink.cloud_run_sink",
+            "resourceType": "google_logging_project_sink",
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_logging_project_sink.cloud_run_sink",
+                  "endLine": 19,
+                  "filename": "monitoring.tf",
+                  "startLine": 13
+                }
+              ],
+              "checksum": "b2f4a1bcc2573d07ef53d05ee4567f0b1e060369dc5f9781821da83290e76a06",
+              "endLine": 19,
+              "filename": "monitoring.tf",
+              "startLine": 13
+            },
+            "costComponents": [
+              {
+                "name": "Logging data",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_logging_project_sink.cloud_sql_sink",
+            "resourceType": "google_logging_project_sink",
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_logging_project_sink.cloud_sql_sink",
+                  "endLine": 27,
+                  "filename": "monitoring.tf",
+                  "startLine": 21
+                }
+              ],
+              "checksum": "325a0a4beabe5adfe98e26439ba32af6a229d069ed918083d11bd5ee23df18b8",
+              "endLine": 27,
+              "filename": "monitoring.tf",
+              "startLine": 21
+            },
+            "costComponents": [
+              {
+                "name": "Logging data",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_logging_project_sink.pubsub_sink",
+            "resourceType": "google_logging_project_sink",
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_logging_project_sink.pubsub_sink",
+                  "endLine": 11,
+                  "filename": "monitoring.tf",
+                  "startLine": 5
+                }
+              ],
+              "checksum": "9720df70ecdd549dce9f19dbc7997484fe912f9da97537ba07dc3d9e78edd039",
+              "endLine": 11,
+              "filename": "monitoring.tf",
+              "startLine": 5
+            },
+            "costComponents": [
+              {
+                "name": "Logging data",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_logging_project_sink.retention_sink",
+            "resourceType": "google_logging_project_sink",
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_logging_project_sink.retention_sink",
+                  "endLine": 41,
+                  "filename": "monitoring.tf",
+                  "startLine": 33
+                }
+              ],
+              "checksum": "ce42f555b9a92d2b12eac42d967be97acf6745596a88a9756c88123dba93d038",
+              "endLine": 41,
+              "filename": "monitoring.tf",
+              "startLine": 33
+            },
+            "costComponents": [
+              {
+                "name": "Logging data",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_monitoring_metric_descriptor.cloud_run_request_latency",
+            "resourceType": "google_monitoring_metric_descriptor",
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_monitoring_metric_descriptor.cloud_run_request_latency",
+                  "endLine": 140,
+                  "filename": "cloud_run.tf",
+                  "startLine": 125
+                }
+              ],
+              "checksum": "0a51929e887026cb8f4d862b2ea56c0208b644b312b9185065d4ea1abcf2b73b",
+              "endLine": 140,
+              "filename": "cloud_run.tf",
+              "startLine": 125
+            },
+            "costComponents": [
+              {
+                "name": "Monitoring data (first 100K)",
+                "unit": "MB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.258",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "API calls",
+                "unit": "1k calls",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.01",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_pubsub_subscription.pull_subscription",
+            "resourceType": "google_pubsub_subscription",
+            "tags": {
+              "component": "order-processing",
+              "environment": "main",
+              "managed_by": "terraform",
+              "subscription-type": "pull",
+              "target": "analytics"
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "attributesWithUnknownKeys": [
+                {
+                  "attribute": "topic",
+                  "missingVariables": [
+                    "module.pubsub_topic.topic"
+                  ]
+                }
+              ],
+              "calls": [
+                {
+                  "blockName": "google_pubsub_subscription.pull_subscription",
+                  "endLine": 99,
+                  "filename": "pubsub.tf",
+                  "startLine": 80
+                }
+              ],
+              "checksum": "df1e86d2b0bccb4f041c29c930a6a3a824ac428e47fd99f3226d130ec5427dc7",
+              "endLine": 99,
+              "filename": "pubsub.tf",
+              "startLine": 80
+            },
+            "costComponents": [
+              {
+                "name": "Message delivery data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Retained acknowledged message storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot message backlog storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_pubsub_subscription.push_subscription",
+            "resourceType": "google_pubsub_subscription",
+            "tags": {
+              "component": "order-processing",
+              "environment": "main",
+              "managed_by": "terraform",
+              "subscription-type": "push",
+              "target": "cloud-run"
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "attributesWithUnknownKeys": [
+                {
+                  "attribute": "topic",
+                  "missingVariables": [
+                    "module.pubsub_topic.topic"
+                  ]
+                }
+              ],
+              "calls": [
+                {
+                  "blockName": "google_pubsub_subscription.push_subscription",
+                  "endLine": 74,
+                  "filename": "pubsub.tf",
+                  "startLine": 42
+                }
+              ],
+              "checksum": "7134c212a53353ba735433a9fb439a1d9d72e009185c917b3e1ff438478aee08",
+              "endLine": 74,
+              "filename": "pubsub.tf",
+              "startLine": 42
+            },
+            "costComponents": [
+              {
+                "name": "Message delivery data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Retained acknowledged message storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Snapshot message backlog storage",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.27",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_secret_manager_secret.cloud_sql_password",
+            "resourceType": "google_secret_manager_secret",
+            "tags": {
+              "component": "order-processing",
+              "environment": "main",
+              "managed_by": "terraform",
+              "secret-type": "database-password"
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_secret_manager_secret.cloud_sql_password",
+                  "endLine": 15,
+                  "filename": "secrets.tf",
+                  "startLine": 2
+                }
+              ],
+              "checksum": "41bf2ad0a7a056344d5eb780832d13b30e7e762628fd9b55f48cbe25e485f3d5",
+              "endLine": 15,
+              "filename": "secrets.tf",
+              "startLine": 2
+            },
+            "costComponents": [
+              {
+                "name": "Active secret versions",
+                "unit": "versions",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.06",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Access operations",
+                "unit": "10K requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Rotation notifications",
+                "unit": "rotations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.05",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "google_storage_bucket.archive",
+            "resourceType": "google_storage_bucket",
+            "tags": {
+              "bucket-type": "message-archive",
+              "component": "order-processing",
+              "environment": "main",
+              "managed_by": "terraform"
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_storage_bucket.archive",
+                  "endLine": 180,
+                  "filename": "cloud_sql.tf",
+                  "startLine": 138
+                }
+              ],
+              "checksum": "85f6bb46b53d70849e817f82fdcb0b936bf1a2871484647a30d1e331462ae619",
+              "endLine": 180,
+              "filename": "cloud_sql.tf",
+              "startLine": 138
+            },
+            "costComponents": [
+              {
+                "name": "Storage (standard)",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.02",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Object adds, bucket/object list (class A)",
+                "unit": "10k operations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.05",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Object gets, retrieve bucket/object metadata (class B)",
+                "unit": "10k operations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.004",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "subresources": [
+              {
+                "name": "Network egress",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Data transfer in same continent",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.02",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer to worldwide excluding Asia, Australia (first 1TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.12",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer to Asia excluding China, but including Hong Kong (first 1TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.12",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer to China excluding Hong Kong (first 1TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.23",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer to Australia (first 1TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.19",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "google_storage_bucket.terraform_state",
+            "resourceType": "google_storage_bucket",
+            "tags": {
+              "bucket-type": "terraform-state",
+              "component": "order-processing",
+              "environment": "main",
+              "managed_by": "terraform"
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "google_storage_bucket.terraform_state",
+                  "endLine": 128,
+                  "filename": "cloud_sql.tf",
+                  "startLine": 103
+                }
+              ],
+              "checksum": "113c3479b82c623a452c4493775ba84b4f184d31445c0621815b5e3dfac1f660",
+              "endLine": 128,
+              "filename": "cloud_sql.tf",
+              "startLine": 103
+            },
+            "costComponents": [
+              {
+                "name": "Storage (standard)",
+                "unit": "GiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.02",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Object adds, bucket/object list (class A)",
+                "unit": "10k operations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.05",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Object gets, retrieve bucket/object metadata (class B)",
+                "unit": "10k operations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.004",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "subresources": [
+              {
+                "name": "Network egress",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Data transfer in same continent",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.02",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer to worldwide excluding Asia, Australia (first 1TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.12",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer to Asia excluding China, but including Hong Kong (first 1TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.12",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer to China excluding Hong Kong (first 1TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.23",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer to Australia (first 1TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.19",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "module.pubsub_dlq_topic.google_pubsub_topic.topic[0]",
+            "resourceType": "google_pubsub_topic",
+            "tags": {
+              "component": "dead-letter-queue",
+              "environment": "main",
+              "managed_by": "terraform"
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.pubsub_dlq_topic",
+                  "endLine": 120,
+                  "filename": "pubsub.tf",
+                  "startLine": 105
+                },
+                {
+                  "blockName": "google_pubsub_topic.topic",
+                  "endLine": 168,
+                  "filename": ".infracost/terraform_modules/f867f173493324f71dea162dd2fb5844/main.tf",
+                  "startLine": 145
+                }
+              ],
+              "checksum": "95725e37bc1f4dbdd293bd9d537a789922cd4d1c260932b87b17edc3d00fc188",
+              "endLine": 168,
+              "filename": ".infracost/terraform_modules/f867f173493324f71dea162dd2fb5844/main.tf",
+              "moduleFilename": "https://github.com/terraform-google-modules/terraform-google-pubsub/blob/HEAD/main.tf",
+              "startLine": 145
+            },
+            "costComponents": [
+              {
+                "name": "Message ingestion data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "module.pubsub_topic.google_pubsub_topic.topic[0]",
+            "resourceType": "google_pubsub_topic",
+            "tags": {
+              "component": "order-events-topic",
+              "environment": "main",
+              "managed_by": "terraform"
+            },
+            "defaultTags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:14",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.pubsub_topic",
+                  "endLine": 25,
+                  "filename": "pubsub.tf",
+                  "startLine": 5
+                },
+                {
+                  "blockName": "google_pubsub_topic.topic",
+                  "endLine": 168,
+                  "filename": ".infracost/terraform_modules/f867f173493324f71dea162dd2fb5844/main.tf",
+                  "startLine": 145
+                }
+              ],
+              "checksum": "d819db0d25de10b7389d9328b08ade38e09d6e2653e6e8f17be8fe33a4f88642",
+              "endLine": 168,
+              "filename": ".infracost/terraform_modules/f867f173493324f71dea162dd2fb5844/main.tf",
+              "moduleFilename": "https://github.com/terraform-google-modules/terraform-google-pubsub/blob/HEAD/main.tf",
+              "startLine": 145
+            },
+            "costComponents": [
+              {
+                "name": "Message ingestion data",
+                "unit": "TiB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "40",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "0.012410958904109587",
+        "totalMonthlyCost": "9.06",
+        "totalMonthlyUsageCost": "0"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 44,
+        "totalSupportedResources": 15,
+        "totalUnsupportedResources": 1,
+        "totalUsageBasedResources": 15,
+        "totalNoPriceResources": 28,
+        "unsupportedResourceCounts": {
+          "google_pubsub_schema": 1
+        },
+        "noPriceResourceCounts": {
+          "google_cloud_run_service_iam_member": 2,
+          "google_monitoring_alert_policy": 3,
+          "google_monitoring_dashboard": 1,
+          "google_project_iam_member": 12,
+          "google_secret_manager_secret_iam_member": 1,
+          "google_service_account": 4,
+          "google_sql_database": 2,
+          "google_sql_user": 2,
+          "google_storage_bucket_iam_member": 1
+        }
+      }
+    }
+  ],
+  "totalHourlyCost": "0.012410958904109587",
+  "totalMonthlyCost": "9.06",
+  "totalMonthlyUsageCost": "0",
+  "pastTotalHourlyCost": "0.012410958904109587",
+  "pastTotalMonthlyCost": "9.06",
+  "pastTotalMonthlyUsageCost": "0",
+  "diffTotalHourlyCost": "0",
+  "diffTotalMonthlyCost": "0",
+  "diffTotalMonthlyUsageCost": "0",
+  "timeGenerated": "2026-03-23T12:27:43.154579033Z",
+  "summary": {
+    "totalDetectedResources": 44,
+    "totalSupportedResources": 15,
+    "totalUnsupportedResources": 1,
+    "totalUsageBasedResources": 15,
+    "totalNoPriceResources": 28,
+    "unsupportedResourceCounts": {
+      "google_pubsub_schema": 1
+    },
+    "noPriceResourceCounts": {
+      "google_cloud_run_service_iam_member": 2,
+      "google_monitoring_alert_policy": 3,
+      "google_monitoring_dashboard": 1,
+      "google_project_iam_member": 12,
+      "google_secret_manager_secret_iam_member": 1,
+      "google_service_account": 4,
+      "google_sql_database": 2,
+      "google_sql_user": 2,
+      "google_storage_bucket_iam_member": 1
+    }
+  }
+}

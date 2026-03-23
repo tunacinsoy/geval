@@ -1,0 +1,7 @@
+project_id = "your-gcp-project"
+cloud_run_max_instances = 10
+analytics_retention_days = 90
+cloud_sql_tier = "db-custom-2-7680"
+labels = {
+  environment = "prod"
+}

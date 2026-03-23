@@ -1,0 +1,11 @@
+# Development Environment Configuration
+environment                = "dev"
+cloud_run_min_instances    = 0
+cloud_run_max_instances    = 2
+cloud_sql_tier             = "db-f1-micro"
+cloud_sql_storage_gb       = 10
+enable_ha                  = false
+enable_vpc                 = false
+log_retention_days         = 7
+log_level                  = "DEBUG"
+pubsub_message_retention_days = 7
