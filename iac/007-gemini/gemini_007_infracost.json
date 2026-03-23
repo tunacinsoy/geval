@@ -1,0 +1,636 @@
+{
+  "version": "0.2",
+  "metadata": {
+    "infracostCommand": "breakdown",
+    "vcsBranch": "001-private-aks-firewall",
+    "vcsCommitSha": "5c453758b5332440154ee844818f1523d5f9219f",
+    "vcsCommitAuthorName": "tuna",
+    "vcsCommitAuthorEmail": "tunacinsoy@gmail.com",
+    "vcsCommitTimestamp": "2026-03-23T10:15:01Z",
+    "vcsCommitMessage": "feat: create implementation tasks",
+    "vcsRepositoryUrl": "https://github.com/tunacinsoy/pw-sdd-iac-gemini-001.git"
+  },
+  "currency": "USD",
+  "projects": [
+    {
+      "name": "tunacinsoy/pw-sdd-iac-gemini-001/iac",
+      "displayName": "main",
+      "metadata": {
+        "path": "/home/tuna/git-repos/pw-sdd-iac-gemini-001/iac",
+        "type": "terraform_dir",
+        "vcsSubPath": "iac",
+        "vcsCodeChanged": true,
+        "providers": [
+          {
+            "name": "azurerm",
+            "filename": "provider.tf",
+            "startLine": 1,
+            "endLine": 3
+          }
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [
+          {
+            "name": "azurerm_firewall.main",
+            "resourceType": "azurerm_firewall",
+            "tags": {},
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_firewall.main",
+                  "endLine": 21,
+                  "filename": "firewall.tf",
+                  "startLine": 9
+                }
+              ],
+              "checksum": "907b94faa3bb97c65639bd3faa1b29e9e0e9e32b1c8cae55999d43b51a57436f",
+              "endLine": 21,
+              "filename": "firewall.tf",
+              "startLine": 9
+            },
+            "hourlyCost": "1.25",
+            "monthlyCost": "912.5",
+            "costComponents": [
+              {
+                "name": "Deployment (Standard)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "1.25",
+                "hourlyCost": "1.25",
+                "monthlyCost": "912.5",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.016",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_kubernetes_cluster.main",
+            "resourceType": "azurerm_kubernetes_cluster",
+            "tags": {},
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_kubernetes_cluster.main",
+                  "endLine": 31,
+                  "filename": "aks.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "e9dd329eb9fdcfeb17fff901ec5b3a3a549ea107dfe009caa28ac95f2a0d8a26",
+              "endLine": 31,
+              "filename": "aks.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.657000000000000189",
+            "monthlyCost": "479.61",
+            "subresources": [
+              {
+                "name": "default_node_pool",
+                "metadata": {},
+                "hourlyCost": "0.657000000000000189",
+                "monthlyCost": "479.61",
+                "costComponents": [
+                  {
+                    "name": "Instance usage (Linux, pay as you go, Standard_D4s_v5)",
+                    "unit": "hours",
+                    "hourlyQuantity": "3",
+                    "monthlyQuantity": "2190",
+                    "price": "0.192",
+                    "hourlyCost": "0.576",
+                    "monthlyCost": "420.48",
+                    "priceNotFound": false
+                  }
+                ],
+                "subresources": [
+                  {
+                    "name": "os_disk",
+                    "metadata": {},
+                    "hourlyCost": "0.081000000000000189",
+                    "monthlyCost": "59.13",
+                    "costComponents": [
+                      {
+                        "name": "Storage (P10, LRS)",
+                        "unit": "months",
+                        "hourlyQuantity": "0.0041095890410959",
+                        "monthlyQuantity": "3",
+                        "price": "19.71",
+                        "hourlyCost": "0.081000000000000189",
+                        "monthlyCost": "59.13",
+                        "priceNotFound": false
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Load Balancer",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Data processed",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "azurerm_public_ip.firewall",
+            "resourceType": "azurerm_public_ip",
+            "tags": {},
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_public_ip.firewall",
+                  "endLine": 7,
+                  "filename": "firewall.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "271b35eb7bd8fdc501fac6e865a54378c78d3786881f972fa447cea2a1abed99",
+              "endLine": 7,
+              "filename": "firewall.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.005",
+            "monthlyCost": "3.65",
+            "costComponents": [
+              {
+                "name": "IP address (static, regional)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.005",
+                "hourlyCost": "0.005",
+                "monthlyCost": "3.65",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_log_analytics_workspace.main",
+            "resourceType": "azurerm_log_analytics_workspace",
+            "tags": {},
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_log_analytics_workspace.main",
+                  "endLine": 7,
+                  "filename": "monitoring.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "747c01a8e9621e04e12103f36bf7458be466646ae7ce21bfae70b592775177c3",
+              "endLine": 7,
+              "filename": "monitoring.tf",
+              "startLine": 1
+            },
+            "costComponents": [
+              {
+                "name": "Log data ingestion",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2.3",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Log data retention",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Log data export",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Basic log data ingestion",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Basic log search queries",
+                "unit": "GB searched",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archive data",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.02",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archive data restored",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archive data searched",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "1.912000000000000189",
+        "totalMonthlyCost": "1395.76",
+        "totalMonthlyUsageCost": "0"
+      },
+      "breakdown": {
+        "resources": [
+          {
+            "name": "azurerm_firewall.main",
+            "resourceType": "azurerm_firewall",
+            "tags": {},
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_firewall.main",
+                  "endLine": 21,
+                  "filename": "firewall.tf",
+                  "startLine": 9
+                }
+              ],
+              "checksum": "907b94faa3bb97c65639bd3faa1b29e9e0e9e32b1c8cae55999d43b51a57436f",
+              "endLine": 21,
+              "filename": "firewall.tf",
+              "startLine": 9
+            },
+            "hourlyCost": "1.25",
+            "monthlyCost": "912.5",
+            "costComponents": [
+              {
+                "name": "Deployment (Standard)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "1.25",
+                "hourlyCost": "1.25",
+                "monthlyCost": "912.5",
+                "priceNotFound": false
+              },
+              {
+                "name": "Data processed",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.016",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_kubernetes_cluster.main",
+            "resourceType": "azurerm_kubernetes_cluster",
+            "tags": {},
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_kubernetes_cluster.main",
+                  "endLine": 31,
+                  "filename": "aks.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "e9dd329eb9fdcfeb17fff901ec5b3a3a549ea107dfe009caa28ac95f2a0d8a26",
+              "endLine": 31,
+              "filename": "aks.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.657000000000000189",
+            "monthlyCost": "479.61",
+            "subresources": [
+              {
+                "name": "default_node_pool",
+                "metadata": {},
+                "hourlyCost": "0.657000000000000189",
+                "monthlyCost": "479.61",
+                "costComponents": [
+                  {
+                    "name": "Instance usage (Linux, pay as you go, Standard_D4s_v5)",
+                    "unit": "hours",
+                    "hourlyQuantity": "3",
+                    "monthlyQuantity": "2190",
+                    "price": "0.192",
+                    "hourlyCost": "0.576",
+                    "monthlyCost": "420.48",
+                    "priceNotFound": false
+                  }
+                ],
+                "subresources": [
+                  {
+                    "name": "os_disk",
+                    "metadata": {},
+                    "hourlyCost": "0.081000000000000189",
+                    "monthlyCost": "59.13",
+                    "costComponents": [
+                      {
+                        "name": "Storage (P10, LRS)",
+                        "unit": "months",
+                        "hourlyQuantity": "0.0041095890410959",
+                        "monthlyQuantity": "3",
+                        "price": "19.71",
+                        "hourlyCost": "0.081000000000000189",
+                        "monthlyCost": "59.13",
+                        "priceNotFound": false
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Load Balancer",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Data processed",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "azurerm_public_ip.firewall",
+            "resourceType": "azurerm_public_ip",
+            "tags": {},
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_public_ip.firewall",
+                  "endLine": 7,
+                  "filename": "firewall.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "271b35eb7bd8fdc501fac6e865a54378c78d3786881f972fa447cea2a1abed99",
+              "endLine": 7,
+              "filename": "firewall.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.005",
+            "monthlyCost": "3.65",
+            "costComponents": [
+              {
+                "name": "IP address (static, regional)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.005",
+                "hourlyCost": "0.005",
+                "monthlyCost": "3.65",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "azurerm_log_analytics_workspace.main",
+            "resourceType": "azurerm_log_analytics_workspace",
+            "tags": {},
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "azurerm_log_analytics_workspace.main",
+                  "endLine": 7,
+                  "filename": "monitoring.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "747c01a8e9621e04e12103f36bf7458be466646ae7ce21bfae70b592775177c3",
+              "endLine": 7,
+              "filename": "monitoring.tf",
+              "startLine": 1
+            },
+            "costComponents": [
+              {
+                "name": "Log data ingestion",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2.3",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Log data retention",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Log data export",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Basic log data ingestion",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Basic log search queries",
+                "unit": "GB searched",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archive data",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.02",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archive data restored",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archive data searched",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          }
+        ],
+        "totalHourlyCost": "1.912000000000000189",
+        "totalMonthlyCost": "1395.76",
+        "totalMonthlyUsageCost": "0"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 13,
+        "totalSupportedResources": 4,
+        "totalUnsupportedResources": 1,
+        "totalUsageBasedResources": 3,
+        "totalNoPriceResources": 8,
+        "unsupportedResourceCounts": {
+          "azurerm_firewall_policy_attachment": 1
+        },
+        "noPriceResourceCounts": {
+          "azurerm_firewall_policy": 1,
+          "azurerm_firewall_policy_rule_collection_group": 1,
+          "azurerm_resource_group": 1,
+          "azurerm_route_table": 1,
+          "azurerm_subnet": 2,
+          "azurerm_subnet_route_table_association": 1,
+          "azurerm_virtual_network": 1
+        }
+      }
+    }
+  ],
+  "totalHourlyCost": "1.912000000000000189",
+  "totalMonthlyCost": "1395.76",
+  "totalMonthlyUsageCost": "0",
+  "pastTotalHourlyCost": "1.912000000000000189",
+  "pastTotalMonthlyCost": "1395.76",
+  "pastTotalMonthlyUsageCost": "0",
+  "diffTotalHourlyCost": "0",
+  "diffTotalMonthlyCost": "0",
+  "diffTotalMonthlyUsageCost": "0",
+  "timeGenerated": "2026-03-23T10:26:56.817361208Z",
+  "summary": {
+    "totalDetectedResources": 13,
+    "totalSupportedResources": 4,
+    "totalUnsupportedResources": 1,
+    "totalUsageBasedResources": 3,
+    "totalNoPriceResources": 8,
+    "unsupportedResourceCounts": {
+      "azurerm_firewall_policy_attachment": 1
+    },
+    "noPriceResourceCounts": {
+      "azurerm_firewall_policy": 1,
+      "azurerm_firewall_policy_rule_collection_group": 1,
+      "azurerm_resource_group": 1,
+      "azurerm_route_table": 1,
+      "azurerm_subnet": 2,
+      "azurerm_subnet_route_table_association": 1,
+      "azurerm_virtual_network": 1
+    }
+  }
+}
