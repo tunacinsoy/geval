@@ -1,0 +1,16 @@
+version: 0.1
+
+resource_usage:
+  aws_autoscaling_group.this:
+    instances: 10000 # Average number of instances running
+    operating_system: linux
+
+  aws_sns_topic.alerts:
+    request_size_kb: 64
+    monthly_requests: 100
+
+  aws_cloudwatch_event_rule.pipeline_failure:
+    monthly_custom_events: 10
+
+  aws_cloudwatch_event_rule.critical_vulnerability:
+    monthly_custom_events: 50

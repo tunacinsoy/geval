@@ -1,0 +1,1295 @@
+{
+  "version": "0.2",
+  "metadata": {
+    "infracostCommand": "breakdown",
+    "vcsBranch": "001-configure-resolver-ha",
+    "vcsCommitSha": "4f0e0dc028e72e748e13a2d17c3882d01e25f88e",
+    "vcsCommitAuthorName": "tuna",
+    "vcsCommitAuthorEmail": "tunacinsoy@gmail.com",
+    "vcsCommitTimestamp": "2026-03-04T21:30:46Z",
+    "vcsCommitMessage": "feat: revert main to original",
+    "vcsRepositoryUrl": "https://github.com/tunacinsoy/pw-sdd-iac-codex-001.git"
+  },
+  "currency": "USD",
+  "projects": [
+    {
+      "name": "tunacinsoy/pw-sdd-iac-codex-001/iac",
+      "displayName": "main",
+      "metadata": {
+        "path": ".",
+        "type": "terraform_dir",
+        "policySha": "445eb204e7107e85884f44f35e8f9905cffcede6",
+        "pastPolicySha": "445eb204e7107e85884f44f35e8f9905cffcede6",
+        "vcsSubPath": "iac",
+        "vcsCodeChanged": true,
+        "warnings": [
+          {
+            "code": 105,
+            "message": "Missing Terraform vars",
+            "data": [
+              "variable.transit_gateway_id",
+              "variable.transit_gateway_route_table_id",
+              "variable.resolver_log_bucket",
+              "variable.kms_key_arn"
+            ],
+            "isError": false
+          }
+        ],
+        "providers": [
+          {
+            "name": "aws",
+            "filename": "provider.tf",
+            "startLine": 1,
+            "endLine": 7
+          }
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [
+          {
+            "name": "module.inbound_endpoint.aws_route53_resolver_endpoint.this",
+            "resourceType": "aws_route53_resolver_endpoint",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.inbound_endpoint",
+                  "endLine": 8,
+                  "filename": "resolver-endpoints.tf",
+                  "startLine": 1
+                },
+                {
+                  "blockName": "aws_route53_resolver_endpoint.this",
+                  "endLine": 18,
+                  "filename": "modules/resolver-endpoint/main.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "2fac8ec7861d7e4a43ac1de6725087ba1b97fedc175d179ff9c6d40e37b80d81",
+              "endLine": 18,
+              "filename": "modules/resolver-endpoint/main.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.25",
+            "monthlyCost": "182.5",
+            "costComponents": [
+              {
+                "name": "Resolver endpoints",
+                "unit": "hours",
+                "hourlyQuantity": "2",
+                "monthlyQuantity": "1460",
+                "price": "0.125",
+                "hourlyCost": "0.25",
+                "monthlyCost": "182.5",
+                "priceNotFound": false
+              },
+              {
+                "name": "DNS queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.4",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "module.outbound_endpoint.aws_route53_resolver_endpoint.this",
+            "resourceType": "aws_route53_resolver_endpoint",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.outbound_endpoint",
+                  "endLine": 17,
+                  "filename": "resolver-endpoints.tf",
+                  "startLine": 10
+                },
+                {
+                  "blockName": "aws_route53_resolver_endpoint.this",
+                  "endLine": 18,
+                  "filename": "modules/resolver-endpoint/main.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "4511679a477ea53217ac4b9132b99e330cd50175d4769635f54fbdf5e8693727",
+              "endLine": 18,
+              "filename": "modules/resolver-endpoint/main.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.25",
+            "monthlyCost": "182.5",
+            "costComponents": [
+              {
+                "name": "Resolver endpoints",
+                "unit": "hours",
+                "hourlyQuantity": "2",
+                "monthlyQuantity": "1460",
+                "price": "0.125",
+                "hourlyCost": "0.25",
+                "monthlyCost": "182.5",
+                "priceNotFound": false
+              },
+              {
+                "name": "DNS queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.4",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.servfail_alarm",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.servfail_alarm",
+                  "endLine": 23,
+                  "filename": "monitoring.tf",
+                  "startLine": 13
+                }
+              ],
+              "checksum": "40a32c6010ecd18051716850121159fbf9cc518092441b8c69fea5db33950dd9",
+              "endLine": 23,
+              "filename": "monitoring.tf",
+              "startLine": 13
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.resolver",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.resolver",
+                  "endLine": 6,
+                  "filename": "logging.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "a96b164dc5d97bfdbd1f8f6f9aa676bdd8c39c0a2154e14681341e805cb03c9b",
+              "endLine": 6,
+              "filename": "logging.tf",
+              "startLine": 1
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.resolver_logs",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "Name": "resolver-bridge-logs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.resolver_logs",
+                  "endLine": 37,
+                  "filename": "logging.tf",
+                  "startLine": 8
+                }
+              ],
+              "checksum": "3ec77d583d73baa8baba39216f6ce2961ecf9bc2df1ce4f8bdf1be896e48dfa8",
+              "endLine": 37,
+              "filename": "logging.tf",
+              "startLine": 8
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              },
+              {
+                "name": "Standard - infrequent access",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0125",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.01",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.001",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Lifecycle transition",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.01",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Retrievals",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.01",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.01",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "freeResources": [
+          {
+            "name": "aws_guardduty_detector.primary",
+            "resourceType": "aws_guardduty_detector",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_guardduty_detector.primary",
+                  "endLine": 27,
+                  "filename": "monitoring.tf",
+                  "startLine": 25
+                }
+              ],
+              "checksum": "3147c875520439e1c9eda06339e533dbee86e1b532146069523b0489597f8675",
+              "endLine": 27,
+              "filename": "monitoring.tf",
+              "startLine": 25
+            }
+          },
+          {
+            "name": "aws_network_acl.resolver",
+            "resourceType": "aws_network_acl",
+            "tags": {
+              "Name": "resolver-bridge-acl-main"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_network_acl.resolver",
+                  "endLine": 10,
+                  "filename": "networking.tf",
+                  "startLine": 7
+                }
+              ],
+              "checksum": "e94fc97a3bc4e11e09ad6b05df918dce332296f752e1fd8fc2ca3f3133baea6f",
+              "endLine": 10,
+              "filename": "networking.tf",
+              "startLine": 7
+            }
+          },
+          {
+            "name": "aws_route53_resolver_rule.corp_internal",
+            "resourceType": "aws_route53_resolver_rule",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "attributesWithUnknownKeys": [
+                {
+                  "attribute": "resolver_endpoint_id",
+                  "missingVariables": [
+                    "module.outbound_endpoint.endpoint_id"
+                  ]
+                }
+              ],
+              "calls": [
+                {
+                  "blockName": "aws_route53_resolver_rule.corp_internal",
+                  "endLine": 13,
+                  "filename": "dns.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "a110dc5ae3c7f7f0cf639bf8b776969fff9e4b9981e18b990ce16c81b8b3977b",
+              "endLine": 13,
+              "filename": "dns.tf",
+              "startLine": 1
+            }
+          },
+          {
+            "name": "aws_route_table.resolver_private",
+            "resourceType": "aws_route_table",
+            "tags": {
+              "Name": "resolver-bridge-rt-main"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_route_table.resolver_private",
+                  "endLine": 31,
+                  "filename": "vpc.tf",
+                  "startLine": 26
+                }
+              ],
+              "checksum": "be1d1fbb598447e00699ecf4c6cb5a987de3b30294fb8cc6c2bedeac471873cd",
+              "endLine": 31,
+              "filename": "vpc.tf",
+              "startLine": 26
+            }
+          },
+          {
+            "name": "aws_security_group.resolver_endpoint",
+            "resourceType": "aws_security_group",
+            "tags": {
+              "Name": "resolver-sg-main"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_security_group.resolver_endpoint",
+                  "endLine": 34,
+                  "filename": "security-groups.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "81d5ffb5069a2d68eb2fe5fd551f9b7b0e8f2856cdb470619c598b6dbd7ad54b",
+              "endLine": 34,
+              "filename": "security-groups.tf",
+              "startLine": 1
+            }
+          },
+          {
+            "name": "aws_subnet.resolver_private[\"10.1.1.0/24\"]",
+            "resourceType": "aws_subnet",
+            "tags": {
+              "Name": "resolver-bridge-private-us-east-1a"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_subnet.resolver_private",
+                  "endLine": 24,
+                  "filename": "vpc.tf",
+                  "startLine": 14
+                }
+              ],
+              "checksum": "4ae5178f5d21b463e607bc7042411ac32e6b9702fc8875e0e41d9beaec07eeae",
+              "endLine": 24,
+              "filename": "vpc.tf",
+              "startLine": 14
+            }
+          },
+          {
+            "name": "aws_subnet.resolver_private[\"10.1.2.0/24\"]",
+            "resourceType": "aws_subnet",
+            "tags": {
+              "Name": "resolver-bridge-private-us-east-1b"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_subnet.resolver_private",
+                  "endLine": 24,
+                  "filename": "vpc.tf",
+                  "startLine": 14
+                }
+              ],
+              "checksum": "81670b6e4a2729ce00a5edd24ce0d48e82c94f4908f38a2a939fa63f1d5f8a3f",
+              "endLine": 24,
+              "filename": "vpc.tf",
+              "startLine": 14
+            }
+          },
+          {
+            "name": "aws_vpc.resolver_bridge",
+            "resourceType": "aws_vpc",
+            "tags": {
+              "Name": "resolver-bridge-vpc-main"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_vpc.resolver_bridge",
+                  "endLine": 12,
+                  "filename": "vpc.tf",
+                  "startLine": 5
+                }
+              ],
+              "checksum": "5624a80a278f0838ca3e04e9c0fb72a9b58071ce1814d61874ee39715f637c89",
+              "endLine": 12,
+              "filename": "vpc.tf",
+              "startLine": 5
+            }
+          },
+          {
+            "name": "module.transit_gateway_routing.aws_ec2_transit_gateway_route.resolver",
+            "resourceType": "aws_ec2_transit_gateway_route",
+            "tags": {
+              "Name": "resolver-bridge-tgw-route"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.transit_gateway_routing",
+                  "endLine": 9,
+                  "filename": "transit-gateway.tf",
+                  "startLine": 1
+                },
+                {
+                  "blockName": "aws_ec2_transit_gateway_route.resolver",
+                  "endLine": 7,
+                  "filename": "modules/transit-gateway-routing/main.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "f688edd6d61aada3e6c1bb9d844b9cdc60adf6607adcec6eface48b701084e87",
+              "endLine": 7,
+              "filename": "modules/transit-gateway-routing/main.tf",
+              "startLine": 1
+            }
+          }
+        ],
+        "totalHourlyCost": "0.50013698630136986",
+        "totalMonthlyCost": "365.1",
+        "totalMonthlyUsageCost": "0"
+      },
+      "breakdown": {
+        "resources": [
+          {
+            "name": "module.inbound_endpoint.aws_route53_resolver_endpoint.this",
+            "resourceType": "aws_route53_resolver_endpoint",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.inbound_endpoint",
+                  "endLine": 8,
+                  "filename": "resolver-endpoints.tf",
+                  "startLine": 1
+                },
+                {
+                  "blockName": "aws_route53_resolver_endpoint.this",
+                  "endLine": 18,
+                  "filename": "modules/resolver-endpoint/main.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "2fac8ec7861d7e4a43ac1de6725087ba1b97fedc175d179ff9c6d40e37b80d81",
+              "endLine": 18,
+              "filename": "modules/resolver-endpoint/main.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.25",
+            "monthlyCost": "182.5",
+            "costComponents": [
+              {
+                "name": "Resolver endpoints",
+                "unit": "hours",
+                "hourlyQuantity": "2",
+                "monthlyQuantity": "1460",
+                "price": "0.125",
+                "hourlyCost": "0.25",
+                "monthlyCost": "182.5",
+                "priceNotFound": false
+              },
+              {
+                "name": "DNS queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.4",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "module.outbound_endpoint.aws_route53_resolver_endpoint.this",
+            "resourceType": "aws_route53_resolver_endpoint",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.outbound_endpoint",
+                  "endLine": 17,
+                  "filename": "resolver-endpoints.tf",
+                  "startLine": 10
+                },
+                {
+                  "blockName": "aws_route53_resolver_endpoint.this",
+                  "endLine": 18,
+                  "filename": "modules/resolver-endpoint/main.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "4511679a477ea53217ac4b9132b99e330cd50175d4769635f54fbdf5e8693727",
+              "endLine": 18,
+              "filename": "modules/resolver-endpoint/main.tf",
+              "startLine": 1
+            },
+            "hourlyCost": "0.25",
+            "monthlyCost": "182.5",
+            "costComponents": [
+              {
+                "name": "Resolver endpoints",
+                "unit": "hours",
+                "hourlyQuantity": "2",
+                "monthlyQuantity": "1460",
+                "price": "0.125",
+                "hourlyCost": "0.25",
+                "monthlyCost": "182.5",
+                "priceNotFound": false
+              },
+              {
+                "name": "DNS queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.4",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.servfail_alarm",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.servfail_alarm",
+                  "endLine": 23,
+                  "filename": "monitoring.tf",
+                  "startLine": 13
+                }
+              ],
+              "checksum": "40a32c6010ecd18051716850121159fbf9cc518092441b8c69fea5db33950dd9",
+              "endLine": 23,
+              "filename": "monitoring.tf",
+              "startLine": 13
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.resolver",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.resolver",
+                  "endLine": 6,
+                  "filename": "logging.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "a96b164dc5d97bfdbd1f8f6f9aa676bdd8c39c0a2154e14681341e805cb03c9b",
+              "endLine": 6,
+              "filename": "logging.tf",
+              "startLine": 1
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.resolver_logs",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "Name": "resolver-bridge-logs"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.resolver_logs",
+                  "endLine": 37,
+                  "filename": "logging.tf",
+                  "startLine": 8
+                }
+              ],
+              "checksum": "3ec77d583d73baa8baba39216f6ce2961ecf9bc2df1ce4f8bdf1be896e48dfa8",
+              "endLine": 37,
+              "filename": "logging.tf",
+              "startLine": 8
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              },
+              {
+                "name": "Standard - infrequent access",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0125",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.01",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.001",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Lifecycle transition",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.01",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Retrievals",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.01",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.01",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "freeResources": [
+          {
+            "name": "aws_guardduty_detector.primary",
+            "resourceType": "aws_guardduty_detector",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_guardduty_detector.primary",
+                  "endLine": 27,
+                  "filename": "monitoring.tf",
+                  "startLine": 25
+                }
+              ],
+              "checksum": "3147c875520439e1c9eda06339e533dbee86e1b532146069523b0489597f8675",
+              "endLine": 27,
+              "filename": "monitoring.tf",
+              "startLine": 25
+            }
+          },
+          {
+            "name": "aws_network_acl.resolver",
+            "resourceType": "aws_network_acl",
+            "tags": {
+              "Name": "resolver-bridge-acl-main"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_network_acl.resolver",
+                  "endLine": 10,
+                  "filename": "networking.tf",
+                  "startLine": 7
+                }
+              ],
+              "checksum": "e94fc97a3bc4e11e09ad6b05df918dce332296f752e1fd8fc2ca3f3133baea6f",
+              "endLine": 10,
+              "filename": "networking.tf",
+              "startLine": 7
+            }
+          },
+          {
+            "name": "aws_route53_resolver_rule.corp_internal",
+            "resourceType": "aws_route53_resolver_rule",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "attributesWithUnknownKeys": [
+                {
+                  "attribute": "resolver_endpoint_id",
+                  "missingVariables": [
+                    "module.outbound_endpoint.endpoint_id"
+                  ]
+                }
+              ],
+              "calls": [
+                {
+                  "blockName": "aws_route53_resolver_rule.corp_internal",
+                  "endLine": 13,
+                  "filename": "dns.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "a110dc5ae3c7f7f0cf639bf8b776969fff9e4b9981e18b990ce16c81b8b3977b",
+              "endLine": 13,
+              "filename": "dns.tf",
+              "startLine": 1
+            }
+          },
+          {
+            "name": "aws_route_table.resolver_private",
+            "resourceType": "aws_route_table",
+            "tags": {
+              "Name": "resolver-bridge-rt-main"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_route_table.resolver_private",
+                  "endLine": 31,
+                  "filename": "vpc.tf",
+                  "startLine": 26
+                }
+              ],
+              "checksum": "be1d1fbb598447e00699ecf4c6cb5a987de3b30294fb8cc6c2bedeac471873cd",
+              "endLine": 31,
+              "filename": "vpc.tf",
+              "startLine": 26
+            }
+          },
+          {
+            "name": "aws_security_group.resolver_endpoint",
+            "resourceType": "aws_security_group",
+            "tags": {
+              "Name": "resolver-sg-main"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_security_group.resolver_endpoint",
+                  "endLine": 34,
+                  "filename": "security-groups.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "81d5ffb5069a2d68eb2fe5fd551f9b7b0e8f2856cdb470619c598b6dbd7ad54b",
+              "endLine": 34,
+              "filename": "security-groups.tf",
+              "startLine": 1
+            }
+          },
+          {
+            "name": "aws_subnet.resolver_private[\"10.1.1.0/24\"]",
+            "resourceType": "aws_subnet",
+            "tags": {
+              "Name": "resolver-bridge-private-us-east-1a"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_subnet.resolver_private",
+                  "endLine": 24,
+                  "filename": "vpc.tf",
+                  "startLine": 14
+                }
+              ],
+              "checksum": "4ae5178f5d21b463e607bc7042411ac32e6b9702fc8875e0e41d9beaec07eeae",
+              "endLine": 24,
+              "filename": "vpc.tf",
+              "startLine": 14
+            }
+          },
+          {
+            "name": "aws_subnet.resolver_private[\"10.1.2.0/24\"]",
+            "resourceType": "aws_subnet",
+            "tags": {
+              "Name": "resolver-bridge-private-us-east-1b"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_subnet.resolver_private",
+                  "endLine": 24,
+                  "filename": "vpc.tf",
+                  "startLine": 14
+                }
+              ],
+              "checksum": "81670b6e4a2729ce00a5edd24ce0d48e82c94f4908f38a2a939fa63f1d5f8a3f",
+              "endLine": 24,
+              "filename": "vpc.tf",
+              "startLine": 14
+            }
+          },
+          {
+            "name": "aws_vpc.resolver_bridge",
+            "resourceType": "aws_vpc",
+            "tags": {
+              "Name": "resolver-bridge-vpc-main"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_vpc.resolver_bridge",
+                  "endLine": 12,
+                  "filename": "vpc.tf",
+                  "startLine": 5
+                }
+              ],
+              "checksum": "5624a80a278f0838ca3e04e9c0fb72a9b58071ce1814d61874ee39715f637c89",
+              "endLine": 12,
+              "filename": "vpc.tf",
+              "startLine": 5
+            }
+          },
+          {
+            "name": "module.transit_gateway_routing.aws_ec2_transit_gateway_route.resolver",
+            "resourceType": "aws_ec2_transit_gateway_route",
+            "tags": {
+              "Name": "resolver-bridge-tgw-route"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.transit_gateway_routing",
+                  "endLine": 9,
+                  "filename": "transit-gateway.tf",
+                  "startLine": 1
+                },
+                {
+                  "blockName": "aws_ec2_transit_gateway_route.resolver",
+                  "endLine": 7,
+                  "filename": "modules/transit-gateway-routing/main.tf",
+                  "startLine": 1
+                }
+              ],
+              "checksum": "f688edd6d61aada3e6c1bb9d844b9cdc60adf6607adcec6eface48b701084e87",
+              "endLine": 7,
+              "filename": "modules/transit-gateway-routing/main.tf",
+              "startLine": 1
+            }
+          }
+        ],
+        "totalHourlyCost": "0.50013698630136986",
+        "totalMonthlyCost": "365.1",
+        "totalMonthlyUsageCost": "0"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 22,
+        "totalSupportedResources": 5,
+        "totalUnsupportedResources": 1,
+        "totalUsageBasedResources": 4,
+        "totalNoPriceResources": 16,
+        "unsupportedResourceCounts": {
+          "aws_guardduty_detector": 1
+        },
+        "noPriceResourceCounts": {
+          "aws_cloudwatch_log_metric_filter": 1,
+          "aws_ec2_transit_gateway_route": 1,
+          "aws_ec2_transit_gateway_route_table_propagation": 1,
+          "aws_network_acl": 1,
+          "aws_network_acl_rule": 2,
+          "aws_route": 1,
+          "aws_route53_resolver_rule": 1,
+          "aws_route53_resolver_rule_association": 1,
+          "aws_route_table": 1,
+          "aws_route_table_association": 2,
+          "aws_security_group": 1,
+          "aws_subnet": 2,
+          "aws_vpc": 1
+        }
+      }
+    }
+  ],
+  "totalHourlyCost": "0.50013698630136986",
+  "totalMonthlyCost": "365.1",
+  "totalMonthlyUsageCost": "0",
+  "pastTotalHourlyCost": "0.50013698630136986",
+  "pastTotalMonthlyCost": "365.1",
+  "pastTotalMonthlyUsageCost": "0",
+  "diffTotalHourlyCost": "0",
+  "diffTotalMonthlyCost": "0",
+  "diffTotalMonthlyUsageCost": "0",
+  "timeGenerated": "2026-03-25T11:49:17.689055484Z",
+  "summary": {
+    "totalDetectedResources": 22,
+    "totalSupportedResources": 5,
+    "totalUnsupportedResources": 1,
+    "totalUsageBasedResources": 4,
+    "totalNoPriceResources": 16,
+    "unsupportedResourceCounts": {
+      "aws_guardduty_detector": 1
+    },
+    "noPriceResourceCounts": {
+      "aws_cloudwatch_log_metric_filter": 1,
+      "aws_ec2_transit_gateway_route": 1,
+      "aws_ec2_transit_gateway_route_table_propagation": 1,
+      "aws_network_acl": 1,
+      "aws_network_acl_rule": 2,
+      "aws_route": 1,
+      "aws_route53_resolver_rule": 1,
+      "aws_route53_resolver_rule_association": 1,
+      "aws_route_table": 1,
+      "aws_route_table_association": 2,
+      "aws_security_group": 1,
+      "aws_subnet": 2,
+      "aws_vpc": 1
+    }
+  }
+}

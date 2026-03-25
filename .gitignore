@@ -4,3 +4,5 @@ __pycache__/
 terraform/
 .deepeval/
 .infracost/
+.terraform/
+.terraform.lock.hcl

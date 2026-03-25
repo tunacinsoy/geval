@@ -1,0 +1,6 @@
+aws_region           = "us-east-1"
+env                  = "prod"
+vpc_id               = "vpc-0123456789abcdef0"
+private_subnet_id    = "subnet-0123456789abcdef0"
+ansible_playbook_url = "s3://my-security-bucket/playbooks/cis-al2023.yml"
+alert_email          = "security-ops@example.com"

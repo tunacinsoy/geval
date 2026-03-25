@@ -5,7 +5,7 @@ from deepeval.test_case import LLMTestCase, LLMTestCaseParams
 from deepeval.metrics import AnswerRelevancyMetric, GEval
 
 
-def load_terraform_codebase(directory="iac/009-gemini"):
+def load_terraform_codebase(directory="iac/010-gemini"):
     tf_code = ""
     patterns = ["**/*.tf", "**/*.tfvars"]
 
@@ -21,10 +21,10 @@ def load_terraform_codebase(directory="iac/009-gemini"):
 
 
 def test_contextual_terraform_coherence():
-    user_request = "Configure a Route 53 Resolver with both Inbound and Outbound endpoints distributed across two availability zones for high availability. Create a Forwarding Rule to route DNS queries for the domain corp.internal to on-premises DNS servers at IP addresses 192.168.10.5 and 192.168.10.6 via an existing Transit Gateway attachment. Ensure security groups attached to the resolver endpoints allow UDP/TCP traffic on port 53 only from the VPC CIDR and the on-premise network range."
+    user_request = "Define an EC2 Image Builder pipeline to generate a hardened AMI based on Amazon Linux 2023. The pipeline must execute an Ansible playbook component to apply CIS Level 1 benchmarks before finalizing the image. Once built, the AMI ID should be dynamically referenced in an Auto Scaling Group launch template. The ASG must be configured with a strict instance_refresh policy that replaces instances primarily by launching new ones before terminating old ones to ensure zero downtime during patching cycles."
 
     background_context = [
-        "Helvetia Pharma, founded in 1985 with 3,500 employees, manages highly sensitive, pseudonymized patient health data from EU clinical trials on physically isolated on-premise servers. The hybrid DNS setup ensures that new cloud applications can resolve internal endpoints without exposing GDPR-protected health data to the public internet, maintaining strict physical and logical access controls."
+        "CarePlus Health, founded in 1998 with 2,100 employees, processes health records for international patients, including EU residents. The immutable infrastructure model, which forces instances to be replaced rather than patched, ensures a completely tamper-proof environment. This provides regulators with an unalterable audit trail that proves continuous compliance with GDPR's security of processing mandates."
     ]
 
     generated_terraform = load_terraform_codebase()
