@@ -1,0 +1,563 @@
+{
+  "version": "0.2",
+  "metadata": {
+    "infracostCommand": "breakdown",
+    "vcsBranch": "001-route53-resolver",
+    "vcsCommitSha": "d445412d8bb116d3ed823bd34fce521f00898b67",
+    "vcsCommitAuthorName": "tunacinsoy",
+    "vcsCommitAuthorEmail": "tunacinsoy@gmail.com",
+    "vcsCommitTimestamp": "2026-02-12T15:48:58Z",
+    "vcsCommitMessage": "feat: init",
+    "vcsRepositoryUrl": "https://github.com/tunacinsoy/pw-sdd-iac-gemini-001.git",
+    "usageFilePath": "infracost-usage.yml"
+  },
+  "currency": "USD",
+  "projects": [
+    {
+      "name": "tunacinsoy/pw-sdd-iac-gemini-001/iac",
+      "displayName": "main",
+      "metadata": {
+        "path": ".",
+        "type": "terraform_dir",
+        "policySha": "2f46d933d3f1bf72b977f76db583bb0aab1ec8ec",
+        "pastPolicySha": "2f46d933d3f1bf72b977f76db583bb0aab1ec8ec",
+        "vcsSubPath": "iac",
+        "vcsCodeChanged": false,
+        "warnings": [
+          {
+            "code": 105,
+            "message": "Missing Terraform vars",
+            "data": [
+              "variable.vpc_id",
+              "variable.subnet_ids"
+            ],
+            "isError": false
+          }
+        ],
+        "providers": [
+          {
+            "name": "aws",
+            "filename": "provider.tf",
+            "startLine": 1,
+            "endLine": 3
+          }
+        ],
+        "remoteModuleCalls": [
+          "https://github.com/terraform-aws-modules/terraform-aws-route53"
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [
+          {
+            "name": "module.resolver_endpoints.aws_route53_resolver_endpoint.this[0]",
+            "resourceType": "aws_route53_resolver_endpoint",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.resolver_endpoints",
+                  "endLine": 17,
+                  "filename": "networking.tf",
+                  "startLine": 1
+                },
+                {
+                  "blockName": "aws_route53_resolver_endpoint.this",
+                  "endLine": 27,
+                  "filename": ".infracost/terraform_modules/397f44dec166d3b976bc480439e9c00a/modules/resolver-endpoint/main.tf",
+                  "startLine": 5
+                }
+              ],
+              "checksum": "0af77403ca5c8d8d24f7cdba26f3e8c31e06244405914871a73cda4b51f509e4",
+              "endLine": 27,
+              "filename": ".infracost/terraform_modules/397f44dec166d3b976bc480439e9c00a/modules/resolver-endpoint/main.tf",
+              "moduleFilename": "https://github.com/terraform-aws-modules/terraform-aws-route53/blob/HEAD/modules/resolver-endpoint/main.tf",
+              "startLine": 5
+            },
+            "hourlyCost": "0.35506849315068493150684",
+            "monthlyCost": "259.2",
+            "monthlyUsageCost": "259.2",
+            "costComponents": [
+              {
+                "name": "Resolver endpoints",
+                "unit": "hours",
+                "hourlyQuantity": "0",
+                "monthlyQuantity": "0",
+                "price": "0.125",
+                "hourlyCost": "0",
+                "monthlyCost": "0",
+                "priceNotFound": false
+              },
+              {
+                "name": "DNS queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": "0.8876712328767123",
+                "monthlyQuantity": "648",
+                "price": "0.4",
+                "hourlyCost": "0.35506849315068493150684",
+                "monthlyCost": "259.2",
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.resolver_query_logs",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.resolver_query_logs",
+                  "endLine": 44,
+                  "filename": "networking.tf",
+                  "startLine": 39
+                }
+              ],
+              "checksum": "73b7b7bd68daa95913385af65f01f4df8e9ec81664c84796cf75c771492a68a9",
+              "endLine": 44,
+              "filename": "networking.tf",
+              "startLine": 39
+            },
+            "hourlyCost": "0.155479452054794533",
+            "monthlyCost": "113.5",
+            "monthlyUsageCost": "113.5",
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": "0.2671232876712329",
+                "monthlyQuantity": "195",
+                "price": "0.5",
+                "hourlyCost": "0.13356164383561645",
+                "monthlyCost": "97.5",
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": "0.6849315068493151",
+                "monthlyQuantity": "500",
+                "price": "0.03",
+                "hourlyCost": "0.020547945205479453",
+                "monthlyCost": "15",
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": "0.273972602739726",
+                "monthlyQuantity": "200",
+                "price": "0.005",
+                "hourlyCost": "0.00136986301369863",
+                "monthlyCost": "1",
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          }
+        ],
+        "freeResources": [
+          {
+            "name": "aws_route53_resolver_query_log_config.this",
+            "resourceType": "aws_route53_resolver_query_log_config",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_route53_resolver_query_log_config.this",
+                  "endLine": 49,
+                  "filename": "networking.tf",
+                  "startLine": 46
+                }
+              ],
+              "checksum": "15d27457c541245c63b814c7acfbee509dde3ce85c28c645d734caad0bc6122b",
+              "endLine": 49,
+              "filename": "networking.tf",
+              "startLine": 46
+            }
+          },
+          {
+            "name": "aws_route53_resolver_rule.corp_internal_forward",
+            "resourceType": "aws_route53_resolver_rule",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "attributesWithUnknownKeys": [
+                {
+                  "attribute": "resolver_endpoint_id",
+                  "missingVariables": [
+                    "module.resolver_endpoints.outbound_endpoint_id"
+                  ]
+                }
+              ],
+              "calls": [
+                {
+                  "blockName": "aws_route53_resolver_rule.corp_internal_forward",
+                  "endLine": 32,
+                  "filename": "networking.tf",
+                  "startLine": 19
+                }
+              ],
+              "checksum": "532fbe0bae29a56ee9b6d56445ce0fc9f0ee7c0b4fa350c1886035fa33b11053",
+              "endLine": 32,
+              "filename": "networking.tf",
+              "startLine": 19
+            }
+          },
+          {
+            "name": "module.resolver_endpoints.aws_security_group.this[0]",
+            "resourceType": "aws_security_group",
+            "tags": {
+              "Name": "hybrid-dns-resolver"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.resolver_endpoints",
+                  "endLine": 17,
+                  "filename": "networking.tf",
+                  "startLine": 1
+                },
+                {
+                  "blockName": "aws_security_group.this",
+                  "endLine": 57,
+                  "filename": ".infracost/terraform_modules/397f44dec166d3b976bc480439e9c00a/modules/resolver-endpoint/main.tf",
+                  "startLine": 38
+                }
+              ],
+              "checksum": "ea3e1139eac483ea35ceee18a0598964a19fceb150e354f221af506681397792",
+              "endLine": 57,
+              "filename": ".infracost/terraform_modules/397f44dec166d3b976bc480439e9c00a/modules/resolver-endpoint/main.tf",
+              "moduleFilename": "https://github.com/terraform-aws-modules/terraform-aws-route53/blob/HEAD/modules/resolver-endpoint/main.tf",
+              "startLine": 38
+            }
+          },
+          {
+            "name": "module.resolver_sg.aws_security_group.this_name_prefix[0]",
+            "resourceType": "aws_security_group",
+            "tags": {
+              "Name": "dns-resolver-sg"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.resolver_sg",
+                  "endLine": 58,
+                  "filename": "security.tf",
+                  "startLine": 1
+                },
+                {
+                  "blockName": "aws_security_group.this_name_prefix",
+                  "endLine": 60,
+                  "filename": ".infracost/terraform_modules/618b373c473e9686cf5fbe539c4ab84e/main.tf",
+                  "startLine": 37
+                }
+              ],
+              "checksum": "8e63385eecef03f6626f4f2d1f342369973f95963570a110a1da1ecfffc50128",
+              "endLine": 60,
+              "filename": ".infracost/terraform_modules/618b373c473e9686cf5fbe539c4ab84e/main.tf",
+              "moduleFilename": "https://github.com/terraform-aws-modules/terraform-aws-security-group/blob/HEAD/main.tf",
+              "startLine": 37
+            }
+          }
+        ],
+        "totalHourlyCost": "0.51054794520547946450684",
+        "totalMonthlyCost": "372.7",
+        "totalMonthlyUsageCost": "372.7"
+      },
+      "breakdown": {
+        "resources": [
+          {
+            "name": "module.resolver_endpoints.aws_route53_resolver_endpoint.this[0]",
+            "resourceType": "aws_route53_resolver_endpoint",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.resolver_endpoints",
+                  "endLine": 17,
+                  "filename": "networking.tf",
+                  "startLine": 1
+                },
+                {
+                  "blockName": "aws_route53_resolver_endpoint.this",
+                  "endLine": 27,
+                  "filename": ".infracost/terraform_modules/397f44dec166d3b976bc480439e9c00a/modules/resolver-endpoint/main.tf",
+                  "startLine": 5
+                }
+              ],
+              "checksum": "0af77403ca5c8d8d24f7cdba26f3e8c31e06244405914871a73cda4b51f509e4",
+              "endLine": 27,
+              "filename": ".infracost/terraform_modules/397f44dec166d3b976bc480439e9c00a/modules/resolver-endpoint/main.tf",
+              "moduleFilename": "https://github.com/terraform-aws-modules/terraform-aws-route53/blob/HEAD/modules/resolver-endpoint/main.tf",
+              "startLine": 5
+            },
+            "hourlyCost": "0.35506849315068493150684",
+            "monthlyCost": "259.2",
+            "monthlyUsageCost": "259.2",
+            "costComponents": [
+              {
+                "name": "Resolver endpoints",
+                "unit": "hours",
+                "hourlyQuantity": "0",
+                "monthlyQuantity": "0",
+                "price": "0.125",
+                "hourlyCost": "0",
+                "monthlyCost": "0",
+                "priceNotFound": false
+              },
+              {
+                "name": "DNS queries (first 1B)",
+                "unit": "1M queries",
+                "hourlyQuantity": "0.8876712328767123",
+                "monthlyQuantity": "648",
+                "price": "0.4",
+                "hourlyCost": "0.35506849315068493150684",
+                "monthlyCost": "259.2",
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.resolver_query_logs",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.resolver_query_logs",
+                  "endLine": 44,
+                  "filename": "networking.tf",
+                  "startLine": 39
+                }
+              ],
+              "checksum": "73b7b7bd68daa95913385af65f01f4df8e9ec81664c84796cf75c771492a68a9",
+              "endLine": 44,
+              "filename": "networking.tf",
+              "startLine": 39
+            },
+            "hourlyCost": "0.155479452054794533",
+            "monthlyCost": "113.5",
+            "monthlyUsageCost": "113.5",
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": "0.2671232876712329",
+                "monthlyQuantity": "195",
+                "price": "0.5",
+                "hourlyCost": "0.13356164383561645",
+                "monthlyCost": "97.5",
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": "0.6849315068493151",
+                "monthlyQuantity": "500",
+                "price": "0.03",
+                "hourlyCost": "0.020547945205479453",
+                "monthlyCost": "15",
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": "0.273972602739726",
+                "monthlyQuantity": "200",
+                "price": "0.005",
+                "hourlyCost": "0.00136986301369863",
+                "monthlyCost": "1",
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          }
+        ],
+        "freeResources": [
+          {
+            "name": "aws_route53_resolver_query_log_config.this",
+            "resourceType": "aws_route53_resolver_query_log_config",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_route53_resolver_query_log_config.this",
+                  "endLine": 49,
+                  "filename": "networking.tf",
+                  "startLine": 46
+                }
+              ],
+              "checksum": "15d27457c541245c63b814c7acfbee509dde3ce85c28c645d734caad0bc6122b",
+              "endLine": 49,
+              "filename": "networking.tf",
+              "startLine": 46
+            }
+          },
+          {
+            "name": "aws_route53_resolver_rule.corp_internal_forward",
+            "resourceType": "aws_route53_resolver_rule",
+            "tags": {},
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "attributesWithUnknownKeys": [
+                {
+                  "attribute": "resolver_endpoint_id",
+                  "missingVariables": [
+                    "module.resolver_endpoints.outbound_endpoint_id"
+                  ]
+                }
+              ],
+              "calls": [
+                {
+                  "blockName": "aws_route53_resolver_rule.corp_internal_forward",
+                  "endLine": 32,
+                  "filename": "networking.tf",
+                  "startLine": 19
+                }
+              ],
+              "checksum": "532fbe0bae29a56ee9b6d56445ce0fc9f0ee7c0b4fa350c1886035fa33b11053",
+              "endLine": 32,
+              "filename": "networking.tf",
+              "startLine": 19
+            }
+          },
+          {
+            "name": "module.resolver_endpoints.aws_security_group.this[0]",
+            "resourceType": "aws_security_group",
+            "tags": {
+              "Name": "hybrid-dns-resolver"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.resolver_endpoints",
+                  "endLine": 17,
+                  "filename": "networking.tf",
+                  "startLine": 1
+                },
+                {
+                  "blockName": "aws_security_group.this",
+                  "endLine": 57,
+                  "filename": ".infracost/terraform_modules/397f44dec166d3b976bc480439e9c00a/modules/resolver-endpoint/main.tf",
+                  "startLine": 38
+                }
+              ],
+              "checksum": "ea3e1139eac483ea35ceee18a0598964a19fceb150e354f221af506681397792",
+              "endLine": 57,
+              "filename": ".infracost/terraform_modules/397f44dec166d3b976bc480439e9c00a/modules/resolver-endpoint/main.tf",
+              "moduleFilename": "https://github.com/terraform-aws-modules/terraform-aws-route53/blob/HEAD/modules/resolver-endpoint/main.tf",
+              "startLine": 38
+            }
+          },
+          {
+            "name": "module.resolver_sg.aws_security_group.this_name_prefix[0]",
+            "resourceType": "aws_security_group",
+            "tags": {
+              "Name": "dns-resolver-sg"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "module.resolver_sg",
+                  "endLine": 58,
+                  "filename": "security.tf",
+                  "startLine": 1
+                },
+                {
+                  "blockName": "aws_security_group.this_name_prefix",
+                  "endLine": 60,
+                  "filename": ".infracost/terraform_modules/618b373c473e9686cf5fbe539c4ab84e/main.tf",
+                  "startLine": 37
+                }
+              ],
+              "checksum": "8e63385eecef03f6626f4f2d1f342369973f95963570a110a1da1ecfffc50128",
+              "endLine": 60,
+              "filename": ".infracost/terraform_modules/618b373c473e9686cf5fbe539c4ab84e/main.tf",
+              "moduleFilename": "https://github.com/terraform-aws-modules/terraform-aws-security-group/blob/HEAD/main.tf",
+              "startLine": 37
+            }
+          }
+        ],
+        "totalHourlyCost": "0.51054794520547946450684",
+        "totalMonthlyCost": "372.7",
+        "totalMonthlyUsageCost": "372.7"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 14,
+        "totalSupportedResources": 2,
+        "totalUnsupportedResources": 0,
+        "totalUsageBasedResources": 2,
+        "totalNoPriceResources": 12,
+        "unsupportedResourceCounts": {},
+        "noPriceResourceCounts": {
+          "aws_route53_resolver_query_log_config": 1,
+          "aws_route53_resolver_query_log_config_association": 1,
+          "aws_route53_resolver_rule": 1,
+          "aws_route53_resolver_rule_association": 1,
+          "aws_security_group": 2,
+          "aws_security_group_rule": 6
+        }
+      }
+    }
+  ],
+  "totalHourlyCost": "0.51054794520547946450684",
+  "totalMonthlyCost": "372.7",
+  "totalMonthlyUsageCost": "372.7",
+  "pastTotalHourlyCost": "0.51054794520547946450684",
+  "pastTotalMonthlyCost": "372.7",
+  "pastTotalMonthlyUsageCost": "372.7",
+  "diffTotalHourlyCost": "0",
+  "diffTotalMonthlyCost": "0",
+  "diffTotalMonthlyUsageCost": "0",
+  "timeGenerated": "2026-03-25T10:39:11.185356958Z",
+  "summary": {
+    "totalDetectedResources": 14,
+    "totalSupportedResources": 2,
+    "totalUnsupportedResources": 0,
+    "totalUsageBasedResources": 2,
+    "totalNoPriceResources": 12,
+    "unsupportedResourceCounts": {},
+    "noPriceResourceCounts": {
+      "aws_route53_resolver_query_log_config": 1,
+      "aws_route53_resolver_query_log_config_association": 1,
+      "aws_route53_resolver_rule": 1,
+      "aws_route53_resolver_rule_association": 1,
+      "aws_security_group": 2,
+      "aws_security_group_rule": 6
+    }
+  }
+}

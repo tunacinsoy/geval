@@ -1,0 +1,6 @@
+# Prod Environment Variables
+# vpc_id          = "vpc-xxxxxxxx"
+# subnet_ids      = ["subnet-xxxxxxxx", "subnet-yyyyyyyy"]
+# on_prem_dns_ips = ["192.168.10.5", "192.168.10.6"]
+# on_prem_cidr    = "10.0.0.0/16"
+# domain_name     = "corp.internal"

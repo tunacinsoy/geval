@@ -1,0 +1,10 @@
+version: 0.1
+resource_usage:
+  module.resolver_endpoints.aws_route53_resolver_endpoint.this[0]:
+    endpoint_interfaces: 2
+    monthly_queries: 648000000
+
+  aws_cloudwatch_log_group.resolver_query_logs:
+    storage_gb: 500
+    monthly_data_ingested_gb: 195
+    monthly_data_scanned_gb: 200
