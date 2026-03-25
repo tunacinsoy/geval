@@ -1,0 +1,10 @@
+environment = "prod"
+db_instance_class = "db.m6i.xlarge"
+db_backup_retention_days = 35
+db_enable_read_replica = true
+db_replica_count = 1
+alert_email = "ops@example.com"
+common_tags = {
+  Team = "platform"
+  CostCenter = "infra-prod"
+}

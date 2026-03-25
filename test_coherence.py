@@ -5,7 +5,7 @@ from deepeval.test_case import LLMTestCase, LLMTestCaseParams
 from deepeval.metrics import AnswerRelevancyMetric, GEval
 
 
-def load_terraform_codebase(directory="iac/010-codex"):
+def load_terraform_codebase(directory="iac/005-codex"):
     tf_code = ""
     patterns = ["**/*.tf", "**/*.tfvars"]
 
@@ -21,10 +21,10 @@ def load_terraform_codebase(directory="iac/010-codex"):
 
 
 def test_contextual_terraform_coherence():
-    user_request = "Define an EC2 Image Builder pipeline to generate a hardened AMI based on Amazon Linux 2023. The pipeline must execute an Ansible playbook component to apply CIS Level 1 benchmarks before finalizing the image. Once built, the AMI ID should be dynamically referenced in an Auto Scaling Group launch template. The ASG must be configured with a strict instance_refresh policy that replaces instances primarily by launching new ones before terminating old ones to ensure zero downtime during patching cycles."
+    user_request = "Our blog is getting readers from all over the world, and they are complaining that images load slowly. I need a way to make the site faster for everyone, no matter where they are located."
 
     background_context = [
-        "CarePlus Health, founded in 1998 with 2,100 employees, processes health records for international patients, including EU residents. The immutable infrastructure model, which forces instances to be replaced rather than patched, ensures a completely tamper-proof environment. This provides regulators with an unalterable audit trail that proves continuous compliance with GDPR's security of processing mandates."
+        "Wanderlust Diaries is a travel publisher founded in 2016 with 5 employees. The site optimizes image load times for its global audience but relies on invasive third-party tracking scripts and user profiling to serve targeted ads. Distributing this architecture globally without configuring infrastructure-level geo-blocking or localized GDPR-compliant cookie consent banners exposes the business to massive fines for unlawful cross-border data transfers."
     ]
 
     generated_terraform = load_terraform_codebase()

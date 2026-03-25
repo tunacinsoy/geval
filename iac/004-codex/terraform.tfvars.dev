@@ -1,0 +1,10 @@
+environment = "dev"
+db_instance_class = "db.t4g.medium"
+db_backup_retention_days = 7
+db_enable_read_replica = false
+db_replica_count = 0
+alert_email = ""
+common_tags = {
+  Team = "platform"
+  CostCenter = "infra-dev"
+}

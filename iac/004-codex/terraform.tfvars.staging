@@ -1,0 +1,10 @@
+environment = "staging"
+db_instance_class = "db.t4g.large"
+db_backup_retention_days = 14
+db_enable_read_replica = false
+db_replica_count = 0
+alert_email = ""
+common_tags = {
+  Team = "platform"
+  CostCenter = "infra-staging"
+}
