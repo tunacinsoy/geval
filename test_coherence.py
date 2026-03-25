@@ -5,7 +5,7 @@ from deepeval.test_case import LLMTestCase, LLMTestCaseParams
 from deepeval.metrics import AnswerRelevancyMetric, GEval
 
 
-def load_terraform_codebase(directory="iac/010-gemini"):
+def load_terraform_codebase(directory="iac/010-codex"):
     tf_code = ""
     patterns = ["**/*.tf", "**/*.tfvars"]
 
