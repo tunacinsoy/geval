@@ -5,7 +5,7 @@ from deepeval.test_case import LLMTestCase, LLMTestCaseParams
 from deepeval.metrics import AnswerRelevancyMetric, GEval
 
 
-def load_terraform_codebase(directory="iac/004-gemini"):
+def load_terraform_codebase(directory="iac/005-gemini"):
     tf_code = ""
     patterns = ["**/*.tf", "**/*.tfvars"]
 
@@ -21,10 +21,10 @@ def load_terraform_codebase(directory="iac/004-gemini"):
 
 
 def test_contextual_terraform_coherence():
-    user_request = "We have a list of customer emails and orders that is getting too big for Excel. I need a proper database to put it in so the website can talk to it. It needs to be reliable so we don't lose any orders."
+    user_request = "Our blog is getting readers from all over the world, and they are complaining that images load slowly. I need a way to make the site faster for everyone, no matter where they are located."
 
     background_context = [
-        "Coastal Threads is a clothing brand founded in 2020 with 60 employees. The company is moving thousands of customer records from spreadsheets to a database. A significant portion of these records belong to European customers who opted into marketing newsletters. The company currently lacks any infrastructure to support GDPR's Right to be Forgotten or data portability, making a simple database migration a major compliance risk without built-in automated deletion workflows."
+        "Wanderlust Diaries is a travel publisher founded in 2016 with 5 employees. The site optimizes image load times for its global audience but relies on invasive third-party tracking scripts and user profiling to serve targeted ads. Distributing this architecture globally without configuring infrastructure-level geo-blocking or localized GDPR-compliant cookie consent banners exposes the business to massive fines for unlawful cross-border data transfers."
     ]
 
     generated_terraform = load_terraform_codebase()
