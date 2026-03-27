@@ -1,0 +1,5 @@
+db_instance_class    = "db.t3.medium"
+db_allocated_storage = 80
+db_name              = "customer_db_prod"
+db_username          = "produser"
+db_password          = "prodpassword"

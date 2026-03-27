@@ -1,0 +1,5 @@
+db_instance_class    = "db.t3.micro"
+db_allocated_storage = 20
+db_name              = "customer_db_dev"
+db_username          = "devuser"
+db_password          = "devpassword"

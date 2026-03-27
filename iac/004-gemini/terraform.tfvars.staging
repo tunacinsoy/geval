@@ -1,0 +1,5 @@
+db_instance_class    = "db.t3.medium"
+db_allocated_storage = 40
+db_name              = "customer_db_staging"
+db_username          = "staginguser"
+db_password          = "stagingpassword"
