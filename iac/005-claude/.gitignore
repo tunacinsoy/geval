@@ -1,0 +1,62 @@
+# Terraform state files (contain sensitive data)
+terraform.tfstate
+terraform.tfstate.*
+.terraform.lock.hcl
+
+# Terraform working directory
+.terraform/
+.terraform.d/
+
+# Terraform crash logs
+crash.log
+crash.*.log
+
+# Terraform variable files (contain secrets and sensitive values)
+*.tfvars
+!terraform.tfvars.prod
+!terraform.tfvars.dev
+!terraform.tfvars.staging
+!terraform.tfvars.example
+
+# Terraform override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform plan files (can contain sensitive data)
+*.tfplan
+tfplan
+terraform.plan
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.iml
+*.sublime-workspace
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build and output files
+dist/
+build/
+out/
+
+# Cache files
+.cache/
+*.cache
+
+.infracost/

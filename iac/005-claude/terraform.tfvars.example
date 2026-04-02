@@ -1,0 +1,91 @@
+# Example Terraform Variables File for CloudFront CDN
+# Copy this file to create new environment configurations
+#
+# Usage:
+#   cp terraform.tfvars.example terraform.tfvars.staging
+#   # Edit terraform.tfvars.staging with staging-specific values
+#   terraform apply -var-file=terraform.tfvars.staging
+
+# Environment name
+# Valid values: production, staging, development
+environment = "example"
+
+# Blog domain name (your blog's primary domain)
+# This should match the domain where you configure the CloudFront CNAME
+domain_name = "blog.example.com"
+
+# Origin server domain (where images are currently hosted)
+# CloudFront will fetch images from this domain
+origin_domain = "images.example.com"
+
+# Secret token for origin security header
+# Prevents direct access to origin server (not through CloudFront)
+# Minimum 16 characters; use a strong, random value
+# IMPORTANT: Change this to a unique secret!
+origin_verify_token = "your-secret-token-min-16-chars"
+
+# Email address for CloudWatch alert notifications
+# SNS will send alerts about cache performance and errors to this email
+alert_email = "ops@example.com"
+
+# Cache TTL values (in seconds)
+# These control how long images are cached at edge locations
+
+# Evergreen images: Not frequently updated (logos, footer images, etc.)
+# Default: 30 days (2592000 seconds)
+evergreen_ttl = 2592000
+
+# Blog post images: Updated with each blog post (7-14 days)
+# Default: 7 days (604800 seconds)
+blog_post_ttl = 604800
+
+# Featured images: Changed frequently (homepage, sidebar, etc.)
+# Default: 1 day (86400 seconds)
+featured_ttl = 86400
+
+# Alert thresholds
+# Fire CloudWatch alarms when these thresholds are crossed
+
+# Cache hit ratio: Alert if below this percentage
+# Default: 75% (alert if < 75%)
+# Healthy: 85-95%
+cache_hit_alert_threshold = 75
+
+# Latency (95th percentile): Alert if above this value (milliseconds)
+# Default: 750ms (alert if > 750ms)
+# Healthy: 100-500ms
+latency_alert_threshold = 750
+
+# Optional settings
+
+# Enable CloudFront access logging to S3
+# Logs are useful for debugging and analytics
+# Default: true
+enable_logging = true
+
+# Enable image compression at CloudFront edge locations
+# Compresses with gzip and brotli; saves bandwidth
+# Default: true (recommended)
+enable_compression = true
+
+# Origin health check path
+# CloudFront checks this endpoint every 30 seconds
+# Default: /health (customize if your origin uses different path)
+health_check_path = "/health"
+
+# Origin health check interval (seconds)
+# How often CloudFront checks if origin is healthy
+# Valid values: 10 (faster) or 30 (default)
+health_check_interval = 30
+
+# Number of consecutive health check failures before marking origin unhealthy
+# Default: 3 failures = unhealthy (takes ~90 seconds at 30-second interval)
+health_check_failure_count = 3
+
+# Notes:
+# - All values with defaults can be omitted (will use defaults)
+# - origin_verify_token MUST be provided (no default for security)
+# - alert_email MUST be provided (no default)
+# - domain_name and origin_domain MUST be valid DNS names
+# - TTL values must be between 0 and 31536000 (1 year)
+# - Alert thresholds must be realistic for your use case

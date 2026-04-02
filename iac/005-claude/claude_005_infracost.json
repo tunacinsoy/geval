@@ -1,0 +1,2044 @@
+{
+  "version": "0.2",
+  "metadata": {
+    "infracostCommand": "breakdown",
+    "vcsBranch": "005-global-content-delivery",
+    "vcsCommitSha": "a18e4a4d217f2ebab6b7887e10b6d63481bcc8f2",
+    "vcsCommitAuthorName": "tuna",
+    "vcsCommitAuthorEmail": "tunacinsoy@gmail.com",
+    "vcsCommitTimestamp": "2026-04-02T19:08:48Z",
+    "vcsCommitMessage": "feat: 005",
+    "vcsRepositoryUrl": "https://github.com/tunacinsoy/pw-sdd-iac-claude-001",
+    "usageFilePath": "infracost-usage.yml"
+  },
+  "currency": "USD",
+  "projects": [
+    {
+      "name": "tunacinsoy/pw-sdd-iac-claude-001/iac",
+      "displayName": "main",
+      "metadata": {
+        "path": ".",
+        "type": "terraform_dir",
+        "policySha": "00996d2bdfac90dcebf962d479538dab70e8d6ba",
+        "pastPolicySha": "00996d2bdfac90dcebf962d479538dab70e8d6ba",
+        "vcsSubPath": "iac",
+        "vcsCodeChanged": false,
+        "providers": [
+          {
+            "name": "aws",
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "filename": "provider.tf",
+            "startLine": 1,
+            "endLine": 13
+          }
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [
+          {
+            "name": "aws_kinesis_stream.gdpr_tracking_stream",
+            "resourceType": "aws_kinesis_stream",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "gdpr-tracking-stream",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_kinesis_stream.gdpr_tracking_stream",
+                  "endLine": 432,
+                  "filename": "main.tf",
+                  "startLine": 419
+                }
+              ],
+              "checksum": "4360fbe6749dcbb52e0484ab49303f134fc46611786cc5cf3addb52bee94220b",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 432,
+              "filename": "main.tf",
+              "startLine": 419
+            },
+            "hourlyCost": "0.045",
+            "monthlyCost": "32.85",
+            "costComponents": [
+              {
+                "name": "PROVISIONED",
+                "unit": "hours",
+                "hourlyQuantity": "3",
+                "monthlyQuantity": "2190",
+                "price": "0.015",
+                "hourlyCost": "0.045",
+                "monthlyCost": "32.85",
+                "priceNotFound": false
+              },
+              {
+                "name": "Put request unit",
+                "unit": "units",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.000000014",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Extended retention (24H to 7D)",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.02",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Long term retention (7D+)",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.023",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Extended retention retrieval (7D+)",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.021",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Enhanced Fan Out (EFO) Data retrieval",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.013",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Enhanced Fan Out (EFO)",
+                "unit": "consumer-shard hour",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.015",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_wafv2_web_acl.blog_cdn_waf",
+            "resourceType": "aws_wafv2_web_acl",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_wafv2_web_acl.blog_cdn_waf",
+                  "endLine": 416,
+                  "filename": "main.tf",
+                  "startLine": 314
+                }
+              ],
+              "checksum": "75d5a9c9085d590a0cbb9aeaf10a6bd79212838b9f75f64449436ec01f93577b",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 416,
+              "filename": "main.tf",
+              "startLine": 314
+            },
+            "hourlyCost": "0.006849315068493",
+            "monthlyCost": "5",
+            "monthlyUsageCost": "0",
+            "costComponents": [
+              {
+                "name": "Web ACL usage",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "5",
+                "hourlyCost": "0.006849315068493",
+                "monthlyCost": "5",
+                "priceNotFound": false
+              },
+              {
+                "name": "Managed rule groups",
+                "unit": "groups",
+                "hourlyQuantity": "0",
+                "monthlyQuantity": "0",
+                "price": "1",
+                "hourlyCost": "0",
+                "monthlyCost": "0",
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Requests",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.6",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_dashboard.blog_cdn",
+            "resourceType": "aws_cloudwatch_dashboard",
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_dashboard.blog_cdn",
+                  "endLine": 107,
+                  "filename": "monitoring.tf",
+                  "startLine": 23
+                }
+              ],
+              "checksum": "af08f006101915507c54c2ecf310825f285e3128d2d24fd3504d042f75562256",
+              "endLine": 107,
+              "filename": "monitoring.tf",
+              "startLine": 23
+            },
+            "hourlyCost": "0.0041095890410958",
+            "monthlyCost": "3",
+            "costComponents": [
+              {
+                "name": "Dashboard",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "3",
+                "hourlyCost": "0.0041095890410958",
+                "monthlyCost": "3",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.cache_hit_ratio",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "blog-cdn-cache-hit-ratio-alarm",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.cache_hit_ratio",
+                  "endLine": 130,
+                  "filename": "monitoring.tf",
+                  "startLine": 110
+                }
+              ],
+              "checksum": "ff8f3b091f4c56f335c145d6598f59ea9c28cd8205a5ecc836aab18d4771b2ab",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 130,
+              "filename": "monitoring.tf",
+              "startLine": 110
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.error_rate_4xx",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "blog-cdn-error-rate-4xx-alarm",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.error_rate_4xx",
+                  "endLine": 176,
+                  "filename": "monitoring.tf",
+                  "startLine": 156
+                }
+              ],
+              "checksum": "7bb7e7026e77e759131e05e76b3907888f6790d38f3f049311b61640b3d19ba9",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 176,
+              "filename": "monitoring.tf",
+              "startLine": 156
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.error_rate_5xx",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "blog-cdn-error-rate-5xx-alarm",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.error_rate_5xx",
+                  "endLine": 199,
+                  "filename": "monitoring.tf",
+                  "startLine": 179
+                }
+              ],
+              "checksum": "80a30548b7184f10b7178b33338e982243019300c8f8b6ef1623c64ad9774f58",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 199,
+              "filename": "monitoring.tf",
+              "startLine": 179
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.latency_p95",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "blog-cdn-latency-p95-alarm",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.latency_p95",
+                  "endLine": 153,
+                  "filename": "monitoring.tf",
+                  "startLine": 133
+                }
+              ],
+              "checksum": "8380b5b559365085fa880a96f005e80743016932c3298851ae65fcf42f111883",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 153,
+              "filename": "monitoring.tf",
+              "startLine": 133
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.requests_high",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "blog-cdn-requests-high-alarm",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.requests_high",
+                  "endLine": 222,
+                  "filename": "monitoring.tf",
+                  "startLine": 202
+                }
+              ],
+              "checksum": "e1e56fdec9d8e9d0b1ff01fa1081d1c8749257c85efa585ef60a8c16411f0bb4",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 222,
+              "filename": "monitoring.tf",
+              "startLine": 202
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudfront_distribution.blog_cdn",
+            "resourceType": "aws_cloudfront_distribution",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "blog-cdn-distribution",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudfront_distribution.blog_cdn",
+                  "endLine": 205,
+                  "filename": "main.tf",
+                  "startLine": 5
+                }
+              ],
+              "checksum": "ad8295af56adb83da7f166741e638e6cb19cbe50b3b3ba30e64e7938109a458f",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 205,
+              "filename": "main.tf",
+              "startLine": 5
+            },
+            "costComponents": [
+              {
+                "name": "Real-time log requests",
+                "unit": "1M lines",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.01",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Origin shield HTTP requests (US East us-east-1)",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0075",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Invalidation requests (first 1k)",
+                "unit": "paths",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "subresources": [
+              {
+                "name": "US, Mexico, Canada",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Data transfer out to internet (first 10TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.085",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer out to origin",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.02",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "HTTP requests",
+                    "unit": "10k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0075",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "HTTPS requests",
+                    "unit": "10k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.01",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudfront_function.add_security_headers",
+            "resourceType": "aws_cloudfront_function",
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudfront_function.add_security_headers",
+                  "endLine": 214,
+                  "filename": "main.tf",
+                  "startLine": 208
+                }
+              ],
+              "checksum": "054b22ae6f9c65b0858ad01b76f91550e5ed8ac806bfdafa1b1ad7a22af9fe14",
+              "endLine": 214,
+              "filename": "main.tf",
+              "startLine": 208
+            },
+            "costComponents": [
+              {
+                "name": "Total number of invocations",
+                "unit": "1M invocations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.cloudfront_logs",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "blog-cdn-logs",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.cloudfront_logs",
+                  "endLine": 243,
+                  "filename": "main.tf",
+                  "startLine": 237
+                }
+              ],
+              "checksum": "d91c1c80ae1e9026b7470e2918049f1abc2a173fddb3c72ca2acf854e9cb0eaa",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 243,
+              "filename": "main.tf",
+              "startLine": 237
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_sns_topic.blog_cdn_alerts",
+            "resourceType": "aws_sns_topic",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "blog-cdn-alerts",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_sns_topic.blog_cdn_alerts",
+                  "endLine": 13,
+                  "filename": "monitoring.tf",
+                  "startLine": 5
+                }
+              ],
+              "checksum": "a9dec86fd4afff6407d9deef508c24c061da34df2274e46789df04f79034f9bb",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 13,
+              "filename": "monitoring.tf",
+              "startLine": 5
+            },
+            "costComponents": [
+              {
+                "name": "API requests (over 1M)",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "HTTP/HTTPS notifications (over 100k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.06",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Email/Email-JSON notifications (over 1k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Kinesis Firehose notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.19",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Mobile Push notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "MacOS notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "SMS notifications (over 100)",
+                "unit": "100 notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": true
+              }
+            ]
+          }
+        ],
+        "freeResources": [
+          {
+            "name": "aws_iam_policy.cloudfront_cache_invalidation",
+            "resourceType": "aws_iam_policy",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "cloudfront-cache-invalidation",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_iam_policy.cloudfront_cache_invalidation",
+                  "endLine": 54,
+                  "filename": "security.tf",
+                  "startLine": 27
+                }
+              ],
+              "checksum": "b45a83ce4a56e591139d8834d7ed9fb0e978b2bbc9a7ef3bdefbc49a8a8b7d12",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 54,
+              "filename": "security.tf",
+              "startLine": 27
+            }
+          },
+          {
+            "name": "aws_iam_policy.s3_logs_access",
+            "resourceType": "aws_iam_policy",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "s3-logs-access",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_iam_policy.s3_logs_access",
+                  "endLine": 81,
+                  "filename": "security.tf",
+                  "startLine": 57
+                }
+              ],
+              "checksum": "a06dd1ea1f77c61a9b39cdfafd1ad998811fe923cbc3c1260799ea2f38e8df4c",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 81,
+              "filename": "security.tf",
+              "startLine": 57
+            }
+          },
+          {
+            "name": "aws_iam_role.cloudfront_service_role",
+            "resourceType": "aws_iam_role",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "cloudfront-service-role",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_iam_role.cloudfront_service_role",
+                  "endLine": 23,
+                  "filename": "security.tf",
+                  "startLine": 5
+                }
+              ],
+              "checksum": "af751babf51cf78e22e0a4ca2169b6cf0431e6b6517c276c239d787fc59c37e7",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 23,
+              "filename": "security.tf",
+              "startLine": 5
+            }
+          }
+        ],
+        "totalHourlyCost": "0.0566438356164381",
+        "totalMonthlyCost": "41.35",
+        "totalMonthlyUsageCost": "0"
+      },
+      "breakdown": {
+        "resources": [
+          {
+            "name": "aws_kinesis_stream.gdpr_tracking_stream",
+            "resourceType": "aws_kinesis_stream",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "gdpr-tracking-stream",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_kinesis_stream.gdpr_tracking_stream",
+                  "endLine": 432,
+                  "filename": "main.tf",
+                  "startLine": 419
+                }
+              ],
+              "checksum": "4360fbe6749dcbb52e0484ab49303f134fc46611786cc5cf3addb52bee94220b",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 432,
+              "filename": "main.tf",
+              "startLine": 419
+            },
+            "hourlyCost": "0.045",
+            "monthlyCost": "32.85",
+            "costComponents": [
+              {
+                "name": "PROVISIONED",
+                "unit": "hours",
+                "hourlyQuantity": "3",
+                "monthlyQuantity": "2190",
+                "price": "0.015",
+                "hourlyCost": "0.045",
+                "monthlyCost": "32.85",
+                "priceNotFound": false
+              },
+              {
+                "name": "Put request unit",
+                "unit": "units",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.000000014",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Extended retention (24H to 7D)",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.02",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Long term retention (7D+)",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.023",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Extended retention retrieval (7D+)",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.021",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Enhanced Fan Out (EFO) Data retrieval",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.013",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Enhanced Fan Out (EFO)",
+                "unit": "consumer-shard hour",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.015",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_wafv2_web_acl.blog_cdn_waf",
+            "resourceType": "aws_wafv2_web_acl",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_wafv2_web_acl.blog_cdn_waf",
+                  "endLine": 416,
+                  "filename": "main.tf",
+                  "startLine": 314
+                }
+              ],
+              "checksum": "75d5a9c9085d590a0cbb9aeaf10a6bd79212838b9f75f64449436ec01f93577b",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 416,
+              "filename": "main.tf",
+              "startLine": 314
+            },
+            "hourlyCost": "0.006849315068493",
+            "monthlyCost": "5",
+            "monthlyUsageCost": "0",
+            "costComponents": [
+              {
+                "name": "Web ACL usage",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "5",
+                "hourlyCost": "0.006849315068493",
+                "monthlyCost": "5",
+                "priceNotFound": false
+              },
+              {
+                "name": "Managed rule groups",
+                "unit": "groups",
+                "hourlyQuantity": "0",
+                "monthlyQuantity": "0",
+                "price": "1",
+                "hourlyCost": "0",
+                "monthlyCost": "0",
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Requests",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.6",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_dashboard.blog_cdn",
+            "resourceType": "aws_cloudwatch_dashboard",
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_dashboard.blog_cdn",
+                  "endLine": 107,
+                  "filename": "monitoring.tf",
+                  "startLine": 23
+                }
+              ],
+              "checksum": "af08f006101915507c54c2ecf310825f285e3128d2d24fd3504d042f75562256",
+              "endLine": 107,
+              "filename": "monitoring.tf",
+              "startLine": 23
+            },
+            "hourlyCost": "0.0041095890410958",
+            "monthlyCost": "3",
+            "costComponents": [
+              {
+                "name": "Dashboard",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "3",
+                "hourlyCost": "0.0041095890410958",
+                "monthlyCost": "3",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.cache_hit_ratio",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "blog-cdn-cache-hit-ratio-alarm",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.cache_hit_ratio",
+                  "endLine": 130,
+                  "filename": "monitoring.tf",
+                  "startLine": 110
+                }
+              ],
+              "checksum": "ff8f3b091f4c56f335c145d6598f59ea9c28cd8205a5ecc836aab18d4771b2ab",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 130,
+              "filename": "monitoring.tf",
+              "startLine": 110
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.error_rate_4xx",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "blog-cdn-error-rate-4xx-alarm",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.error_rate_4xx",
+                  "endLine": 176,
+                  "filename": "monitoring.tf",
+                  "startLine": 156
+                }
+              ],
+              "checksum": "7bb7e7026e77e759131e05e76b3907888f6790d38f3f049311b61640b3d19ba9",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 176,
+              "filename": "monitoring.tf",
+              "startLine": 156
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.error_rate_5xx",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "blog-cdn-error-rate-5xx-alarm",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.error_rate_5xx",
+                  "endLine": 199,
+                  "filename": "monitoring.tf",
+                  "startLine": 179
+                }
+              ],
+              "checksum": "80a30548b7184f10b7178b33338e982243019300c8f8b6ef1623c64ad9774f58",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 199,
+              "filename": "monitoring.tf",
+              "startLine": 179
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.latency_p95",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "blog-cdn-latency-p95-alarm",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.latency_p95",
+                  "endLine": 153,
+                  "filename": "monitoring.tf",
+                  "startLine": 133
+                }
+              ],
+              "checksum": "8380b5b559365085fa880a96f005e80743016932c3298851ae65fcf42f111883",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 153,
+              "filename": "monitoring.tf",
+              "startLine": 133
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.requests_high",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "blog-cdn-requests-high-alarm",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.requests_high",
+                  "endLine": 222,
+                  "filename": "monitoring.tf",
+                  "startLine": 202
+                }
+              ],
+              "checksum": "e1e56fdec9d8e9d0b1ff01fa1081d1c8749257c85efa585ef60a8c16411f0bb4",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 222,
+              "filename": "monitoring.tf",
+              "startLine": 202
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudfront_distribution.blog_cdn",
+            "resourceType": "aws_cloudfront_distribution",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "blog-cdn-distribution",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudfront_distribution.blog_cdn",
+                  "endLine": 205,
+                  "filename": "main.tf",
+                  "startLine": 5
+                }
+              ],
+              "checksum": "ad8295af56adb83da7f166741e638e6cb19cbe50b3b3ba30e64e7938109a458f",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 205,
+              "filename": "main.tf",
+              "startLine": 5
+            },
+            "costComponents": [
+              {
+                "name": "Real-time log requests",
+                "unit": "1M lines",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.01",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Origin shield HTTP requests (US East us-east-1)",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.0075",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Invalidation requests (first 1k)",
+                "unit": "paths",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ],
+            "subresources": [
+              {
+                "name": "US, Mexico, Canada",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Data transfer out to internet (first 10TB)",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.085",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Data transfer out to origin",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.02",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "HTTP requests",
+                    "unit": "10k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0075",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "HTTPS requests",
+                    "unit": "10k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.01",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudfront_function.add_security_headers",
+            "resourceType": "aws_cloudfront_function",
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudfront_function.add_security_headers",
+                  "endLine": 214,
+                  "filename": "main.tf",
+                  "startLine": 208
+                }
+              ],
+              "checksum": "054b22ae6f9c65b0858ad01b76f91550e5ed8ac806bfdafa1b1ad7a22af9fe14",
+              "endLine": 214,
+              "filename": "main.tf",
+              "startLine": 208
+            },
+            "costComponents": [
+              {
+                "name": "Total number of invocations",
+                "unit": "1M invocations",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.1",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_s3_bucket.cloudfront_logs",
+            "resourceType": "aws_s3_bucket",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "blog-cdn-logs",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_s3_bucket.cloudfront_logs",
+                  "endLine": 243,
+                  "filename": "main.tf",
+                  "startLine": 237
+                }
+              ],
+              "checksum": "d91c1c80ae1e9026b7470e2918049f1abc2a173fddb3c72ca2acf854e9cb0eaa",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 243,
+              "filename": "main.tf",
+              "startLine": 237
+            },
+            "subresources": [
+              {
+                "name": "Standard",
+                "metadata": {},
+                "costComponents": [
+                  {
+                    "name": "Storage",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.023",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "PUT, COPY, POST, LIST requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.005",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "GET, SELECT, and all other requests",
+                    "unit": "1k requests",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0004",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data scanned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.002",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  },
+                  {
+                    "name": "Select data returned",
+                    "unit": "GB",
+                    "hourlyQuantity": null,
+                    "monthlyQuantity": null,
+                    "price": "0.0007",
+                    "hourlyCost": null,
+                    "monthlyCost": null,
+                    "usageBased": true,
+                    "priceNotFound": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "aws_sns_topic.blog_cdn_alerts",
+            "resourceType": "aws_sns_topic",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "blog-cdn-alerts",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_sns_topic.blog_cdn_alerts",
+                  "endLine": 13,
+                  "filename": "monitoring.tf",
+                  "startLine": 5
+                }
+              ],
+              "checksum": "a9dec86fd4afff6407d9deef508c24c061da34df2274e46789df04f79034f9bb",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 13,
+              "filename": "monitoring.tf",
+              "startLine": 5
+            },
+            "costComponents": [
+              {
+                "name": "API requests (over 1M)",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "HTTP/HTTPS notifications (over 100k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.06",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Email/Email-JSON notifications (over 1k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Kinesis Firehose notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.19",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Mobile Push notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "MacOS notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "SMS notifications (over 100)",
+                "unit": "100 notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": true
+              }
+            ]
+          }
+        ],
+        "freeResources": [
+          {
+            "name": "aws_iam_policy.cloudfront_cache_invalidation",
+            "resourceType": "aws_iam_policy",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "cloudfront-cache-invalidation",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_iam_policy.cloudfront_cache_invalidation",
+                  "endLine": 54,
+                  "filename": "security.tf",
+                  "startLine": 27
+                }
+              ],
+              "checksum": "b45a83ce4a56e591139d8834d7ed9fb0e978b2bbc9a7ef3bdefbc49a8a8b7d12",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 54,
+              "filename": "security.tf",
+              "startLine": 27
+            }
+          },
+          {
+            "name": "aws_iam_policy.s3_logs_access",
+            "resourceType": "aws_iam_policy",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "s3-logs-access",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_iam_policy.s3_logs_access",
+                  "endLine": 81,
+                  "filename": "security.tf",
+                  "startLine": 57
+                }
+              ],
+              "checksum": "a06dd1ea1f77c61a9b39cdfafd1ad998811fe923cbc3c1260799ea2f38e8df4c",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 81,
+              "filename": "security.tf",
+              "startLine": 57
+            }
+          },
+          {
+            "name": "aws_iam_role.cloudfront_service_role",
+            "resourceType": "aws_iam_role",
+            "tags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "cloudfront-service-role",
+              "Project": "blog-cdn"
+            },
+            "defaultTags": {
+              "CostCenter": "engineering",
+              "CreatedDate": "2026-04-02",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Project": "blog-cdn"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_iam_role.cloudfront_service_role",
+                  "endLine": 23,
+                  "filename": "security.tf",
+                  "startLine": 5
+                }
+              ],
+              "checksum": "af751babf51cf78e22e0a4ca2169b6cf0431e6b6517c276c239d787fc59c37e7",
+              "defaultTagsChecksum": "136fbb4c2afad83e0a2d40f6315f5b8fbda17ec240f3b1588b8bb8e0801753e4",
+              "endLine": 23,
+              "filename": "security.tf",
+              "startLine": 5
+            }
+          }
+        ],
+        "totalHourlyCost": "0.0566438356164381",
+        "totalMonthlyCost": "41.35",
+        "totalMonthlyUsageCost": "0"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 22,
+        "totalSupportedResources": 12,
+        "totalUnsupportedResources": 0,
+        "totalUsageBasedResources": 5,
+        "totalNoPriceResources": 10,
+        "unsupportedResourceCounts": {},
+        "noPriceResourceCounts": {
+          "aws_cloudfront_origin_request_policy": 1,
+          "aws_iam_policy": 2,
+          "aws_iam_role": 1,
+          "aws_s3_bucket_lifecycle_configuration": 1,
+          "aws_s3_bucket_policy": 1,
+          "aws_s3_bucket_public_access_block": 1,
+          "aws_s3_bucket_server_side_encryption_configuration": 1,
+          "aws_s3_bucket_versioning": 1,
+          "aws_sns_topic_subscription": 1
+        }
+      }
+    }
+  ],
+  "totalHourlyCost": "0.0566438356164381",
+  "totalMonthlyCost": "41.35",
+  "totalMonthlyUsageCost": "0",
+  "pastTotalHourlyCost": "0.0566438356164381",
+  "pastTotalMonthlyCost": "41.35",
+  "pastTotalMonthlyUsageCost": "0",
+  "diffTotalHourlyCost": "0",
+  "diffTotalMonthlyCost": "0",
+  "diffTotalMonthlyUsageCost": "0",
+  "timeGenerated": "2026-04-02T19:24:23.767609724Z",
+  "summary": {
+    "totalDetectedResources": 22,
+    "totalSupportedResources": 12,
+    "totalUnsupportedResources": 0,
+    "totalUsageBasedResources": 5,
+    "totalNoPriceResources": 10,
+    "unsupportedResourceCounts": {},
+    "noPriceResourceCounts": {
+      "aws_cloudfront_origin_request_policy": 1,
+      "aws_iam_policy": 2,
+      "aws_iam_role": 1,
+      "aws_s3_bucket_lifecycle_configuration": 1,
+      "aws_s3_bucket_policy": 1,
+      "aws_s3_bucket_public_access_block": 1,
+      "aws_s3_bucket_server_side_encryption_configuration": 1,
+      "aws_s3_bucket_versioning": 1,
+      "aws_sns_topic_subscription": 1
+    }
+  }
+}

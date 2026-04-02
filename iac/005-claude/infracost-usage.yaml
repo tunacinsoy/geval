@@ -1,0 +1,13 @@
+version: 0.1
+resource_usage:
+  aws_cloudfront_distribution.blog_cdn:
+    monthly_data_transfer_to_internet_gb: 100
+    monthly_data_transfer_to_origin_gb: 25
+    monthly_http_requests: 0
+    monthly_https_requests: 210000
+
+  aws_cloudfront_function.add_security_headers:
+    monthly_requests: 210000
+
+  aws_wafv2_web_acl.blog_cdn_waf:
+    monthly_requests: 210000

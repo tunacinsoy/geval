@@ -1,0 +1,21 @@
+environment              = "production"
+domain_name              = "blog.example.com"
+origin_domain            = "images.example.com"
+origin_verify_token      = "your-secret-token-min-16-chars" # Change this to a unique secret!
+alert_email              = "ops@example.com"
+
+# Cache TTL values (in seconds)
+evergreen_ttl            = 2592000  # 30 days
+blog_post_ttl            = 604800   # 7 days
+featured_ttl             = 86400    # 1 day
+
+# Alert thresholds
+cache_hit_alert_threshold = 75      # Alert if cache hit ratio < 75%
+latency_alert_threshold   = 750     # Alert if p95 latency > 750ms (milliseconds)
+
+# Optional settings
+enable_logging           = true
+enable_compression       = true
+health_check_path        = "/health"
+health_check_interval    = 30
+health_check_failure_count = 3
