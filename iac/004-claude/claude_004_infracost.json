@@ -1,0 +1,3291 @@
+{
+  "version": "0.2",
+  "metadata": {
+    "infracostCommand": "breakdown",
+    "vcsBranch": "001-orders-database",
+    "vcsCommitSha": "eae7c7d9455f2fd08c77d99f20873c4b1c4d118b",
+    "vcsCommitAuthorName": "tunacinsoy",
+    "vcsCommitAuthorEmail": "tunacinsoy@gmail.com",
+    "vcsCommitTimestamp": "2026-01-20T20:52:31Z",
+    "vcsCommitMessage": "feat: main, default",
+    "vcsRepositoryUrl": "https://github.com/tunacinsoy/pw-sdd-iac-claude-001"
+  },
+  "currency": "USD",
+  "projects": [
+    {
+      "name": "tunacinsoy/pw-sdd-iac-claude-001/iac",
+      "displayName": "main",
+      "metadata": {
+        "path": ".",
+        "type": "terraform_dir",
+        "policySha": "aa77c71ff6aead840c169f00f44571d1cf4b3b61",
+        "pastPolicySha": "aa77c71ff6aead840c169f00f44571d1cf4b3b61",
+        "vcsSubPath": "iac",
+        "vcsCodeChanged": false,
+        "providers": [
+          {
+            "name": "aws",
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "filename": "provider.tf",
+            "startLine": 1,
+            "endLine": 13
+          },
+          {
+            "name": "postgresql",
+            "filename": "provider.tf",
+            "startLine": 15,
+            "endLine": 23
+          }
+        ]
+      },
+      "pastBreakdown": {
+        "resources": [
+          {
+            "name": "aws_db_instance.orders",
+            "resourceType": "aws_db_instance",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "orders-db-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_db_instance.orders",
+                  "endLine": 106,
+                  "filename": "rds.tf",
+                  "startLine": 46
+                }
+              ],
+              "checksum": "fd77eaadb05c0e802b35daa1d1a23cc78757f43a9c2bc4e19b3e9c216f198ea1",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 106,
+              "filename": "rds.tf",
+              "startLine": 46
+            },
+            "hourlyCost": "0.081452054794520547",
+            "monthlyCost": "59.46",
+            "costComponents": [
+              {
+                "name": "Database instance (on-demand, Multi-AZ, db.t3.small)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.072",
+                "hourlyCost": "0.072",
+                "monthlyCost": "52.56",
+                "priceNotFound": false
+              },
+              {
+                "name": "Storage (general purpose SSD, gp3)",
+                "unit": "GB",
+                "hourlyQuantity": "0.0410958904109589",
+                "monthlyQuantity": "30",
+                "price": "0.23",
+                "hourlyCost": "0.009452054794520547",
+                "monthlyCost": "6.9",
+                "priceNotFound": false
+              },
+              {
+                "name": "Additional backup storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.095",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_dashboard.orders_database",
+            "resourceType": "aws_cloudwatch_dashboard",
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_dashboard.orders_database",
+                  "endLine": 210,
+                  "filename": "monitoring.tf",
+                  "startLine": 174
+                }
+              ],
+              "checksum": "d98b2414f31190ba51a3b891c11c5acafd9d6a19c0f62f2741b991c22da5fee0",
+              "endLine": 210,
+              "filename": "monitoring.tf",
+              "startLine": 174
+            },
+            "hourlyCost": "0.0041095890410958",
+            "monthlyCost": "3",
+            "costComponents": [
+              {
+                "name": "Dashboard",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "3",
+                "hourlyCost": "0.0041095890410958",
+                "monthlyCost": "3",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_secretsmanager_secret.db_password",
+            "resourceType": "aws_secretsmanager_secret",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "orders-db-password-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_secretsmanager_secret.db_password",
+                  "endLine": 15,
+                  "filename": "secrets.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "d8fbc1930dc9ae07dd8f7dad80f4cf801a2a4bbd87fbc066810c8fc8f34e6fd8",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 15,
+              "filename": "secrets.tf",
+              "startLine": 4
+            },
+            "hourlyCost": "0.00054794520547944",
+            "monthlyCost": "0.4",
+            "costComponents": [
+              {
+                "name": "Secret",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.4",
+                "hourlyCost": "0.00054794520547944",
+                "monthlyCost": "0.4",
+                "priceNotFound": false
+              },
+              {
+                "name": "API requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.05",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.rds_availability",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.rds_availability",
+                  "endLine": 53,
+                  "filename": "monitoring.tf",
+                  "startLine": 35
+                }
+              ],
+              "checksum": "c1ad1b869493cde6c979a2b6155feb3cf112f7ae24cc3bdd4becc2ca024600de",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 53,
+              "filename": "monitoring.tf",
+              "startLine": 35
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.rds_connections_high",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.rds_connections_high",
+                  "endLine": 116,
+                  "filename": "monitoring.tf",
+                  "startLine": 98
+                }
+              ],
+              "checksum": "e163e0aef08607d2d2e6b4fdc835c0922f1be9d0855b56e8520578d0b5d9a5d1",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 116,
+              "filename": "monitoring.tf",
+              "startLine": 98
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.rds_cpu_utilization",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.rds_cpu_utilization",
+                  "endLine": 74,
+                  "filename": "monitoring.tf",
+                  "startLine": 56
+                }
+              ],
+              "checksum": "e224c446692a52451c75af1adf6e163eca85ca3884b2d293fd5db630192d1765",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 74,
+              "filename": "monitoring.tf",
+              "startLine": 56
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.rds_read_latency",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.rds_read_latency",
+                  "endLine": 137,
+                  "filename": "monitoring.tf",
+                  "startLine": 119
+                }
+              ],
+              "checksum": "777bda9eadd9624819ba80bb146c245449bc5526197e30c5d0b0835b2c69ea23",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 137,
+              "filename": "monitoring.tf",
+              "startLine": 119
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.rds_storage_low",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.rds_storage_low",
+                  "endLine": 95,
+                  "filename": "monitoring.tf",
+                  "startLine": 77
+                }
+              ],
+              "checksum": "b935d7d7034088d7cc8602a3d01cd0185768dd846b560c3289d80ba7a11aae15",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 95,
+              "filename": "monitoring.tf",
+              "startLine": 77
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.rds_write_latency",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.rds_write_latency",
+                  "endLine": 158,
+                  "filename": "monitoring.tf",
+                  "startLine": 140
+                }
+              ],
+              "checksum": "ee03eb013e9a5a2cde2394bac71970beb76e8d0fcbcccd4885c1c1a8ac80fedb",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 158,
+              "filename": "monitoring.tf",
+              "startLine": 140
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.rds_postgresql",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "rds-postgresql-logs-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.rds_postgresql",
+                  "endLine": 171,
+                  "filename": "monitoring.tf",
+                  "startLine": 161
+                }
+              ],
+              "checksum": "6b8543cc0d98bddd1e9e6ebf498ade0cde44d7886000c59802cf1d3552fe75c8",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 171,
+              "filename": "monitoring.tf",
+              "startLine": 161
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.secrets_rotation[0]",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "secrets-rotation-logs-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.secrets_rotation",
+                  "endLine": 109,
+                  "filename": "secrets.tf",
+                  "startLine": 98
+                }
+              ],
+              "checksum": "3373d6a96ebfc7d1baf479b97767d99ee7e461fa194055d268da7cf821ff0345",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 109,
+              "filename": "secrets.tf",
+              "startLine": 98
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.vpc_flow_logs[0]",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "vpc-flow-logs-group-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.vpc_flow_logs",
+                  "endLine": 130,
+                  "filename": "vpc.tf",
+                  "startLine": 119
+                }
+              ],
+              "checksum": "5eac306f2d6e1fd27fc62591e50ca5f9ffca603d41b510324f31d44dd5396c0b",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 130,
+              "filename": "vpc.tf",
+              "startLine": 119
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_sns_topic.database_alerts",
+            "resourceType": "aws_sns_topic",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "database-alerts-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_sns_topic.database_alerts",
+                  "endLine": 13,
+                  "filename": "monitoring.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "0943d19965a8e1ebe8d636da62abde9086a9aabcf91ac443b50a36e3b26219e4",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 13,
+              "filename": "monitoring.tf",
+              "startLine": 4
+            },
+            "costComponents": [
+              {
+                "name": "API requests (over 1M)",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "HTTP/HTTPS notifications (over 100k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.06",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Email/Email-JSON notifications (over 1k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Kinesis Firehose notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.19",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Mobile Push notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "MacOS notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "SMS notifications (over 100)",
+                "unit": "100 notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": true
+              }
+            ]
+          }
+        ],
+        "freeResources": [
+          {
+            "name": "aws_cloudwatch_event_rule.rds_events",
+            "resourceType": "aws_cloudwatch_event_rule",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_event_rule.rds_events",
+                  "endLine": 232,
+                  "filename": "monitoring.tf",
+                  "startLine": 216
+                }
+              ],
+              "checksum": "5c9229764e4189d6817dfe6051e19664bc11b12b916601812d1ad9b65a8c1c41",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 232,
+              "filename": "monitoring.tf",
+              "startLine": 216
+            }
+          },
+          {
+            "name": "aws_db_parameter_group.orders",
+            "resourceType": "aws_db_parameter_group",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "orders-pg-param-group-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_db_parameter_group.orders",
+                  "endLine": 43,
+                  "filename": "rds.tf",
+                  "startLine": 12
+                }
+              ],
+              "checksum": "2504fb6f3a637d8c9cb3c1ad158021f640648581c99c5a3ef0c4d9c6fd23d389",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 43,
+              "filename": "rds.tf",
+              "startLine": 12
+            }
+          },
+          {
+            "name": "aws_db_subnet_group.orders",
+            "resourceType": "aws_db_subnet_group",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "orders-db-subnet-group-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_db_subnet_group.orders",
+                  "endLine": 59,
+                  "filename": "vpc.tf",
+                  "startLine": 48
+                }
+              ],
+              "checksum": "8352896051ac3641c9ac22a560aa2421777d326c32d435cab4f119c6fd4e69ef",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 59,
+              "filename": "vpc.tf",
+              "startLine": 48
+            }
+          },
+          {
+            "name": "aws_flow_log.vpc_log[0]",
+            "resourceType": "aws_flow_log",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "vpc-flow-logs-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_flow_log.vpc_log",
+                  "endLine": 116,
+                  "filename": "vpc.tf",
+                  "startLine": 103
+                }
+              ],
+              "checksum": "a551c333b20f623d44f770d5a38ee8e1df6e45e34108745223594b900bb51139",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 116,
+              "filename": "vpc.tf",
+              "startLine": 103
+            }
+          },
+          {
+            "name": "aws_iam_instance_profile.application",
+            "resourceType": "aws_iam_instance_profile",
+            "tags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_iam_instance_profile.application",
+                  "endLine": 268,
+                  "filename": "iam.tf",
+                  "startLine": 265
+                }
+              ],
+              "checksum": "abea6d8ffd30bd1198e717f5b2f4482e6e9624dffc60110834d92c5dfb3a7893",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 268,
+              "filename": "iam.tf",
+              "startLine": 265
+            }
+          },
+          {
+            "name": "aws_iam_role.application",
+            "resourceType": "aws_iam_role",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "application-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_iam_role.application",
+                  "endLine": 232,
+                  "filename": "iam.tf",
+                  "startLine": 209
+                }
+              ],
+              "checksum": "fb47f4c83d9b9d9c97f4314d297fde54438535b6157734cc8a16cfebccb65b93",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 232,
+              "filename": "iam.tf",
+              "startLine": 209
+            }
+          },
+          {
+            "name": "aws_iam_role.rds_monitoring",
+            "resourceType": "aws_iam_role",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "rds-monitoring-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_iam_role.rds_monitoring",
+                  "endLine": 297,
+                  "filename": "iam.tf",
+                  "startLine": 274
+                }
+              ],
+              "checksum": "0a5e7f5f665fb027503becd933e6ccc0e32a4780f1f2e4155c47e9a2c2d24925",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 297,
+              "filename": "iam.tf",
+              "startLine": 274
+            }
+          },
+          {
+            "name": "aws_iam_role.terraform_executor",
+            "resourceType": "aws_iam_role",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "terraform-executor-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_iam_role.terraform_executor",
+                  "endLine": 33,
+                  "filename": "iam.tf",
+                  "startLine": 7
+                }
+              ],
+              "checksum": "a14f88ad7e2f761eef1eaa32eb6ed7597a421ac87bc685ee6a6280aedb2b7433",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 33,
+              "filename": "iam.tf",
+              "startLine": 7
+            }
+          },
+          {
+            "name": "aws_iam_role.vpc_flow_logs[0]",
+            "resourceType": "aws_iam_role",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_iam_role.vpc_flow_logs",
+                  "endLine": 151,
+                  "filename": "vpc.tf",
+                  "startLine": 133
+                }
+              ],
+              "checksum": "5bb0c8675e1991d55b30d449869e4f61f8f8f5a1092fac17beb7fcbe68626634",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 151,
+              "filename": "vpc.tf",
+              "startLine": 133
+            }
+          },
+          {
+            "name": "aws_internet_gateway.orders",
+            "resourceType": "aws_internet_gateway",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "orders-igw-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_internet_gateway.orders",
+                  "endLine": 71,
+                  "filename": "vpc.tf",
+                  "startLine": 62
+                }
+              ],
+              "checksum": "0617f77da996a797c3b14cbbf317a46ae792aad31da576857e5a5517eb39920f",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 71,
+              "filename": "vpc.tf",
+              "startLine": 62
+            }
+          },
+          {
+            "name": "aws_route_table.private",
+            "resourceType": "aws_route_table",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "private-rt-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_route_table.private",
+                  "endLine": 88,
+                  "filename": "vpc.tf",
+                  "startLine": 74
+                }
+              ],
+              "checksum": "43ad2e1e680e0d73a2b454e847f371d8e1eb2219be4c4fe2e6af2b6cce0269fc",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 88,
+              "filename": "vpc.tf",
+              "startLine": 74
+            }
+          },
+          {
+            "name": "aws_security_group.application",
+            "resourceType": "aws_security_group",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "app-sg-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_security_group.application",
+                  "endLine": 113,
+                  "filename": "security-groups.tf",
+                  "startLine": 89
+                }
+              ],
+              "checksum": "60c93b16bce66753260b61a1b59efc3fa29d87a4b672ceb9d54be630a3a88bf1",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 113,
+              "filename": "security-groups.tf",
+              "startLine": 89
+            }
+          },
+          {
+            "name": "aws_security_group.bastion",
+            "resourceType": "aws_security_group",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "bastion-sg-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_security_group.bastion",
+                  "endLine": 85,
+                  "filename": "security-groups.tf",
+                  "startLine": 52
+                }
+              ],
+              "checksum": "a37cb053e5e7d8a3513bc190032c34a18a1c308032f76cd782858604829b98f6",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 85,
+              "filename": "security-groups.tf",
+              "startLine": 52
+            }
+          },
+          {
+            "name": "aws_security_group.rds",
+            "resourceType": "aws_security_group",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "rds-sg-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_security_group.rds",
+                  "endLine": 29,
+                  "filename": "security-groups.tf",
+                  "startLine": 5
+                }
+              ],
+              "checksum": "6b022e0aa17762e47d799768fbd60333b56118d7a19279362172aa0a8efddda9",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 29,
+              "filename": "security-groups.tf",
+              "startLine": 5
+            }
+          },
+          {
+            "name": "aws_subnet.database_primary",
+            "resourceType": "aws_subnet",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "database-subnet-primary-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_subnet.database_primary",
+                  "endLine": 30,
+                  "filename": "vpc.tf",
+                  "startLine": 18
+                }
+              ],
+              "checksum": "5a706dbb8bff34e3bf7bac64046eae861d620fc4371aad2620fb1c3764980b56",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 30,
+              "filename": "vpc.tf",
+              "startLine": 18
+            }
+          },
+          {
+            "name": "aws_subnet.database_secondary",
+            "resourceType": "aws_subnet",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "database-subnet-secondary-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_subnet.database_secondary",
+                  "endLine": 45,
+                  "filename": "vpc.tf",
+                  "startLine": 33
+                }
+              ],
+              "checksum": "1e0778c599ad1ba1be9d61aed4254c37820dff989b22d9f654ec1c32a272a992",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 45,
+              "filename": "vpc.tf",
+              "startLine": 33
+            }
+          },
+          {
+            "name": "aws_vpc.orders",
+            "resourceType": "aws_vpc",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "orders-vpc-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_vpc.orders",
+                  "endLine": 15,
+                  "filename": "vpc.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "e9ecd2c6e73ea3d5a08ed258c587c45f7752d5a74ef3b221c069b8d016c2d0a5",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 15,
+              "filename": "vpc.tf",
+              "startLine": 4
+            }
+          },
+          {
+            "name": "aws_vpc_security_group_ingress_rule.rds_from_application",
+            "resourceType": "aws_vpc_security_group_ingress_rule",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "allow-postgresql-from-app-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_vpc_security_group_ingress_rule.rds_from_application",
+                  "endLine": 130,
+                  "filename": "security-groups.tf",
+                  "startLine": 116
+                }
+              ],
+              "checksum": "5f42b822538940d660e2c1ba002451586bec398e5b824540440c6933a12cce06",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 130,
+              "filename": "security-groups.tf",
+              "startLine": 116
+            }
+          },
+          {
+            "name": "aws_vpc_security_group_ingress_rule.rds_from_bastion",
+            "resourceType": "aws_vpc_security_group_ingress_rule",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "allow-postgresql-from-bastion-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_vpc_security_group_ingress_rule.rds_from_bastion",
+                  "endLine": 147,
+                  "filename": "security-groups.tf",
+                  "startLine": 133
+                }
+              ],
+              "checksum": "5f841e7424306239a28a7ed5d6476a70560bfb8fcfe752a66fc7c6d08c4bfc4d",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 147,
+              "filename": "security-groups.tf",
+              "startLine": 133
+            }
+          },
+          {
+            "name": "aws_vpc_security_group_ingress_rule.rds_postgresql",
+            "resourceType": "aws_vpc_security_group_ingress_rule",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "allow-postgresql-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_vpc_security_group_ingress_rule.rds_postgresql",
+                  "endLine": 48,
+                  "filename": "security-groups.tf",
+                  "startLine": 34
+                }
+              ],
+              "checksum": "38b655988115052214617cffd9c6052f60be704813ada1b0a7a1ed2025ef4f8d",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 48,
+              "filename": "security-groups.tf",
+              "startLine": 34
+            }
+          }
+        ],
+        "totalHourlyCost": "0.086931506849314947",
+        "totalMonthlyCost": "63.46",
+        "totalMonthlyUsageCost": "0"
+      },
+      "breakdown": {
+        "resources": [
+          {
+            "name": "aws_db_instance.orders",
+            "resourceType": "aws_db_instance",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "orders-db-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_db_instance.orders",
+                  "endLine": 106,
+                  "filename": "rds.tf",
+                  "startLine": 46
+                }
+              ],
+              "checksum": "fd77eaadb05c0e802b35daa1d1a23cc78757f43a9c2bc4e19b3e9c216f198ea1",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 106,
+              "filename": "rds.tf",
+              "startLine": 46
+            },
+            "hourlyCost": "0.081452054794520547",
+            "monthlyCost": "59.46",
+            "costComponents": [
+              {
+                "name": "Database instance (on-demand, Multi-AZ, db.t3.small)",
+                "unit": "hours",
+                "hourlyQuantity": "1",
+                "monthlyQuantity": "730",
+                "price": "0.072",
+                "hourlyCost": "0.072",
+                "monthlyCost": "52.56",
+                "priceNotFound": false
+              },
+              {
+                "name": "Storage (general purpose SSD, gp3)",
+                "unit": "GB",
+                "hourlyQuantity": "0.0410958904109589",
+                "monthlyQuantity": "30",
+                "price": "0.23",
+                "hourlyCost": "0.009452054794520547",
+                "monthlyCost": "6.9",
+                "priceNotFound": false
+              },
+              {
+                "name": "Additional backup storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.095",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_dashboard.orders_database",
+            "resourceType": "aws_cloudwatch_dashboard",
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_dashboard.orders_database",
+                  "endLine": 210,
+                  "filename": "monitoring.tf",
+                  "startLine": 174
+                }
+              ],
+              "checksum": "d98b2414f31190ba51a3b891c11c5acafd9d6a19c0f62f2741b991c22da5fee0",
+              "endLine": 210,
+              "filename": "monitoring.tf",
+              "startLine": 174
+            },
+            "hourlyCost": "0.0041095890410958",
+            "monthlyCost": "3",
+            "costComponents": [
+              {
+                "name": "Dashboard",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "3",
+                "hourlyCost": "0.0041095890410958",
+                "monthlyCost": "3",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_secretsmanager_secret.db_password",
+            "resourceType": "aws_secretsmanager_secret",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "orders-db-password-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_secretsmanager_secret.db_password",
+                  "endLine": 15,
+                  "filename": "secrets.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "d8fbc1930dc9ae07dd8f7dad80f4cf801a2a4bbd87fbc066810c8fc8f34e6fd8",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 15,
+              "filename": "secrets.tf",
+              "startLine": 4
+            },
+            "hourlyCost": "0.00054794520547944",
+            "monthlyCost": "0.4",
+            "costComponents": [
+              {
+                "name": "Secret",
+                "unit": "months",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.4",
+                "hourlyCost": "0.00054794520547944",
+                "monthlyCost": "0.4",
+                "priceNotFound": false
+              },
+              {
+                "name": "API requests",
+                "unit": "10k requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.05",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.rds_availability",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.rds_availability",
+                  "endLine": 53,
+                  "filename": "monitoring.tf",
+                  "startLine": 35
+                }
+              ],
+              "checksum": "c1ad1b869493cde6c979a2b6155feb3cf112f7ae24cc3bdd4becc2ca024600de",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 53,
+              "filename": "monitoring.tf",
+              "startLine": 35
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.rds_connections_high",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.rds_connections_high",
+                  "endLine": 116,
+                  "filename": "monitoring.tf",
+                  "startLine": 98
+                }
+              ],
+              "checksum": "e163e0aef08607d2d2e6b4fdc835c0922f1be9d0855b56e8520578d0b5d9a5d1",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 116,
+              "filename": "monitoring.tf",
+              "startLine": 98
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.rds_cpu_utilization",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.rds_cpu_utilization",
+                  "endLine": 74,
+                  "filename": "monitoring.tf",
+                  "startLine": 56
+                }
+              ],
+              "checksum": "e224c446692a52451c75af1adf6e163eca85ca3884b2d293fd5db630192d1765",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 74,
+              "filename": "monitoring.tf",
+              "startLine": 56
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.rds_read_latency",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.rds_read_latency",
+                  "endLine": 137,
+                  "filename": "monitoring.tf",
+                  "startLine": 119
+                }
+              ],
+              "checksum": "777bda9eadd9624819ba80bb146c245449bc5526197e30c5d0b0835b2c69ea23",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 137,
+              "filename": "monitoring.tf",
+              "startLine": 119
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.rds_storage_low",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.rds_storage_low",
+                  "endLine": 95,
+                  "filename": "monitoring.tf",
+                  "startLine": 77
+                }
+              ],
+              "checksum": "b935d7d7034088d7cc8602a3d01cd0185768dd846b560c3289d80ba7a11aae15",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 95,
+              "filename": "monitoring.tf",
+              "startLine": 77
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_metric_alarm.rds_write_latency",
+            "resourceType": "aws_cloudwatch_metric_alarm",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_metric_alarm.rds_write_latency",
+                  "endLine": 158,
+                  "filename": "monitoring.tf",
+                  "startLine": 140
+                }
+              ],
+              "checksum": "ee03eb013e9a5a2cde2394bac71970beb76e8d0fcbcccd4885c1c1a8ac80fedb",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 158,
+              "filename": "monitoring.tf",
+              "startLine": 140
+            },
+            "hourlyCost": "0.00013698630136986",
+            "monthlyCost": "0.1",
+            "costComponents": [
+              {
+                "name": "Standard resolution",
+                "unit": "alarm metrics",
+                "hourlyQuantity": "0.0013698630136986",
+                "monthlyQuantity": "1",
+                "price": "0.1",
+                "hourlyCost": "0.00013698630136986",
+                "monthlyCost": "0.1",
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.rds_postgresql",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "rds-postgresql-logs-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.rds_postgresql",
+                  "endLine": 171,
+                  "filename": "monitoring.tf",
+                  "startLine": 161
+                }
+              ],
+              "checksum": "6b8543cc0d98bddd1e9e6ebf498ade0cde44d7886000c59802cf1d3552fe75c8",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 171,
+              "filename": "monitoring.tf",
+              "startLine": 161
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.secrets_rotation[0]",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "secrets-rotation-logs-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.secrets_rotation",
+                  "endLine": 109,
+                  "filename": "secrets.tf",
+                  "startLine": 98
+                }
+              ],
+              "checksum": "3373d6a96ebfc7d1baf479b97767d99ee7e461fa194055d268da7cf821ff0345",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 109,
+              "filename": "secrets.tf",
+              "startLine": 98
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_cloudwatch_log_group.vpc_flow_logs[0]",
+            "resourceType": "aws_cloudwatch_log_group",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "vpc-flow-logs-group-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_log_group.vpc_flow_logs",
+                  "endLine": 130,
+                  "filename": "vpc.tf",
+                  "startLine": 119
+                }
+              ],
+              "checksum": "5eac306f2d6e1fd27fc62591e50ca5f9ffca603d41b510324f31d44dd5396c0b",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 130,
+              "filename": "vpc.tf",
+              "startLine": 119
+            },
+            "costComponents": [
+              {
+                "name": "Data ingested",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Archival Storage",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.03",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Insights queries data scanned",
+                "unit": "GB",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.005",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              }
+            ]
+          },
+          {
+            "name": "aws_sns_topic.database_alerts",
+            "resourceType": "aws_sns_topic",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "database-alerts-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_sns_topic.database_alerts",
+                  "endLine": 13,
+                  "filename": "monitoring.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "0943d19965a8e1ebe8d636da62abde9086a9aabcf91ac443b50a36e3b26219e4",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 13,
+              "filename": "monitoring.tf",
+              "startLine": 4
+            },
+            "costComponents": [
+              {
+                "name": "API requests (over 1M)",
+                "unit": "1M requests",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "HTTP/HTTPS notifications (over 100k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.06",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Email/Email-JSON notifications (over 1k)",
+                "unit": "100k notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "2",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Kinesis Firehose notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.19",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "Mobile Push notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "MacOS notifications",
+                "unit": "1M notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0.5",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": false
+              },
+              {
+                "name": "SMS notifications (over 100)",
+                "unit": "100 notifications",
+                "hourlyQuantity": null,
+                "monthlyQuantity": null,
+                "price": "0",
+                "hourlyCost": null,
+                "monthlyCost": null,
+                "usageBased": true,
+                "priceNotFound": true
+              }
+            ]
+          }
+        ],
+        "freeResources": [
+          {
+            "name": "aws_cloudwatch_event_rule.rds_events",
+            "resourceType": "aws_cloudwatch_event_rule",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_cloudwatch_event_rule.rds_events",
+                  "endLine": 232,
+                  "filename": "monitoring.tf",
+                  "startLine": 216
+                }
+              ],
+              "checksum": "5c9229764e4189d6817dfe6051e19664bc11b12b916601812d1ad9b65a8c1c41",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 232,
+              "filename": "monitoring.tf",
+              "startLine": 216
+            }
+          },
+          {
+            "name": "aws_db_parameter_group.orders",
+            "resourceType": "aws_db_parameter_group",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "orders-pg-param-group-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_db_parameter_group.orders",
+                  "endLine": 43,
+                  "filename": "rds.tf",
+                  "startLine": 12
+                }
+              ],
+              "checksum": "2504fb6f3a637d8c9cb3c1ad158021f640648581c99c5a3ef0c4d9c6fd23d389",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 43,
+              "filename": "rds.tf",
+              "startLine": 12
+            }
+          },
+          {
+            "name": "aws_db_subnet_group.orders",
+            "resourceType": "aws_db_subnet_group",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "orders-db-subnet-group-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_db_subnet_group.orders",
+                  "endLine": 59,
+                  "filename": "vpc.tf",
+                  "startLine": 48
+                }
+              ],
+              "checksum": "8352896051ac3641c9ac22a560aa2421777d326c32d435cab4f119c6fd4e69ef",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 59,
+              "filename": "vpc.tf",
+              "startLine": 48
+            }
+          },
+          {
+            "name": "aws_flow_log.vpc_log[0]",
+            "resourceType": "aws_flow_log",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "vpc-flow-logs-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_flow_log.vpc_log",
+                  "endLine": 116,
+                  "filename": "vpc.tf",
+                  "startLine": 103
+                }
+              ],
+              "checksum": "a551c333b20f623d44f770d5a38ee8e1df6e45e34108745223594b900bb51139",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 116,
+              "filename": "vpc.tf",
+              "startLine": 103
+            }
+          },
+          {
+            "name": "aws_iam_instance_profile.application",
+            "resourceType": "aws_iam_instance_profile",
+            "tags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_iam_instance_profile.application",
+                  "endLine": 268,
+                  "filename": "iam.tf",
+                  "startLine": 265
+                }
+              ],
+              "checksum": "abea6d8ffd30bd1198e717f5b2f4482e6e9624dffc60110834d92c5dfb3a7893",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 268,
+              "filename": "iam.tf",
+              "startLine": 265
+            }
+          },
+          {
+            "name": "aws_iam_role.application",
+            "resourceType": "aws_iam_role",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "application-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_iam_role.application",
+                  "endLine": 232,
+                  "filename": "iam.tf",
+                  "startLine": 209
+                }
+              ],
+              "checksum": "fb47f4c83d9b9d9c97f4314d297fde54438535b6157734cc8a16cfebccb65b93",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 232,
+              "filename": "iam.tf",
+              "startLine": 209
+            }
+          },
+          {
+            "name": "aws_iam_role.rds_monitoring",
+            "resourceType": "aws_iam_role",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "rds-monitoring-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_iam_role.rds_monitoring",
+                  "endLine": 297,
+                  "filename": "iam.tf",
+                  "startLine": 274
+                }
+              ],
+              "checksum": "0a5e7f5f665fb027503becd933e6ccc0e32a4780f1f2e4155c47e9a2c2d24925",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 297,
+              "filename": "iam.tf",
+              "startLine": 274
+            }
+          },
+          {
+            "name": "aws_iam_role.terraform_executor",
+            "resourceType": "aws_iam_role",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "terraform-executor-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_iam_role.terraform_executor",
+                  "endLine": 33,
+                  "filename": "iam.tf",
+                  "startLine": 7
+                }
+              ],
+              "checksum": "a14f88ad7e2f761eef1eaa32eb6ed7597a421ac87bc685ee6a6280aedb2b7433",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 33,
+              "filename": "iam.tf",
+              "startLine": 7
+            }
+          },
+          {
+            "name": "aws_iam_role.vpc_flow_logs[0]",
+            "resourceType": "aws_iam_role",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_iam_role.vpc_flow_logs",
+                  "endLine": 151,
+                  "filename": "vpc.tf",
+                  "startLine": 133
+                }
+              ],
+              "checksum": "5bb0c8675e1991d55b30d449869e4f61f8f8f5a1092fac17beb7fcbe68626634",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 151,
+              "filename": "vpc.tf",
+              "startLine": 133
+            }
+          },
+          {
+            "name": "aws_internet_gateway.orders",
+            "resourceType": "aws_internet_gateway",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "orders-igw-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_internet_gateway.orders",
+                  "endLine": 71,
+                  "filename": "vpc.tf",
+                  "startLine": 62
+                }
+              ],
+              "checksum": "0617f77da996a797c3b14cbbf317a46ae792aad31da576857e5a5517eb39920f",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 71,
+              "filename": "vpc.tf",
+              "startLine": 62
+            }
+          },
+          {
+            "name": "aws_route_table.private",
+            "resourceType": "aws_route_table",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "private-rt-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_route_table.private",
+                  "endLine": 88,
+                  "filename": "vpc.tf",
+                  "startLine": 74
+                }
+              ],
+              "checksum": "43ad2e1e680e0d73a2b454e847f371d8e1eb2219be4c4fe2e6af2b6cce0269fc",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 88,
+              "filename": "vpc.tf",
+              "startLine": 74
+            }
+          },
+          {
+            "name": "aws_security_group.application",
+            "resourceType": "aws_security_group",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "app-sg-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_security_group.application",
+                  "endLine": 113,
+                  "filename": "security-groups.tf",
+                  "startLine": 89
+                }
+              ],
+              "checksum": "60c93b16bce66753260b61a1b59efc3fa29d87a4b672ceb9d54be630a3a88bf1",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 113,
+              "filename": "security-groups.tf",
+              "startLine": 89
+            }
+          },
+          {
+            "name": "aws_security_group.bastion",
+            "resourceType": "aws_security_group",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "bastion-sg-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_security_group.bastion",
+                  "endLine": 85,
+                  "filename": "security-groups.tf",
+                  "startLine": 52
+                }
+              ],
+              "checksum": "a37cb053e5e7d8a3513bc190032c34a18a1c308032f76cd782858604829b98f6",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 85,
+              "filename": "security-groups.tf",
+              "startLine": 52
+            }
+          },
+          {
+            "name": "aws_security_group.rds",
+            "resourceType": "aws_security_group",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "rds-sg-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_security_group.rds",
+                  "endLine": 29,
+                  "filename": "security-groups.tf",
+                  "startLine": 5
+                }
+              ],
+              "checksum": "6b022e0aa17762e47d799768fbd60333b56118d7a19279362172aa0a8efddda9",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 29,
+              "filename": "security-groups.tf",
+              "startLine": 5
+            }
+          },
+          {
+            "name": "aws_subnet.database_primary",
+            "resourceType": "aws_subnet",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "database-subnet-primary-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_subnet.database_primary",
+                  "endLine": 30,
+                  "filename": "vpc.tf",
+                  "startLine": 18
+                }
+              ],
+              "checksum": "5a706dbb8bff34e3bf7bac64046eae861d620fc4371aad2620fb1c3764980b56",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 30,
+              "filename": "vpc.tf",
+              "startLine": 18
+            }
+          },
+          {
+            "name": "aws_subnet.database_secondary",
+            "resourceType": "aws_subnet",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "database-subnet-secondary-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_subnet.database_secondary",
+                  "endLine": 45,
+                  "filename": "vpc.tf",
+                  "startLine": 33
+                }
+              ],
+              "checksum": "1e0778c599ad1ba1be9d61aed4254c37820dff989b22d9f654ec1c32a272a992",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 45,
+              "filename": "vpc.tf",
+              "startLine": 33
+            }
+          },
+          {
+            "name": "aws_vpc.orders",
+            "resourceType": "aws_vpc",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "orders-vpc-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_vpc.orders",
+                  "endLine": 15,
+                  "filename": "vpc.tf",
+                  "startLine": 4
+                }
+              ],
+              "checksum": "e9ecd2c6e73ea3d5a08ed258c587c45f7752d5a74ef3b221c069b8d016c2d0a5",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 15,
+              "filename": "vpc.tf",
+              "startLine": 4
+            }
+          },
+          {
+            "name": "aws_vpc_security_group_ingress_rule.rds_from_application",
+            "resourceType": "aws_vpc_security_group_ingress_rule",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "allow-postgresql-from-app-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_vpc_security_group_ingress_rule.rds_from_application",
+                  "endLine": 130,
+                  "filename": "security-groups.tf",
+                  "startLine": 116
+                }
+              ],
+              "checksum": "5f42b822538940d660e2c1ba002451586bec398e5b824540440c6933a12cce06",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 130,
+              "filename": "security-groups.tf",
+              "startLine": 116
+            }
+          },
+          {
+            "name": "aws_vpc_security_group_ingress_rule.rds_from_bastion",
+            "resourceType": "aws_vpc_security_group_ingress_rule",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "allow-postgresql-from-bastion-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_vpc_security_group_ingress_rule.rds_from_bastion",
+                  "endLine": 147,
+                  "filename": "security-groups.tf",
+                  "startLine": 133
+                }
+              ],
+              "checksum": "5f841e7424306239a28a7ed5d6476a70560bfb8fcfe752a66fc7c6d08c4bfc4d",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 147,
+              "filename": "security-groups.tf",
+              "startLine": 133
+            }
+          },
+          {
+            "name": "aws_vpc_security_group_ingress_rule.rds_postgresql",
+            "resourceType": "aws_vpc_security_group_ingress_rule",
+            "tags": {
+              "Compliance": "pci-dss",
+              "CostCenter": "customer-orders",
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "production",
+              "ManagedBy": "terraform",
+              "Name": "allow-postgresql-prod",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "defaultTags": {
+              "CreatedAt": "2023-03-14T15:09:29Z",
+              "Environment": "prod",
+              "ManagedBy": "terraform",
+              "Owner": "platform-team",
+              "Project": "customer-orders-database"
+            },
+            "providerSupportsDefaultTags": true,
+            "providerLink": "provider.tf:1",
+            "metadata": {
+              "calls": [
+                {
+                  "blockName": "aws_vpc_security_group_ingress_rule.rds_postgresql",
+                  "endLine": 48,
+                  "filename": "security-groups.tf",
+                  "startLine": 34
+                }
+              ],
+              "checksum": "38b655988115052214617cffd9c6052f60be704813ada1b0a7a1ed2025ef4f8d",
+              "defaultTagsChecksum": "f7226ee0452ee4473a8b4f2710a0bde7bc962f3646ca69d3b5d57aa484db005d",
+              "endLine": 48,
+              "filename": "security-groups.tf",
+              "startLine": 34
+            }
+          }
+        ],
+        "totalHourlyCost": "0.086931506849314947",
+        "totalMonthlyCost": "63.46",
+        "totalMonthlyUsageCost": "0"
+      },
+      "diff": {
+        "resources": [],
+        "totalHourlyCost": "0",
+        "totalMonthlyCost": "0",
+        "totalMonthlyUsageCost": "0"
+      },
+      "summary": {
+        "totalDetectedResources": 48,
+        "totalSupportedResources": 13,
+        "totalUnsupportedResources": 0,
+        "totalUsageBasedResources": 6,
+        "totalNoPriceResources": 35,
+        "unsupportedResourceCounts": {},
+        "noPriceResourceCounts": {
+          "aws_cloudwatch_event_rule": 1,
+          "aws_cloudwatch_event_target": 1,
+          "aws_db_parameter_group": 1,
+          "aws_db_subnet_group": 1,
+          "aws_flow_log": 1,
+          "aws_iam_instance_profile": 1,
+          "aws_iam_role": 4,
+          "aws_iam_role_policy": 7,
+          "aws_iam_role_policy_attachment": 1,
+          "aws_internet_gateway": 1,
+          "aws_route_table": 1,
+          "aws_route_table_association": 2,
+          "aws_secretsmanager_secret_policy": 1,
+          "aws_secretsmanager_secret_rotation": 1,
+          "aws_secretsmanager_secret_version": 1,
+          "aws_security_group": 3,
+          "aws_sns_topic_policy": 1,
+          "aws_subnet": 2,
+          "aws_vpc": 1,
+          "aws_vpc_security_group_ingress_rule": 3
+        }
+      }
+    }
+  ],
+  "totalHourlyCost": "0.086931506849314947",
+  "totalMonthlyCost": "63.46",
+  "totalMonthlyUsageCost": "0",
+  "pastTotalHourlyCost": "0.086931506849314947",
+  "pastTotalMonthlyCost": "63.46",
+  "pastTotalMonthlyUsageCost": "0",
+  "diffTotalHourlyCost": "0",
+  "diffTotalMonthlyCost": "0",
+  "diffTotalMonthlyUsageCost": "0",
+  "timeGenerated": "2026-04-02T18:16:02.881146475Z",
+  "summary": {
+    "totalDetectedResources": 48,
+    "totalSupportedResources": 13,
+    "totalUnsupportedResources": 0,
+    "totalUsageBasedResources": 6,
+    "totalNoPriceResources": 35,
+    "unsupportedResourceCounts": {},
+    "noPriceResourceCounts": {
+      "aws_cloudwatch_event_rule": 1,
+      "aws_cloudwatch_event_target": 1,
+      "aws_db_parameter_group": 1,
+      "aws_db_subnet_group": 1,
+      "aws_flow_log": 1,
+      "aws_iam_instance_profile": 1,
+      "aws_iam_role": 4,
+      "aws_iam_role_policy": 7,
+      "aws_iam_role_policy_attachment": 1,
+      "aws_internet_gateway": 1,
+      "aws_route_table": 1,
+      "aws_route_table_association": 2,
+      "aws_secretsmanager_secret_policy": 1,
+      "aws_secretsmanager_secret_rotation": 1,
+      "aws_secretsmanager_secret_version": 1,
+      "aws_security_group": 3,
+      "aws_sns_topic_policy": 1,
+      "aws_subnet": 2,
+      "aws_vpc": 1,
+      "aws_vpc_security_group_ingress_rule": 3
+    }
+  }
+}

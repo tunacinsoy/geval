@@ -1,0 +1,32 @@
+# Development environment configuration
+
+environment             = "dev"
+instance_type           = "db.t3.micro"
+storage_size            = 20
+multi_az                = false
+backup_retention_days   = 7
+enable_deletion_protection = false
+enable_monitoring       = true
+monitoring_interval     = 60
+rds_proxy_enabled       = false
+
+# Database configuration
+database_name           = "orders_db"
+db_username             = "postgres"
+password_length         = 32
+
+# Network configuration
+vpc_cidr                = "10.0.0.0/16"
+database_subnet_1_cidr  = "10.0.10.0/24"
+database_subnet_2_cidr  = "10.0.11.0/24"
+
+# Backup and maintenance windows
+backup_window           = "02:00-03:00"
+maintenance_window      = "sun:03:00-sun:04:00"
+
+# Tags
+tags = {
+  Environment = "development"
+  CostCenter  = "development"
+  Owner       = "development-team"
+}
