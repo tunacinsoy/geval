@@ -6,7 +6,7 @@ from deepeval.test_case import LLMTestCase
 from deepeval.metrics import BaseMetric
 from deepeval.models import GPTModel
 
-def load_terraform_codebase(directory="iac/007-claude"):
+def load_terraform_codebase(directory="iac/010-gemini"):
     tf_code = ""
     patterns = ["**/*.tf", "**/*.tfvars"]
 
@@ -84,10 +84,10 @@ class PreciseContextualCoherenceMetric(BaseMetric):
         return "Precise Contextual Coherence Metric"
 
 def test_contextual_coherence():
-    user_request = "Deploy a private Azure Kubernetes Service cluster (v1.28+) with Azure CNI Overlay networking. The cluster must not have a public IP. All egress traffic must be routed through an Azure Firewall using a user-defined route (UDR) on the node subnet. Configure the firewall with application rules to allow traffic only to *.docker.io and *.ubuntu.com. The node pool should consist of 3 Standard_D4s_v5 instances, distributed across availability zones 1, 2, and 3."
+    user_request = "Define an EC2 Image Builder pipeline to generate a hardened AMI based on Amazon Linux 2023. The pipeline must execute an Ansible playbook component to apply CIS Level 1 benchmarks before finalizing the image. Once built, the AMI ID should be dynamically referenced in an Auto Scaling Group launch template. The ASG must be configured with a strict instance_refresh policy that replaces instances primarily by launching new ones before terminating old ones to ensure zero downtime during patching cycles."
 
     background_context = [
-        "Aegis Defense Tech, founded in 2005 with 850 employees, is a defense contractor whose containerized workloads process data of European civilian contractors. The zero-trust network isolation explicitly satisfies GDPR's requirement for data protection by design and by default. The strict egress control prevents any possibility of unauthorized cross-border data exfiltration from the containerized workloads."
+        "CarePlus Health, founded in 1998 with 2,100 employees, processes health records for international patients, including EU residents. The immutable infrastructure model, which forces instances to be replaced rather than patched, ensures a completely tamper-proof environment. This provides regulators with an unalterable audit trail that proves continuous compliance with GDPR's security of processing mandates."
     ]
 
     generated_terraform = load_terraform_codebase()
