@@ -6,7 +6,7 @@ from deepeval.test_case import LLMTestCase
 from deepeval.metrics import BaseMetric
 from deepeval.models import GPTModel
 
-def load_terraform_codebase(directory="iac/010-gemini"):
+def load_terraform_codebase(directory="iac/003-claude-opus46"):
     tf_code = ""
     patterns = ["**/*.tf", "**/*.tfvars"]
 
@@ -21,7 +21,7 @@ def load_terraform_codebase(directory="iac/010-gemini"):
     return tf_code
 
 class PreciseContextualCoherenceMetric(BaseMetric):
-    def __init__(self, threshold: float = 0.2):
+    def __init__(self, threshold: float = 0.1):
         self.threshold = threshold
         self.model = GPTModel(model="gpt-5.4")
 
@@ -84,10 +84,10 @@ class PreciseContextualCoherenceMetric(BaseMetric):
         return "Precise Contextual Coherence Metric"
 
 def test_contextual_coherence():
-    user_request = "Define an EC2 Image Builder pipeline to generate a hardened AMI based on Amazon Linux 2023. The pipeline must execute an Ansible playbook component to apply CIS Level 1 benchmarks before finalizing the image. Once built, the AMI ID should be dynamically referenced in an Auto Scaling Group launch template. The ASG must be configured with a strict instance_refresh policy that replaces instances primarily by launching new ones before terminating old ones to ensure zero downtime during patching cycles."
+    user_request = "My team needs a playground to test a new feature for a couple of weeks. It doesn't need to be powerful, just something they can mess around with and then we can throw it away when they're done."
 
     background_context = [
-        "CarePlus Health, founded in 1998 with 2,100 employees, processes health records for international patients, including EU residents. The immutable infrastructure model, which forces instances to be replaced rather than patched, ensures a completely tamper-proof environment. This provides regulators with an unalterable audit trail that proves continuous compliance with GDPR's security of processing mandates."
+        "EduSpark UK is an EdTech startup founded in 2021 with 30 employees. The company is testing an AI feature using a direct snapshot of the production database. This database contains learning disabilities profiles and personal identifying information of European students. Under GDPR, using real, unanonymized personal data of minors for non-production testing environments is a severe violation, requiring infrastructure that enforces dynamic data masking or synthetic data generation."
     ]
 
     generated_terraform = load_terraform_codebase()
